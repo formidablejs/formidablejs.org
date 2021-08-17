@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import clsx from 'clsx';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -15,7 +16,7 @@ export default function Home() {
 	while (toggle.length > 0) toggle[0].remove();
 
 	return (
-		<Fragment>
+		<BrowserOnly>
 			<div className='info'>
 				I'm still working on the docs - Come back after a few of weeks 🚀
 			</div>
@@ -50,6 +51,6 @@ export default function Home() {
 					}} />
 				</div>
 			</Layout>
-		</Fragment>
+		</BrowserOnly>
 	);
 }
