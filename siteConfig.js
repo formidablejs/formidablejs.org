@@ -1,0 +1,7 @@
+{
+  headerLinks: [
+    {
+      search: true,
+    }
+  ]
+}
