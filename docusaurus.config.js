@@ -3,7 +3,7 @@ module.exports = {
   title: 'The Formidable Framework',
   tagline: 'Imba Framework for Rapid API Development',
   url: 'https://formidablejs.com',
-  baseUrl: '/src',
+  baseUrl: 'src/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
