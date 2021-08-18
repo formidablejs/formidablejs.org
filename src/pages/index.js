@@ -19,7 +19,7 @@ export default function Home() {
 	}
 
 	return (
-		<BrowserOnly>
+		<Fragment>
 			<div className='info'>
 				I'm still working on the docs - Come back after a few of weeks 🚀
 			</div>
@@ -46,6 +46,6 @@ export default function Home() {
 					<img src="/img/main.png" className='img-code'/>
 				</div>
 			</Layout>
-		</BrowserOnly>
+		</Fragment>
 	);
 }
