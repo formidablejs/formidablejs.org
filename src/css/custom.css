@@ -38,13 +38,17 @@
   color: #222!important;
 }
 
+.button--custom {
+	border: 1px solid #fff;
+}
+
 .button--custom:hover {
   background-color: #888;
   color: #fff;
   border: 1px solid #777;
 }
 
-.heroBanner_src-pages-styles-module {
+.hero.hero--primary {
   padding: 8rem 0!important;
 }
 
@@ -105,7 +109,7 @@ html[data-theme='dark'] .hero--primary {
 }
 
 .img-code {
-	top: -80px;
+	top: -40px;
 	position: relative;
 	margin: auto;
 	display: block;
