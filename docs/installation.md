@@ -10,11 +10,11 @@ Formidable (or formidablejs) is an API framework for building backend applicatio
 
 Formidable uses [Fastify](https://www.fastify.io/) under the hood.
 
-## Installation
+## Installation {#installation}
 
 To get started, you need to install the Craftsman CLI. The Craftsman CLI will allow you to create new projects, and also provides a number of helpful commands that can assist you while building your application.
 
-#### Your first Formidable Application
+#### Your first Formidable Application {#your-first-formidable-application}
 
 When creating a new application, the Craftsman CLI will clone the `formidable` repository from Github and install all the dependencies for you.
 

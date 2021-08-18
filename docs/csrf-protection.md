@@ -5,7 +5,7 @@ title: CSRF Protection
 
 # CSRF Protection
 
-## Introduction
+## Introduction {#introduction}
 
 Formidable makes it easy to protect your application from [cross-site request forgery](https://en.wikipedia.org/wiki/Cross-site_request_forgery) (CSRF) attacks. Cross-site request forgeries are a type of malicious exploit whereby unauthorized commands are performed on behalf of an authenticated user.
 
@@ -17,7 +17,7 @@ To use this token in your client application, retrieve the token from your cooki
 
 You may use [js-cookie](https://github.com/js-cookie/js-cookie) to retrieve the CSRF token from your cookies.
 
-## Protecting routes
+## Protecting routes {#protecting-routes}
 
 To protect any route that's not in the `session` group, you may use the `HasCsrfToken` and `VerifyCsrfToken` middleware's:
 

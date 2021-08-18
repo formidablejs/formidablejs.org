@@ -1,35 +1,35 @@
 import React, { Fragment } from 'react';
 import clsx from 'clsx';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-// import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import styles from './styles.module.css';
 
 export default function Home() {
-	// const context = useDocusaurusContext();
-	// const { siteConfig = {} } = context;
+	const context = useDocusaurusContext();
+	const { siteConfig = {} } = context;
 
-	const toggle = document.getElementsByClassName('react-toggle-track');
+	if (ExecutionEnvironment.canUseDOM) {
+		const toggle = document.getElementsByClassName('react-toggle-track');
 
-	while (toggle.length > 0) toggle[0].remove();
+		while (toggle.length > 0) toggle[0].remove();
+	}
 
 	return (
-		<Fragment>
+		<BrowserOnly>
 			<div className='info'>
 				I'm still working on the docs - Come back after a few of weeks 🚀
 			</div>
 			<Layout
-				title='The Formidable Framework'
-				description="Imba Framework for Rapid API Development"
-				author="@donaldpakkies"
-				>
+				title={siteConfig.title}
+				description={siteConfig.description}>
 				<header className={clsx('hero hero--primary', styles.heroBanner)}>
 					<div className="container">
-						<h1 className="hero__title">The Formidable Framework</h1>
-						<p className="hero__subtitle">Imba Framework for Rapid API Development</p>
+						<h1 className="hero__title">{siteConfig.title}</h1>
+						<p className="hero__subtitle">{siteConfig.tagline}</p>
 						<div className={styles.buttons}>
 							<Link
 								className={clsx(
@@ -46,6 +46,6 @@ export default function Home() {
 					<img src="/img/main.png" className='img-code'/>
 				</div>
 			</Layout>
-		</Fragment>
+		</BrowserOnly>
 	);
 }

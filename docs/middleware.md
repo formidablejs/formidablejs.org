@@ -5,7 +5,7 @@ title: Middleware
 
 # Middleware
 
-## Introduction
+## Introduction {#introduction}
 
 Middleware provide a convenient mechanism for filtering HTTP requests entering your application. For example, Modulus includes a middleware that verifies the user of your application is authenticated. If the user is not authenticated, the middleware will throw an Exception. However, if the user is authenticated, the middleware will allow the request to proceed further into the application.
 
@@ -14,7 +14,7 @@ Of course, additional middleware can be written to perform a variety of tasks be
 There are several middleware included in the Formidable framework, including middleware for authentication and CSRF protection. All of these middleware are located in the app/Http/Middleware directory.
 
 
-## Defining Middleware
+## Defining Middleware {#defining-middleware}
 
 To create a new middleware, use the `make middleware` Craftsman command:
 
@@ -37,13 +37,13 @@ export default class CheckAge
 
 As you can see, if the given `age` is less than `18`, the middleware will throw an Exception; otherwise, the request will be passed further into the application.
 
-## Registering Middleware
+## Registering Middleware {#registering-middleware}
 
-### Global Middleware
+### Global Middleware {#global-middleware}
 
 If you want a middleware to run during every HTTP request to your application, list the middleware class in the `middleware` getter of your `app/Http/Kernel.imba` class.
 
-### Assigning Middleware To Routes
+### Assigning Middleware To Routes {#assigning-middleware-to-routes}
 
 If you would like to assign middleware to specific routes, you should first assign the middleware a key in your `app/Http/Kernel.imba` file. By default, the `routeMiddleware` getter of this class contains entries for the middleware included with Formidable. To add your own, append it to this list and assign it a key of your choosing. For example:
 
@@ -75,7 +75,7 @@ Route.get('/', do
 ).middleware(['first', 'second'])
 ```
 
-### Middleware Groups
+### Middleware Groups {#middleware-groups}
 
 Sometimes you may want to group several middleware under a single key to make them easier to assign to routes. You may do this using the `middlewareGroups` getter of your HTTP kernel.
 

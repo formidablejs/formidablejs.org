@@ -5,13 +5,13 @@ title: Controllers
 
 # Controllers
 
-## Introduction
+## Introduction {#introduction}
 
 Instead of defining all of your request handling logic as anonymous functions in route files, you may wish to organize this behavior using Controller classes. Controllers can group related request handling logic into a single class. Controllers are stored in the `app/Http/Controllers` directory.
 
-## Basic Controllers
+## Basic Controllers {#basic-controllers}
 
-### Defining Controllers
+### Defining Controllers {#defining-controllers}
 
 To create a new controller, use the `make controller` Craftsman command:
 

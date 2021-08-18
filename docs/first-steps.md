@@ -6,15 +6,15 @@ title: First steps
 # First steps
 Lets take a look at how Formidable works.
 
-## Language
+## Language {#language}
 Formidable uses Imba as the choice of Programming Language, but also allows developers to use JavaScript and TypeScript.
 
 You can learn Imba here: [https://imba.io/](https://imba.io/)
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 Please make sure that [Node.js](https://nodejs.org/) (>= 14.*) is installed on your operating system.
 
-## Setup
+## Setup {#setup}
 To create a new Application, run the following commands in your terminal:
 
 ```
@@ -127,7 +127,7 @@ The `server.imba` and `server.cli.imba` files will initiate the application with
 | `/resources/lang`        | Contains language files.
 | `/routes`                | Contains application routes.
 
-## Running the application
+## Running the application {#running-the-application}
 Now that we've got that out of the way, we can start our application:
 
 ```
@@ -147,7 +147,7 @@ To change the default port, add a `config.port` value in the `package.json` file
 }
 ```
 
-## API Testing
+## API Testing {#api-testing}
 
 Before you can start testing, you need to make a test compatible build of your app. To do this, simply run the following command:
 

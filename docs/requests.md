@@ -5,7 +5,7 @@ title: Requests
 
 # HTTP Requests
 
-## Accessing The Request
+## Accessing The Request {#accessing-the-request}
 
 Formidable loads requests to route actions as first parameters by default:
 
@@ -16,6 +16,6 @@ export default class TaskController < Controller
 		const description = request.get('description')
 ```
 
-#### Dependency Injection & Route Parameters
+#### Dependency Injection & Route Parameters {#dependency-injection--route-parameters}
 
 Will continue...

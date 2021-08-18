@@ -98,7 +98,7 @@ module.exports = {
         //   ],
         // },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Built with Docusaurus.`,
     },
   },
   presets: [
@@ -108,15 +108,9 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/formidablejs/docs/edit/master/',
-        },
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
         //   editUrl:
         //     'https://github.com/formidablejs/docs/edit/master/',
-        // },
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
