@@ -10,7 +10,11 @@ module.exports = {
   organizationName: 'formidablejs', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   themeConfig: {
-	forceDarkMode: true,
+	colorMode: {
+		// "light" | "dark"
+		defaultMode: 'dark',
+		disableSwitch: true,
+	},
     navbar: {
       title: 'Formidable',
       logo: {

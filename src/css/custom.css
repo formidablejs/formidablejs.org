@@ -7,35 +7,37 @@
 /* You can override the default Infima variables here. */
 /* 4FC4D0 */
 :root {
-  /* --ifm-color-primary: #111; */
-  --ifm-navbar-background-color: #fff;
-  --ifm-hero-text-color: #222;
-  --ifm-font-color-base-inverse: #222;
+	/* --ifm-color-primary: #111; */
+	--ifm-navbar-background-color: #fff;
+	--ifm-hero-text-color: #222;
+	--ifm-font-color-base-inverse: #222;
 
-  --ifm-color-primary: #222;
-  /* --ifm-color-primary: #25c2a0; */
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
-  --ifm-code-font-size: 95%;
+	--ifm-color-primary: #222;
+	/* --ifm-color-primary: #25c2a0; */
+	--ifm-color-primary-dark: rgb(33, 175, 144);
+	--ifm-color-primary-darker: rgb(31, 165, 136);
+	--ifm-color-primary-darkest: rgb(26, 136, 112);
+	--ifm-color-primary-light: rgb(70, 203, 174);
+	--ifm-color-primary-lighter: rgb(102, 212, 189);
+	--ifm-color-primary-lightest: rgb(146, 224, 208);
+	--ifm-code-font-size: 95%;
 }
 
 .docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+	background-color: rgb(72, 77, 91);
+	display: block;
+	margin: 0 calc(-1 * var(--ifm-pre-padding));
+	padding: 0 var(--ifm-pre-padding);
 }
 
 .navbar {
-  box-shadow: unset;
+	box-shadow: unset;
 }
 
-.navbar__title, .navbar__item, .navbar__link {
-  color: #222!important;
+.navbar__title,
+.navbar__item,
+.navbar__link {
+	color: #222 !important;
 }
 
 .button--custom {
@@ -43,68 +45,66 @@
 }
 
 .button--custom:hover {
-  background-color: #888;
-  color: #fff;
-  border: 1px solid #777;
+	background-color: #888;
+	color: #fff;
+	border: 1px solid #777;
 }
 
 .hero.hero--primary {
-  padding: 8rem 0!important;
-}
-
-.hero.hero--primary {
-  background-color: #fff!important;
+	padding: 8rem 0 !important;
+	background-color: #fff !important;
 }
 
 .footer {
-  background-color: #fff!important;
+	background-color: #fff !important;
 }
 
 .footer a.footer__link-item {
-  color: #222;
+	color: #222;
 }
 
 html[data-theme='dark'] .navbar {
-	background-color: #18191A!important;
-	border-bottom: 1px solid #1c1e20!important;
+	background-color: #18191A !important;
+	border-bottom: 1px solid #1c1e20 !important;
 }
 
-html[data-theme='dark'] .navbar__link, html[data-theme='dark'] .navbar__title {
-	color: #fff!important;
+html[data-theme='dark'] .navbar__link,
+html[data-theme='dark'] .navbar__title {
+	color: #fff !important;
 }
 
 html[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
-	color: #fff!important;
+	color: #fff !important;
 }
 
 html[data-theme='dark'] .footer {
-	background-color: #18191A!important;
-	border-top: 1px solid #1c1e20!important;
-	color: #fff!important;
+	background-color: #18191A !important;
+	border-top: 1px solid #1c1e20 !important;
+	color: #fff !important;
 }
 
 html[data-theme='dark'] a {
-	color: #fff!important;
+	color: #fff !important;
 }
 
 html[data-theme='dark'] .hero.hero--primary {
-	background-color: #18191A!important;
+	background-color: #18191A !important;
 }
 
 html[data-theme='dark'] .hero--primary {
-	color: #fff!important;
+	color: #fff !important;
 }
 
 .navbar__items {
-  	color: #222!important;
+	color: #222 !important;
 }
 
 .info {
-	padding: 15px 0!important;
-    background: #111;
-    color: #fff;
-    text-align: center;
-    font-size: 12px;
+	padding: 15px 0 !important;
+	background: #111;
+	color: #fff;
+	text-align: center;
+	font-size: 12px;
 	z-index: 10;
 }
 
