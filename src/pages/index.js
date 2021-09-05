@@ -21,7 +21,7 @@ export default function Home() {
 	return (
 		<Fragment>
 			<div className='info'>
-				I'm still working on the docs - Come back after a few of weeks 🚀
+				Version 0.0.1-rc3 is out now - (dirty version) 🚀
 			</div>
 			<Layout
 				title={siteConfig.title}

@@ -59,7 +59,6 @@ import {
 } from '@formidablejs/framework'
 
 import { Config } from '../config'
-import { DB, Model } from '@formidablejs/persona'
 import { Handler } from '../app/Exceptions/Handler'
 import { Kernel } from '../app/Http/Kernel'
 import path from 'path'
@@ -71,8 +70,6 @@ app
 	.bind(ConfigRepository, Config)
 	.bind(Language, Language)
 	.bind(ExceptionHandler, Handler)
-	.setModel(Model)
-	.setDatabase(DB)
 
 export default app.prepare!
 ```
