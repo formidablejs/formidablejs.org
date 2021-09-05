@@ -1,6 +1,9 @@
 module.exports = {
   someSidebar: {
     'Getting Started': ['installation', 'first-steps'],
-    Overview: ['routing', 'middleware', 'csrf-protection', 'controllers', 'requests']
+    Basics: ['routing', 'middleware', 'csrf-protection', 'controllers', 'requests', 'responses', 'validation'],
+	Database: ['database-getting-started', 'database-query-builder', 'database-migrations'],
+	ORM: ['orm-getting-started', 'orm-crud-operations'],
+	Security: ['authentication', 'verification', 'encryption', 'hashing'],
   }
 };

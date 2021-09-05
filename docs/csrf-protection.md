@@ -13,7 +13,7 @@ Formidable automatically generates a CSRF "token" for each active user session m
 
 Before you can access the generated CSRF token, your application needs to make a call to the `/csrf-cookie` URI. This URI will ensure that the CSRF token is added to your cookie with the name `XSRF-TOKEN`.
 
-To use this token in your client application, retrieve the token from your cookies, and add it to your form as `_token`, or to your header as `X-CSRF-TOKEN`.
+To use this token in your client application, retrieve the token from your cookies, and add it to your form as `_token`, or to your headers as `X-CSRF-TOKEN`.
 
 You may use [js-cookie](https://github.com/js-cookie/js-cookie) to retrieve the CSRF token from your cookies.
 

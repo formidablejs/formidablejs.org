@@ -20,10 +20,9 @@ Route.get '/', do 'Hello World'
 All Formidable routes are defined in your route files, which are located in the `routes` directory. These files are automatically loaded by the `RouterServiceResolver`:
 
 ```py
-import { Route } from '@formidablejs/framework'
 import UserController from '../app/Http/Controllers/UserController'
 
-Route.get('/user', [UserController, 'index']).name('authenticated.show')
+Route.get('/user', [UserController, 'index'])
 ```
 
 By default, Formidable defines all routes in the `routes/api.imba` file, which is loaded by `RouterServiceResolver`. This resolver, loads these routes within a `session` middleware group. This means, all routes defined in the `routes/api.imba` file, will have the `session` middleware automatically applied on all of them. You may specify a different middleware and other route group options by modifying your `RouterServiceResolver` class.
@@ -114,13 +113,63 @@ export default class User < Model
 
 Alternatively, you can define the column in your route. To do this, simply prefix the column name with `:` and add it after the parameter name:
 
-```js
-import { Route } from '@formidablejs/framework'
-
-Route.get('/posts/:post:slug', [PostController, 'show']).name('posts.show')
+```py
+Route.get('/posts/:post:slug', [PostController, 'show'])
 ```
 
 This will use `slug` as the column.
+
+## Named Routes
+
+`Named routes` allow the convenient generation of URLs or redirects for specific routes. You may specify a name for a route by chaining the `name` method onto the route definition:
+
+```py
+Route.get('/posts/:slug', do(request)
+	# do somthing
+).name('posts.show')
+```
+
+You may also specify route names for controller actions:
+
+```js
+Route.get('/posts/:slug', [PostController, 'show']).name('posts.show')
+```
+
+#### Generating URLs To Named Routes
+
+Once you have assigned a name to a given route, you may use the route's name when generating URLs or redirects via Fomidablejs's `Redirect` and `URL` classes:
+
+```py
+import { URL, Redirect } from '@formidablejs/framework'
+
+# Generating URLs...
+const url = URL.route('user')
+
+# Generating Redirects...
+return Redirect.route('user')
+```
+
+If the named route defines parameters, you may pass the parameters as the second argument to the `route` function of the `Redirect` class. The given parameters will automatically be inserted into the generated URL in their correct positions:
+
+```py
+Route.get('/posts/:id', do(request)
+	# do something
+).name('posts.show')
+
+const url = URL.route('posts.show', {
+	id: 1
+})
+```
+
+#### Inspecting The Current Route
+
+If you would like to determine if the current request was routed to a given named route, you may use the `routeIs` method on a `FormRequest` instance. For example, you may check the current route name from a route middleware:
+
+```py
+def handle request
+	if request.routeIs 'posts.show'
+		# do something
+```
 
 ## Route Groups {#route-groups}
 

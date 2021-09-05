@@ -36,7 +36,7 @@ export default class UserController < Controller
 		throw new NotFoundException 'User does not exist'
 ```
 
-You can define a route to this controller action like so:
+You can define a route to this controller action like this:
 
 ```js
 import { Route } from '@formidablejs/framework'
@@ -45,4 +45,4 @@ import UserController from '../app/Http/Controllers/UserController'
 Route.get('/user/:id', [UserController, 'show'])
 ```
 
-Now, when a request matches the specified route URI, the `show` method on the `UserController` class will be executed.
+Now, when a request matches the specified route URI, the `show` method in the `UserController` class will be executed.
