@@ -19,7 +19,7 @@ craftsman migrate up
 
 Formidable provides email verification routes for your application. These routes are automatically added to your `routes/api.imba` file by the `RouterServiceResolver`.
 
-See [Authentication Routes](docs/authentication#emailverify) for more information.
+See [Authentication Routes](docs/authentication) for more information.
 
 ## Customization
 
