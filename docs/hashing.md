@@ -38,7 +38,7 @@ To configure a hashing driver, you can head over to the `config/hashing.imba` fi
 
 Here, you can change `bcrypt` rounds or `argon2` memory cost, parallelism, and time cost.
 
-### Verifying That A Password Is Matches A Hash
+### Verifying That A Password Matches A Hash
 
 The `check` method provided by the `Hash` class allows you to verify that a given plain-text string corresponds to a given hash:
 
