@@ -37,7 +37,7 @@ If you are using the `session` based authentication system and have enabled the 
 
 ### Configure Client
 
-The `email` and `password` routes require a client url to be configured. THis url is prepended to the routes. To configure this url, head over to your `.env` and set the `CLIENT_URL` environment variable.
+The `email` and `password` routes require a client url to be configured. This url is prepended to the routes. To configure this url, head over to your `.env` and set the `CLIENT_URL` environment variable.
 
 ### Available Routes
 
