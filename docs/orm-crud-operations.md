@@ -170,7 +170,7 @@ import Post from '../app/Models/Post'
 
 Route.get 'posts/:id', do(request)
 	Post.where('id', request.param('id'))
-		.update({
+		.set({
 			title: request.input('title')
 		})
 

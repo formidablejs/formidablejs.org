@@ -21,7 +21,7 @@ export default function Home() {
 	return (
 		<Fragment>
 			<div className='info'>
-				Version 0.0.1-rc7 is out now - (dirty version) 🚀
+				Version 0.1.0-alpha.3 is out now 🚀
 			</div>
 			<Layout
 				title={siteConfig.title}

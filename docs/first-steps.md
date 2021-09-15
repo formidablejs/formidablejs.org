@@ -35,7 +35,6 @@ Once created, the application directory structure will look like this:
     └── Resolvers
 └── bootstrap
     ├── cache
-    └── compiled
 ├── config
 └── database
     └── migrations
@@ -47,23 +46,30 @@ Once created, the application directory structure will look like this:
 
 ```
 
-In the `bootstrap` directory, there's a `app.imba` file, which is responsible for bootstraping your application and getting it ready.
+In the `bootstrap` directory, there's a `app.imba` file, which is responsible for creating a new instance of the application:
 
 ```py
+import { Application } from '@formidablejs/framework'
+import path from 'path'
+
+export const app = new Application path.resolve './'
+```
+
+There's also a `main.imba` file, this file is responsible for bootstraping your application and getting it ready.
+
+```py
+import { app } from './app'
+
 import {
-	Application
 	ConfigRepository
 	ExceptionHandler
 	Kernel as HttpKernel
 	Language
 } from '@formidablejs/framework'
 
-import { Config } from '../config'
+import { Config } from '../config/index'
 import { Handler } from '../app/Exceptions/Handler'
 import { Kernel } from '../app/Http/Kernel'
-import path from 'path'
-
-const app = new Application path.resolve './'
 
 app
 	.bind(HttpKernel, Kernel)
@@ -73,9 +79,6 @@ app
 
 export default app.prepare!
 ```
-
-The `app.imba` file will bind the local `Kernel` to the framework's `Kernel`, the local `Config` to the framework's `ConfigRepository`, the local `Handler` to the framework's `ExceptionHandler`, load the `Language` handler, and set the `Model` and `DB` instances then prepare the application. 
-
 In the root of your project, there's also `server.imba` file, which is responsible for starting your application.
 
 ```py
@@ -85,7 +88,7 @@ import app from './bootstrap/app'
 app.initiate(app.make(Kernel))
 ```
 
-There's also a `server.cli.imba` file, which is responsible for making the Application's core available to the CLI, this file is also used by `Jest` for testing purposes.
+There's also a `server.app.imba` file, which is responsible for making the Application's core available to the CLI, this file is also used by `Jest` for testing purposes.
 
 ```py
 import { Kernel } from '@formidablejs/framework'
@@ -106,7 +109,7 @@ exports.Application = app.initiate(app.make(Kernel), true)
 exports.request = request
 ```
 
-The `server.imba` and `server.cli.imba` files will initiate the application with the `Kernel` module, which loads Fastify.
+The `server.imba` and `server.app.imba` files will initiate the application with the `Kernel` module, which loads Fastify.
 
 | Directory                | Description
 |:-------------------------|:-------------
@@ -117,9 +120,9 @@ The `server.imba` and `server.cli.imba` files will initiate the application with
 | `/app/Http/Models`       | Houses `bookshelf` models.
 | `/app/Http/Resolvers`    | Contains application service resolvers.
 | `/bootstrap/cache`       | Contains the cached config file and database settings file.
-| `/bootstrap/test`        | Contains a test-ready compiled version of the application.
 | `/config`                | Contains application configuration files.
 | `/database/migrations`   | Houses your application `db-migrate` migration files.
+| `/dist`                  | Contains a compiled version of the application.
 | `/public`                | Houses your assets such as images, JavaScript, and CSS.
 | `/resources/lang`        | Contains language files.
 | `/routes`                | Contains application routes.
@@ -134,14 +137,10 @@ $ craftsman serve --dev
 This command starts the app on port `3000` or the specified port.
 Once the application is running, you can visit the application by navigating to `http://localhost:3000/`.
 
-To change the default port, add a `config.port` value in the `package.json` file:
+To change the default port, you can use the `--port` option:
 
-```json
-{
-    "config": {
-        "port": 3001
-    }
-}
+```bash
+$ craftsman serve --dev --port 3001
 ```
 
 ## API Testing {#api-testing}
@@ -149,23 +148,33 @@ To change the default port, add a `config.port` value in the `package.json` file
 Before you can start testing, you need to make a test compatible build of your app. To do this, simply run the following command:
 
 ```
-$ craftsman build --test
+$ craftsman build --env testing
 ```
+
+> Note, you may need to create a `.env.testing` file in your project root directory if you would like to use a different database for testing.
 
 Should you want to make a test build each time you make changes to your application, use:
 
 ```
-$ craftsman serve --dev --test
+$ craftsman serve --dev --env testing
 ```
 
-This will update the `bootstrap/compiled` application which is loaded by the `test/app.e2e.test.js` file.
+This will update the `dist` application which is loaded by the `test/app.e2e.test.js` file.
 
 Out of the box, the `test/app.e2e.test.js` file has the following tests:
 
 ```js
-const { Application, request } = require('../bootstrap/compiled/server.cli');
+const { Application, request } = require('../dist/server.app');
+const { helpers: { config } } = require('@formidablejs/framework');
 
-describe('Application (e2e)', () => {
+/**
+ * Skip if not in testing environment
+ */
+const maybe = config('app.env') === 'testing'
+	? describe
+	: describe.skip
+
+maybe('Application (e2e)', () => {
 	let app;
 
 	beforeAll(async () => {
@@ -191,7 +200,8 @@ describe('Application (e2e)', () => {
 			.expect(200)
 			.expect('Hola Mundo');
 	});
-});
-``` 
+})
+
+```
 
 And that's all! 🎊
