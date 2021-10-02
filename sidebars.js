@@ -1,6 +1,6 @@
 module.exports = {
 	someSidebar: {
-		Prologue: [ 'releases' ],
+		Prologue: [ 'releases', 'contributions' ],
 		'Getting Started': ['installation', 'first-steps'],
 		Basics: ['routing', 'middleware', 'csrf-protection', 'controllers', 'requests', 'responses', 'validation'],
 		Database: ['database-getting-started', 'database-query-builder', 'database-migrations'],
