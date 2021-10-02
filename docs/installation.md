@@ -19,15 +19,15 @@ To get started, you need to install the Craftsman CLI. The Craftsman CLI will al
 When creating a new application, the Craftsman CLI will clone the `formidable` repository from Github and install all the dependencies for you.
 
 ```
-$ npm i -g @formidablejs/craftsman
-$ craftsman new project-name
+npm i -g @formidablejs/craftsman
+craftsman new project-name
 ```
 
 Once done, you can run your application using the following command.
 
 ```
-$ cd project-name
-$ npm run start
+cd project-name
+npm run start
 ```
 
 Open your browser and navigate to `http://localhost:3000/`.

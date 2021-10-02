@@ -12,7 +12,7 @@ Formidable supports has out of the box support for `SQL` Queries and `Redis`. Th
 The configuration for all the supported database drivers redis db's can be found in the `config/database.imba` file:	
 
 ```py
-import { env, slug } from '@formidablejs/helpers'
+import { helpers } from '@formidablejs/framework'
 
 export default {
 
@@ -24,7 +24,7 @@ export default {
 	# to use as your default connection for all database work. Of course
 	# you may use many connections at once using the Database library.
 
-	default: env 'DB_CONNECTION', 'mysql'
+	default: helpers.env 'DB_CONNECTION', 'mysql'
 
 	# --------------------------------------------------------------------------
 	# Database Connections
@@ -36,31 +36,57 @@ export default {
 	connections: {
 		sqlite: {
 			driver: 'sqlite3'
-			url: env 'DATABASE_URL'
-			database: env 'DB_DATABASE'
+			filename: helpers.env 'DATABASE_URL'
 		}
 
 		mysql: {
 			driver: 'mysql'
-			url: env 'DATABASE_URL'
-			host: env 'DB_HOST', '127.0.0.1'
-			port: env 'DB_PORT', '3306'
-			database: env 'DB_DATABASE', ''
-			username: env 'DB_USERNAME', ''
-			password: env 'DB_PASSWORD', ''
+			url: helpers.env 'DATABASE_URL'
+			host: helpers.env 'DB_HOST', '127.0.0.1'
+			port: helpers.env 'DB_PORT', '3306'
+			user: helpers.env 'DB_USER', ''
+			database: helpers.env 'DB_DATABASE', ''
+			password: helpers.env 'DB_PASSWORD', ''
 			charset: 'utf8mb4'
+		}
+
+		pgsql: {
+			driver: 'pg'
+			url: helpers.env 'DATABASE_URL'
+			host: helpers.env 'DB_HOST', '127.0.0.1'
+			port: helpers.env 'DB_PORT', '5432'
+			user: helpers.env 'DB_USER', ''
+			database: helpers.env 'DB_DATABASE', ''
+			password: helpers.env 'DB_PASSWORD', ''
+			charset: 'utf8'
+		}
+
+		mssql: {
+			driver: 'tedious'
+			url: helpers.env 'DATABASE_URL'
+			host: helpers.env 'DB_HOST', '127.0.0.1'
+			port: helpers.env 'DB_PORT', '5432'
+			user: helpers.env 'DB_USER', ''
+			database: helpers.env 'DB_DATABASE', ''
+			password: helpers.env 'DB_PASSWORD', ''
+			charset: 'utf8'
 		}
 	}
 
 	# --------------------------------------------------------------------------
-	# Migration Repository Table
+	# Migration Settings
 	# --------------------------------------------------------------------------
 	#
-	# This table keeps track of all the migrations that have already run for
-	# your application. Using this information, we can determine which of
-	# the migrations on disk haven't actually been run in the database.
+	# Here you can configure database migration settings.
+	#
+	# The "tableName" is the name of the table that will store the migration
+	# state.
+	# The "directory" is the location where migrations files are stored.
 
-	migrations: 'migrations'
+	migrations: {
+		tableName: 'migrations'
+		directory: './database/migrations'
+	}
 
 	# --------------------------------------------------------------------------
 	# Redis Databases
@@ -70,28 +96,27 @@ export default {
 
 	redis: {
 		options: {
-			prefix: env 'REDIS_PREFIX', slug(env('APP_NAME', 'formidable'), '_') + '_database_'
+			prefix: helpers.env 'REDIS_PREFIX', helpers.slug(helpers.env('APP_NAME', 'formidable'), '_') + '_database_'
 		}
 
 		default: {
-			url: env 'REDIS_URL'
-			host: env 'REDIS_HOST', '127.0.0.1'
-			password: env 'REDIS_PASSWORD', null
-			port: env 'REDIS_PORT', '6379'
-			database: env 'REDIS_DB', '0'
+			url: helpers.env 'REDIS_URL'
+			host: helpers.env 'REDIS_HOST', '127.0.0.1'
+			password: helpers.env 'REDIS_PASSWORD', null
+			port: helpers.env 'REDIS_PORT', '6379'
+			database: helpers.env 'REDIS_DB', '0'
 		}
 
 		cache: {
-			url: env 'REDIS_URL'
-			host: env 'REDIS_HOST', '127.0.0.1'
-			password: env 'REDIS_PASSWORD', null
-			port: env 'REDIS_PORT', '6379'
-			database: env 'REDIS_CACHE_DB', '1'
+			url: helpers.env 'REDIS_URL'
+			host: helpers.env 'REDIS_HOST', '127.0.0.1'
+			password: helpers.env 'REDIS_PASSWORD', null
+			port: helpers.env 'REDIS_PORT', '6379'
+			database: helpers.env 'REDIS_CACHE_DB', '1'
 		}
 	}
 
 }
-
 ```
 
 #### default
@@ -112,12 +137,12 @@ The `redis` object is used to define the redis databases and options used by you
 
 ## Usage
 
-### MySQL / SQLite & PostgreSQL
+### Database Connections
 
-The following example shows how to use the `DB` class to query the database:
+The following example shows how to use the `Database` class to query the database:
 
 ```py
-import { DB } from '@formidablejs/framework'
+import { Database as DB } from '@formidablejs/framework'
 import Controller from './Controller'
 
 export default class PostController < Controller
@@ -132,7 +157,7 @@ The example above will query the `posts` table and return all the records it fin
 We can also sort and paginate the results:
 
 ```py
-import { DB, FormRequest } from '@formidablejs/framework'
+import { Database as DB, FormRequest } from '@formidablejs/framework'
 import Controller from './Controller'
 
 export default class PostController < Controller

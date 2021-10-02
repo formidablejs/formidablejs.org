@@ -16,7 +16,7 @@ Instead of defining all of your request handling logic as anonymous functions in
 To create a new controller, use the `make controller` Craftsman command:
 
 ```
-$ craftsman make controller UserController
+craftsman make controller UserController
 ```
 
 This command will place a new `UserController` class within your `app/Http/Controllers` directory.

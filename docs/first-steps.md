@@ -7,25 +7,34 @@ title: First steps
 Lets take a look at how Formidable works.
 
 ## Language {#language}
-Formidable uses Imba as the choice of Programming Language, but also allows developers to use JavaScript and TypeScript.
+Formidable uses Imba as the Programming Language of choice.
 
 You can learn Imba here: [https://imba.io/](https://imba.io/)
 
 ## Prerequisites {#prerequisites}
 Please make sure that [Node.js](https://nodejs.org/) (>= 14.*) is installed on your operating system.
 
+## Tooling
+
+For a better development experience, we recommend using the following tools:
+
+1. [VS Code](https://code.visualstudio.com/) - A free and open source code editor for Windows, Mac, and Linux.
+2. [Imba Extension](https://marketplace.visualstudio.com/items?itemName=scrimba.vsimba) - VS Code Language support for Imba.
+
+
 ## Setup {#setup}
 To create a new Application, run the following commands in your terminal:
 
 ```
-$ npm i -g @formidablejs/craftsman
-$ craftsman new project-name
+npm i -g @formidablejs/craftsman
+craftsman new project-name
 ```
 
 Once created, the application directory structure will look like this:
 
 ```text
 .
+├── .formidable
 └── app
     └── Http
         ├── Controllers
@@ -42,6 +51,9 @@ Once created, the application directory structure will look like this:
 └── resources
     └── lang
 ├── routes
+├── storage
+	├── framework
+	└── session
 └── test
 
 ```
@@ -113,6 +125,7 @@ The `server.imba` and `server.app.imba` files will initiate the application with
 
 | Directory                | Description
 |:-------------------------|:-------------
+| `/.formidable`           | Contains a compiled version of the application.
 | `/app`                   | Contains the core code of your application.
 | `/app/Http/Controllers`  | Contains applicaiton controllers.
 | `/app/Http/Middleware`   | Contains request middlewares.
@@ -122,16 +135,17 @@ The `server.imba` and `server.app.imba` files will initiate the application with
 | `/bootstrap/cache`       | Contains the cached config file and database settings file.
 | `/config`                | Contains application configuration files.
 | `/database/migrations`   | Houses your application `db-migrate` migration files.
-| `/dist`                  | Contains a compiled version of the application.
 | `/public`                | Houses your assets such as images, JavaScript, and CSS.
 | `/resources/lang`        | Contains language files.
 | `/routes`                | Contains application routes.
+| `/storage/framework`     | Contains core application data.
+| `/storage/session`       | Contains application sessions.
 
 ## Running the application {#running-the-application}
 Now that we've got that out of the way, we can start our application:
 
 ```
-$ craftsman serve --dev
+craftsman serve --dev
 ```
 
 This command starts the app on port `3000` or the specified port.
@@ -140,7 +154,7 @@ Once the application is running, you can visit the application by navigating to 
 To change the default port, you can use the `--port` option:
 
 ```bash
-$ craftsman serve --dev --port 3001
+craftsman serve --dev --port 3001
 ```
 
 ## API Testing {#api-testing}
@@ -148,7 +162,7 @@ $ craftsman serve --dev --port 3001
 Before you can start testing, you need to make a test compatible build of your app. To do this, simply run the following command:
 
 ```
-$ craftsman build --env testing
+craftsman build --env testing
 ```
 
 > Note, you may need to create a `.env.testing` file in your project root directory if you would like to use a different database for testing.
@@ -156,15 +170,15 @@ $ craftsman build --env testing
 Should you want to make a test build each time you make changes to your application, use:
 
 ```
-$ craftsman serve --dev --env testing
+craftsman serve --dev --env testing
 ```
 
-This will update the `dist` application which is loaded by the `test/app.e2e.test.js` file.
+This will update the `.formidable` application which is loaded by the `test/app.e2e.test.js` file.
 
 Out of the box, the `test/app.e2e.test.js` file has the following tests:
 
 ```js
-const { Application, request } = require('../dist/server.app');
+const { Application, request } = require('../.formidable/server.app');
 const { helpers: { config } } = require('@formidablejs/framework');
 
 /**

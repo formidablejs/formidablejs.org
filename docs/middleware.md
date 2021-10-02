@@ -19,7 +19,7 @@ There are several middleware included in the Formidable framework, including mid
 To create a new middleware, use the `make middleware` Craftsman command:
 
 ```
-$ craftsman make middleware CheckAge
+craftsman make middleware CheckAge
 ```
 
 This command will place a new `CheckAge` class within your `app/Http/Middleware` directory. In this middleware, we will only allow access to the route if the supplied `age` is greater than 18. Otherwise, we will throw an Exception.

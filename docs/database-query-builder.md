@@ -12,19 +12,19 @@ Formidable uses [Knex.js](https://knexjs.org) as its database query builder. You
 To select data from the database, use the `select` method from the `Database` class:
 
 ```js
-import { Database, Route } from '@formidablejs/framework'
+import { Database as DB, Route } from '@formidablejs/framework'
 
 Route.get '/', do
-	Database.select('id', 'title').from('tasks')
+	DB.select('id', 'title').from('tasks')
 ```
 
 If you want to select all columns from a table, you can leave the `select` method empty:
 
 ```js
-import { Database, Route } from '@formidablejs/framework'
+import { Database as DB, Route } from '@formidablejs/framework'
 
 Route.get '/', do
-	Database.select().from('tasks')
+	DB.select().from('tasks')
 ```
 
 ## Insert Query
@@ -32,10 +32,10 @@ Route.get '/', do
 To insert data into the database, use the `insert` method after using the `table` method to specify the table to insert into:
 
 ```js
-import { Database, Route } from '@formidablejs/framework'
+import { Database as DB, Route } from '@formidablejs/framework'
 
 Route.get '/', do
-	Database.table('tasks')
+	DB.table('tasks')
 		.insert({
 			title: 'Task 1'
 			description: 'This is a task'
@@ -45,10 +45,10 @@ Route.get '/', do
 Alternatively you can use the `into` method to specify the table to insert into after using the `insert` method:
 
 ```js
-import { Database, Route } from '@formidablejs/framework'
+import { Database as DB, Route } from '@formidablejs/framework'
 
 Route.get '/', do
-	Database.insert({
+	DB.insert({
 			title: 'Task 1'
 			description: 'This is a task'
 		})
@@ -60,10 +60,10 @@ Route.get '/', do
 To insert multiple rows at once, use the `insert` method with an array of objects:
 
 ```js
-import { Database. Route } from '@formidablejs/framework'
+import { Database as DB, Route } from '@formidablejs/framework'
 
 Route.get '/', do
-	Database.table('tasks')
+	DB.table('tasks')
 		.insert([
 			{
 				title: 'Task 1'
@@ -81,10 +81,10 @@ Route.get '/', do
 To run a raw query, use the `raw` method:
 
 ```js
-import { Database, Route } from '@formidablejs/framework'
+import { Database as DB, Route } from '@formidablejs/framework'
 
 Route.get '/', do
-	Database.raw('select * from users where id = ?', [1])
+	DB.raw('select * from users where id = ?', [1])
 ```
 
 ## Joins
@@ -92,10 +92,10 @@ Route.get '/', do
 To join tables, use the `join` method:
 
 ```js
-import { Database, Route } from '@formidablejs/framework'
+import { Database as DB, Route } from '@formidablejs/framework'
 
 Route.get '/', do
-	Database.table('posts')
+	DB.table('posts')
 		.join('users', 'posts.id', '=', 'users.user_id')
 		.select(
 			'posts.id as post_id',
