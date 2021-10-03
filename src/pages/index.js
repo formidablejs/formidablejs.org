@@ -20,9 +20,9 @@ export default function Home() {
 
 	return (
 		<Fragment>
-			<div className='info'>
+			{/* <div className='info'>
 				Version 0.1.0-alpha.3 is out now 🚀
-			</div>
+			</div> */}
 			<Layout
 				title={siteConfig.title}
 				description={siteConfig.tagline}>
