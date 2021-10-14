@@ -1,0 +1,130 @@
+{
+  "version-1.x/someSidebar": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Prologue",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/releases"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/contributions"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Getting Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/installation"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/first-steps"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Basics",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/routing"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/middleware"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/csrf-protection"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/controllers"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/requests"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/responses"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/views"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/validation"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Database",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/database-getting-started"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/database-query-builder"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/database-migrations"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "ORM",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/orm-getting-started"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/orm-crud-operations"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Security",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/authentication"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/verification"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/encryption"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/hashing"
+        }
+      ]
+    }
+  ]
+}
