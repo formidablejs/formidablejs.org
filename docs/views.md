@@ -55,7 +55,7 @@ view(Greeting, { name: 'Donald' })
 You may use Imba components in your views. Here's a typical example of how to use an Imba component in a Formidable view:
 
 ```py
-# View stored in resources/views/components/counter.imba
+# Component stored in resources/views/components/counter.imba
 
 export default tag Counter
 	prop count = 1

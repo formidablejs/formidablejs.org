@@ -10,6 +10,19 @@ module.exports = {
 	organizationName: 'formidablejs', // Usually your GitHub org/user name.
 	projectName: 'formidablejs.org', // Usually your repo name.
 	themeConfig: {
+		algolia: {
+			apiKey: 'a445a9bfec68203859d07885f532285b',
+			indexName: 'formidablejs',
+
+			// Optional: see doc section below
+			contextualSearch: true,
+
+			// Optional: see doc section below
+			appId: 'BH4D9OD16A',
+
+			// Optional: Algolia search parameters
+			searchParameters: {},
+		},
 		colorMode: {
 			defaultMode: 'dark',
 			disableSwitch: true,
