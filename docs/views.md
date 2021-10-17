@@ -3,7 +3,7 @@ id: views
 title: Views
 ---
 
-# Introduction
+# Views
 
 Just like any other morden framework, Formidable ships with a views feature. Formidable's views are powered by [Imba](https://imba.io/) allowing you to quickly write beautiful Imba views and use them in your application.
 
