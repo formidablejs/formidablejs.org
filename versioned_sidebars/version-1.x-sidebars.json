@@ -72,6 +72,21 @@
     {
       "collapsed": true,
       "type": "category",
+      "label": "Digging Deeper",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/craftsman"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.x/helpers"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
       "label": "Database",
       "items": [
         {
