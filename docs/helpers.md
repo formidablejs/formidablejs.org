@@ -26,7 +26,7 @@ The `dotNotation` method turns an object into a single level value that uses "do
 ```js
 const object = {
     app: {
-        locale: 'en'
+        name: 'Formidable'
     }
 }
 
@@ -38,7 +38,7 @@ You may also use `dot`, an alias of `dotNotation`:
 ```js
 const object = {
     app: {
-        locale: 'en'
+        name: 'Formidable'
     }
 }
 
@@ -198,7 +198,7 @@ decrypt('f8867ec8f7960de147f4c2da37fe4b99') # Hello World
 The `now` helper returns the current timestamp instance for `Database` queries:
 
 ```py
-now! #
+now!
 ```
 
 #### `expiresIn`
@@ -228,9 +228,9 @@ const appName = config('app.name', 'Something else')
 The `env` method retrieves the value of an environment variable or returns a default value:
 
 ```js
-const appName = env('APP_URL')
+const appUrl = env('APP_URL')
 
-const appName = env('APP_URL', 'http://localhost:3000')
+const appUrl = env('APP_URL', 'http://localhost:3000')
 ```
 
 #### `response`
