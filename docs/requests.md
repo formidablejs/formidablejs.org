@@ -26,7 +26,7 @@ To use a different `FormRequest`, you may use the `@use` decorator:
 
 ```py
 import { @use } from '@formidablejs/framework'
-import { StoreTaskRequest } from '../Requests/StoreTaskRequest`
+import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
 
 export class TaskController < Controller

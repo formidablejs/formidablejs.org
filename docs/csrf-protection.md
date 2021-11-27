@@ -22,9 +22,9 @@ You may use [js-cookie](https://github.com/js-cookie/js-cookie) to retrieve the 
 To protect any route that's not in the `session` group, you may use the `HasCsrfToken` and `VerifyCsrfToken` middleware's:
 
 ```js
-import { Route } from '@formidablejs/framework`
-import { HasCsrfToken } from '@formidablejs/framework`
-import { VerifyCsrfToken } from '@formidablejs/framework`
+import { Route } from '@formidablejs/framework'
+import { HasCsrfToken } from '@formidablejs/framework'
+import { VerifyCsrfToken } from '@formidablejs/framework'
 
 Route.post('/tasks/create', do(request)
 	# do something...

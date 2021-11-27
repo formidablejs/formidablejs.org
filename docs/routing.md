@@ -140,7 +140,8 @@ Route.get('/posts/:slug', [PostController, 'show']).name('posts.show')
 Once you have assigned a name to a given route, you may use the route's name when generating URLs or redirects via Fomidablejs's `Redirect` and `URL` classes:
 
 ```py
-import { URL, Redirect } from '@formidablejs/framework'
+import { URL } from '@formidablejs/framework'
+import { Redirect } from '@formidablejs/framework'
 
 # Generating URLs...
 const url = URL.route('user')
