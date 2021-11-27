@@ -17,8 +17,11 @@ Here are all the repositories that contain the Formidable source code:
 * [Formidable Craftsman](https://github.com/formidablejs/craftsman)
 * [Formidable Framework](https://github.com/formidablejs/Framework)
 * [Formidable Mailer](https://github.com/formidablejs/mailer)
-* [Formidable Next Bridge](https://github.com/formidablejs/next-bridge)
+* [Formidable Helpers](https://github.com/formidablejs/helpers)
 * [Formidable Stubs](https://github.com/formidablejs/stubs)
+* [Formidable Pretty Errors](https://github.com/formidablejs/pretty-errors)
+* [Formidable Bugsnag Plugin](https://github.com/formidablejs/bugsnag-plugin)
+* [Formidable Next Bridge](https://github.com/formidablejs/next-bridge)
 
 ## Support Questions
 

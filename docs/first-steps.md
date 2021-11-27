@@ -20,6 +20,7 @@ For a better development experience, we recommend using the following tools:
 
 1. [VS Code](https://code.visualstudio.com/) - A free and open source code editor for Windows, Mac, and Linux.
 2. [Imba Extension](https://marketplace.visualstudio.com/items?itemName=scrimba.vsimba) - VS Code Language support for Imba.
+3. [Imba Shell](https://github.com/donaldp/imba-shell) - Interactive debugger, REPL and runtime for Imba, inspired by PsySH.
 
 
 ## Setup {#setup}

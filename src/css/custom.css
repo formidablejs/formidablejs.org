@@ -40,18 +40,26 @@
 	color: #222 !important;
 }
 
-.button--custom {
-	border: 1px solid #fff;
-}
-
-.navbar__toggle {
-	display: none;
-}
-
 .button--custom:hover {
 	background-color: #888;
 	color: #fff;
 	border: 1px solid #777;
+}
+
+html[data-theme='dark'] .button--custom {
+	border: 1px solid #fff;
+}
+
+html[data-theme='dark'] .button--custom:hover {
+	border: 1px solid #777;
+}
+
+.react-toggle-track {
+	background-color: #ebedf0!important;
+}
+
+html[data-theme='dark'] .react-toggle-track {
+	background-color: #4d4d4d!important;
 }
 
 .hero.hero--primary {

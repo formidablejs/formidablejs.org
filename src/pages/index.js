@@ -12,17 +12,14 @@ export default function Home() {
 	const context = useDocusaurusContext();
 	const { siteConfig = {} } = context;
 
-	if (ExecutionEnvironment.canUseDOM) {
-		const toggle = document.getElementsByClassName('react-toggle-track');
+	// if (ExecutionEnvironment.canUseDOM) {
+	// 	const toggle = document.getElementsByClassName('react-toggle-track');
 
-		while (toggle.length > 0) toggle[0].remove();
-	}
+	// 	while (toggle.length > 0) toggle[0].remove();
+	// }
 
 	return (
 		<Fragment>
-			{/* <div className='info'>
-				Version 0.1.0-alpha.3 is out now 🚀
-			</div> */}
 			<Layout
 				title={siteConfig.title}
 				description={siteConfig.tagline}>

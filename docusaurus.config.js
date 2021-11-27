@@ -15,8 +15,18 @@ module.exports = {
 			indexName: 'formidablejs',
 		},
 		colorMode: {
-			defaultMode: 'dark',
-			disableSwitch: true,
+			// defaultMode: 'dark',
+			// disableSwitch: true,
+			switchConfig: {
+				darkIcon: '🌙',
+				darkIconStyle: {
+					marginLeft: '2px',
+				},
+				lightIcon: '☀️',
+				lightIconStyle: {
+					marginLeft: '1px',
+				},
+			},
 		},
 		navbar: {
 			title: 'Formidable',
@@ -33,7 +43,7 @@ module.exports = {
 			],
 		},
 		footer: {
-			//   style: 'light',
+			style: 'light',
 			links: [
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Built with Docusaurus.`,
