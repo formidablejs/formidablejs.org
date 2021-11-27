@@ -72,14 +72,10 @@ There's also a `main.imba` file, this file is responsible for bootstraping your 
 
 ```py
 import { app } from './app'
-
-import {
-	ConfigRepository
-	ExceptionHandler
-	Kernel as HttpKernel
-	Language
-} from '@formidablejs/framework'
-
+import { ConfigRepository } from '@formidablejs/framework'
+import { ExceptionHandler } from '@formidablejs/framework'
+import { Kernel as HttpKernel } from '@formidablejs/framework'
+import { Language } from '@formidablejs/framework'
 import { Config } from '../config/index'
 import { Handler } from '../app/Exceptions/Handler'
 import { Kernel } from '../app/Http/Kernel'
