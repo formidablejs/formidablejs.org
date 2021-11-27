@@ -9,7 +9,7 @@ Formidable supports has out of the box support for `SQL` Queries and `Redis`. Th
 
 ## Configuration
 
-The configuration for all the supported database drivers redis db's can be found in the `config/database.imba` file:	
+The configuration for all the supported database drivers redis db's can be found in the `config/database.imba` file:
 
 ```py
 import { helpers } from '@formidablejs/framework'
@@ -89,6 +89,17 @@ export default {
 	}
 
 	# --------------------------------------------------------------------------
+	# useNullAsDefault
+	# --------------------------------------------------------------------------
+	#
+	# Set useNullAsDefault to true when using sqlite as the default database
+	# driver to prevent knex from throwing a warning.
+	#
+	# See: https://github.com/formidablejs/framework/issues/61
+
+	useNullAsDefault: null
+
+	# --------------------------------------------------------------------------
 	# Redis Databases
 	# --------------------------------------------------------------------------
 	#
@@ -143,9 +154,9 @@ The following example shows how to use the `Database` class to query the databas
 
 ```py
 import { Database as DB } from '@formidablejs/framework'
-import Controller from './Controller'
+import { Controller } from './Controller'
 
-export default class PostController < Controller
+export class PostController < Controller
 
 	def index
 		DB.table('posts')
@@ -157,12 +168,13 @@ The example above will query the `posts` table and return all the records it fin
 We can also sort and paginate the results:
 
 ```py
-import { Database as DB, FormRequest } from '@formidablejs/framework'
-import Controller from './Controller'
+import { Database as DB } from '@formidablejs/framework'
+import { Request } from '@formidablejs/framework'
+import { Controller } from './Controller'
 
-export default class PostController < Controller
+export class PostController < Controller
 
-	def index request\FormRequest
+	def index request\Request
 		const page = request.get('page', 1)
 
 		DB.table('posts')
@@ -221,7 +233,8 @@ const deletedRowCount = await DB.table('tasks')
 To quickly get started with setting values to Redis or retrieving data, we can use the `set` method or the `get` method from the `connection` method provided by the `Redis` class:
 
 ```js
-import { Redis, Route } from '@formidablejs/framework'
+import { Redis } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
 
 Route.get '/', do(request)
 	const name = request.get('name', 'Luna')
@@ -235,7 +248,8 @@ Route.get '/', do(request)
 To set a value in Redis, we can use the `set` method from the `connection` method provided by the `Redis` class:
 
 ```js
-import { Redis, Route } from '@formidablejs/framework'
+import { Redis } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
 
 Route.get '/', do(request)
 	Redis.connection!.set('name', 'Luna')
@@ -255,7 +269,9 @@ Redis.connection!.set 'name', 'Luna', do(error)
 To set a value in Redis with an expiration time, we can use the `set` method from the `connection` method provided by the `Redis` class and pass the expiration time as the third argument using the `expiresIn` helper method:
 
 ```js
-import { expiresIn, Redis, Route } from '@formidablejs/framework'
+import { expiresIn } from '@formidablejs/framework'
+import { Redis } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
 
 Route.get '/', do(request)
 	Redis.connection!.set 'name', 'Luna', expiresIn('1 minute')
@@ -264,7 +280,9 @@ Route.get '/', do(request)
 Should you wish to pass a `callback` function, you can do so as the last argument:
 
 ```py
-import { expiresIn, Redis, Route } from '@formidablejs/framework'
+import { expiresIn } from '@formidablejs/framework'
+import { Redis } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
 
 Route.get '/', do(request)
 	Redis.connection!.set 'name', 'Luna', expiresIn('1 minute'), do(error)
@@ -277,7 +295,8 @@ Route.get '/', do(request)
 To retrieve data from Redis, we can use the `get` method from the `connection` method provided by the `Redis` class:
 
 ```js
-import { Redis, Route } from '@formidablejs/framework'
+import { Redis } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
 
 Route.get '/', do(request)
 	Redis.connection!.get 'name', do(error, response)

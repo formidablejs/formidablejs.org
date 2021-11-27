@@ -7,12 +7,14 @@ title: Requests
 
 The base `FormRequest` instance provides a variety of methods for examining the incoming HTTP request. `FormRequest` is built on top of `FastifyRequest`, this means you can access `FastifyRequest` methods and properties from the `FormRequest` instance.
 
+> You may also use `Request`, an alias of `FormRequest`.
+
 ## Accessing The Request {#accessing-the-request}
 
 Formidable loads requests to route actions as first parameters by default:
 
 ```py
-export default class TaskController < Controller
+export class TaskController < Controller
 
 	def store request
 		const description = request.get('description')
@@ -24,10 +26,10 @@ To use a different `FormRequest`, you may use the `@use` decorator:
 
 ```py
 import { @use } from '@formidablejs/framework'
-import StoreTaskRequest from '../Requests/StoreTaskRequest`
-import Controller from './Controller'
+import { StoreTaskRequest } from '../Requests/StoreTaskRequest`
+import { Controller } from './Controller'
 
-export default class TaskController < Controller
+export class TaskController < Controller
 
 	@use(StoreTaskRequest)
 	def store request\StoreTaskRequest

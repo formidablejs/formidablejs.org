@@ -9,7 +9,7 @@ Formidable uses the [validatorjs](https://github.com/mikeerickson/validatorjs) p
 
 ## Validation Quickstart
 
-Let's look at a basic route that validates input data and returns errors back to the client. 
+Let's look at a basic route that validates input data and returns errors back to the client.
 
 ### Defining The Route
 
@@ -17,7 +17,7 @@ First, we will assume we have a post route for adding new tasks:
 
 ```js
 import { Route } from '@formidablejs/framework'
-import TaskController from '../app/Http/Controllers/TaskControllers'
+import { TaskController } from '../app/Http/Controllers/TaskControllers'
 
 Route.post('/tasks/store', [TaskController, 'store']).name('tasks.store')
 ```
@@ -29,7 +29,7 @@ Next, we will create a controller and add a store method that handles incoming r
 ```js
 import Controller from './Controller'
 
-export default class TaskController < Controller
+export class TaskController < Controller
 
 	def store request
 		'do nothing'
@@ -42,7 +42,7 @@ Then, we will create a `FormRequest` class that will be passed to the controller
 ```js
 import { FormRequest } from '@formidablejs/framework'
 
-export default class StoreTaskRequest < FormRequest
+export class StoreTaskRequest < FormRequest
 
 	def rules
 		{
@@ -60,10 +60,10 @@ Now that we have created our request, we can go back to our controller and use t
 
 ```py
 import { @use } from '@formidablejs/framework'
-import StoreTaskRequest from '../Requests/StoreTaskRequest'
-import Controller from './Controller'
+import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
+import { Controller } from './Controller'
 
-export default class TaskController < Controller
+export class TaskController < Controller
 
 	@use(StoreTaskRequest)
 	def store request\StoreTaskRequest

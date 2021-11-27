@@ -17,24 +17,25 @@ To get started, you will have to define a new route that points to a controller,
 
 ```py
 import { Route } from '@formidablejs/framework'
-import PostController from '../app/Http/Controllers/PostController'
+import { PostController } from '../app/Http/Controllers/PostController'
 
 Route.put('posts', [PostController, 'store']).middleware(['auth'])
 ```
 
 ### Create Controller
-```
+
 Next, we will create our controller:
 
 ```
 craftsman make controller PostController
+```
 
 Now, we want to add a store method in our controller. This method will be the point of entry for our new route:
 
 ```py
 import Controller from './Controller'
 
-export default class PostController < Controller
+export class PostController < Controller
 
 	def store request
 		'store new post'
@@ -52,9 +53,9 @@ Once, we have created our request, we can add the validation rules to the reques
 
 ```py
 import { FormRequest } from '@formidablejs/framework'
-import Post from '../../Models/Post'
+import { Post } from '../../Models/Post'
 
-export default class StorePostRequest < FormRequest
+export class StorePostRequest < FormRequest
 
 	def authorize
 		true
@@ -79,10 +80,10 @@ Finally, we can include our new request in our `PostController` and run the `per
 
 ```py
 import { @use } from '@formidablejs/framework'
-import StorePostRequest from '../Request/StorePostRequest'
-import Controller from './Controller'
+import { StorePostRequest } from '../Request/StorePostRequest'
+import { Controller } from './Controller'
 
-export default class PostController < Controller
+export class PostController < Controller
 
 	@use(StorePostRequest)
 	def store request\StorePostRequest
@@ -101,7 +102,7 @@ To fetch all records from the database. you can use the `fetchAll` method:
 
 ```py
 import { Route } from '@formidablejs/framework'
-import Post from '../app/Models/Post'
+import { Post } from '../app/Models/Post'
 
 Route.get 'posts/all', do
 	Post.fetchAll!
@@ -113,7 +114,7 @@ To fetch a single record from the database, you can use the `find` method:
 
 ```py
 import { Route } from '@formidablejs/framework'
-import Post from '../app/Models/Post'
+import { Post } from '../app/Models/Post'
 
 Route.get 'posts/:id', do(request)
 	Post.find(request.param('id'))
@@ -140,10 +141,10 @@ And our controller:
 
 ```py
 import { @use } from '@formidablejs/framework'
-import Post from '../../Models/Post'
-import Controller from './Controller'
+import { Post } from '../../Models/Post'
+import { Controller } from './Controller'
 
-export default class PostController < Controller
+export class PostController < Controller
 
 	@use(Post)
 	def show post\Post
@@ -166,7 +167,7 @@ To update a record in the database, you can use the `update` method:
 
 ```py
 import { Route } from '@formidablejs/framework'
-import Post from '../app/Models/Post'
+import { Post } from '../app/Models/Post'
 
 Route.get 'posts/:id', do(request)
 	Post.where('id', request.param('id'))
@@ -182,7 +183,7 @@ To delete a record in the database, you can use the `delete` method:
 
 ```py
 import { Route } from '@formidablejs/framework'
-import Post from '../app/Models/Post'
+import { Post } from '../app/Models/Post'
 
 Route.get 'posts/:id', do(request)
 	Post.where('id', request.param('id'))

@@ -27,7 +27,7 @@ This command will place a new `CheckAge` class within your `app/Http/Middleware`
 ```py
 import { ForbiddenException } from '@formidablejs/framework'
 
-export default class CheckAge
+export class CheckAge
 
 	def handle request
 		if request.get('age') < 18 then throw new ForbiddenException 'Entry denied.'

@@ -22,7 +22,7 @@ This will add a new model under the `app/Models` directory:
 ```py
 import { Model } from '@formidablejs/framework'
 
-export default class Post < Model
+export class Post < Model
 ```
 
 ### Table Name
@@ -32,7 +32,7 @@ By default, Formidable will attempt to get the table name from the model name. I
 ```py
 import { Model } from '@formidablejs/framework'
 
-export default class Post < Model
+export class Post < Model
 
 	# The table name.
 	#
@@ -50,7 +50,7 @@ Formidable uses the `id` column as the defauld primary key, to change it, you ca
 ```py
 import { Model } from '@formidablejs/framework'
 
-export default class Post < Model
+export class Post < Model
 
 	# The table primary key.
 	#
@@ -67,7 +67,7 @@ Formidable provides a way to hide attributes from the model. This is useful if y
 ```py
 import { Model } from '@formidablejs/framework'
 
-export default class Post < Model
+export class Post < Model
 
 	# The attributes that should be hidden.
 	#

@@ -20,7 +20,7 @@ Route.get '/', do 'Hello World'
 All Formidable routes are defined in your route files, which are located in the `routes` directory. These files are automatically loaded by the `RouterServiceResolver`:
 
 ```py
-import UserController from '../app/Http/Controllers/UserController'
+import { UserController } from '../app/Http/Controllers/UserController'
 
 Route.get('/user', [UserController, 'index'])
 ```
@@ -71,13 +71,13 @@ Formidable makes it easy to automatically load a model instance based on a route
 
 ```js
 import { @use } from '@formidablejs/framework'
-import Controller from './Controller'
-import Post from '../../Models/Post'
+import { Controller } from './Controller'
+import { Post } from '../../Models/Post'
 
-export default class PostController < Controller
-	
+export class PostController < Controller
+
     @use(Post)
-    def show post
+    def show post\Post
 		await post
 ```
 
@@ -87,14 +87,14 @@ If you have want to load multiple models, you can do so by passing all the model
 
 ```js
 import { @use } from '@formidablejs/framework'
-import Controller from './Controller'
-import Post from '../../Models/Post'
-import User from '../../Models/User'
+import { Controller } from './Controller'
+import { Post } from '../../Models/Post'
+import { User } from '../../Models/User'
 
-export default class PostController < Controller
-	
+export class PostController < Controller
+
     @use(User, Post)
-    def show user, post
+    def show user\User, post\Post
 		user = await user
 		post = await post
 ```
@@ -104,7 +104,7 @@ To change the default column, add a `routeKeyName` static getter in your model a
 ```js
 import { Model } from '@formidablejs/persona'
 
-export default class User < Model
+export class User < Model
 
 	static get routeKeyName
         'slug'
@@ -183,7 +183,7 @@ To assign middleware to all routes within a group, you may add the `middleware` 
 Route.group { middleware: ['first', 'second'] }, do
 	Route.get '/', do
 		# uses first & second Middleware
-	
+
 	Route.get 'user/profile', do
 		# uses first & second Middleware
 ```

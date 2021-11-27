@@ -14,7 +14,7 @@ A typical view in Formidable looks like this:
 
 import { View } from '@formidable/framework'
 
-export default class < View
+export class < View
 	def render
 		<html>
 			<body>
@@ -25,7 +25,7 @@ Since this view is stored at `resources/views/greeting.imba`, we may return it u
 
 ```py
 import { Route, view } from '@formidablejs/framework'
-import Greeting from '../resources/views/greeting'
+import { Greeting } from '../resources/views/greeting'
 
 Route.get '/greeting', do view(Greeting, { name: 'Luna' })
 ```
@@ -57,7 +57,7 @@ You may use Imba components in your views. Here's a typical example of how to us
 ```py
 # Component stored in resources/views/components/counter.imba
 
-export default tag Counter
+export tag Counter
 	prop count = 1
 
 	def render
@@ -73,7 +73,7 @@ And our Formidable view:
 # View stored in resources/views/app.imba
 
 import { View } from '@formidablejs/framework'
-import Counter from './components/counter'
+import { Counter } from './components/counter'
 
 export default class < View
 	def render

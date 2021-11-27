@@ -143,9 +143,10 @@ Formidable provides a number of events that can be used to hook into your applic
 The `beforeLogin` event is fired before a user is logged in:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.beforeLogin do(request, reply)
@@ -157,9 +158,10 @@ export default class AppServiceResolver < ServiceResolver
 The `beforeLogout` event is fired before a user is logged out:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.beforeLogout do(request, reply)
@@ -171,9 +173,10 @@ export default class AppServiceResolver < ServiceResolver
 The `beforeRegister` event is fired before a user is registered:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.beforeRegister do(request, reply)
@@ -185,9 +188,10 @@ export default class AppServiceResolver < ServiceResolver
 The `beforeVerify` event is fired before a user email is verified:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.beforeVerify do(request, reply)
@@ -199,9 +203,10 @@ export default class AppServiceResolver < ServiceResolver
 The `beforeResend` event is fired before a user verification email is resent:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.beforeResend do(request, reply)
@@ -213,9 +218,10 @@ export default class AppServiceResolver < ServiceResolver
 The `beforeForgot` event is fired before a user password reset email is sent:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.beforeForgot do(request, reply)
@@ -227,9 +233,10 @@ export default class AppServiceResolver < ServiceResolver
 The `beforeReset` event is fired before a user password is reset:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.beforeReset do(request, reply)
@@ -241,9 +248,10 @@ export default class AppServiceResolver < ServiceResolver
 The `onAuthenticated` event is fired after a user is logged in:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onAuthenticated do(request, reply)
@@ -255,9 +263,10 @@ export default class AppServiceResolver < ServiceResolver
 The `onRegistered` event is fired after a user is registered:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onRegistered do(request, reply)
@@ -273,9 +282,10 @@ Formidable provides an easy way to write your own authentication handlers.
 The `onLogin` hook is used to handle the login process:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onLogin do(request, reply)
@@ -287,9 +297,10 @@ export default class AppServiceResolver < ServiceResolver
 The `onRegister` hook is used to handle the registration process:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onRegister do(request, reply)
@@ -301,9 +312,10 @@ export default class AppServiceResolver < ServiceResolver
 The `onForgot` hook is used to handle the forgot password process:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onForgot do(request, reply)
@@ -315,9 +327,10 @@ export default class AppServiceResolver < ServiceResolver
 The `onReset` hook is used to handle the password reset process:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onReset do(request, reply)
@@ -329,9 +342,10 @@ export default class AppServiceResolver < ServiceResolver
 The `onVerification` hook is used to handle the email verification process:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onVerification do(request, reply)
@@ -343,9 +357,10 @@ export default class AppServiceResolver < ServiceResolver
 The `onEmailResend` hook is used to handle the email verification resend process:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth.onEmailResend do(request, reply)
@@ -357,11 +372,12 @@ export default class AppServiceResolver < ServiceResolver
 By default, Formidable provides `VerifyEmail` and `ResetPassword` mailers that can be used to send email verification and password reset emails to your users:
 
 ```py
-import { AuthService as Auth, ServiceResolver } from '@formidablejs/framework'
-import VerifyEmail from '../Mail/VerifyEmail'
-import ResetPassword from '../Mail/ResetPassword'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+import { VerifyEmail } from '../Mail/VerifyEmail'
+import { ResetPassword } from '../Mail/ResetPassword'
 
-export default class AppServiceResolver < ServiceResolver
+export class AppServiceResolver < ServiceResolver
 
 	def boot
 		Auth
@@ -383,9 +399,11 @@ Route.get('ping', 'pong').middleware(['auth'])
 If you want to use JWT tokens for authentication, you can use the `jwt` middleware:
 
 ```py
-import { AuthService as Auth, ServiceResolver, Route } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
 
-export default class RouterServiceResolver < ServiceResolver
+export class RouterServiceResolver < ServiceResolver
 
 	def boot
 		Route.group { middleware: 'jwt' }, do
@@ -393,7 +411,6 @@ export default class RouterServiceResolver < ServiceResolver
 
 			require '../../routes/api'
 
-		self
 ```
 
 When logging your users in, a JWT token will be returned in the response:
@@ -424,9 +441,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 If you want to use sessions for authentication, you can use the `session` middleware:
 
 ```py
-import { AuthService as Auth, ServiceResolver, Route } from '@formidablejs/framework'
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
 
-export default class RouterServiceResolver < ServiceResolver
+export class RouterServiceResolver < ServiceResolver
 
 	def boot
 		Route.group { middleware: 'session' }, do
@@ -434,7 +453,6 @@ export default class RouterServiceResolver < ServiceResolver
 
 			require '../../routes/api'
 
-		self
 ```
 
 When logging your users in, a new session will be created and a cookie will be set in the response. You may need to set a `X-CSRF-TOKEN` header in your authentication routes if you have CSRF protection enabled:

@@ -25,10 +25,10 @@ Below is an example of a basic controller class. Note that the controller extend
 
 ```py
 import { NotFoundException } from '@formidablejs/framework'
-import Controller from './Controller'
-import User from '../../Models/User'
+import { Controller } from './Controller'
+import { User } from '../../Models/User'
 
-export default class UserController < Controller
+export class UserController < Controller
 
 	def show request
 		try return await new User({ id: request.param('id') }).fetch!
@@ -40,7 +40,7 @@ You can define a route to this controller action like this:
 
 ```js
 import { Route } from '@formidablejs/framework'
-import UserController from '../app/Http/Controllers/UserController'
+import { UserController } from '../app/Http/Controllers/UserController'
 
 Route.get('/user/:id', [UserController, 'show'])
 ```

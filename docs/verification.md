@@ -36,7 +36,7 @@ The contents of the newely created `CustomEmail.imba` file will look like this:
 ```py
 import { Mailable } from '@formidablejs/framework'
 
-export default class CustomEmail < Mailable
+export class CustomEmail < Mailable
 
 	prop subject\String
 
@@ -52,7 +52,7 @@ You can remove the `subject` prop and `constructor` method, then import the `Ver
 ```py
 import Mailable from '@formidablejs/framework/lib/Auth/Mail/VerifyEmail'
 
-export default class CustomEmail < Mailable
+export class CustomEmail < Mailable
 
 	def render
 		<p> "Hello World"
@@ -62,7 +62,7 @@ Next, you can start styling your email.
 
 > Note: Formidable publishes layout tags for all of its email mailable classes in the `resources/views/email/vendor` directory, you may use these tags in your custom email, or modify the tags instead of creating a new custom verification email. <br/> If you don't see this directory, you may run: `craftsman install --package=@formidablejs/mailer` to publish the tags.
 
-#### Email Verification URL	
+#### Email Verification URL
 
 To access the email verification URL, you can use the `verificationUrl` property of the `FormRequest` instance:
 

@@ -18,12 +18,14 @@ The default hashing driver is `bcrypt`. You can change this by setting the `driv
 You may hash a password with the `make` method of the `Hash` class:
 
 ```py
-import { DB, FormRequest, Hash } from '@formidablejs/framework'
-import Controller from './Controller'
+import { DB } from '@formidablejs/framework'
+import { Request } from '@formidablejs/framework'
+import { Hash } from '@formidablejs/framework'
+import { Controller } from './Controller'
 
-export default class PasswordController < Controller
+export class PasswordController < Controller
 
-	def update request\FormRequest
+	def update request\Request
 		DB.table('users')
 			.where('id', request.auth!.user!.id)
 			.update({
