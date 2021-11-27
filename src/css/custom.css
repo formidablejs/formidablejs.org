@@ -40,6 +40,10 @@
 	color: #222 !important;
 }
 
+.button--custom {
+	border: 1px solid #222;
+}
+
 .button--custom:hover {
 	background-color: #888;
 	color: #fff;
