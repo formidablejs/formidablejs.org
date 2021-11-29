@@ -12,19 +12,19 @@ title: Responses
 All routes and controllers should return a response to be sent back to the client. Formidable provides several different ways to return responses. The most basic response is returning a string from a route or controller. Formidable will automatically convert the string into a full HTTP response:
 
 ```js
-Route.get '/', 'Hello World!'
+Route.get '/', do 'Hello World!'
 ```
 
 In addition to returning strings from your routes and controllers, you may also return arrays. Formidable will automatically convert the array into a JSON response:
 
 ```js
-Route.get '/', [ 'Donald', 'Luna' ]
+Route.get '/', do [ 'Donald', 'Luna' ]
 ```
 
 You may also return an object, Formidable will automatically convert the object into a JSON response:
 
 ```js
-Route.get '/', {
+Route.get '/', do {
 	name: 'Luna'
 }
 ```
