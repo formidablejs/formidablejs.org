@@ -30,6 +30,14 @@
 	padding: 0 var(--ifm-pre-padding);
 }
 
+.navbar-sidebar {
+	z-index: 1;
+}
+
+html[data-theme='dark'] .navbar-sidebar {
+	background: #18191a;
+}
+
 .navbar {
 	background: #ffffff73;
     backdrop-filter: blur(8px);
@@ -199,5 +207,11 @@ html[data-theme='dark'] .hero--primary {
 @media only screen and (max-width: 700px) {
 	.img-code {
 		max-width: 80%;
+	}
+}
+
+@media only screen and (max-width: 996px) {
+	.navbar {
+		backdrop-filter: unset;
 	}
 }
