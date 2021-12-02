@@ -42,6 +42,43 @@ export default function Home() {
 				<div style={{ width: '100%' }}>
 					<img src="/img/main.png" className='img-code'/>
 				</div>
+
+				<div className='community'>
+					<div className="container">
+						<div className="grid-container">
+							<div className="grid-child purple">
+								<h3>Connect with the Formidable community</h3>
+								<p>
+									Stay up to date with new releases, learn more about how to use Formidable, collaborate with the community and share projects and feedback
+									with our team. All community participation is subject to Formidable's <a href="/docs/contributions#code-of-conduct">Code of Conduct</a>
+								</p>
+							</div>
+
+							<div>
+								<ol className="communities">
+									<li>
+										<a href="https://discord.gg/wm2sFGSrmX">
+											<span className="title">Discord</span>
+											<span className="desc">Chat with the Formidable community and dev team</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://twitter.com/formidablejs">
+											<span className="title">Twitter</span>
+											<span className="desc">Stay up to date with the latest news</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://github.com/formidablejs">
+											<span className="title">Github</span>
+											<span className="desc">File issues, read the code, and make contributions</span>
+										</a>
+									</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
 			</Layout>
 		</Fragment>
 	);

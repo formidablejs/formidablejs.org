@@ -11,7 +11,7 @@ Formidable uses [Knex.js](https://knexjs.org) as its database query builder. You
 
 To select data from the database, use the `select` method from the `Database` class:
 
-```js
+```js title="routes/api.imba" {5}
 import { Database as DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -21,7 +21,7 @@ Route.get '/', do
 
 If you want to select all columns from a table, you can leave the `select` method empty:
 
-```js
+```js title="routes/api.imba" {5}
 import { Database as DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -33,7 +33,7 @@ Route.get '/', do
 
 To insert data into the database, use the `insert` method after using the `table` method to specify the table to insert into:
 
-```js
+```js title="routes/api.imba" {6}
 import { Database as DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -47,7 +47,7 @@ Route.get '/', do
 
 Alternatively you can use the `into` method to specify the table to insert into after using the `insert` method:
 
-```js
+```js title="routes/api.imba" {9}
 import { Database as DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -63,7 +63,7 @@ Route.get '/', do
 
 To insert multiple rows at once, use the `insert` method with an array of objects:
 
-```js
+```js title="routes/api.imba" {6}
 import { Database as DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -85,7 +85,7 @@ Route.get '/', do
 
 To run a raw query, use the `raw` method:
 
-```js
+```js title="routes/api.imba" {5}
 import { Database as DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -97,7 +97,7 @@ Route.get '/', do
 
 To join tables, use the `join` method:
 
-```js
+```js title="routes/api.imba" {6}
 import { Database as DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 

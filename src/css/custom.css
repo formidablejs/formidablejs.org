@@ -31,7 +31,59 @@
 }
 
 .navbar {
+	background: #ffffff73;
+    backdrop-filter: blur(8px);
 	box-shadow: unset;
+}
+
+.community {
+	background-color: #f6f3f3;
+	padding: 60px 60px;
+	margin: 70px 0px 10px;
+}
+
+.communities {
+	list-style: none;
+	padding: 0;
+}
+
+.communities > li {
+	margin-bottom: 40px;
+}
+
+.communities > li > a {
+	color: #324fff;
+	border-bottom: 2px solid #324fff;
+	padding: 8px 20px 6px 15px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.communities > li > a:focus,
+.communities > li > a:hover {
+	background: #324fff;
+	color: #fff;
+}
+
+.communities > li > a > .title {
+	font-weight: 700;
+	margin-right: 30px;
+}
+
+.communities > li > a:focus > .desc,
+.communities > li > a > .desc {
+	visibility: hidden;
+}
+
+.communities > li > a:focus > .desc,
+.communities > li > a:hover > .desc {
+	visibility: visible;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
 }
 
 .navbar__title,
@@ -59,11 +111,11 @@ html[data-theme='dark'] .button--custom:hover {
 }
 
 .react-toggle-track {
-	background-color: #ebedf0!important;
+	background-color: #ebedf0 !important;
 }
 
 html[data-theme='dark'] .react-toggle-track {
-	background-color: #4d4d4d!important;
+	background-color: #4d4d4d !important;
 }
 
 .hero.hero--primary {
@@ -80,7 +132,7 @@ html[data-theme='dark'] .react-toggle-track {
 }
 
 html[data-theme='dark'] .navbar {
-	background-color: #18191A !important;
+	background-color: #18191a !important;
 	border-bottom: 1px solid #1c1e20 !important;
 }
 
@@ -94,7 +146,7 @@ html[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
 }
 
 html[data-theme='dark'] .footer {
-	background-color: #18191A !important;
+	background-color: #18191a !important;
 	border-top: 1px solid #1c1e20 !important;
 	color: #fff !important;
 }
@@ -104,7 +156,7 @@ html[data-theme='dark'] a {
 }
 
 html[data-theme='dark'] .hero.hero--primary {
-	background-color: #18191A !important;
+	background-color: #18191a !important;
 }
 
 html[data-theme='dark'] .hero--primary {
@@ -139,7 +191,6 @@ html[data-theme='dark'] .hero--primary {
 		max-width: 60%;
 	}
 }
-
 
 @media only screen and (max-width: 700px) {
 	.img-code {

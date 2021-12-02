@@ -15,8 +15,8 @@ module.exports = {
 			indexName: 'formidablejs',
 		},
 		colorMode: {
-			// defaultMode: 'dark',
-			// disableSwitch: true,
+			defaultMode: 'light',
+			disableSwitch: true,
 			switchConfig: {
 				darkIcon: '🌙',
 				darkIconStyle: {
@@ -46,7 +46,7 @@ module.exports = {
 			style: 'light',
 			links: [
 			],
-			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Built with Docusaurus.`,
+			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>. Built with Docusaurus.`,
 		},
 	},
 	presets: [
