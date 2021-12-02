@@ -16,7 +16,7 @@ module.exports = {
 		},
 		colorMode: {
 			defaultMode: 'light',
-			disableSwitch: true,
+			// disableSwitch: true,
 			switchConfig: {
 				darkIcon: '🌙',
 				darkIconStyle: {

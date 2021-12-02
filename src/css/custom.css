@@ -39,7 +39,11 @@
 .community {
 	background-color: #f6f3f3;
 	padding: 60px 60px;
-	margin: 70px 0px 10px;
+	margin: 70px 0px 0px;
+}
+
+html[data-theme='dark'] .community {
+	background-color: #0d0c0c;
 }
 
 .communities {
