@@ -44,7 +44,7 @@ html[data-theme='dark'] .navbar-sidebar {
 
 .navbar {
 	background: #ffffff73;
-    backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
 	box-shadow: unset;
 }
 
@@ -240,5 +240,9 @@ html[data-theme='dark'] .hero--primary {
 	.grid-container {
 		flex-direction: column;
 		grid-template-columns: unset;
+	}
+
+	.communities > li > a > .desc {
+		display: none;
 	}
 }
