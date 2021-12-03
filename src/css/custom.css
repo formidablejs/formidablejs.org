@@ -215,3 +215,18 @@ html[data-theme='dark'] .hero--primary {
 		backdrop-filter: unset;
 	}
 }
+
+@media (max-width: 860px) {
+	.container {
+		padding: 0;
+	}
+
+	.community {
+		padding: 28px 28px;
+	}
+
+	.grid-container {
+		flex-direction: column;
+		grid-template-columns: unset;
+	}
+}

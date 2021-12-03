@@ -46,7 +46,7 @@ export default function Home() {
 				<div className='community'>
 					<div className="container">
 						<div className="grid-container">
-							<div className="grid-child purple">
+							<div style={{ flex: 1}}>
 								<h3>Connect with the Formidable community</h3>
 								<p>
 									Stay up to date with new releases, learn more about how to use Formidable, collaborate with the community and share projects and feedback
@@ -54,7 +54,7 @@ export default function Home() {
 								</p>
 							</div>
 
-							<div>
+							<div style={{ flex: 1}}>
 								<ol className="communities">
 									<li>
 										<a href="https://discord.gg/wm2sFGSrmX">
