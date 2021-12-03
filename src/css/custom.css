@@ -38,6 +38,10 @@
 	z-index: 1;
 }
 
+.navbar__toggle {
+	color: #fff;
+}
+
 html[data-theme='dark'] .navbar-sidebar {
 	background: #18191a;
 }
@@ -148,7 +152,7 @@ html[data-theme='dark'] .react-toggle-track {
 }
 
 html[data-theme='dark'] .navbar {
-	background-color: #18191a !important;
+	background-color: #18191a8a !important;
 	border-bottom: 1px solid #1c1e20 !important;
 }
 
