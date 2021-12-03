@@ -211,8 +211,16 @@ html[data-theme='dark'] .hero--primary {
 }
 
 @media only screen and (max-width: 996px) {
-	.navbar {
+	/* .navbar {
 		backdrop-filter: unset;
+	} */
+
+	.navbar-sidebar {
+		height: 100vh;
+	}
+
+	.navbar-sidebar__backdrop {
+		height: 100vh;
 	}
 }
 
