@@ -72,6 +72,7 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
+	"name": "full-name",
 	"email": "email-address",
 	"password": "password",
 	"password_confirmation": "password"
@@ -417,14 +418,14 @@ When logging your users in, a JWT token will be returned in the response:
 
 ```json
 {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMwNzg2NDg4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAifQ.tzQEkBOEGe8EMPfJ1u9BVCWVmFa0G0MValvA8bVf05A",
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5YTNkZWY0MDkxMzFjNThjNGY3NzYwNWU2NjNmYmRmIiwiaWF0IjoxNjM4ODA0NzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAifQ.A008sYS3973q-6uH2cQbgPf4Xq-v93UCvNLql0knIJ8",
 	"type": "Bearer",
 	"user": {
 		"name": "Donald",
 		"email": "donaldpakkies@gmail.com",
 		"email_verified_at": null,
-		"created_at": "2021-09-04T20:14:48.000Z",
-		"updated_at": "2021-09-04T20:14:48.000Z"
+		"created_at": "2021-12-06T17:34:52.000Z",
+		"updated_at": "2021-12-06T17:34:52.000Z"
 	}
 }
 ```
@@ -433,7 +434,7 @@ Now, to access `/ping` you can pass the JWT token in the `Authorization` header 
 
 ```
 POST http://localhost:3000/ping
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMwNzg2NDg4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAifQ.tzQEkBOEGe8EMPfJ1u9BVCWVmFa0G0MValvA8bVf05A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5YTNkZWY0MDkxMzFjNThjNGY3NzYwNWU2NjNmYmRmIiwiaWF0IjoxNjM4ODA0NzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAifQ.A008sYS3973q-6uH2cQbgPf4Xq-v93UCvNLql0knIJ8
 ```
 
 ### Session
