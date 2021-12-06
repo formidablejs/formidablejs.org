@@ -424,8 +424,8 @@ When logging your users in, a JWT token will be returned in the response:
 		"name": "Donald",
 		"email": "donaldpakkies@gmail.com",
 		"email_verified_at": null,
-		"created_at": "2021-12-06T17:34:52.000Z",
-		"updated_at": "2021-12-06T17:34:52.000Z"
+		"created_at": "2021-12-06T15:41:48.000Z",
+	    "updated_at": "2021-12-06T15:41:48.000Z"
 	}
 }
 ```
