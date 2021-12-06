@@ -33,7 +33,7 @@ craftsman make mail CustomEmail
 
 The contents of the newely created `CustomEmail.imba` file will look like this:
 
-```py
+```py title="app/Mail/CustomEmail.imba"
 import { Mailable } from '@formidablejs/framework'
 
 export class CustomEmail < Mailable
@@ -49,7 +49,7 @@ export class CustomEmail < Mailable
 
 You can remove the `subject` prop and `constructor` method, then import the `VerifyEmail` mailable from the `@formidablejs/framework` package and extend it with your custom mailable:
 
-```py
+```py title="app/Mail/CustomEmail.imba"
 import Mailable from '@formidablejs/framework/lib/Auth/Mail/VerifyEmail'
 
 export class CustomEmail < Mailable

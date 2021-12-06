@@ -9,7 +9,7 @@ title: Routing
 
 The most basic Formidable routes accept a URI and a Callback, providing a very simple and expressive method of defining routes:
 
-```py
+```py title="routes/api.imba"
 import { Route } from '@formidablejs/framework'
 
 Route.get '/', do 'Hello World'
@@ -19,7 +19,7 @@ Route.get '/', do 'Hello World'
 
 All Formidable routes are defined in your route files, which are located in the `routes` directory. These files are automatically loaded by the `RouterServiceResolver`:
 
-```py
+```py title="routes/api.imba"
 import { UserController } from '../app/Http/Controllers/UserController'
 
 Route.get('/user', [UserController, 'index'])
@@ -46,7 +46,7 @@ Route.patch(uri, callback)
 
 You might find yourself in a situation where you would like to have dynamic routes. Maybe you want to load a specific blog post using the blog post id, you can do this by defining a parameter in your route:
 
-```js
+```js title="routes/api.imba"
 Route.get '/posts/:id', do (request)
 	const postId = request.param('id')
 	''
@@ -56,7 +56,7 @@ Route.get '/posts/:id', do (request)
 
 You may also define as many route parameters as required by your route:
 
-```js
+```js title="routes.api.imba"
 Route.get '/user/:user/posts/:post', do (request)
     const userId = request.param('user')
     const postId = request.param('post')
@@ -69,7 +69,7 @@ Route parameters are always prefixed with `:` and should consist of alphabetic c
 
 Formidable makes it easy to automatically load a model instance based on a route parameter. You would normally do this by using the `@use` decorator next to your controller route action:
 
-```js
+```js title="app/Http/Controllers/PostController.imba" {1,7}
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 import { Post } from '../../Models/Post'
@@ -83,9 +83,9 @@ export class PostController < Controller
 
 This will query the database to look for a post under the `posts` table with the first param using the `id` column.
 
-If you have want to load multiple models, you can do so by passing all the models you want to load in the `@use` decorator:
+If you want to load multiple models, you can do so by passing all the models you want to load in the `@use` decorator:
 
-```js
+```js title="app/Http/Controllers/PostController.imba" {1,8}
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 import { Post } from '../../Models/Post'
@@ -101,7 +101,7 @@ export class PostController < Controller
 
 To change the default column, add a `routeKeyName` static getter in your model and return the name of the column you would like to use:
 
-```js
+```js title="app/Models/User.imba" {5,6}
 import { Model } from '@formidablejs/persona'
 
 export class User < Model
@@ -113,7 +113,7 @@ export class User < Model
 
 Alternatively, you can define the column in your route. To do this, simply prefix the column name with `:` and add it after the parameter name:
 
-```py
+```py title="routes/api.imba"
 Route.get('/posts/:post:slug', [PostController, 'show'])
 ```
 
@@ -123,7 +123,7 @@ This will use `slug` as the column.
 
 `Named routes` allow the convenient generation of URLs or redirects for specific routes. You may specify a name for a route by chaining the `name` method onto the route definition:
 
-```py
+```py title="routes/api.imba" {3}
 Route.get('/posts/:slug', do(request)
 	# do somthing
 ).name('posts.show')
@@ -131,7 +131,7 @@ Route.get('/posts/:slug', do(request)
 
 You may also specify route names for controller actions:
 
-```js
+```js title="routes/api.imba"
 Route.get('/posts/:slug', [PostController, 'show']).name('posts.show')
 ```
 
@@ -180,7 +180,7 @@ Route groups allow you to share route attributes, such as middleware or namespac
 
 To assign middleware to all routes within a group, you may add the `middleware` keyword inside the group. Middleware are executed in the order they are listed in the object:
 
-```js
+```js {1}
 Route.group { middleware: ['first', 'second'] }, do
 	Route.get '/', do
 		# uses first & second Middleware
@@ -193,7 +193,7 @@ Route.group { middleware: ['first', 'second'] }, do
 
 The `prefix` keyword may be used to prefix each route in the group with a given URI. For example, you may want to prefix all route URIs within the group with `admin`:
 
-```js
+```js {1}
 Route.group { prefix: 'admin' }, do
 	Route.get 'users', do
 		# matches the "/admin/users" URL

@@ -61,7 +61,7 @@ Once created, the application directory structure will look like this:
 
 In the `bootstrap` directory, there's a `app.imba` file, which is responsible for creating a new instance of the application:
 
-```py
+```py title="bootstrap/app.imba"
 import { Application } from '@formidablejs/framework'
 import path from 'path'
 
@@ -70,7 +70,7 @@ export const app = new Application path.resolve './'
 
 There's also a `main.imba` file, this file is responsible for bootstraping your application and getting it ready.
 
-```py
+```py title="bootstrap/main.imba"
 import { app } from './app'
 import { ConfigRepository } from '@formidablejs/framework'
 import { ExceptionHandler } from '@formidablejs/framework'
@@ -90,7 +90,7 @@ export default app.prepare!
 ```
 In the root of your project, there's also `server.imba` file, which is responsible for starting your application.
 
-```py
+```py title="server.imba"
 import { Kernel } from '@formidablejs/framework'
 import app from './bootstrap/app'
 
@@ -99,7 +99,7 @@ app.initiate(app.make(Kernel))
 
 There's also a `server.app.imba` file, which is responsible for making the Application's core available to the CLI, this file is also used by `Jest` for testing purposes.
 
-```py
+```py title="server.app.imba"
 import { Kernel } from '@formidablejs/framework'
 import app from './bootstrap/app'
 import request from 'supertest'
@@ -174,7 +174,7 @@ This will update the `.formidable` application which is loaded by the `test/app.
 
 Out of the box, the `test/app.e2e.test.js` file has the following tests:
 
-```js
+```js title=test/app.e2e.test.js
 const { Application, request } = require('../.formidable/server.app');
 const { helpers: { config } } = require('@formidablejs/framework');
 

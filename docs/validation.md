@@ -15,7 +15,7 @@ Let's look at a basic route that validates input data and returns errors back to
 
 First, we will assume we have a post route for adding new tasks:
 
-```js
+```js title="routes/api.imba"
 import { Route } from '@formidablejs/framework'
 import { TaskController } from '../app/Http/Controllers/TaskControllers'
 
@@ -26,7 +26,7 @@ Route.post('/tasks/store', [TaskController, 'store']).name('tasks.store')
 
 Next, we will create a controller and add a store method that handles incoming requests:
 
-```js
+```js title="app/Http/Controllers/TaskController.imba"
 import Controller from './Controller'
 
 export class TaskController < Controller
@@ -39,7 +39,7 @@ export class TaskController < Controller
 
 Then, we will create a `FormRequest` class that will be passed to the controller. We will add our rules here:
 
-```js
+```js title="app/Http/Request/StoreTaskRequest.imba"
 import { FormRequest } from '@formidablejs/framework'
 
 export class StoreTaskRequest < FormRequest
@@ -58,7 +58,7 @@ The `title` rule is required and must be at least 4 characters long. The `descri
 
 Now that we have created our request, we can go back to our controller and use the `@use` decorator to inject the `FormRequest` into our `store` method:
 
-```py
+```py title="app/Http/Controllers/TaskController.imba"
 import { @use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'

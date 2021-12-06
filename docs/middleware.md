@@ -24,7 +24,7 @@ craftsman make middleware CheckAge
 
 This command will place a new `CheckAge` class within your `app/Http/Middleware` directory. In this middleware, we will only allow access to the route if the supplied `age` is greater than 18. Otherwise, we will throw an Exception.
 
-```py
+```py title="app/Http/Middleware/CheckAge.imba" {6}
 import { ForbiddenException } from '@formidablejs/framework'
 
 export class CheckAge
@@ -47,8 +47,7 @@ If you want a middleware to run during every HTTP request to your application, l
 
 If you would like to assign middleware to specific routes, you should first assign the middleware a key in your `app/Http/Kernel.imba` file. By default, the `routeMiddleware` getter of this class contains entries for the middleware included with Formidable. To add your own, append it to this list and assign it a key of your choosing. For example:
 
-```py
-# Within app/Http/Kernel.imba Class...
+```py title="app/Http/Kernel.imba" {3}
 get routeMiddleware
 	{
 		'auth': Authenticate
@@ -61,7 +60,7 @@ get routeMiddleware
 
 Once the middleware has been defined in the HTTP kernel, you may use the `middleware` method to assign middleware to a route:
 
-```js
+```js title="routes/api.imba" {3}
 Route.get('admin/profile', do
 	# do something...
 )->middleware(['auth'])
@@ -69,7 +68,7 @@ Route.get('admin/profile', do
 
 You may also assign multiple middleware to the route:
 
-```js
+```js title="routes/api.imba" {3}
 Route.get('/', do
 	# do something...
 ).middleware(['first', 'second'])
@@ -81,7 +80,7 @@ Sometimes you may want to group several middleware under a single key to make th
 
 Out of the box, Formidable comes with `jwt` and `session` middleware groups:
 
-```js
+```js title="app/Http/Kernel.imba" {3,7}
 get middlewareGroups
 	{
 		jwt: [

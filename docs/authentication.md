@@ -142,7 +142,7 @@ Formidable provides a number of events that can be used to hook into your applic
 
 The `beforeLogin` event is fired before a user is logged in:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -157,7 +157,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `beforeLogout` event is fired before a user is logged out:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -172,7 +172,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `beforeRegister` event is fired before a user is registered:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -187,7 +187,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `beforeVerify` event is fired before a user email is verified:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -202,7 +202,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `beforeResend` event is fired before a user verification email is resent:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -217,7 +217,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `beforeForgot` event is fired before a user password reset email is sent:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -232,7 +232,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `beforeReset` event is fired before a user password is reset:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -247,7 +247,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `onAuthenticated` event is fired after a user is logged in:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -262,7 +262,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `onRegistered` event is fired after a user is registered:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -281,7 +281,7 @@ Formidable provides an easy way to write your own authentication handlers.
 
 The `onLogin` hook is used to handle the login process:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -296,7 +296,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `onRegister` hook is used to handle the registration process:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -311,7 +311,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `onForgot` hook is used to handle the forgot password process:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -326,7 +326,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `onReset` hook is used to handle the password reset process:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -341,7 +341,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `onVerification` hook is used to handle the email verification process:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -356,7 +356,7 @@ export class AppServiceResolver < ServiceResolver
 
 The `onEmailResend` hook is used to handle the email verification resend process:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -371,7 +371,7 @@ export class AppServiceResolver < ServiceResolver
 
 By default, Formidable provides `VerifyEmail` and `ResetPassword` mailers that can be used to send email verification and password reset emails to your users:
 
-```py
+```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 import { VerifyEmail } from '../Mail/VerifyEmail'
@@ -398,7 +398,7 @@ Route.get('ping', 'pong').middleware(['auth'])
 
 If you want to use JWT tokens for authentication, you can use the `jwt` middleware:
 
-```py
+```py title="app/Resolvers/RouterServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -440,7 +440,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 
 If you want to use sessions for authentication, you can use the `session` middleware:
 
-```py
+```py title="app/Resolvers/RouterServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'

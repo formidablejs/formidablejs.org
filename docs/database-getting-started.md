@@ -11,7 +11,7 @@ Formidable supports has out of the box support for `SQL` Queries and `Redis`. Th
 
 The configuration for all the supported database drivers redis db's can be found in the `config/database.imba` file:
 
-```py
+```py title="config/database.imba"
 import { helpers } from '@formidablejs/framework'
 
 export default {
@@ -152,7 +152,7 @@ The `redis` object is used to define the redis databases and options used by you
 
 The following example shows how to use the `Database` class to query the database:
 
-```py
+```py title="app/Http/Controllers/PostController.imba"
 import { Database as DB } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -167,7 +167,7 @@ The example above will query the `posts` table and return all the records it fin
 
 We can also sort and paginate the results:
 
-```py
+```py title="app/Http/Controllers/PostController.imba"
 import { Database as DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Controller } from './Controller'
@@ -232,7 +232,7 @@ const deletedRowCount = await DB.table('tasks')
 
 To quickly get started with setting values to Redis or retrieving data, we can use the `set` method or the `get` method from the `connection` method provided by the `Redis` class:
 
-```js
+```js title="routes/api.imba"
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -247,7 +247,7 @@ Route.get '/', do(request)
 
 To set a value in Redis, we can use the `set` method from the `connection` method provided by the `Redis` class:
 
-```js
+```js title="routes/api.imba"
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -268,7 +268,7 @@ Redis.connection!.set 'name', 'Luna', do(error)
 
 To set a value in Redis with an expiration time, we can use the `set` method from the `connection` method provided by the `Redis` class and pass the expiration time as the third argument using the `expiresIn` helper method:
 
-```js
+```js title="routes/api.imba"
 import { expiresIn } from '@formidablejs/framework'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -279,7 +279,7 @@ Route.get '/', do(request)
 
 Should you wish to pass a `callback` function, you can do so as the last argument:
 
-```py
+```py title="routes/api.imba"
 import { expiresIn } from '@formidablejs/framework'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -294,7 +294,7 @@ Route.get '/', do(request)
 
 To retrieve data from Redis, we can use the `get` method from the `connection` method provided by the `Redis` class:
 
-```js
+```js title="routes/api.imba"
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 

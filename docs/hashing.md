@@ -17,7 +17,7 @@ The default hashing driver is `bcrypt`. You can change this by setting the `driv
 
 You may hash a password with the `make` method of the `Hash` class:
 
-```py
+```py title="app/Http/Controllers/PasswordController.imba" {12}
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Hash } from '@formidablejs/framework'

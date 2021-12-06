@@ -23,7 +23,7 @@ This command will place a new `UserController` class within your `app/Http/Contr
 
 Below is an example of a basic controller class. Note that the controller extends the base controller class included with Formidable:
 
-```py
+```py title="app/Http/Controllers/UserController.imba"
 import { NotFoundException } from '@formidablejs/framework'
 import { Controller } from './Controller'
 import { User } from '../../Models/User'
@@ -38,7 +38,7 @@ export class UserController < Controller
 
 You can define a route to this controller action like this:
 
-```js
+```js title="routes/api.imba"
 import { Route } from '@formidablejs/framework'
 import { UserController } from '../app/Http/Controllers/UserController'
 

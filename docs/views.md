@@ -9,9 +9,7 @@ Just like any other morden framework, Formidable ships with a views feature. For
 
 A typical view in Formidable looks like this:
 
-```py
-# View stored in resources/views/greeting.imba
-
+```py title="resources/views/greeting.imba"
 import { View } from '@formidable/framework'
 
 export class < View
@@ -23,7 +21,7 @@ export class < View
 
 Since this view is stored at `resources/views/greeting.imba`, we may return it using the `view` helper like so:
 
-```py
+```py title="routes/api.imba"
 import { Route, view } from '@formidablejs/framework'
 import { Greeting } from '../resources/views/greeting'
 
@@ -54,9 +52,7 @@ view(Greeting, { name: 'Donald' })
 
 You may use Imba components in your views. Here's a typical example of how to use an Imba component in a Formidable view:
 
-```py
-# Component stored in resources/views/components/counter.imba
-
+```py title="resources/views/components/counter.imba"
 export tag Counter
 	prop count = 1
 
@@ -69,9 +65,7 @@ export tag Counter
 
 And our Formidable view:
 
-```py
-# View stored in resources/views/app.imba
-
+```py title="resources/views/app.imba"
 import { View } from '@formidablejs/framework'
 import { Counter } from './components/counter'
 

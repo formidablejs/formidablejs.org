@@ -13,7 +13,7 @@ The base `FormRequest` instance provides a variety of methods for examining the 
 
 Formidable loads requests to route actions as first parameters by default:
 
-```py
+```py title="app/Http/Controllers/TaskController.imba"
 export class TaskController < Controller
 
 	def store request
@@ -24,7 +24,7 @@ The request loaded by default, is the standard `FormRequest` class provided by t
 
 To use a different `FormRequest`, you may use the `@use` decorator:
 
-```py
+```py title="app/Http/Controllers/TaskController.imba"
 import { @use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
