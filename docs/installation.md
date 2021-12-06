@@ -6,7 +6,7 @@ slug: /
 
 # Introduction
 
-Formidable (or formidablejs) is an API framework for building backend applications. It uses Imba and supports JavaScript and TypeScript, meaning you don't have to completely ditch your favorite languages while getting up to speed with Imba. 
+Formidable (or formidablejs) is an API framework for building backend applications. It uses Imba and supports JavaScript and TypeScript, meaning you don't have to completely ditch your favorite languages while getting up to speed with Imba.
 
 Formidable uses [Fastify](https://www.fastify.io/) under the hood.
 

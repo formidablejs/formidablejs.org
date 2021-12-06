@@ -10,6 +10,8 @@ module.exports = {
 	organizationName: 'formidablejs', // Usually your GitHub org/user name.
 	projectName: 'formidablejs.org', // Usually your repo name.
 	themeConfig: {
+		sidebarCollapsed: false,
+		sidebarCollapsible: false,
 		algolia: {
 			apiKey: 'a445a9bfec68203859d07885f532285b',
 			indexName: 'formidablejs',
@@ -45,6 +47,7 @@ module.exports = {
 		footer: {
 			style: 'light',
 			links: [
+
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>. Built with Docusaurus.`,
 		},

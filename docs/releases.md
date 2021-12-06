@@ -7,7 +7,7 @@ title: Release Notes
 
 ## Versioning Scheme
 
-Formidable and its other first-party packages follow [Semantic Versioning](https://semver.org/). Major framework releases are released every year (~December), while minor and patch releases may be released as often as every week. Minor and patch releases should never contain breaking changes.
+Formidable and its other first-party packages follow [Semantic Versioning](https://semver.org/). Major framework releases are released every year (~March), while minor and patch releases may be released as often as every week. Minor and patch releases should never contain breaking changes.
 
 When referencing the Formidable framework or its components from your application or package, you should always use a version constraint such as `^1.0.0`, since major releases of Formidable do include breaking changes. However, we strive to always ensure you may update to a new major release in one day or less.
 
