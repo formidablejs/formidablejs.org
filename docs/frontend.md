@@ -77,7 +77,7 @@ export class PostController
 
 The default inertia root view is defined in the `config/inertia.imba` config file:
 
-```py
+```py title=config/inertia.imba
 import { App } from '../resources/views/app'
 
 export default {
