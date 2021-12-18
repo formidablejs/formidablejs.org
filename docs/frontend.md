@@ -48,6 +48,67 @@ The `npm run mix:watch` command will continue running in your terminal and watch
 npm run mix:watch
 ```
 
+## Inertia
+
+### Responses
+
+#### Creating responses
+
+In your controller, provide both the name of the JavaScript page component, as well as any props (data) for the page.
+
+In this example we're passing a single prop, called post to the Post/Show page component:
+
+```py title=app/Http/Controllers/PostController.imba
+import { Inertia } from '@formidablejs/inertia'
+import { Controller } from './Controller'
+
+export class PostController
+
+	@use(Post)
+	def show post\Post
+		const { attributes } = await post
+
+		Inertia.render('Post/Show', {
+			post: attributes
+		})
+```
+
+#### Root template data
+
+The default inertia root view is defined in the `config/inertia.imba` config file:
+
+```py
+import { App } from '../resources/views/app'
+
+export default {
+
+	# --------------------------------------------------------------------------
+	# Root View
+	# --------------------------------------------------------------------------
+	#
+	# Sets the root template that's loaded on the first page visit.
+
+	rootView: App
+
+}
+```
+
+If you'd like to provide a custom root for for a specific component, you may do so by using `setRootView`:
+
+```py
+Inertia.render('Welcome').setRootView(CustomFormidableView)
+```
+
+You can also pass data props to a root view by using `withViewData`:
+
+```py
+Inertia.render('Welcome').withViewData({
+	meta: meta
+})
+```
+
+> This section is incomplete. Join our [discord](https://discord.gg/wm2sFGSrmX) if you have questions.
+
 -----
 
 For more information on how to use Laravel Mix and Inertia, see the Laravel [documentation](https://laravel.com/docs/8.x/mix) and the Inertia [documentation](https://inertiajs.com/).
