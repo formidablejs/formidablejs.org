@@ -85,3 +85,114 @@ As you can see, we have imported the `Counter` component into our view.
 We have included a style tag, this will import the stylesheet of the `Counter` component, and we also included a script tag. This will import the js `script` used by the `Counter` component.
 
 > For more informdation, visit the [Imba documentation](https://imba.io/tags/custom-components)
+
+## View Events
+
+#### beforeRender
+
+Runs before a view is rendered:
+
+```py
+import { View } from '@formidablejs/framework'
+
+export Welcome class < View
+	def beforeRender
+		# do something cool
+```
+
+#### afterRender
+
+Runs after a view is rendered:
+
+```py
+import { View } from '@formidablejs/framework'
+
+export Welcome class < View
+	def afterRender
+		# do something cool
+```
+
+Runs before the view is rendered.
+
+## View Helpers
+
+Here a helper functions you can use in your Formidable Views.
+
+#### get
+
+Get sanitized view data prop:
+
+```py
+def render
+	<p> "Hello, { get('name') }"
+```
+
+> Sanitization only works on strings.
+
+#### raw
+
+Get unsanitized view data prop:
+
+```py
+def render
+	<p> "Hello, { raw('name') }"
+```
+
+#### has
+
+Check if data prop is present:
+
+```py
+def render
+	if has('name')
+		<p> "Hello, { get('name') }"
+```
+
+#### old
+
+Retrieve old data:
+
+```py
+def render
+	<input name='email_address' value=old('email_address')>
+```
+
+#### session
+
+Get flashed data:
+
+```py
+def render
+	<p> session('success')
+```
+
+#### hasSession
+
+Check if flashed data is present:
+
+```py
+def render
+	if hasSession('success')
+		<p> session('success')
+```
+
+#### error
+
+Get validation error:
+
+```py
+def render
+	for error in error('email_address')
+		<p> error
+```
+
+#### hasError
+
+Check if validation error is present:
+
+```py
+def render
+	if hasError('email_address')
+		for error in error('email_address')
+			<p> error
+```
