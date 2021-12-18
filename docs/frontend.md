@@ -56,7 +56,7 @@ npm run mix:watch
 
 In your controller, provide both the name of the JavaScript page component, as well as any props (data) for the page.
 
-In this example we're passing a single prop, called post to the Post/Show page component:
+In this example we're passing a single prop, called `post` to the Post/Show page component:
 
 ```py title=app/Http/Controllers/PostController.imba
 import { Inertia } from '@formidablejs/inertia'
