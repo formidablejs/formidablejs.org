@@ -12,7 +12,7 @@ A typical view in Formidable looks like this:
 ```py title="resources/views/greeting.imba"
 import { View } from '@formidable/framework'
 
-export class < View
+export Greeting class < View
 	def render
 		<html>
 			<body>
@@ -69,7 +69,7 @@ And our Formidable view:
 import { View } from '@formidablejs/framework'
 import { Counter } from './components/counter'
 
-export default class < View
+export Counter class < View
 	def render
 		<html>
 			<head>
@@ -95,7 +95,7 @@ Runs before a view is rendered:
 ```py
 import { View } from '@formidablejs/framework'
 
-export Welcome class < View
+export Home class < View
 	def beforeRender
 		# do something cool
 ```
@@ -107,7 +107,7 @@ Runs after a view is rendered:
 ```py
 import { View } from '@formidablejs/framework'
 
-export Welcome class < View
+export Home class < View
 	def afterRender
 		# do something cool
 ```
