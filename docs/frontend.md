@@ -60,6 +60,7 @@ In this example we're passing a single prop, called `post` to the Post/Show page
 
 ```py title=app/Http/Controllers/PostController.imba
 import { Inertia } from '@formidablejs/inertia'
+import { Post } from '../../Models/Post'
 import { Controller } from './Controller'
 
 export class PostController
