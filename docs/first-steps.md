@@ -31,7 +31,7 @@ npm i -g @formidablejs/craftsman
 craftsman new project-name
 ```
 
-> To create fullstack application, see [Frontend Development](frontend#installation--setup)..
+> To create a fullstack application, see [Frontend Development](frontend#installation--setup)..
 
 Once created, the application directory structure will look like this:
 
