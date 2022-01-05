@@ -7,7 +7,7 @@ title: Release Notes
 
 ## Versioning Scheme
 
-Formidable and its other first-party packages follow [Semantic Versioning](https://semver.org/). Major framework releases are released every year (~March), while minor and patch releases may be released as often as every week. Minor and patch releases should never contain breaking changes.
+Formidable and its other first-party packages follow [Semantic Versioning](https://semver.org/). Major framework releases are released every year, while minor and patch releases may be released as often as every week. Minor and patch releases should never contain breaking changes.
 
 When referencing the Formidable framework or its components from your application or package, you should always use a version constraint such as `^1.0.0`, since major releases of Formidable do include breaking changes. However, we strive to always ensure you may update to a new major release in one day or less.
 
@@ -17,4 +17,4 @@ For LTS releases, bug fixes are provided for 2 years and security fixes are prov
 
 Version       | Release             | Bug Fixes Until     | Security Fixes Until
 :-------------|:--------------------|:--------------------|:--------------------
-1.0.0 (LTS)   | March 18th, 2022    | March 18th, 2024    | March 18th, 2025
+1.0.0 (LTS)   | TBA                 | TBA                 | TBA

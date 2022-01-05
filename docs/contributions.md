@@ -21,6 +21,7 @@ Here are all the repositories that contain the Formidable source code:
 * [Formidable Stubs](https://github.com/formidablejs/stubs)
 * [Formidable Pretty Errors](https://github.com/formidablejs/pretty-errors)
 * [Formidable Bugsnag Plugin](https://github.com/formidablejs/bugsnag-plugin)
+* [Formidable Inertia Adapter](https://github.com/formidablejs/inertia-adapter)
 * [Formidable Next Bridge](https://github.com/formidablejs/next-bridge)
 
 ## Support Questions
