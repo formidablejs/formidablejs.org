@@ -46,3 +46,75 @@ Route.get('/user/:id', [UserController, 'show'])
 ```
 
 Now, when a request matches the specified route URI, the `show` method in the `UserController` class will be executed.
+
+### Helpers
+
+The base `Controller` class comes with helper functions.
+
+#### `notFound`
+
+The `notFound` function throws a `404` Exception:
+
+```py
+...
+export class UserController < Controller
+
+	def show request\FormRequest
+		if User.where({ id: request.param('id') }).count! < 0
+			notFound!
+```
+
+You may also pass a custom error message:
+
+```py
+...
+export class UserController < Controller
+
+	def show request\FormRequest
+		if User.where({ id: request.param('id') }).count! < 0
+			notFound 'User does not exist'
+```
+
+#### `badRequest`
+
+The `notFound` function throws a `400` Exception:
+
+```py
+...
+export class UserController < Controller
+
+	def destroy request\FormRequest
+		if !request.auth!.can('users:delete')
+			badRequest!
+```
+
+And with a custom message:
+
+The `notFound` function throws a `400` Exception:
+
+```py
+...
+export class UserController < Controller
+
+	def destroy request\FormRequest
+		if !request.auth!.can('users:delete')
+			badRequest 'Permission denied'
+```
+
+#### `validate`
+
+The `validate` function makes it easier to validate incoming requests:
+
+```py
+...
+export class UserController < Controller
+
+	def update request\FormRequest
+		const validator = validate(request, {
+			name: 'required'
+			email: 'required|email'
+		})
+
+		if validator.fails!
+			throw ValidationException.withMessage(validator.errors.errors)
+```
