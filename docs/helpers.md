@@ -276,7 +276,7 @@ user = tap(user).save({
 You may also use the `multitap` function, this function allows you to access any method that's part of `value` by always returning `value` after you call a value method:
 
 ```py
-user = tap(user)
+user = multitap(user)
 	.setName('Donald')
 	.setLocation('East Rand')
 	.untap!
