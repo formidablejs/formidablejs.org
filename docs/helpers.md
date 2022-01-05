@@ -7,13 +7,13 @@ title: Helpers
 
 Formidable includes a variety of "helper" functions. Many of these functions are used by the framework itself; however, you are free to use them in your own applications if you find them convenient.
 
-## Available Methods
+## Available Functions
 
 ### Arrays & Objects
 
 #### `asObject`
 
-The `asObject` method, converts a custom object into a JavaScript object:
+The `asObject` function, converts a custom object into a JavaScript object:
 
 ```js
 const object = asObject(customObject)
@@ -21,7 +21,7 @@ const object = asObject(customObject)
 
 #### `dotNotation`
 
-The `dotNotation` method turns an object into a single level value that uses "dot" notation to indicate depth:
+The `dotNotation` function turns an object into a single level value that uses "dot" notation to indicate depth:
 
 ```js
 const object = {
@@ -215,7 +215,7 @@ expiresIn('3 days')
 
 #### `config`
 
-The `config` method gets the value of a configuration variable. The configuration values are accessed using "dot" syntax, which includes the name of the file and the option you wish to access. A default value may be specified and is returned if the configuration option does not exist:
+The `config` function gets the value of a configuration variable. The configuration values are accessed using "dot" syntax, which includes the name of the file and the option you wish to access. A default value may be specified and is returned if the configuration option does not exist:
 
 ```js
 const appName = config('app.name')
@@ -225,7 +225,7 @@ const appName = config('app.name', 'Something else')
 
 #### `env`
 
-The `env` method retrieves the value of an environment variable or returns a default value:
+The `env` function retrieves the value of an environment variable or returns a default value:
 
 ```js
 const appUrl = env('APP_URL')
@@ -235,7 +235,7 @@ const appUrl = env('APP_URL', 'http://localhost:3000')
 
 #### `response`
 
-The `response` method returns a response object to the client:
+The `response` function returns a response object to the client:
 
 ```js
 response('Hello', 200)
@@ -249,8 +249,37 @@ response().code(200)
 
 #### `view`
 
-The `view` method returns a view response to the client:
+The `view` function returns a view response to the client:
 
 ```py
 view(Profile, { user }, 200)
 ```
+
+#### `tap` & `multitap`
+
+The `tap` function accepts two arguments: an arbitrary `value` and a `callback`. The `value` will be passed to the `callback` and then be returned by the `tap` function. The return value of the `callback` is irrelevant:
+
+```py
+const user = tap User.forge!.first!, do(user)
+	user.name = 'Donald'
+	user.save!
+```
+
+If no `callback` is passed to the `tap` function, you may call any method on the given `value`. The return value of the method you call will always be `value`, regardless of what the method actually returns in its definition:
+
+```py
+user = tap(user).save({
+	name: 'Donald'
+})
+```
+
+You may also use the `multitap` function, this function allows you to access any method that's part of `value` by always returning `value` after you call a value method:
+
+```py
+user = tap(user)
+	.setName('Donald')
+	.setLocation('East Rand')
+	.untap!
+```
+
+In the example above, we have a `untap` method which we call at the end of our method calls, we do this so we can exit `multitap`.
