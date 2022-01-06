@@ -18,13 +18,15 @@ mix.js('resources/js/app.js', 'public/js')
 
 ## Installation & Setup
 
-To get started with an application powered by Inertia, use the following command:
+To get started with an application powered by Inertia, use the following commands:
 
-```
+```bash
 craftsman new <app-name> --web
+cd <app-name>
+craftsman inertia
 ```
 
-When you get to the 3rd question, choose Vuejs or React.
+Choose Vue or React.
 
 > This will scaffold a Vuejs or React application for you.
 
