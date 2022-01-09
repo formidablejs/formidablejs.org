@@ -68,7 +68,7 @@ export class StorePostRequest < FormRequest
 
 	def persist
 		new Post({
-			user_id: this.auth!.auth!.id
+			user_id: this.auth!.user!.id
 			title: this.input('title')
 			body: this.input('body')
 		}).save!
