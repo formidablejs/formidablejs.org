@@ -5,11 +5,11 @@ title: Getting Started
 
 # Getting Started
 
-Formidable supports has out of the box support for `SQL` Queries and `Redis`. The SQL data layer is powered by Knex.js, while the Redis data layer is powered by Node-Redis.
+Formidable has out of the box support for `SQL` Queries and `Redis`. The SQL data layer is powered by Knex.js, while the Redis data layer is powered by Node-Redis.
 
 ## Configuration
 
-The configuration for all the supported database drivers redis db's can be found in the `config/database.imba` file:
+The configuration for all the supported database drivers and redis db's can be found in the `config/database.imba` file:
 
 ```py title="config/database.imba"
 import { helpers } from '@formidablejs/framework'
