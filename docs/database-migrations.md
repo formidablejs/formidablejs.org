@@ -120,7 +120,7 @@ exports.up = (knex) => knex.schema.table('posts').renameColumn('deleted_at', 'de
 /**
  * Rename the deleted_when column from posts table back to deleted_at.
  */
-exports.down = (knex) => knex.schema.table('posts').renameColumn('deleted_when', 'deleted_at);
+exports.down = (knex) => knex.schema.table('posts').renameColumn('deleted_when', 'deleted_at');
 ```
 
 ### Changing A Column
