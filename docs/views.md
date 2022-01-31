@@ -10,7 +10,7 @@ Just like any other morden framework, Formidable ships with a views feature. For
 A typical view in Formidable looks like this:
 
 ```py title="resources/views/greeting.imba"
-import { View } from '@formidable/framework'
+import { View } from '@formidablejs/framework'
 
 export Greeting class < View
 	def render
