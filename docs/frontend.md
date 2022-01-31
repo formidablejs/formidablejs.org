@@ -5,7 +5,7 @@ title: Frontend Development
 
 # Frontend Development
 
-> Note: you don't need to install Inertia to build fullstack application. You can use Imba [views](/docs/views), just make sure you create your project with the `--web` flag.
+> Note: you don't need to install Inertia to build a fullstack application. You can use Imba [views](/docs/views), just make sure you create your project with the `--web` flag.
 
 Formidable provides an Inertia Adapter through [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
 
