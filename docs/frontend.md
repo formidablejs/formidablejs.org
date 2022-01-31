@@ -5,6 +5,8 @@ title: Frontend Development
 
 # Frontend Development
 
+> Note: you don't need to install Inertia to build fullstack application. You can use Imba [views](/docs/views), just make sure you create your project with the `--web` flag.
+
 Formidable provides an Inertia Adapter through [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
 
 [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) is a package developed by [Laracasts](https://laracasts.com/) creator Jeffrey Way. It provides a fluent API for defining webpack build steps for your Laravel and Formidable applications using several common CSS and JavaScript pre-processors.
