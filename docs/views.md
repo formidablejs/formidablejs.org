@@ -70,6 +70,7 @@ import { View } from '@formidablejs/framework'
 import { Counter } from './components/counter'
 
 export Counter class < View
+
 	def render
 		<html>
 			<head>
