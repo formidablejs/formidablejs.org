@@ -117,6 +117,7 @@ Runs before a view is rendered:
 import { View } from '@formidablejs/framework'
 
 export Home class < View
+
 	def beforeRender
 		# do something cool
 ```
@@ -129,6 +130,7 @@ Runs after a view is rendered:
 import { View } from '@formidablejs/framework'
 
 export Home class < View
+
 	def afterRender
 		# do something cool
 ```
