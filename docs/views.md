@@ -22,7 +22,7 @@ export Greeting class < View
 
 Since this view is stored at `resources/views/greeting.imba`, we may return it using the `view` helper like so:
 
-```py title="routes/api.imba"
+```py title="routes/web.imba"
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
 import { Greeting } from '../resources/views/greeting'
