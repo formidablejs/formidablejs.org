@@ -13,6 +13,7 @@ A typical view in Formidable looks like this:
 import { View } from '@formidablejs/framework'
 
 export Greeting class < View
+
 	def render
 		<html>
 			<body>
