@@ -133,7 +133,7 @@ The `server.imba` and `server.app.imba` files will initiate the application with
 | `/app/Http/Resolvers`    | Contains application service resolvers.
 | `/bootstrap/cache`       | Contains the cached config file and database settings file.
 | `/config`                | Contains application configuration files.
-| `/database/migrations`   | Houses your application `db-migrate` migration files.
+| `/database/migrations`   | Houses your application migration files.
 | `/public`                | Houses your assets such as images, JavaScript, and CSS.
 | `/resources/lang`        | Contains language files.
 | `/routes`                | Contains application routes.

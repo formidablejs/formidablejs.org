@@ -86,6 +86,27 @@ We have included a style tag, this will import the stylesheet of the `Counter` c
 
 > For more informdation, visit the [Imba documentation](https://imba.io/tags/custom-components)
 
+## Global Data Props
+
+#### locale
+
+Returns the requests locale. E.g. `en`.
+
+```py
+def render
+	<p> "Locale: { get('locale') }"
+```
+
+#### csrf_token
+
+Returns the requests csrf token.
+
+```py
+def render
+	<form method="post">
+		<input type="hidden" name="_token" value=get('csrf_token')>
+```
+
 ## View Events
 
 #### beforeRender
