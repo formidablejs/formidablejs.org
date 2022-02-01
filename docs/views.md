@@ -87,7 +87,7 @@ export Counter class < View
 As you can see, we have imported the `Counter` component into our view.
 We have included a style tag, this will import the stylesheet of the `Counter` component, and we also included a script tag. This will import the js `script` used by the `Counter` component.
 
-> For more informdation, visit the [Imba documentation](https://imba.io/tags/custom-components)
+> For more informdation, visit the [Imba documentation](https://imba.io/docs/components)
 
 ## Global Data Props
 
