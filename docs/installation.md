@@ -12,18 +12,33 @@ Formidable uses [Fastify](https://www.fastify.io/) under the hood.
 
 ## Installation {#installation}
 
-To get started, you need to install the Craftsman CLI. The Craftsman CLI will allow you to create new projects, and also provides a number of helpful commands that can assist you while building your application.
-
-#### Your first Formidable Application {#your-first-formidable-application}
-
-When creating a new application, the Craftsman CLI will clone the `formidablejs/formidablejs` repository from Github and install all the dependencies for you.
+To get started, you need to install the Craftsman CLI. The Craftsman CLI will allow you to create new projects, and also provides a number of helpful commands that can assist you while building your application:
 
 ```
 npm i -g @formidablejs/craftsman
+```
+
+### Your first Formidable Application {#your-first-formidable-application}
+
+When creating a new application, the Craftsman CLI will clone the `formidablejs/formidablejs` repository from Github and install all the dependencies for you:
+
+#### API Application
+
+```
 craftsman new project-name
 ```
 
-> To create a fullstack application, see [Frontend Development](frontend#installation--setup).
+#### Web Application
+
+```
+craftsman new project-name --web
+```
+
+#### Single-page Application
+
+```
+craftsman new project-name --spa
+```
 
 Once done, you can run your application using the following command.
 

@@ -5,7 +5,39 @@ title: Frontend Development
 
 # Frontend Development
 
-> Note: you don't need to install Inertia to build a fullstack application. You can use Imba [views](/docs/views), just make sure you create your project with the `--web` flag.
+## Imba
+
+By default Formidable uses Imba for its frontend development. You can build your frontend either as a single-page application or as a web application.
+
+### Web Application
+
+To build a web application, you can use the `--web` flag when running the `craftsman new` command:
+
+```
+craftam new project-name --web
+```
+
+This will create a new project with `web` related files.
+
+
+See the [Views](docs/views) documentation for more information.
+
+### Single-page Application
+
+To build a single-page application, you can use the `--spa` flag when running the `craftsman new` command:
+
+```
+craftam new project-name --spa
+```
+
+This will create a new project and install the `@formidablejs/view` package, then publish spa related files.
+
+The frontend files will be published in the `resources/imba` folder.
+To get started, open the `resources/imba/App.imba` file.
+
+See the [Views](docs/views) documentation for more information.
+
+## Vue.js & React
 
 Formidable provides an Inertia Adapter through [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
 
@@ -18,7 +50,7 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css');
 ```
 
-## Installation & Setup
+### Installation & Setup
 
 To get started with an application powered by Inertia, use the following commands:
 
@@ -32,7 +64,7 @@ Choose Vue or React.
 
 > This will scaffold a Vuejs or React application for you.
 
-## Running Mix
+### Running Mix
 
 Mix is a configuration layer on top of [webpack](https://webpack.js.org/), so to run your Mix tasks you only need to execute one of the NPM scripts that are included in the default Formidable `package.json` file. When you run the `dev` or `production` scripts, all of your application's CSS and JavaScript assets will be compiled and placed in your application's `public` directory:
 
@@ -52,9 +84,7 @@ The `npm run mix:watch` command will continue running in your terminal and watch
 npm run mix:watch
 ```
 
-## Inertia
-
-### Responses
+### Inertia
 
 #### Creating responses
 
