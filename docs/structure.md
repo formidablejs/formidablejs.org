@@ -35,62 +35,62 @@ The default Formidable application structure is intended to provide a great star
 
 ## The Root Directory
 
-#### `.formidable`
+#### .formidable
 
 Contains a compiled version of the application.
 
-#### `app`
+#### app
 
 Contains the core code of your application.
 
-#### `app/Http/Controllers`
+#### app/Http/Controllers
 
 Contains applicaiton controllers.
 
-#### `app/Http/Middleware`
+#### app/Http/Middleware
 
 Contains request middlewares.
 
-#### `app/Http/Requests`
+#### app/Http/Requests
 
 Contains form requests.
 
-#### `app/Http/Models`
+#### app/Http/Models
 
 Houses `bookshelf` models.
 
-#### `app/Http/Resolvers`
+#### app/Http/Resolvers
 
 Contains application service resolvers.
 
-#### `bootstrap/cache`
+#### bootstrap/cache
 
 Contains the cached config file and database settings file.
 
-#### `config`
+#### config
 
 Contains application configuration files.
 
-#### `database/migrations`
+#### database/migrations
 
 Houses your application migration files.
 
-#### `public`
+#### public
 
 Houses your assets such as images, JavaScript, and CSS.
 
-#### `resources/lang`
+#### resources/lang
 
 Contains language files.
 
-#### `routes`
+#### routes
 
 Contains application routes.
 
-#### `storage/framework`
+#### storage/framework
 
 Contains core application data.
 
-#### `storage/session`
+#### storage/session
 
 Contains application sessions.
