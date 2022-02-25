@@ -9,25 +9,24 @@ title: Frontend Development
 
 By default Formidable uses Imba for its frontend development. You can build your frontend either as a single-page application or as a web application.
 
-### Web Application
+#### Web Application
 
-To build a web application, you can use the `--web` flag when running the `craftsman new` command:
+To build a web application, use the `formidable new` command with the following flags:
 
-```
-craftam new project-name --web
+```bash
+formidable new example-app --type "full-stack" --stack "imba" --scaffolding "blank"
 ```
 
 This will create a new project with `web` related files.
 
-
 See the [Views](docs/views) documentation for more information.
 
-### Single-page Application
+#### Single-page Application
 
-To build a single-page application, you can use the `--spa` flag when running the `craftsman new` command:
+To build a single-page application, you can use the `formidable new` command with the following flags:
 
-```
-craftam new project-name --spa
+```bash
+formidable new example-app --type "full-stack" --stack "imba" --scaffolding "spa"
 ```
 
 This will create a new project and install the `@formidablejs/view` package, then publish spa related files.
@@ -54,13 +53,17 @@ mix.js('resources/js/app.js', 'public/js')
 
 To get started with an application powered by Inertia, use the following commands:
 
+#### React
+
 ```bash
-craftsman new <app-name> --web
-cd <app-name>
-craftsman inertia
+formidable new example-app --type "full-stack" --stack "react"
 ```
 
-Choose Vue or React.
+#### Vue
+
+```bash
+formidable new example-app --type "full-stack" --stack "vue"
+```
 
 > This will scaffold a Vuejs or React application for you.
 
