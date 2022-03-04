@@ -27,7 +27,7 @@ Route.put('posts', [PostController, 'store']).middleware(['auth'])
 Next, we will create our controller:
 
 ```
-craftsman make controller PostController
+node craftsman make:controller PostController
 ```
 
 Now, we want to add a store method in our controller. This method will be the point of entry for our new route:
@@ -46,7 +46,7 @@ export class PostController < Controller
 Then, we can add a FormRequest that will be responsible for validating the data that is passed to the controller and also saving the data to the database:
 
 ```
-craftsman make request StorePostRequest
+node craftsman make:request StorePostRequest
 ```
 
 Once, we have created our request, we can add the validation rules to the request as well data saving logic:

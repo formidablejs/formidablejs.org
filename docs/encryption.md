@@ -10,5 +10,5 @@ Before running your application for the first time, you will need to set an appl
 To set the application key, run the following command:
 
 ```
-craftsman key
+node craftsman key:generate
 ```

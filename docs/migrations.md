@@ -11,10 +11,10 @@ Migrations are like version control for your database, allowing your team to def
 
 ## Generating Migrations
 
-You may use the `make migration` Craftsman command to generate a database migration. The new migration will be placed in your `database/migrations` directory. Each migration filename contains a timestamp that allows Formidable to determine the order of the migrations:
+You may use the `make:migration` Craftsman command to generate a database migration. The new migration will be placed in your `database/migrations` directory. Each migration filename contains a timestamp that allows Formidable to determine the order of the migrations:
 
 ```
-craftsman make migration CreatePostsTable --options=table:posts
+node craftsman make:migration CreatePostsTable --table=posts
 ```
 
 ## Migration Structure
@@ -23,26 +23,26 @@ A migration file contains two methods: `up` and `down`. The `up` method is used 
 
 ### Running Migrations
 
-To run all of your outstanding migrations, execute the `migrate up` Craftsman command:
+To run all of your outstanding migrations, execute the `migrate:up` Craftsman command:
 
 ```
-craftsman migrate up
+node craftsman migrate:up
 ```
 
 #### Rolling Back Migrations
 
-To roll back all of your migrations, execute the `migrate down` Craftsman command:
+To roll back all of your migrations, execute the `migrate:down` Craftsman command:
 
 ```
-craftsman migrate down
+node craftsman migrate:down
 ```
 
 ##### Rolling Back a Single Migration
 
-To roll back a specific migration, execute the `migrate down` Craftsman command with the `-m` option:
+To roll back a specific migration, execute the `migrate:down` Craftsman command with the `-m` option:
 
 ```
-craftsman migrate down -m 20210402215000-create_posts_table
+node craftsman migrate:down -m 20210402215000-create_posts_table
 ```
 
 ## Columns

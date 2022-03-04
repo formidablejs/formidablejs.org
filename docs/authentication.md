@@ -20,7 +20,7 @@ Formidable will automatically enable authentication for you. Should you not want
 Its important to note that you will need to create a database for your application to use authentication. If a database has been created, head over to your `.env` file and `config/database.imba` config file to configure your database connection, once this is done, you can run:
 
 ```
-craftsman migrate up
+node craftsman migrate:latest
 ```
 
 This will create all the tables needed for authentication. `users`, `password_resets` and `personal_access_tokens` tables will be created.

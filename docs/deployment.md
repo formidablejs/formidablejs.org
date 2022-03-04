@@ -21,7 +21,7 @@ If you aren't quite ready to manage your own server configuration, we recommend 
 To get started, add a port flag to your start script:
 
 ```json
-"start": "craftsman serve --port=${PORT:3000}",
+"start": "node craftsman serve --port=${PORT:3000}",
 ```
 
 Then add your production `.env` details to Heroku, that's all!

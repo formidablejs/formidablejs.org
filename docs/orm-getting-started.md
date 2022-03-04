@@ -11,10 +11,10 @@ Bookshelf.js is built on top of [Knex.js](https://knexjs.org/) and works with SQ
 
 ## Creating Your First Model
 
-You may use the craftsman `make model` command to create a new model:
+You may use the craftsman `make:model` command to create a new model:
 
 ```
-craftsman make model Post
+node craftsman make:model Post
 ```
 
 This will add a new model under the `app/Models` directory:

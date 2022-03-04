@@ -13,10 +13,10 @@ Instead of defining all of your request handling logic as anonymous functions in
 
 ### Defining Controllers {#defining-controllers}
 
-To create a new controller, use the `make controller` Craftsman command:
+To create a new controller, use the `make:controller` Craftsman command:
 
 ```
-craftsman make controller UserController
+node craftsman make:controller UserController
 ```
 
 This command will place a new `UserController` class within your `app/Http/Controllers` directory.

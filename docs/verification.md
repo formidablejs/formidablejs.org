@@ -12,7 +12,7 @@ Many web applications require users to verify their email addresses before using
 Next, your `users` table must contain an `email_verified_at` column to store the date and time that the user's email address was verified. By default, the `users` table migration included with the Formidable framework already includes this column. So, all you need to do is run your database migrations:
 
 ```
-craftsman migrate up
+node craftsman migrate:up
 ```
 
 ## Routing
@@ -28,7 +28,7 @@ See [Authentication Routes](docs/authentication) for more information.
 To create a custom email verification mailable, you can run the following command:
 
 ```
-craftsman make mail CustomEmail
+node craftsman make:mail CustomEmail
 ```
 
 The contents of the newely created `CustomEmail.imba` file will look like this:
@@ -60,7 +60,7 @@ export class CustomEmail < Mailable
 
 Next, you can start styling your email.
 
-> Note: Formidable publishes layout tags for all of its email mailable classes in the `resources/views/mail/vendor` directory, you may use these tags in your custom email, or modify the tags instead of creating a new custom verification email. <br/> If you don't see this directory, you may run: `craftsman publish --package=@formidablejs/mailer --tag="components,config"` to publish the tags.
+> Note: Formidable publishes layout tags for all of its email mailable classes in the `resources/views/mail/vendor` directory, you may use these tags in your custom email, or modify the tags instead of creating a new custom verification email. <br/> If you don't see this directory, you may run: `node craftsman package:publish --package=@formidablejs/mailer --tag=components,config` to publish the tags.
 
 #### Email Verification URL
 

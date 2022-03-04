@@ -61,7 +61,7 @@ let value = config('app.name', 'Formidable')
 
 ## Configuration Caching
 
-When making changes to your `.env` file or any of your `config` files, you should cache the changes using `craftsman cache`. Formidable loads its configuration from this cached config file instead of your `.env` or config files.
+When making changes to your `.env` file or any of your `config` files, you should cache the changes using `node craftsman config:cache`. Formidable loads its configuration from this cached config file instead of your `.env` or config files.
 
 ## Debug Mode
 
@@ -76,7 +76,7 @@ When your application is in maintenance mode, a custom view will be displayed fo
 To enable maintenance mode, execute the `down` Craftsman command:
 
 ```bash
-craftsman down
+node craftsman down
 ```
 
 #### Bypassing Maintenance Mode
@@ -84,7 +84,7 @@ craftsman down
 Even while in maintenance mode, you may use the `secret` option to specify a maintenance mode bypass secret:
 
 ```bash
-craftsman down --secret="a-private-secret"
+node craftsman down --secret="a-private-secret"
 ```
 
 After placing the application in maintenance mode, you may navigate to the application URL matching this secret and Formidable will issue a maintenance mode bypass cookie to your browser:
@@ -100,5 +100,5 @@ When accessing this hidden route, you will then be redirected to the / route of 
 To disable maintenance mode, use the `up` command:
 
 ```bash
-craftsman up
+node craftsman up
 ```

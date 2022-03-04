@@ -16,7 +16,7 @@ Formidable Database Migrations are stored in the `/database/migrations` director
 To create a new migration, run the following command:
 
 ```
-craftsman make migration CreatePostsTable --options=table:posts
+node craftsman make:migration CreatePostsTable --table=posts
 ```
 
 The command above will create a new migration file under `/database/migrations` and will generate the following migration:
@@ -48,7 +48,7 @@ exports.up = (knex) => {
 After defining our schema, we can now run the migration:
 
 ```
-craftsman migrate up
+node craftsman migrate:latest
 ```
 
 This will add a mew table to your database.
@@ -62,7 +62,7 @@ Formidable allows you to modify existing tables by creating new migrations that 
 Here is an example of a migration that adds a new column to an existing table:
 
 ```bash
-craftsman make migration AddSoftDeletesToPostsTable --options=table:posts,alter
+node craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
 ```
 
 ```js
