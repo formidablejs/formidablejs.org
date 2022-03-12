@@ -5,7 +5,7 @@ title: Package Development
 
 # Package Development
 
-Formidable provides an easy way of letting developers extend the framework. This is a great way of building in features that aren't bundled with the framework. For example, the [Pretty Errors](https://github.com/formidablejs/pretty-errors) package adds a new view that gets displayed when there's an error. This view will only get triggered if the application is in `debug` mode.
+Formidable provides an easy way of letting developers extend the framework. This is a great way of building in features that aren't bundled with the framework. For example, the [Pretty Errors](https://github.com/formidablejs/pretty-errors) package adds a new view that gets displayed when there's an error. This view only gets triggered if the application is in `debug` mode.
 
 ## Package Registration
 
@@ -17,7 +17,7 @@ We can create a service resolver in our package that adds a route that returns a
 import { Route } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
-export class QuotesServiceResolver
+export class QuotesServiceResolver < ServiceResolver
 
 	def boot
 		Route.get 'quote', do
@@ -88,5 +88,115 @@ node craftsman package:publish --package=<package-name> --tag=config
  flag        | description
 :-----------:|:---------------------------------------
  `--package` | npm package that should be published.
- `--tags`    | tags that should be published - paths returned by the `publish` function
+ `--tag`    | tags that should be published - paths returned by the `publish` function
 
+## Server
+
+### Hooks
+
+Formidable supports [Fastify](https://www.fastify.io/docs/latest/Reference/Hooks/) hooks, in the example below, we will look at how you can register a hook in your service resolver:
+
+```py
+import { ServiceResolver } from '@formidablejs/framework'
+import { FastifyRequest } from '@formidablejs/framework'
+
+export class HttpLoggerServiceResolver < ServiceResolver
+
+	def boot
+		self.app.addHook 'onRequest', do(request\FastifyRequest)
+			console.log "{request.method}: {request.url}"
+```
+
+This hook logs all requests made to our application.
+
+For a list of fastify hooks you can use: visit [Fastify Hooks](https://www.fastify.io/docs/latest/Reference/Hooks/).
+
+### Plugins
+
+We can also register [Fastify](https://www.fastify.io) plugins:
+
+Install `under-pressure`:
+
+```bash
+npm i under-pressure --save
+```
+
+Update your Service Resolver:
+
+```py
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class UnderPresureServiceResolver < ServiceResolver
+
+	get config
+		{
+			maxEventLoopDelay: 1000
+			maxHeapUsedBytes: 100000000
+			maxRssBytes: 100000000
+			maxEventLoopUtilization: 0.98
+		}
+
+	def boot
+		self.app.register require('under-pressure'), self.config
+```
+
+If you want to tinker with the updated [Fastify](https://www.fastify.io) server instance:
+
+```py
+import { ServiceResolver } from '@formidablejs/framework'
+import { FastifyInstance } from '@formidablejs/framework'
+
+export class UnderPresureServiceResolver < ServiceResolver
+
+	get config
+		{
+			maxEventLoopDelay: 1000
+			maxHeapUsedBytes: 100000000
+			maxRssBytes: 100000000
+			maxEventLoopUtilization: 0.98
+		}
+
+	def boot
+		self.app.register require('under-pressure'), self.config, do(error, instance\FastifyInstance)
+			if error then throw error
+
+			# do something with the instance
+```
+
+For a list of fastify plugins you can use: visit [Fastify Ecosystem](https://www.fastify.io/docs/latest/Guides/Ecosystem).
+
+### Routes
+
+To register a new route, just use the `Route` class:
+
+```py
+import { ServiceResolver } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
+import { view } from '@formidablejs/framework'
+import { Dashboard } from '../views/Dashboard'
+
+export class DashboardServiceResolver < ServiceResolver
+
+	def boot
+		Route.get 'dashboard', do view(Dashboard)
+```
+
+In the example above, the Service Resolver adds a new dashboard `GET` route.
+
+> See [Routing](/docs/routing) for more information.
+
+## Commands
+
+You can register a package command using the `registerCommand` app function:
+
+```py
+import { ServiceResolver } from '@formidablejs/framework'
+import { MakeRoleCommand } from '../commands/MakeRoleCommand'
+
+export class DashboardServiceResolver < ServiceResolver
+
+	def boot
+		self.app.registerCommand MakeRoleCommand
+```
+
+> See [Commands](/docs/craftsman#writing-commands) for more information.
