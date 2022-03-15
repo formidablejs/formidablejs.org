@@ -276,6 +276,12 @@ html[data-theme='dark'] .hero--primary {
 	}
 }
 
+@media only screen and (max-width: 1193px) {
+	.live {
+		width: calc(100% - 20px);
+	}
+}
+
 @media only screen and (max-width: 996px) {
 	/* .navbar {
 		backdrop-filter: unset;
@@ -287,6 +293,15 @@ html[data-theme='dark'] .hero--primary {
 
 	.navbar-sidebar__backdrop {
 		height: 100vh;
+	}
+
+	.features > .container > .grid-container {
+		flex-direction: column;
+		grid-template-columns: unset;
+	}
+
+	.features {
+		padding: 28px 28px;
 	}
 }
 
@@ -306,5 +321,14 @@ html[data-theme='dark'] .hero--primary {
 
 	.communities > li > a > .desc {
 		display: none;
+	}
+
+	.live {
+		margin-top: 50px;
+		margin-bottom: 80px;
+	}
+
+	.live > p {
+		margin-bottom: 50px;
 	}
 }
