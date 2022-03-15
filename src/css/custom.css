@@ -60,6 +60,16 @@ html[data-theme='dark'] .navbar-sidebar {
 	box-shadow: unset;
 }
 
+.features {
+	background-color: #f6f3f3;
+	padding: 60px 60px;
+	margin: 70px 0px 0px;
+}
+
+html[data-theme='dark'] .features {
+	background-color: #0d0c0c;
+}
+
 .community {
 	background-color: #f6f3f3;
 	padding: 60px 60px;
@@ -112,6 +122,46 @@ html[data-theme='dark'] .community {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 20px;
+}
+
+.features > .container > .grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 20px;
+}
+
+.features > .container > .grid-container > div > p {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.features > .container > .grid-container > div > svg {
+	width: 2rem;
+	padding: 4px;
+	border-radius: 4px;
+	border: 1px solid #000;
+	/* border: 1px solid #324fff;
+	color: #324fff; */
+}
+
+html[data-theme='dark'] .features > .container > .grid-container > div > svg {
+	border: 1px solid #fff;
+}
+
+.live {
+	margin-top: 100px;
+	margin-bottom: 140px;
+	text-align: center;
+	margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+	width: 1170px;
+}
+
+.live > p {
+	font-size: 19px;
+	margin-bottom: 100px;
 }
 
 .navbar__title,
