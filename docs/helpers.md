@@ -7,6 +7,16 @@ title: Helpers
 
 Formidable includes a variety of "helper" functions. Many of these functions are used by the framework itself; however, you are free to use them in your own applications if you find them convenient.
 
+## Usage
+
+To use a formidable helper function, you need to import it from `@formidablejs/framework/lib/Support/Helpers`:
+
+```py
+import { slug } from '@formidablejs/framework/lib/Support/Helpers'
+
+slug('Donald Pakkies') # donald-pakkies
+```
+
 ## Available Functions
 
 ### Arrays & Objects
