@@ -18,10 +18,18 @@ The Formidable framework has a few system requirements. You should ensure that y
 
 If you aren't quite ready to manage your own server configuration, we recommend using Heroku.
 
-To get started, add a port flag to your start script:
+To get started, add a `port` flag and a `host` flag to your start script:
 
 ```json
-"start": "node craftsman serve --port=${PORT:3000}",
+"start": "node craftsman serve --port=${PORT:=3000} --host=${HOST:=localhost}"
 ```
 
-Then add your production `.env` details to Heroku, that's all!
+Then add a `heroku-postbuild` script:
+
+```json
+"heroku-postbuild": "node craftsman config:cache"
+```
+
+> This will cache the config.
+
+When done with the initial setup, add production `.env` details to Heroku, that's all!
