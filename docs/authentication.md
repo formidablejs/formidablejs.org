@@ -392,7 +392,7 @@ export class AppServiceResolver < ServiceResolver
 Formidable provides an `auth` middleware that can be used to require users to be logged in before accessing a route:
 
 ```py
-Route.get('ping', 'pong').middleware(['auth'])
+Route.get('ping', do 'pong').middleware(['auth'])
 ```
 
 ### JWT
