@@ -5,7 +5,6 @@ module.exports = {
 		Basics: ['routing', 'middleware', 'csrf-protection', 'controllers', 'requests', 'responses', 'views', 'validation'],
 		'Digging Deeper': ['craftsman', 'frontend', 'helpers', 'localization', 'mail', 'packages'],
 		Database: ['database-getting-started', 'database-query-builder', 'database-migrations'],
-		ORM: ['orm-getting-started', 'orm-crud-operations'],
 		Security: ['authentication', 'verification', 'encryption', 'hashing'],
 	}
 };
