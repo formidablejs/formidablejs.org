@@ -65,59 +65,77 @@ Route.get '/user/:user/posts/:post', do (request)
 
 Route parameters are always prefixed with `:` and should consist of alphabetic characters. Underscores (_) are also acceptable within route parameter names.
 
-#### Route Model Binding {#route-model-binding}
+#### Route Query Binding {#route-query-binding}
 
-Formidable makes it easy to automatically load a model instance based on a route parameter. You would normally do this by using the `@use` decorator next to your controller route action:
+Formidable makes it easy to automatically load a database record based on a route parameter. You would normally do this by using the `@use` decorator next to your controller route action:
 
-```js title="app/Http/Controllers/PostController.imba" {1,7}
+```js title="app/Http/Controllers/PostController.imba" {1,6}
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
-import { Post } from '../../Models/Post'
 
 export class PostController < Controller
 
-    @use(Post)
-    def show post\Post
+    @use('table:posts') def show post\Number
 		await post
 ```
 
 This will query the database to look for a post under the `posts` table with the first param using the `id` column.
 
-If you want to load multiple models, you can do so by passing all the models you want to load in the `@use` decorator:
+If you want to load multiple database records, you can do so by passing all the tables you want to load in the `@use` decorator:
 
-```js title="app/Http/Controllers/PostController.imba" {1,8}
+```js title="app/Http/Controllers/PostController.imba" {1,6}
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
-import { Post } from '../../Models/Post'
-import { User } from '../../Models/User'
 
 export class PostController < Controller
 
-    @use(User, Post)
-    def show user\User, post\Post
+    @use('table:users', 'table:posts') def show user, post
 		user = await user
 		post = await post
 ```
 
-To change the default column, add a `routeKeyName` static getter in your model and return the name of the column you would like to use:
+#### Route Param Binding {#route-param-binding}
 
-```js title="app/Models/User.imba" {5,6}
-import { Model } from '@formidablejs/persona'
+You can also promote route params to your controller action using the `@use` decorator:
 
-export class User < Model
+```js title="app/Http/Controllers/PostController.imba" {1,6}
+import { @use } from '@formidablejs/framework'
+import { Controller } from './Controller'
 
-	static get routeKeyName
-        'slug'
+export class PostController < Controller
 
+    @use('param') def show postId\Number
+		postId
 ```
 
-Alternatively, you can define the column in your route. To do this, simply prefix the column name with `:` and add it after the parameter name:
+This will return the first `param` in the route.
 
-```py title="routes/api.imba"
-Route.get('/posts/:post:slug', [PostController, 'show'])
+You can also specify which param should be loaded: 
+
+```js title="app/Http/Controllers/PostController.imba" {1,6}
+import { @use } from '@formidablejs/framework'
+import { Controller } from './Controller'
+
+export class PostController < Controller
+
+    @use('param:post') def show postId\Number
+		postId
 ```
 
-This will use `slug` as the column.
+This will look for the `param` named `post` and return that instead of the first `param` in the route.
+
+You can also load multiple params:
+
+```js title="app/Http/Controllers/PostController.imba" {1,7}
+import { @use } from '@formidablejs/framework'
+import { DB } from '@formidablejs/framework'
+import { Controller } from './Controller'
+
+export class PostController < Controller
+
+    @use('param', 'param') def show userId\Number, postId\Number
+		DB.table('posts').where('id', postId).where('user_id', userId)
+```
 
 ## Named Routes
 
