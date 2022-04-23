@@ -12,7 +12,7 @@ A typical view in Formidable looks like this:
 ```py title="resources/views/greeting.imba"
 import { View } from '@formidablejs/framework'
 
-export Greeting class < View
+export class Greeting < View
 
 	def render
 		<html>
@@ -55,7 +55,7 @@ view(Greeting, { name: 'Donald' })
 You may use Imba components in your views. Here's a typical example of how to use an Imba component in a Formidable view:
 
 ```py title="resources/views/components/counter.imba"
-export tag Counter
+export tag CounterComponent
 	prop count = 1
 
 	def render
@@ -69,9 +69,9 @@ And our Formidable view:
 
 ```py title="resources/views/app.imba"
 import { View } from '@formidablejs/framework'
-import { Counter } from './components/counter'
+import { CounterComponent } from './components/counter'
 
-export Counter class < View
+export class Counter < View
 
 	def render
 		<html>
@@ -81,7 +81,7 @@ export Counter class < View
 
 			<body>
 				<script type="module" src="./components/counter">
-				<Counter>
+				<CounterComponent>
 ```
 
 As you can see, we have imported the `Counter` component into our view.
@@ -119,7 +119,7 @@ Runs before a view is rendered:
 ```py
 import { View } from '@formidablejs/framework'
 
-export Home class < View
+export class Home < View
 
 	def beforeRender
 		# do something cool
@@ -132,7 +132,7 @@ Runs after a view is rendered:
 ```py
 import { View } from '@formidablejs/framework'
 
-export Home class < View
+export class Home < View
 
 	def afterRender
 		# do something cool
