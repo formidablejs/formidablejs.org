@@ -222,3 +222,21 @@ def render
 		for error in error('email_address')
 			<p> error
 ```
+
+#### translation
+
+Translate text:
+
+```py
+def render
+	<h1> translate('messages.welcome')
+```
+
+You may also use `__`, an alias of `translate`:
+
+```py
+def render
+	<h1> __('messages.welcome')
+```
+
+> See [Localization](/docs/localization) for more information.
