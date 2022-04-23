@@ -10,25 +10,24 @@ module.exports = {
 	organizationName: 'formidablejs', // Usually your GitHub org/user name.
 	projectName: 'formidablejs.org', // Usually your repo name.
 	themeConfig: {
-		sidebarCollapsed: false,
-		sidebarCollapsible: false,
 		algolia: {
+			appId: 'BH4D9OD16A',
 			apiKey: 'a445a9bfec68203859d07885f532285b',
 			indexName: 'formidablejs',
 		},
 		colorMode: {
 			defaultMode: 'light',
 			// disableSwitch: true,
-			switchConfig: {
-				darkIcon: '🌙',
-				darkIconStyle: {
-					marginLeft: '2px',
-				},
-				lightIcon: '☀️',
-				lightIconStyle: {
-					marginLeft: '1px',
-				},
-			},
+			// switchConfig: {
+			// 	darkIcon: '🌙',
+			// 	darkIconStyle: {
+			// 		marginLeft: '2px',
+			// 	},
+			// 	lightIcon: '☀️',
+			// 	lightIconStyle: {
+			// 		marginLeft: '1px',
+			// 	},
+			// },
 		},
 		navbar: {
 			title: 'Formidable',
@@ -39,8 +38,8 @@ module.exports = {
 			items: [
 				{
 					href: 'https://github.com/formidablejs',
-					label: 'GitHub',
 					position: 'right',
+					className: 'header-github-link',
 				},
 			],
 		},
@@ -59,6 +58,8 @@ module.exports = {
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
 					editUrl: "https://github.com/formidablejs/formidablejs.org/edit/main/",
+					sidebarCollapsed: false,
+					sidebarCollapsible: false,
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
