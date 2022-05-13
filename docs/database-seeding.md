@@ -44,7 +44,7 @@ exports.seed = function (DB) {
 
 ## Running Seeders
 
-You may execute the `db:seed` [Craftsman command](/docs/craftsman) to seed your database. This command will seed all your seeders:
+You may execute the `db:seed` [Craftsman command](/docs/craftsman) to seed your database. This command will run all your seeders:
 
 ```bash
 node craftsman db:seed
