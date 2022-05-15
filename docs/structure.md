@@ -9,22 +9,22 @@ The default Formidable application structure is intended to provide a great star
 
 ```text
 .
-├── .formidable
-└── app
-    └── Http
+├── app
+    ├── Http
         ├── Controllers
         ├── Middleware
         └── Requests
-    ├── Models
     └── Resolvers
-└── bootstrap
-    ├── cache
+├── bootstrap
+    └── cache
 ├── config
 └── database
-    └── migrations
+    ├── migrations
+    └── seeds
 ├── public
-└── resources
-    └── lang
+├── resources
+    ├── lang
+    └── views
 ├── routes
 ├── storage
 	├── framework
@@ -35,62 +35,62 @@ The default Formidable application structure is intended to provide a great star
 
 ## The Root Directory
 
-#### .formidable
-
-Contains a compiled version of the application.
-
-#### app
+### app
 
 Contains the core code of your application.
 
-#### app/Http/Controllers
+### app/Http/Controllers
 
-Contains applicaiton controllers.
+Contains applicaiton [controllers](/docs/controllers).
 
-#### app/Http/Middleware
+### app/Http/Middleware
 
-Contains request middlewares.
+Contains request [middlewares](/docs/middleware).
 
-#### app/Http/Requests
+### app/Http/Requests
 
-Contains form requests.
+Contains [requests](/docs/requests) classes.
 
-#### app/Http/Models
-
-Houses `bookshelf` models.
-
-#### app/Http/Resolvers
+### app/Http/Resolvers
 
 Contains application service resolvers.
 
-#### bootstrap/cache
+### bootstrap/cache
 
 Contains the cached config file and database settings file.
 
-#### config
+### config
 
 Contains application configuration files.
 
-#### database/migrations
+### database/migrations
 
-Houses your application migration files.
+Houses your application [migration](/docs/database-migrations) files.
 
-#### public
+### database/seeds
+
+Houses your application [seeders](/docs/database-seeding).
+
+### public
 
 Houses your assets such as images, JavaScript, and CSS.
 
-#### resources/lang
+### resources/lang
 
-Contains language files.
+Contains [language](/docs/localization) files.
 
-#### routes
+### resources/lang
+
+Houses your [Formidable View](/docs/views) classes.
+
+### routes
 
 Contains application routes.
 
-#### storage/framework
+### storage/framework
 
 Contains core application data.
 
-#### storage/session
+### storage/session
 
 Contains application sessions.
