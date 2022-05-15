@@ -130,19 +130,45 @@ export default {
 }
 ```
 
-#### default
+### Default
 
 The `default` property can be used to set the default connection that will be used for all database operations.
 
-#### migrations
+### Migrations
 
 The `migrations` property is used to define the table used to store the different migrations for your applications.
 
-#### connections
+### Connections
 
 The `connections` object is used to define the connections used by your application. You can have as many connections as you want defined here.
 
-#### redis
+### Pooling
+
+The `pool` object is used to define the minimum and maximum number of connections to the database. By default the minimum value is set to `2` and the maximum value is set tp `10` for `MySQL`, and `PG` libraries, and a single connection for `sqlite`:
+
+```py title="config/database.imba"
+	...
+
+	# --------------------------------------------------------------------------
+	# Database Pooling
+	# --------------------------------------------------------------------------
+	#
+	# Here we can define the minimum and maximum number of connections to the
+	# database.
+
+	pool: {
+		min: 2  # minimum
+		max: 10 # maximum
+	}
+
+	...
+```
+
+### useNullAsDefault
+
+The `useNullAsDefault` property can be set to `true` if one prefers that `undefined` keys are replaced with `NULL` instead of `DEFAULT`.
+
+### Redis
 
 The `redis` object is used to define the redis databases and options used by your application.
 
