@@ -1,7 +1,23 @@
----
-id: authentication
-title: Authentication
----
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import TOCInline from '@theme/TOCInline';
+import CodeBlock from '@theme/CodeBlock';
+import LoginRest from '!!raw-loader!./../codesnippets/authentication/api/login.rest';
+import LogoutRest from '!!raw-loader!./../codesnippets/authentication/api/logout.rest';
+import RegisterRest from '!!raw-loader!./../codesnippets/authentication/api/register.rest';
+import VerifyRest from '!!raw-loader!./../codesnippets/authentication/api/verify.rest';
+import LoginSPA from '!!raw-loader!./../codesnippets/authentication/spa/login.imba';
+import LogoutSPA from '!!raw-loader!./../codesnippets/authentication/spa/logout.imba';
+import RegisterSPA from '!!raw-loader!./../codesnippets/authentication/spa/register.imba';
+import VerifySPA from '!!raw-loader!./../codesnippets/authentication/spa/verify.imba';
+import LoginCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/login.imba';
+import LoginResolverCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/login-resolver.imba';
+import LogoutCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/logout.imba';
+import LogoutResolverCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/logout-resolver.imba';
+import RegisterCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/register.imba';
+import RegisterResolverCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/register-resolver.imba';
+import VerifyCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/verify.imba';
+import VerifyResolverCanvas from '!!raw-loader!./../codesnippets/authentication/canvas/verify-resolver.imba';
 
 # Authentication
 
@@ -25,73 +41,92 @@ node craftsman migrate:latest
 
 This will create all the tables needed for authentication. `users`, `password_resets` and `personal_access_tokens` tables will be created.
 
-## Authentication Routes
-
-Here is a list of all the authentication routes provided by Formidable:
-
-### Default Headers
-
-All routes in this section will require the `Content-Type` and `Accept` headers to be set to `application/json`.
-
-If you are using the `session` based authentication system and have enabled the `HasCsrfToken` and `VerifyCsrfToken` middlewares, you will need to set the `X-CSRF-TOKEN` header to the value of the CSRF token.
-
-### Configure Client
+## Configure Client
 
 The `email` and `password` routes require a client url to be configured. This url is prepended to the routes. To configure this url, head over to your `.env` and set the `CLIENT_URL` environment variable.
 
-### Available Routes
+## Actions
 
-#### /login
+### Login
 
 Log a user in
 
-```
-POST http://localhost:3000/login
-Content-Type: application/json
+<Tabs>
+	<TabItem value="api" label="API" group="api" default>
+		<CodeBlock>{LoginRest}</CodeBlock>
+	</TabItem>
+	<TabItem value="views" label="Formidable Views" group="views">
+		<p>Create a Login view:</p>
+		<CodeBlock language="jsx" title="resources/views/auth/Login.imba">{LoginCanvas}</CodeBlock>
+		<p>Redirect users after a successful login using the `onAuthenticated` auth event:</p>
+		<CodeBlock language="jsx" title="app/Resolvers/AppServiceResolver.imba" highlight="10;11">{LoginResolverCanvas}</CodeBlock>
+	</TabItem>
+	<TabItem value="tags" label="Imba Components" group="tags">
+		<CodeBlock language="jsx" title="resources/imba/pages/Auth/Login.imba">{LoginSPA}</CodeBlock>
+	</TabItem>
+</Tabs>
 
-{
-	"email": "email-address",
-	"password": "password"
-}
-```
-
-#### /logout
+### Logout
 
 Log a user out
 
-```
-POST http://localhost:3000/logout
-```
+<Tabs>
+	<TabItem value="api" label="API" group="api" default>
+		<CodeBlock>{LogoutRest}</CodeBlock>
+	</TabItem>
+	<TabItem value="views" label="Formidable Views" group="views">
+		<p>Add the following code to your home view:</p>
+		<CodeBlock language="jsx" title="resources/views/home.imba">{LogoutCanvas}</CodeBlock>
+		<p>Redirect users after a successful logout using the `onSessionDestroyed` auth event:</p>
+		<CodeBlock language="jsx" title="app/Resolvers/AppServiceResolver.imba" highlight="10;11">{LogoutResolverCanvas}</CodeBlock>
+	</TabItem>
+	<TabItem value="tags" label="Imba Components" group="tags">
+		<CodeBlock language="jsx" title="resources/imba/pages/Home.imba">{LogoutSPA}</CodeBlock>
+	</TabItem>
+</Tabs>
 
-#### /register
+### Register
 
 Register a user
 
-```
-POST http://localhost:3000/register
-Content-Type: application/json
+<Tabs>
+	<TabItem value="api" label="API" group="api" default>
+		<CodeBlock>{RegisterRest}</CodeBlock>
+	</TabItem>
+	<TabItem value="views" label="Formidable Views" group="views">
+		<p>Create a Register view:</p>
+		<CodeBlock language="jsx" title="resources/views/auth/Register.imba">{RegisterCanvas}</CodeBlock>
+		<p>Redirect users after a successful registration using the `onRegistered` auth event:</p>
+		<CodeBlock language="jsx" title="app/Resolvers/AppServiceResolver.imba" highlight="10;11">{LogoutResolverCanvas}</CodeBlock>
+	</TabItem>
+	<TabItem value="tags" label="Imba Components" group="tags">
+		<CodeBlock language="jsx" title="resources/imba/pages/Auth/Register.imba">{RegisterSPA}</CodeBlock>
+	</TabItem>
+</Tabs>
 
-{
-	"name": "full-name",
-	"email": "email-address",
-	"password": "password",
-	"password_confirmation": "password"
-}
-```
-
-#### /email/verify
+### Email Verification
 
 Verify a user's email address
 
-```
-POST http://localhost:3000/email/verify?email={email-address}&signature={signature}
-```
+<Tabs>
+	<TabItem value="api" label="API" group="api" default>
+		<CodeBlock>{VerifyRest}</CodeBlock>
+		<p>The email address and signiture are provided in the query string and can be found in the <i>VerifyEmail</i> mailer that get's sent to the user. When the user clicks on the link in the email, the user will be redirected to <strong>"{"CLIENT_URL"}/email/verify?email={"email-address"}&signature={"signature"}"</strong>.</p>
+		<p>Here, you can extract the email address and signature from the query string and verify the email address by sending a post request to <strong>"/email/verify"</strong> with the extracted email address and signature.</p>
+	</TabItem>
+	<TabItem value="views" label="Formidable Views" group="views">
+		<p>Create a Email Verify view:</p>
+		<CodeBlock language="jsx" title="resources/views/auth/EmailVerify.imba">{VerifyCanvas}</CodeBlock>
+		<p>Redirect users back after email verification using the `onEmailVerified` auth event:</p>
+		<CodeBlock language="jsx" title="app/Resolvers/AppServiceResolver.imba" highlight="10;11">{VerifyResolverCanvas}</CodeBlock>
+	</TabItem>
+	<TabItem value="tags" label="Imba Components" group="tags">
+		<CodeBlock language="jsx" title="resources/imba/pages/Auth/EmailVerify.imba">{VerifySPA}</CodeBlock>
+	</TabItem>
+</Tabs>
 
-The email address and signiture are provided in the query string and can be found in the `VerifyEmail` mailer that get's sent to the user. When the user clicks the link in the email, the user will be redirected to `{CLIENT_URL}/email/verify?email={email-address}&signature={signature}`.
 
-Here, you can extract the email address and signature from the query string and verify the email address by sending a post request to `/email/verify` with the extracted email address and signature.
-
-#### /email/resend
+### Resend Mail
 
 Resend an email verification email to a user
 
@@ -104,7 +139,7 @@ Content-Type: application/json
 }
 ```
 
-#### /password/forgot
+### Forgot Password
 
 Request a password reset email
 
@@ -117,7 +152,7 @@ Content-Type: application/json
 }
 ```
 
-#### /password/reset
+### Reset Password
 
 Reset a password
 
