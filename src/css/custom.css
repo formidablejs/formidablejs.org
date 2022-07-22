@@ -345,3 +345,8 @@ html[data-theme='dark'] .hero--primary {
 		margin-bottom: 50px;
 	}
 }
+
+html[data-theme='dark'] .tabs__item--active {
+	border-bottom-color: #fff;
+	color: #fff;
+}
