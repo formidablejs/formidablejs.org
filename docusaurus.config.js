@@ -11,7 +11,8 @@ module.exports = {
 	projectName: 'formidablejs.org', // Usually your repo name.
 	themeConfig: {
 		announcementBar: {
-			content: "Formidable is currently in Public Beta. Please report any bugs or suggestions at <a href='https://https://github.com/formidablejs/framework/issues'>GitHub</a>.",
+			id: 'formidable-announcement',
+			content: "Formidable is currently in Public Beta. Please report any bugs or suggestions at <a href='https://github.com/orgs/formidablejs/discussions'>GitHub</a>.",
 			backgroundColor: '#000', // Defaults to `#ff0000`.
 			textColor: '#fff', // Defaults to `#fff`.
 			isCloseable: false
