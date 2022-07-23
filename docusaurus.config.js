@@ -55,7 +55,7 @@ module.exports = {
 			links: [
 
 			],
-			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>. Built with Docusaurus.`,
+			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>.`,
 		},
 	},
 	presets: [
