@@ -60,11 +60,6 @@ html[data-theme='dark'] .navbar-sidebar {
 	box-shadow: unset;
 }
 
-/** remove this when the announcement is over */
-.navbar--fixed-top {
-	top: 55px!important;
-}
-
 .hero__title {
 	font-weight: 800;
 	font-size: 48px;
@@ -505,9 +500,6 @@ html[data-theme='dark'] .tabs__item--active {
 	padding-top: 10px !important;
 	padding-bottom: 10px !important;
 	height: unset !important;
-	position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
 .announcementBarContent_KsVm,
