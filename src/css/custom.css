@@ -350,3 +350,13 @@ html[data-theme='dark'] .tabs__item--active {
 	border-bottom-color: #fff;
 	color: #fff;
 }
+
+.announcementBar_IbjG {
+	padding-top: 10px;
+    padding-bottom: 10px;
+    height: unset;
+}
+
+.announcementBarContent_KsVm {
+	font-size: 15px;
+}
