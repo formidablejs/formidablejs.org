@@ -6,7 +6,7 @@ slug: /
 
 ## Meet Formidable
 
-Formidable (or formidablejs) is a Laravel inspired API framework for building backend applications. It uses Imba and supports JavaScript and TypeScript, meaning you don't have to completely ditch your favorite languages while getting up to speed with Imba.
+Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications. It uses Imba by default and supports JavaScript and TypeScript.
 
 Formidable uses [Fastify](https://www.fastify.io/) under the hood.
 
@@ -44,6 +44,14 @@ formidable new example-app --git
 ```
 
 This command will initialize a new Git repository for your project.
+
+You may also create a new Formidable project with TypeScript as the language of choice by passing the `--ts` flag:
+
+```bash
+formidable new example-app --ts
+```
+
+> TypeScript support is experimental and may not work properly.
 
 ## Initial Configuration
 

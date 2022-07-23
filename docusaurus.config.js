@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
 	title: 'The Formidable Framework',
-	tagline: 'Imba Framework for Rapid API Development',
+	tagline: 'The one person Framework', // 'Imba Framework for Rapid API Development',
 	url: 'https://formidablejs.com',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
@@ -10,6 +10,12 @@ module.exports = {
 	organizationName: 'formidablejs', // Usually your GitHub org/user name.
 	projectName: 'formidablejs.org', // Usually your repo name.
 	themeConfig: {
+		announcementBar: {
+			content: "Formidable is currently in Public Beta. Please report any bugs or suggestions at <a href='https://https://github.com/formidablejs/framework/issues'>GitHub</a>.",
+			backgroundColor: '#000', // Defaults to `#ff0000`.
+			textColor: '#fff', // Defaults to `#fff`.
+			isCloseable: false
+		},
 		algolia: {
 			appId: 'BH4D9OD16A',
 			apiKey: 'a445a9bfec68203859d07885f532285b',
