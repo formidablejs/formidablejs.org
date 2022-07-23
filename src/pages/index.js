@@ -20,7 +20,10 @@ export default function Home() {
 				<header className={clsx('hero hero--primary', styles.heroBanner)}>
 					<div className="container">
 						<h1 className="hero__title">{siteConfig.title}</h1>
-						<p className="hero__subtitle">{siteConfig.tagline}</p>
+						{/* <p className="hero__subtitle">{siteConfig.tagline}</p> */}
+						<p className="hero__subtitle">
+							Formidable makes it easy to build full-stack or api applications by providing a great developer-first experience. Whether you're building a web application, a mobile app, a REST API, or a backend service, Formidable is the right tool for you.
+						</p>
 						<div className={styles.buttons}>
 							<Link
 								className={clsx(
@@ -34,13 +37,37 @@ export default function Home() {
 					</div>
 				</header>
 				<div style={{ width: '100%' }}>
-					<img src="/img/main.png" className='img-code'/>
+					<img src="/img/main.png" className='img-code' />
+				</div>
+
+				<div>
+					<p style={{ textAlign: 'center' }}>
+						Brought to you by <a href='https://lunaql.com/' target='_blank'>LunaQL</a>
+					</p>
+				</div>
+
+				<div className='frameworks-container'>
+					<p>
+						Supported Frameworks
+					</p>
+
+					<div className="frameworks">
+						<div className="framework" title="Imba">
+							<img src="https://raw.githubusercontent.com/imba/branding-imba/04d4fca156c665554debb78317a7d6b608953d31/imba-icon.svg" height="50" width="150" alt="" />
+						</div>
+						<div className="framework" title="Vue.js">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" height="50" width="150" alt="" />
+						</div>
+						<div className="framework" title="React.js">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" width="150" alt="" />
+						</div>
+					</div>
 				</div>
 
 				<div className='features'>
 					<div className="container">
 						<div className="grid-container">
-							<div style={{ flex: 1}}>
+							<div style={{ flex: 1 }}>
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 									<path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 								</svg>
@@ -50,7 +77,7 @@ export default function Home() {
 									Craftsman Development CLI tool. Craftsman lets you easily scaffold common classes such as Controllers, Models, and Migrations.
 								</p>
 							</div>
-							<div style={{ flex: 1}}>
+							<div style={{ flex: 1 }}>
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 									<path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
 								</svg>
@@ -61,7 +88,7 @@ export default function Home() {
 									Oracle, and more.
 								</p>
 							</div>
-							<div style={{ flex: 1}}>
+							<div style={{ flex: 1 }}>
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 									<path strokeLinecap="round" strokeLinejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
 								</svg>
@@ -83,13 +110,13 @@ export default function Home() {
 						See how your application may potentially look like without leaving your personal browser.
 					</p>
 
-					<div dangerouslySetInnerHTML={{ __html: "<iframe src='https://codesandbox.io/embed/formidable-pn32bs?fontsize=14&autoresize=1&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba' style='width:100%;height:500px;border:0;border-radius:4px;overflow:hidden;' title='formidable' allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>" }}/>
+					<div dangerouslySetInnerHTML={{ __html: "<iframe src='https://codesandbox.io/embed/formidable-pn32bs?fontsize=14&autoresize=1&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba' style='width:100%;height:500px;border:0;border-radius:4px;overflow:hidden;' title='formidable' allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>" }} />
 				</div>
 
 				<div className='community'>
 					<div className="container">
 						<div className="grid-container">
-							<div style={{ flex: 1}}>
+							<div style={{ flex: 1 }}>
 								<h3>Connect with the Formidable community</h3>
 								<p>
 									Stay up to date with new releases, learn more about how to use Formidable, collaborate with the community and share projects and feedback
@@ -97,7 +124,7 @@ export default function Home() {
 								</p>
 							</div>
 
-							<div style={{ flex: 1}}>
+							<div style={{ flex: 1 }}>
 								<ol className="communities">
 									<li>
 										<a href="https://discord.gg/wm2sFGSrmX">
