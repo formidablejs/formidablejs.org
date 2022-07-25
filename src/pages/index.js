@@ -47,13 +47,18 @@ export default function Home() {
 				</div>
 
 				<div className='frameworks-container'>
-					<p>
-						Supported Frameworks
-					</p>
+					<h2>
+						Supported Technologies
+					</h2>
+
+					<p>Build with your favorite technologies</p>
 
 					<div className="frameworks">
 						<div className="framework" title="Imba">
 							<img src="https://raw.githubusercontent.com/imba/branding-imba/04d4fca156c665554debb78317a7d6b608953d31/imba-icon.svg" height="50" width="150" alt="" />
+						</div>
+						<div className="framework" title="TypeScript">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="50" width="150" alt="" />
 						</div>
 						<div className="framework" title="Vue.js">
 							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" height="50" width="150" alt="" />

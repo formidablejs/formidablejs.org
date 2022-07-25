@@ -124,31 +124,27 @@ html[data-theme='dark'] .navbar-sidebar {
 	text-align: center;
 }
 
-.frameworks-container p {
+.frameworks-container h2 {
 	font-size: 20px;
 	font-weight: 700;
 	line-height: 1;
 	letter-spacing: -1px;
+}
+
+.frameworks-container p {
 	padding-bottom: 30px;
+	font-size: 20px;
 }
 
 @media screen and (min-width: 780px) {
-	.frameworks-container p {
+	.frameworks-container h2 {
 		font-size: 35px;
-		font-weight: 700;
-		line-height: 1;
-		letter-spacing: -1px;
-		padding-bottom: 30px;
 	}
 }
 
 @media screen and (min-width: 1024px) {
-	.frameworks-container p {
+	.frameworks-container h2 {
 		font-size: 40px;
-		font-weight: 700;
-		line-height: 1;
-		letter-spacing: -1px;
-		padding-bottom: 30px;
 	}
 }
 
@@ -196,7 +192,7 @@ html[data-theme='dark'] .framework:hover {
 
 @media screen and (min-width: 960px) {
 	.frameworks {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 }
 
