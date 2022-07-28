@@ -184,15 +184,21 @@ html[data-theme='dark'] .framework:hover {
 	box-shadow: 0 5px 15px rgba(65, 58, 58, 0.3);
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 580px) {
 	.frameworks {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
 
+@media screen and (min-width: 640px) {
+	.frameworks {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
 @media screen and (min-width: 960px) {
 	.frameworks {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-columns: repeat(5, minmax(0, 1fr));
 	}
 }
 

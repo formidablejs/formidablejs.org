@@ -66,6 +66,9 @@ export default function Home() {
 						<div className="framework" title="React.js">
 							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" width="150" alt="" />
 						</div>
+						<div className="framework" title="GraphQL">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" height="50" width="150" alt="" />
+						</div>
 					</div>
 				</div>
 
