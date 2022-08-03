@@ -51,7 +51,7 @@ You may also create a new Formidable project with TypeScript as the language of 
 formidable new example-app --ts
 ```
 
-> TypeScript support is experimental and may not work properly.
+See [TypeScript Support](typescript-support) for more information.
 
 ## Initial Configuration
 

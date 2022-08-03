@@ -110,7 +110,7 @@ export class PostController < Controller
 
 This will return the first `param` in the route.
 
-You can also specify which param should be loaded: 
+You can also specify which param should be loaded:
 
 ```js title="app/Http/Controllers/PostController.imba" {1,6}
 import { @use } from '@formidablejs/framework'
