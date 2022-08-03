@@ -508,3 +508,7 @@ html[data-theme='dark'] .tabs__item--active {
 .announcementBarContent_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
 	font-size: 15px !important;
 }
+
+.DocSearch-Button {
+	border-radius: 8px !important;
+}
