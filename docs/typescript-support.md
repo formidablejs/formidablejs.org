@@ -39,7 +39,7 @@ import { use } from '@formidablejs/ts-ports';
 
 export class UserController extends Controller {
     @use('table:users')
-    public show(user: Promise<User | null>) : Promise<User | void> {
+    public async show(user: Promise<User | null>) : Promise<User | void> {
         return (await user) || this.notFound('User not found');
     }
 }
