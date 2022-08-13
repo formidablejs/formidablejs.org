@@ -107,7 +107,11 @@ Mail.to('email@example')
 	.raw('Embedded image: <img src="cid:imba"/>')
 ```
 
-> Note, the `cid` must be unique for each attachment.
+:::note
+
+the `cid` must be unique for each attachment.
+
+:::
 
 ## Sending HTML Emails
 

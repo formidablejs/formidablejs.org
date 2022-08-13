@@ -60,7 +60,11 @@ export class CustomEmail < Mailable
 
 Next, you can start styling your email.
 
-> Note: Formidable publishes layout tags for all of its email mailable classes in the `resources/views/mail/vendor` directory, you may use these tags in your custom email, or modify the tags instead of creating a new custom verification email. <br/> If you don't see this directory, you may run: `node craftsman package:publish --package=@formidablejs/mailer --tag=components,config` to publish the tags.
+:::note
+
+Formidable publishes layout tags for all of its email mailable classes in the `resources/views/mail/vendor` directory, you may use these tags in your custom email, or modify the tags instead of creating a new custom verification email. <br/> If you don't see this directory, you may run: `node craftsman package:publish --package=@formidablejs/mailer --tag=components,config` to publish the tags.
+
+:::
 
 #### Email Verification URL
 

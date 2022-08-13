@@ -181,7 +181,11 @@ strRandom() # bfd809fc
 strRandom(40) # 485f8c73737030df7872e2c3e5e2d3b0eb1d769f
 ```
 
-> Note, `length` must be divisible by 2.
+:::note
+
+`length` must be divisible by 2.
+
+:::
 
 ### Security
 
