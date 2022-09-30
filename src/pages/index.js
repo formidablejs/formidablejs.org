@@ -37,13 +37,17 @@ export default function Home() {
 					</div>
 				</header>
 				<div style={{ width: '100%' }}>
-					<img src="/img/main.png" className='img-code' />
+					{/* <img src="/img/main.png" className='img-code' /> */}
+					<img src="/img/main-ts.svg" className='img-code' />
 				</div>
 
-				<div>
-					<p style={{ textAlign: 'center' }}>
+				<div style={{ textAlign: 'center' }}>
+					{/* <p>
 						Brought to you by <a href='https://lunaql.com/' target='_blank'>LunaQL</a>
-					</p>
+					</p> */}
+
+					<p style={{ fontWeight: 'bolder' }}>Sponsored by</p>
+					<img src="/img/jb_beam.svg" />
 				</div>
 
 				<div className='frameworks-container'>

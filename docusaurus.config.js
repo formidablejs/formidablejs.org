@@ -1,6 +1,6 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-	title: 'The Formidable Framework',
+	title: 'The Formidable Framework - Sponsored by JetBrains',
 	tagline: 'The one person Framework', // 'Imba Framework for Rapid API Development',
 	url: 'https://formidablejs.com',
 	baseUrl: '/',
@@ -55,7 +55,7 @@ module.exports = {
 			links: [
 
 			],
-			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>.`,
+			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies | Brought to you by <a href='https://lunaql.com/' target='_blank'>LunaQL</a>. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>.`,
 		},
 	},
 	presets: [

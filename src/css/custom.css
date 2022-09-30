@@ -23,6 +23,10 @@
 	--ifm-code-font-size: 95%;
 }
 
+html[data-theme='dark']:root {
+	--ifm-background-color: #18191a;
+}
+
 .row {
 	margin: 0;
 }
@@ -58,6 +62,10 @@ html[data-theme='dark'] .navbar-sidebar {
 	background: #ffffff73;
 	backdrop-filter: blur(8px);
 	box-shadow: unset;
+}
+
+.navbar__item.dropdown {
+	order: 1;
 }
 
 .hero__title {
@@ -420,6 +428,7 @@ html[data-theme='dark'] .hero--primary {
 	display: block;
 	max-width: 40%;
 	border: 1px solid #555;
+	background-color: #fff;;
 	border-radius: 8px;
 }
 
