@@ -506,17 +506,13 @@ html[data-theme='dark'] .tabs__item--active {
 	color: #fff;
 }
 
-.announcementBar_IbjG,
-.announcementBar_mb4j,
-.announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
+div[role="banner"] {
 	padding-top: 10px !important;
 	padding-bottom: 10px !important;
 	height: unset !important;
 }
 
-.announcementBarContent_KsVm,
-.announcementBarContent_xLdY,
-.announcementBarContent_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
+div[role="banner"] div {
 	font-size: 15px !important;
 }
 
