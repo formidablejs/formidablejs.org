@@ -19,7 +19,7 @@ export default function Home() {
 				description={siteConfig.tagline}>
 				<header className={clsx('hero hero--primary', styles.heroBanner)}>
 					<div className="container">
-						<h1 className="hero__title">{siteConfig.title}</h1>
+						<h1 className="hero__title">The Formidable Framework</h1>
 						{/* <p className="hero__subtitle">{siteConfig.tagline}</p> */}
 						<p className="hero__subtitle">
 							Formidable makes it easy to build full-stack or api applications by providing a great developer-first experience. Whether you're building a web application, a mobile app, a REST API, or a backend service, Formidable is the right tool for you.
