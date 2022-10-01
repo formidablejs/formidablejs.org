@@ -37,8 +37,8 @@ export default function Home() {
 					</div>
 				</header>
 				<div style={{ width: '100%' }}>
-					{/* <img src="/img/main.png" className='img-code' /> */}
-					<img src="/img/main-ts.svg" className='img-code' />
+					<img src="/img/main-ts-light.png" theme="light" className='img-code' />
+					<img src="/img/main-ts-dark.png" theme="dark" className='img-code' />
 				</div>
 
 				<div style={{ textAlign: 'center' }}>

@@ -430,6 +430,15 @@ html[data-theme='dark'] .hero--primary {
 	border: 1px solid #555;
 	background-color: #fff;;
 	border-radius: 8px;
+	display: none;
+}
+
+html[data-theme='dark'] .img-code[theme="dark"] {
+	display: block;
+}
+
+html[data-theme='light'] .img-code[theme="light"] {
+	display: block;
 }
 
 @media only screen and (max-width: 1200px) {
