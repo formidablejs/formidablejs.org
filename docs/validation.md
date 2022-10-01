@@ -3,6 +3,10 @@ id: validation
 title: Validation
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 # Validation
 
 Formidable uses the [validatorjs](https://github.com/mikeerickson/validatorjs) package for handling validations within your application. By default, each [FormRequest](/docs/requests) is validated if rules are present.
@@ -15,6 +19,15 @@ Let's look at a basic route that validates input data and returns errors back to
 
 First, we will assume we have a post route for adding new tasks:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```js title="routes/api.imba"
 import { Route } from '@formidablejs/framework'
 import { TaskController } from '../app/Http/Controllers/TaskControllers'
@@ -22,35 +35,103 @@ import { TaskController } from '../app/Http/Controllers/TaskControllers'
 Route.post('/tasks/store', [TaskController, 'store']).name('tasks.store')
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="routes/api.ts"
+import { Route } from '@formidablejs/framework'
+import { TaskController } from '../app/Http/Controllers/TaskControllers'
+
+Route.post('/tasks/store', [TaskController, 'store']).name('tasks.store')
+```
+
+</TabItem>
+</Tabs>
+
 ### Creating The Controller
 
 Next, we will create a controller and add a store method that handles incoming requests:
 
-```js title="app/Http/Controllers/TaskController.imba"
-import Controller from './Controller'
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py title="app/Http/Controllers/TaskController.imba"
+import { Request } from '@formidablejs/framework'
+import { Controller } from './Controller'
 
 export class TaskController < Controller
 
-	def store request
-		'do nothing'
+	def store request\Request
+		# todo
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Http/Controllers/TaskController.ts"
+import { Request } from '@formidablejs/framework'
+import { Controller } from './Controller'
+
+export class TaskController extends Controller {
+	store(request: Request): void {
+		// todo
+	}
+}
+```
+
+</TabItem>
+</Tabs>
 
 ### Creating The Request
 
 Then, we will create a `FormRequest` class that will be passed to the controller. We will add our rules here:
 
-```js title="app/Http/Request/StoreTaskRequest.imba"
-import { FormRequest } from '@formidablejs/framework'
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
-export class StoreTaskRequest < FormRequest
+```js title="app/Http/Request/StoreTaskRequest.imba"
+import { Request } from '@formidablejs/framework'
+
+export class StoreTaskRequest < Request
 
 	def rules
 		{
-			title: 'required|min:4',
+			title: 'required|min:4'
 			description: 'required|min:10'
 		}
 
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Http/Request/StoreTaskRequest.ts"
+import { Request } from '@formidablejs/framework'
+
+export class StoreTaskRequest extends Request {
+	rules(): object {
+		return {
+			title: 'required|min:4',
+			description: 'required|min:10'
+		}
+	}
+}
+```
+
+</TabItem>
+</Tabs>
 
 The `title` rule is required and must be at least 4 characters long. The `description` rule is also required and must be at least 10 characters long. Should the validation fail, Formidable will throw an `ValidationException`.
 
@@ -58,17 +139,46 @@ The `title` rule is required and must be at least 4 characters long. The `descri
 
 Now that we have created our request, we can go back to our controller and use the `@use` decorator to inject the `FormRequest` into our `store` method:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py title="app/Http/Controllers/TaskController.imba"
 import { @use } from '@formidablejs/framework'
-import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
+import { StoreTaskRequest } from '../Request/StoreTaskRequest'
 import { Controller } from './Controller'
 
 export class TaskController < Controller
 
 	@use(StoreTaskRequest)
 	def store request\StoreTaskRequest
-		'you will only see this if the validation passed'
+		# you will only see this if the validation passed
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Http/Request/StoreTaskRequest.ts"
+import { use } from '@formidablejs/ts-ports'
+import { StoreTaskRequest } from '../Request/StoreTaskRequest'
+import { Controller } from './Controller'
+
+export class TaskController extends Controller {
+	@use(StoreTaskRequest)
+	store(request: StoreTaskRequest): void {
+		// you will only see this if the validation passed
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 
 Because we used the `@use` decorator, the `StoreTaskRequest` will be injected into the `store` method and Formidable will automatically run the `validate` method from the `FormRequest` instance.
 
@@ -82,7 +192,16 @@ Formidable automatically returns a list of validation errors to the client as JS
 
 To customize the error messages, we can use the `messages` method from the `FormRequest` class. You must return an object with the keys and validation rules nested under each key with the value being the error message.
 
-```js
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
 def messages
 	{
 		title: {
@@ -95,6 +214,27 @@ def messages
 		}
 	}
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+messages(): object {
+	return {
+		title: {
+			required: 'The title is required',
+			min: 'The title must be at least 4 characters long'
+		},
+		description: {
+			required: 'The description is required',
+			min: 'The description must be at least 10 characters long'
+		}
+	}
+}
+```
+
+</TabItem>
+</Tabs>
 
 ## Available Rules
 

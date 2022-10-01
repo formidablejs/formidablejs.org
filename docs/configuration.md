@@ -3,6 +3,10 @@ id: configuration
 title: Configuration
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 All of the configuration files for the Formidable framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
 
 These configuration files allow you to configure things like your database connection information, your mail server information, as well as various other core configuration values such as your application locale and encryption key.
@@ -27,7 +31,7 @@ Formidable will automatically use the assumed types when reading any of the vari
 
 If you need to define an environment variable with a value that contains spaces, you may do so by enclosing the value in double quotes:
 
-```env
+```env title=".env"
 APP_NAME="My Application"
 ```
 
@@ -35,7 +39,16 @@ APP_NAME="My Application"
 
 All of the variables listed in this file will be loaded into the `process.env` object when your application does an initial boot. However, you may use the `env` helper to retrieve values from these variables in your configuration files:
 
-```py
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py title="config/app.imba"
 import { env } from '@formidablejs/framework/lib/Support/Helpers'
 
 export {
@@ -44,20 +57,59 @@ export {
     ...
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="config/app.ts"
+import { env } from '@formidablejs/framework/lib/Support/Helpers'
+
+export {
+    ...
+    debug: env('APP_DEBUG', false),
+    ...
+```
+
+</TabItem>
+</Tabs>
+
 The second value passed to the `env` function is the "default value". This value will be returned if no environment variable exists for the given key.
 
 ## Accessing Configuration Values
 
 You may easily access your configuration values using the global `config` helper function from anywhere in your application. The configuration values may be accessed using "dot" syntax, which includes the name of the file and option you wish to access. A default value may also be specified and will be returned if the configuration option does not exist:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py
 import { config } from '@formidablejs/framework/lib/Support/Helpers'
 
-let value = config('app.name')
+let value\string = config('app.name')
 
 # Retrieve a default value if the configuration value does not exist...
-let value = config('app.name', 'Formidable')
+let value\string = config('app.name', 'Formidable')
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { config } from '@formidablejs/framework/lib/Support/Helpers'
+
+let value: string = config('app.name')
+
+# Retrieve a default value if the configuration value does not exist...
+let value: string = config('app.name', 'Formidable')
+```
+
+</TabItem>
+</Tabs>
 
 ## Configuration Caching
 
@@ -65,9 +117,15 @@ When making changes to your `.env` file or any of your `config` files, you shoul
 
 ## Debug Mode
 
-The debug option in your `config/app.imba` configuration file determines how much information about an error is actually displayed to the user. By default, this option is set to respect the value of the APP_DEBUG environment variable, which is stored in your `.env` file.
+The debug option in your `config/app.imba` configuration file or `config/app.ts` configuration file determines how much information about an error is actually displayed to the user. By default, this option is set to respect the value of the APP_DEBUG environment variable, which is stored in your `.env` file.
 
-For local development, you should set the `APP_DEBUG` environment variable to `true`. In your production environment, this value should always be `false`. **If the variable is set to `true` in production, you risk exposing sensitive configuration values to your application's end users.**
+For local development, you should set the `APP_DEBUG` environment variable to `true`. In your production environment, this value should always be `false`.
+
+:::danger
+
+If the `APP_DEBUG` variable is set to `true` in production, you risk exposing sensitive configuration values to your application's end users.
+
+:::
 
 ## Maintenance Mode
 
@@ -75,17 +133,55 @@ When your application is in maintenance mode, a custom view will be displayed fo
 
 To enable maintenance mode, execute the `down` Craftsman command:
 
+<Tabs
+    defaultValue={State.runtime}
+	groupId="runtime-snippets"
+    values={[
+        {label: 'Node', value: 'node'},
+        {label: 'Bun', value: 'bun'},
+    ]}>
+<TabItem value="node">
+
 ```bash
 node craftsman down
 ```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun run craftsman down
+```
+
+</TabItem>
+</Tabs>
 
 #### Bypassing Maintenance Mode
 
 Even while in maintenance mode, you may use the `secret` option to specify a maintenance mode bypass secret:
 
+<Tabs
+    defaultValue={State.runtime}
+	groupId="runtime-snippets"
+    values={[
+        {label: 'Node', value: 'node'},
+        {label: 'Bun', value: 'bun'},
+    ]}>
+<TabItem value="node">
+
 ```bash
 node craftsman down --secret="a-private-secret"
 ```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun run craftsman down --secret="a-private-secret"
+```
+
+</TabItem>
+</Tabs>
 
 After placing the application in maintenance mode, you may navigate to the application URL matching this secret and Formidable will issue a maintenance mode bypass cookie to your browser:
 
@@ -99,6 +195,25 @@ When accessing this hidden route, you will then be redirected to the / route of 
 
 To disable maintenance mode, use the `up` command:
 
+<Tabs
+    defaultValue={State.runtime}
+	groupId="runtime-snippets"
+    values={[
+        {label: 'Node', value: 'node'},
+        {label: 'Bun', value: 'bun'},
+    ]}>
+<TabItem value="node">
+
 ```bash
 node craftsman up
 ```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun run craftsman up
+```
+
+</TabItem>
+</Tabs>
