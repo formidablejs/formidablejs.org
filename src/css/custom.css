@@ -338,8 +338,7 @@ html[data-theme='dark'] .button--custom:hover {
 	border: 1px solid #777;
 }
 
-html[data-theme='dark'] .clean-btn.toggleButton_node_modules-\@docusaurus-theme-classic-lib-next-theme-ColorModeToggle-styles-module>svg,
-html[data-theme='dark'] .clean-btn.toggleButton_rCf9>svg {
+html[data-theme='dark'] .clean-btn>svg {
 	color: #fff !important;
 }
 
