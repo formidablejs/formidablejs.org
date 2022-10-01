@@ -3,6 +3,10 @@ id: views
 title: Views
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 # Views
 
 Just like any other morden framework, Formidable ships with a views feature. Formidable's views are powered by [Imba](https://imba.io/) allowing you to quickly write beautiful Imba views and use them in your application.
@@ -22,6 +26,15 @@ export class Greeting < View
 
 Since this view is stored at `resources/views/greeting.imba`, we may return it using the `view` helper like so:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py title="routes/web.imba"
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
@@ -30,15 +43,49 @@ import { Greeting } from '../resources/views/greeting'
 Route.get '/greeting', do view(Greeting, { name: 'Luna' })
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="routes/web.ts"
+import { Route } from '@formidablejs/framework'
+import { View } from '@formidablejs/framework'
+import { view } from '@formidablejs/framework'
+import { Greeting } from '../resources/views/greeting'
+
+Route.get('/greeting', (): View => view(Greeting, { name: 'Luna' }))
+```
+
+</TabItem>
+</Tabs>
+
 ## Creating & Rendering Views
 
 You may create a view by extending the `View` class and placing it in your application's `resources/views` directory.
 
 Once you have created a view, you may return it from one of your application's routes or controllers using the `view` helper:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py
 Route.get '/greeting', do view(Greeting, { name: 'Luna' })
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+Route.get('/greeting', (): View => view(Greeting, { name: 'Luna' }))
+```
+
+</TabItem>
+</Tabs>
 
 As you can see, the first argument passed to the view helper is the view class located in the `resources/views` directory. The second argument is an object of data that should be made available to the view. In this case, we are passing the name variable, which is displayed in the view using the `get` method provided by the `View` class.
 
@@ -46,9 +93,28 @@ As you can see, the first argument passed to the view helper is the view class l
 
 As you saw in the previous examples, you may pass an object of data to views to make that data available to the view:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py
 view(Greeting, { name: 'Donald' })
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+view(Greeting, { name: 'Donald' })
+```
+
+</TabItem>
+</Tabs>
 
 ## Imba Components
 

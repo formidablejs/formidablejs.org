@@ -3,6 +3,10 @@ id: csrf-protection
 title: CSRF Protection
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 # CSRF Protection
 
 ## Introduction {#introduction}
@@ -21,12 +25,39 @@ You may use [js-cookie](https://github.com/js-cookie/js-cookie) to retrieve the 
 
 To protect any route that's not in the `session` group, you may use the `HasCsrfToken` and `VerifyCsrfToken` middleware's:
 
-```js title="routes/api.imba" {7}
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```js title="routes/api.imba" {8}
+import { Request } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 import { HasCsrfToken } from '@formidablejs/framework'
 import { VerifyCsrfToken } from '@formidablejs/framework'
 
-Route.post('/tasks/create', do(request)
+Route.post('/tasks/create', do(request\Request)
 	# do something...
 ).middleware([HasCsrfToken, VerifyCsrfToken])
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="routes/api.ts" {8}
+import { Request } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
+import { HasCsrfToken } from '@formidablejs/framework'
+import { VerifyCsrfToken } from '@formidablejs/framework'
+
+Route.post('/tasks/create', (request: Request) => {
+	// do something...
+}).middleware([HasCsrfToken, VerifyCsrfToken])
+```
+
+</TabItem>
+</Tabs>

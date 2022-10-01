@@ -79,7 +79,7 @@ Houses your assets such as images, JavaScript, and CSS.
 
 Contains [language](/docs/localization) files.
 
-#### resources/lang
+#### resources/views
 
 Houses your [Formidable View](/docs/views) classes.
 

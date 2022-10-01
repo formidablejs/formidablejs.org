@@ -3,6 +3,10 @@ id: frontend
 title: Frontend Development
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 # Frontend Development
 
 ## Imba
@@ -95,15 +99,25 @@ In your controller, provide both the name of the JavaScript page component, as w
 
 In this example we're passing a single prop, called `post` to the Post/Show page component:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py title=app/Http/Controllers/PostController.imba
+import { @use } from '@formidablejs/framework'
 import { Inertia } from '@formidablejs/inertia'
 import { Post } from '../../Models/Post'
 import { Controller } from './Controller'
 
-export class PostController
+export class PostController < Controller
 
 	@use(Post)
-	def show post\Post
+	def show post\Promise<Post>
 		const { attributes } = await post
 
 		Inertia.render('Post/Show', {
@@ -111,9 +125,43 @@ export class PostController
 		})
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title=app/Http/Controllers/PostController.ts
+import { use } from '@formidablejs/ts-ports'
+import { Inertia } from '@formidablejs/inertia'
+import { InertiaResponse } from '@formidablejs/inertia'
+import { Post } from '../../Models/Post'
+import { Controller } from './Controller'
+
+export class PostController extends Controller
+	@use(Post)
+	async show(post: Promise<Post>): Promise<InertiaResponse> {
+		const { attributes } = await post
+
+		return Inertia.render('Post/Show', {
+			post: attributes
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### Root template data
 
-The default inertia root view is defined in the `config/inertia.imba` config file:
+The default inertia root view is defined in the `config/inertia.imba` or `config/inertia.ts` config file:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title=config/inertia.imba
 import { App } from '../resources/views/app'
@@ -131,19 +179,83 @@ export default {
 }
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title=config/inertia.ts
+import { App } from '../resources/views/app'
+
+export default {
+
+	/*
+	 * --------------------------------------------------------------------------
+	 * Root View
+	 * --------------------------------------------------------------------------
+	 *
+	 * Sets the root template that's loaded on the first page visit.
+	 */
+
+	rootView: App
+
+}
+```
+
+</TabItem>
+</Tabs>
+
 If you'd like to provide a custom root for for a specific component, you may do so by using `setRootView`:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py
 Inertia.render('Welcome').setRootView(CustomFormidableView)
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```py
+Inertia.render('Welcome').setRootView(CustomFormidableView)
+```
+
+</TabItem>
+</Tabs>
+
 You can also pass data props to a root view by using `withViewData`:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py
 Inertia.render('Welcome').withViewData({
 	meta: meta
 })
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+Inertia.render('Welcome').withViewData({
+	meta: meta
+})
+```
+
+</TabItem>
+</Tabs>
 
 > This section is incomplete. Join our [discord](https://discord.gg/wm2sFGSrmX) if you have questions.
 

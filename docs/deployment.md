@@ -20,13 +20,13 @@ If you aren't quite ready to manage your own server configuration, we recommend 
 
 To get started, add a `port` flag and a `host` flag to your start script:
 
-```json
+```json title="package.json"
 "start": "node craftsman serve --port=${PORT:=3000} --host=${HOST}"
 ```
 
 Then add a `heroku-postbuild` script:
 
-```json
+```json title="package.json"
 "heroku-postbuild": "node craftsman config:cache"
 ```
 
