@@ -3,6 +3,10 @@ id: database-migrations
 title: Migrations
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Database Migrations
 
 Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve.
@@ -15,9 +19,28 @@ Formidable Database Migrations are stored in the `/database/migrations` director
 
 To create a new migration, run the following command:
 
-```
+<Tabs
+    defaultValue={State.runtime}
+	groupId="runtime-snippets"
+    values={[
+        {label: 'Node', value: 'node'},
+        {label: 'Bun', value: 'bun'},
+    ]}>
+<TabItem value="node">
+
+```bash
 node craftsman make:migration CreatePostsTable --table=posts
 ```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun run craftsman make:migration CreatePostsTable --table=posts
+```
+
+</TabItem>
+</Tabs>
 
 The command above will create a new migration file under `/database/migrations` and will generate the following migration:
 
@@ -47,9 +70,28 @@ exports.up = (knex) => {
 
 After defining our schema, we can now run the migration:
 
-```
+<Tabs
+    defaultValue={State.runtime}
+	groupId="runtime-snippets"
+    values={[
+        {label: 'Node', value: 'node'},
+        {label: 'Bun', value: 'bun'},
+    ]}>
+<TabItem value="node">
+
+```bash
 node craftsman migrate:latest
 ```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun run craftsman migrate:latest
+```
+
+</TabItem>
+</Tabs>
 
 This will add a mew table to your database.
 
@@ -61,9 +103,28 @@ Formidable allows you to modify existing tables by creating new migrations that 
 
 Here is an example of a migration that adds a new column to an existing table:
 
+<Tabs
+    defaultValue={State.runtime}
+	groupId="runtime-snippets"
+    values={[
+        {label: 'Node', value: 'node'},
+        {label: 'Bun', value: 'bun'},
+    ]}>
+<TabItem value="node">
+
 ```bash
 node craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
 ```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun run craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
+```
+
+</TabItem>
+</Tabs>
 
 ```js
 /**

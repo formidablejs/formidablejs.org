@@ -1,3 +1,4 @@
+import State from '../src/state/State'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TOCInline from '@theme/TOCInline';
@@ -25,19 +26,38 @@ Formidable provides a starter authentication system for both `session` and `jwt`
 
 The `session` based authentication system enables the use of cookies, and stores the session data in `memory`, `file` or `redis`. While the `jwt` based authentication system enables the use of JWT tokens, and stores authentication data in the database.
 
-You can find your application's authentication configuration in `config/auth.imba`.
+You can find your application's authentication configuration in `config/auth.imba` or `config/auth.ts`.
 
 ## Getting Started
 
-Formidable will automatically enable authentication for you. Should you not want to use authentication in your application, you can disable it by removing `Auth.routes!` from the `app/Resolvers/RouterServiceResolver.imba`, this will disable all authentication routes.
+Formidable will automatically enable authentication for you. Should you not want to use authentication in your application, you can disable it by removing `Auth.routes!` from the `app/Resolvers/RouterServiceResolver.imba` or by removing `Auth.routes()` from the `app/Resolvers/RouterServiceResolver.ts`, this will disable all authentication routes.
 
 ## Database Considerations
 
-Its important to note that you will need to create a database for your application to use authentication. If a database has been created, head over to your `.env` file and `config/database.imba` config file to configure your database connection, once this is done, you can run:
+Its important to note that you will need to create a database for your application to use authentication. If a database has been created, head over to your `.env` file and `config/database.imba` or `config/database.ts` config file to configure your database connection, once this is done, you can run:
 
-```
+<Tabs
+    defaultValue={State.runtime}
+	groupId="runtime-snippets"
+    values={[
+        {label: 'Node', value: 'node'},
+        {label: 'Bun', value: 'bun'},
+    ]}>
+<TabItem value="node">
+
+```bash
 node craftsman migrate:latest
 ```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun run craftsman migrate:latest
+```
+
+</TabItem>
+</Tabs>
 
 This will create all the tables needed for authentication. `users`, `password_resets` and `personal_access_tokens` tables will be created.
 
@@ -178,6 +198,15 @@ Formidable provides a number of events that can be used to hook into your applic
 
 The `beforeLogin` event is fired before a user is logged in:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
@@ -189,9 +218,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.beforeLogin((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `beforeLogout`
 
 The `beforeLogout` event is fired before a user is logged out:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -204,9 +261,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.beforeLogout((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `beforeRegister`
 
 The `beforeRegister` event is fired before a user is registered:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -219,9 +304,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.beforeRegister((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `beforeVerify`
 
 The `beforeVerify` event is fired before a user email is verified:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -234,9 +347,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.beforeVerify((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `beforeResend`
 
 The `beforeResend` event is fired before a user verification email is resent:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -249,9 +390,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.beforeResend((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `beforeForgot`
 
 The `beforeForgot` event is fired before a user password reset email is sent:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -264,9 +433,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.beforeForgot((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `beforeReset`
 
 The `beforeReset` event is fired before a user password is reset:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -279,9 +476,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.beforeReset((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `onAuthenticated`
 
 The `onAuthenticated` event is fired after a user is logged in:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -294,9 +519,37 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onAuthenticated((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `onRegistered`
 
 The `onRegistered` event is fired after a user is registered:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -309,6 +562,25 @@ export class AppServiceResolver < ServiceResolver
 			# Do something
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onRegistered((request, reply) => {
+			// Do something
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 ## Custom Authentication Handlers
 
 Formidable provides an easy way to write your own authentication handlers.
@@ -316,6 +588,15 @@ Formidable provides an easy way to write your own authentication handlers.
 #### `onLogin`
 
 The `onLogin` hook is used to handle the login process:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -328,9 +609,37 @@ export class AppServiceResolver < ServiceResolver
 			# Log the user in
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onLogin((request, reply) => {
+			// Log the user in
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `onRegister`
 
 The `onRegister` hook is used to handle the registration process:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -343,9 +652,37 @@ export class AppServiceResolver < ServiceResolver
 			# Register the user
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onRegister((request, reply) => {
+			// Register the user
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `onForgot`
 
 The `onForgot` hook is used to handle the forgot password process:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -358,9 +695,37 @@ export class AppServiceResolver < ServiceResolver
 			# Send the user a password reset email
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onForgot((request, reply) => {
+			// Send the user a password reset email
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `onReset`
 
 The `onReset` hook is used to handle the password reset process:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -373,9 +738,37 @@ export class AppServiceResolver < ServiceResolver
 			# Reset the user's password
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onReset((request, reply) => {
+			// Reset the user's password
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `onVerification`
 
 The `onVerification` hook is used to handle the email verification process:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -388,9 +781,37 @@ export class AppServiceResolver < ServiceResolver
 			# Verify the user's email address
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onVerification((request, reply) => {
+			// Verify the user's email address
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 #### `onEmailResend`
 
 The `onEmailResend` hook is used to handle the email verification resend process:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -403,9 +824,37 @@ export class AppServiceResolver < ServiceResolver
 			# Resend the user's email verification email
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth.onEmailResend((request, reply) => {
+			// Resend the user's email verification email
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 ## Authentication Mailers
 
 By default, Formidable provides `VerifyEmail` and `ResetPassword` mailers that can be used to send email verification and password reset emails to your users:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/AppServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -422,17 +871,66 @@ export class AppServiceResolver < ServiceResolver
 
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/AppServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+import { VerifyEmail } from '../Mail/VerifyEmail'
+import { ResetPassword } from '../Mail/ResetPassword'
+
+export class AppServiceResolver extends ServiceResolver {
+	boot(): void {
+		Auth
+			.verificationMailer(VerifyEmail)
+			.resetPasswordMailer(ResetPassword)
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 ## Protecting Routes
 
 Formidable provides an `auth` middleware that can be used to require users to be logged in before accessing a route:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py
 Route.get('ping', do 'pong').middleware(['auth'])
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts
+Route.get('ping', () => 'pong').middleware(['auth'])
+```
+
+</TabItem>
+</Tabs>
+
 ### JWT
 
 If you want to use JWT tokens for authentication, you can use the `jwt` middleware:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```py title="app/Resolvers/RouterServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
@@ -448,6 +946,28 @@ export class RouterServiceResolver < ServiceResolver
 			require '../../routes/api'
 
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/RouterServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
+
+export class RouterServiceResolver extends ServiceResolver {
+	boot(): void {
+		Route.group({ middleware: 'jwt' }, () => {
+			Auth.routes()
+
+			require('../../routes/api')
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
 
 When logging your users in, a JWT token will be returned in the response:
 
@@ -476,6 +996,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5YTNkZWY0M
 
 If you want to use sessions for authentication, you can use the `session` middleware:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```py title="app/Resolvers/RouterServiceResolver.imba"
 import { AuthService as Auth } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
@@ -490,6 +1019,28 @@ export class RouterServiceResolver < ServiceResolver
 			require '../../routes/api'
 
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Resolvers/RouterServiceResolver.ts"
+import { AuthService as Auth } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
+import { Route } from '@formidablejs/framework'
+
+export class RouterServiceResolver extends ServiceResolver
+	boot(): void {
+		Route.group({ middleware: 'session' }, () => {
+			Auth.routes()
+
+			require('../../routes/api')
+		})
+	}
+}
+```
+
+</TabItem>
+</Tabs>
 
 When logging your users in, a new session will be created and a cookie will be set in the response. You may need to set a `X-CSRF-TOKEN` header in your authentication routes if you have CSRF protection enabled:
 

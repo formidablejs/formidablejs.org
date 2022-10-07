@@ -3,6 +3,10 @@ id: mail
 title: Mail
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Formidable provides a clean, simple email API powered by the popular [Nodemailer](https://nodemailer.com/) library. [Nodemailer](https://nodemailer.com/) provide drivers for sending email via SMTP, Amazon SES, and sendmail, allowing you to quickly get started sending mail through a local or cloud based service of your choice.
 
 ### Configuration
@@ -23,33 +27,87 @@ node craftsman make:mail SubscribedToEventNotifications
 
 Here's an example of how to send an email:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```js
 import { Mail } from '@formidablejs/mailer'
 
 Mail.to('email@example').raw('This is a test email')
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+
+Mail.to('email@example').raw('This is a test email')
+```
+
+</TabItem>
+</Tabs>
+
 ## Sending Attachments
 
 Here's an example of how to send an email with an attachment:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```js
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
-const file\String = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
+const file\string = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
 
 Mail.to('email@example').attach({ path: file }).raw('This is a test email')
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+import path from 'path'
+
+const file: string = path.join(process.cwd(), 'storage', 'framework', 'logos', 'imba.png')
+
+Mail.to('email@example').attach({ path: file }).raw('This is a test email')
+```
+
+</TabItem>
+</Tabs>
+
 You can also send multiple attachments:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```js
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
-const formidableLogo\String = path.join(process.cwd!, 'storage', 'framework', 'logos', 'formidable.png')
-const imbaLogo\String = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
+const formidableLogo\string = path.join(process.cwd!, 'storage', 'framework', 'logos', 'formidable.png')
+const imbaLogo\string = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
 
 Mail.to('email@example')
 	.attach({ path: formidableLogo })
@@ -57,14 +115,42 @@ Mail.to('email@example')
 	.raw('This is a test email')
 ```
 
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+import path from 'path'
+
+const formidableLogo: string = path.join(process.cwd(), 'storage', 'framework', 'logos', 'formidable.png')
+const imbaLogo: string = path.join(process.cwd(), 'storage', 'framework', 'logos', 'imba.png')
+
+Mail.to('email@example')
+	.attach({ path: formidableLogo })
+	.attach({ path: imbaLogo })
+	.raw('This is a test email')
+```
+
+</TabItem>
+</Tabs>
+
 You may also pass an array of attachments instead of a single attachment each time you call `attach`:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
 
 ```js
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
-const formidableLogo\String = path.join(process.cwd!, 'storage', 'framework', 'logos', 'formidable.png')
-const imbaLogo\String = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
+const formidableLogo: string = path.join(process.cwd!, 'storage', 'framework', 'logos', 'formidable.png')
+const imbaLogo: string = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
 
 Mail.to('email@example')
 	.attach([
@@ -73,6 +159,27 @@ Mail.to('email@example')
 	])
 	.raw('This is a test email')
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+import path from 'path'
+
+const formidableLogo: string = path.join(process.cwd(), 'storage', 'framework', 'logos', 'formidable.png')
+const imbaLogo: string = path.join(process.cwd(), 'storage', 'framework', 'logos', 'imba.png')
+
+Mail.to('email@example')
+	.attach([
+		{ path: formidableLogo }
+		{ path: imbaLogo }
+	])
+	.raw('This is a test email')
+```
+
+</TabItem>
+</Tabs>
 
 Attachment object consists of the following properties:
 
@@ -92,11 +199,20 @@ Attachment object consists of the following properties:
 
 Attachments can be used as embedded images in the HTML body. To use this feature, you need to set additional property of the attachment - `cid` (unique identifier of the file) which is a reference to the attachment file. The same `cid` value must be used as the image URL in HTML (using `cid:` as the URL protocol, see example below):
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```js
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
-const file\String = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
+const file\string = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
 
 Mail.to('email@example')
 	.attach({
@@ -106,6 +222,27 @@ Mail.to('email@example')
 	})
 	.raw('Embedded image: <img src="cid:imba"/>')
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+import path from 'path'
+
+const file: string = path.join(process.cwd(), 'storage', 'framework', 'logos', 'imba.png')
+
+Mail.to('email@example')
+	.attach({
+		filename: 'imba.png',
+		path: file,
+		cid: 'imba',
+	})
+	.raw('Embedded image: <img src="cid:imba"/>')
+```
+
+</TabItem>
+</Tabs>
 
 :::note
 
@@ -122,10 +259,10 @@ import { Mailable } from '@formidablejs/mailer'
 
 export default WelcomeEmail < Mailable
 
-	prop subject\String
-	prop name\String
+	prop subject\string
+	prop name\string
 
-	def constructor name\String
+	def constructor name\string
 		super()
 
 		self.subject = 'Welcome to Formidable'
@@ -137,9 +274,28 @@ export default WelcomeEmail < Mailable
 
 Now that you've created a Mailable, you can use the `send` method of the `Mail` class to send it:
 
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
 ```js
 Mail.to('email@example').send(new WelcomeEmail)
 ```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+Mail.to('email@example').send(new WelcomeEmail)
+```
+
+</TabItem>
+</Tabs>
 
 ### Attachments
 
@@ -151,16 +307,16 @@ import path from 'path'
 
 export default WelcomeEmail < Mailable
 
-	prop subject\String
-	prop name\String
+	prop subject\string
+	prop name\string
 
-	def constructor name\String
+	def constructor name\string
 		super()
 
 		self.subject = 'Welcome to Formidable'
 		self.name = name
 
-		const file\String = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
+		const file\string = path.join(process.cwd!, 'storage', 'framework', 'logos', 'imba.png')
 
 		self.attach({ path: file })
 
