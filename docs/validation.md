@@ -164,7 +164,7 @@ export class TaskController < Controller
 <TabItem value="ts">
 
 ```ts title="app/Http/Request/StoreTaskRequest.ts"
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Request/StoreTaskRequest'
 import { Controller } from './Controller'
 

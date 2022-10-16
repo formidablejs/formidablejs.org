@@ -35,7 +35,7 @@ If we wanted to do the same thing in a TypeScript application, we would have to 
 
 ```ts
 import { Controller } from './Controller';
-import { use } from '@formidablejs/ts-ports';
+import { use } from '@formidablejs/framework';
 
 export class UserController extends Controller {
     @use('table:users')

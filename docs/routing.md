@@ -184,7 +184,7 @@ export class PostController < Controller
 <TabItem value="ts">
 
 ```js title="app/Http/Controllers/PostController.ts" {1,6}
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
 export class PostController extends Controller {
@@ -228,7 +228,7 @@ export class PostController < Controller
 <TabItem value="ts">
 
 ```js title="app/Http/Controllers/PostController.ts" {1,6}
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
 export class PostController extends Controller {
@@ -271,7 +271,7 @@ export class PostController < Controller
 <TabItem value="ts">
 
 ```ts title="app/Http/Controllers/PostController.imba" {1,5}
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
 export class PostController extends Controller {
@@ -311,7 +311,7 @@ export class PostController < Controller
 <TabItem value="ts">
 
 ```ts title="app/Http/Controllers/PostController.imba" {1,5}
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
 export class PostController extends Controller {
@@ -352,7 +352,7 @@ export class PostController < Controller
 <TabItem value="ts">
 
 ```ts title="app/Http/Controllers/PostController.imba" {1,6}
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { DB } from '@formidablejs/framework'
 import { Controller } from './Controller'
 

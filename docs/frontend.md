@@ -129,7 +129,7 @@ export class PostController < Controller
 <TabItem value="ts">
 
 ```ts title=app/Http/Controllers/PostController.ts
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { Inertia } from '@formidablejs/inertia'
 import { InertiaResponse } from '@formidablejs/inertia'
 import { Post } from '../../Models/Post'
