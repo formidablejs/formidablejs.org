@@ -51,8 +51,6 @@ You may also create a new Formidable project with TypeScript as the language of 
 formidable new example-app --ts
 ```
 
-See [TypeScript Support](/docs/typescript-support) for more information.
-
 ## Initial Configuration
 
 All of the configuration files for the Formidable framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.

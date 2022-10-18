@@ -27,7 +27,7 @@ Before loading your application's environment variables, Formidable determines i
 
 ### Environment Variable Types
 
-Formidable will automatically use the assumed types when reading any of the variables from the `.env` files. For example, `APP_DEBUG=true` will return a `boolean` value of `TRUE` and `APP_NAME=Formidable` will return a `string` valye of `"FORMIDABLE"`.
+Formidable will automatically use the assumed types when reading any of the variables from the `.env` files. For example, `APP_DEBUG=true` will return a `boolean` value of `TRUE` and `APP_NAME=Formidable` will return a `string` value of `"FORMIDABLE"`.
 
 If you need to define an environment variable with a value that contains spaces, you may do so by enclosing the value in double quotes:
 
@@ -104,7 +104,7 @@ import { config } from '@formidablejs/framework/lib/Support/Helpers'
 
 let value: string = config('app.name')
 
-# Retrieve a default value if the configuration value does not exist...
+// Retrieve a default value if the configuration value does not exist...
 let value: string = config('app.name', 'Formidable')
 ```
 

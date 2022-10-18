@@ -71,7 +71,7 @@ Route.get('/user', [UserController, 'index'])
 </TabItem>
 </Tabs>
 
-By default, Formidable defines all routes in the `routes/api.imba` or `routes/api.ts` file, which is loaded by `RouterServiceResolver`. This resolver, loads these routes within a `session` middleware group. This means, all routes defined in the `routes/api.imba` file, will have the `session` middleware automatically applied on all of them. You may specify a different middleware and other route group options by modifying your `RouterServiceResolver` class.
+Depending on the Language you're using, Formidable defines all routes in the `routes/api.imba` and `routes/web.imba` or `routes/api.ts` and `routes/web.ts` files, which are loaded by `RouterServiceResolver`. This resolver, loads these routes within a `jwt` or `session` middleware group. This means, all routes defined in the `routes/web.imba` or `routes/web.ts` files, will have the `session` middleware automatically applied on all of them while all routes defined in the `routes/api.imba` or `routes/api.ts` will have the `jwt` middleware automatically applied on all of them. You may specify a different middleware and other route group options by modifying your `RouterServiceResolver` class.
 
 #### Available Router Methods {#available-router-methods}
 
