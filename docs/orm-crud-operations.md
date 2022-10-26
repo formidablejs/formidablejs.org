@@ -51,7 +51,7 @@ node craftsman make:request StorePostRequest
 
 Once, we have created our request, we can add the validation rules to the request as well data saving logic:
 
-```py title="app/Http/Request/StorePostRequest.imba"
+```py title="app/Http/Requests/StorePostRequest.imba"
 import { FormRequest } from '@formidablejs/framework'
 import { Post } from '../../Models/Post'
 
@@ -80,7 +80,7 @@ Finally, we can include our new request in our `PostController` and run the `per
 
 ```py title="app/Http/Controllers/PostController.imba"
 import { @use } from '@formidablejs/framework'
-import { StorePostRequest } from '../Request/StorePostRequest'
+import { StorePostRequest } from '../Requests/StorePostRequest'
 import { Controller } from './Controller'
 
 export class PostController < Controller

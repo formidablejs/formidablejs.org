@@ -101,7 +101,7 @@ Then, we will create a `FormRequest` class that will be passed to the controller
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Request/StoreTaskRequest.imba"
+```js title="app/Http/Requests/StoreTaskRequest.imba"
 import { Request } from '@formidablejs/framework'
 
 export class StoreTaskRequest < Request
@@ -117,7 +117,7 @@ export class StoreTaskRequest < Request
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Request/StoreTaskRequest.ts"
+```ts title="app/Http/Requests/StoreTaskRequest.ts"
 import { Request } from '@formidablejs/framework'
 
 export class StoreTaskRequest extends Request {
@@ -150,7 +150,7 @@ Now that we have created our request, we can go back to our controller and use t
 
 ```py title="app/Http/Controllers/TaskController.imba"
 import { @use } from '@formidablejs/framework'
-import { StoreTaskRequest } from '../Request/StoreTaskRequest'
+import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
 
 export class TaskController < Controller
@@ -163,9 +163,9 @@ export class TaskController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Request/StoreTaskRequest.ts"
+```ts title="app/Http/Requests/StoreTaskRequest.ts"
 import { use } from '@formidablejs/framework'
-import { StoreTaskRequest } from '../Request/StoreTaskRequest'
+import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
 
 export class TaskController extends Controller {

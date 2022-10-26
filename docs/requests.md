@@ -83,7 +83,7 @@ export class TaskController < Controller
 
 ```ts title="app/Http/Controllers/TaskController.ts"
 import { @use } from '@formidablejs/ts-ports'
-import { StoreTaskRequest } from '../Request/StoreTaskRequest'
+import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
 
 export class TaskController extends Controller {
