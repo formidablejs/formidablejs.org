@@ -256,7 +256,7 @@ export class Hello < Command
 import { Command } from '@formidablejs/framework'
 import { Prop } from '@formidablejs/framework'
 
-export class Hello extending Command {
+export class Hello extends Command {
 
     /**
 	 * The name and signature of the console command.
