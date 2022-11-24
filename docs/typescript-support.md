@@ -9,10 +9,10 @@ In this section, we will cover the basics and differences between a Formidable T
 
 ## Installation
 
-You may create a Formidable TypeScript project by passing the `--ts` flag in the Formidable Installer:
+You may create a Formidable TypeScript project by passing the `--language` flag and setting the value to "typescript" in the Formidable Installer:
 
 ```bash
-formidable new example-app --ts
+formidable new example-app --language typescript
 ```
 
 ## @use Decorator

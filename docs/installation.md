@@ -45,10 +45,11 @@ formidable new example-app --git
 
 This command will initialize a new Git repository for your project.
 
-You may also create a new Formidable project with TypeScript as the language of choice by passing the `--ts` flag:
+You may also create a new Formidable project with TypeScript as the language of choice by passing the `--language` flag and setting the value to "typescript" in the Formidable Installer:
+
 
 ```bash
-formidable new example-app --ts
+formidable new example-app --language typescript
 ```
 
 ## Initial Configuration
