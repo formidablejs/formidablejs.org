@@ -94,7 +94,7 @@ const object = {
     }
 }
 
-const appName = dotNotation(object, 'app.locale')
+const appName = dotNotation(object, 'app.name')
 ```
 
 </TabItem>
@@ -107,7 +107,7 @@ const object = {
     }
 }
 
-const appName = dotNotation(object, 'app.locale')
+const appName = dotNotation(object, 'app.name')
 ```
 
 </TabItem>
@@ -131,7 +131,7 @@ const object = {
     }
 }
 
-const appName = dot(object, 'app.locale')
+const appName = dot(object, 'app.name')
 ```
 
 </TabItem>
@@ -144,7 +144,7 @@ const object = {
     }
 }
 
-const appName = dot(object, 'app.locale')
+const appName = dot(object, 'app.name')
 ```
 
 </TabItem>
