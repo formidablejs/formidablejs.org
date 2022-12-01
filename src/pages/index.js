@@ -139,7 +139,7 @@ export default function Home() {
 							<div style={{ flex: 1 }}>
 								<ol className="communities">
 									<li>
-										<a href="https://discord.gg/wm2sFGSrmX">
+										<a href="https://discord.gg/QdXM7eV5Yj">
 											<span className="title">Discord</span>
 											<span className="desc">Chat with the Formidable community and dev team</span>
 										</a>
