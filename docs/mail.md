@@ -340,4 +340,4 @@ Here is a list of all the methods available on the `Mail` class.
  `subject` | `subject: String`                       | Subject of the email.
  `send`    | `mailable: Mailable`                    | Send the email with a Mailable class.
 
-> This section is incomplete. Join our [discord](https://discord.gg/wm2sFGSrmX) if you have questions.
+> This section is incomplete. Join our [discord](https://discord.gg/QdXM7eV5Yj) if you have questions.
