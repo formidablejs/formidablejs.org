@@ -1,20 +1,20 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-	title: 'The Formidable Framework - Sponsored by JetBrains',
-	tagline: 'The one person Framework', // 'Imba Framework for Rapid API Development',
+	title: 'The Formidable Framework',
+	tagline: 'The full-stack one person Framework',
 	url: 'https://formidablejs.com',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
-	organizationName: 'formidablejs', // Usually your GitHub org/user name.
-	projectName: 'formidablejs.org', // Usually your repo name.
+	organizationName: 'formidablejs',
+	projectName: 'formidablejs.org',
 	themeConfig: {
 		announcementBar: {
 			id: 'formidable-announcement',
 			content: "Formidable is currently in Public Beta. Please report any bugs or suggestions at <a href='https://github.com/orgs/formidablejs/discussions'>GitHub</a>.",
-			backgroundColor: '#000', // Defaults to `#ff0000`.
-			textColor: '#fff', // Defaults to `#fff`.
+			backgroundColor: '#000',
+			textColor: '#fff',
 			isCloseable: false
 		},
 		algolia: {
@@ -24,17 +24,6 @@ module.exports = {
 		},
 		colorMode: {
 			defaultMode: 'light',
-			// disableSwitch: true,
-			// switchConfig: {
-			// 	darkIcon: '🌙',
-			// 	darkIconStyle: {
-			// 		marginLeft: '2px',
-			// 	},
-			// 	lightIcon: '☀️',
-			// 	lightIconStyle: {
-			// 		marginLeft: '1px',
-			// 	},
-			// },
 		},
 		navbar: {
 			title: 'Formidable',
