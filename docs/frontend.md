@@ -257,7 +257,7 @@ Inertia.render('Welcome').withViewData({
 </TabItem>
 </Tabs>
 
-> This section is incomplete. Join our [discord](https://discord.gg/wm2sFGSrmX) if you have questions.
+> This section is incomplete. Join our [discord](https://discord.gg/QdXM7eV5Yj) if you have questions.
 
 -----
 
