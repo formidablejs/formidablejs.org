@@ -48,6 +48,11 @@ module.exports = {
 					position: 'right',
 					className: 'header-github-link',
 				},
+				{
+					href: 'https://discord.gg/QdXM7eV5Yj',
+					position: 'right',
+					className: 'header-discord-link',
+				},
 			],
 		},
 		footer: {
