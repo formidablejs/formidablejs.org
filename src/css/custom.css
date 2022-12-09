@@ -393,6 +393,12 @@ div[class^="docPage_"] {
 	}
 }
 
+@media only screen and (max-width: 508px) {
+	div[class^="docPage_"] {
+		width: 100%;
+	}
+}
+
 @media only screen and (min-width: 996px) {
 	div[class^="toggle_"] {
 		order: 1;
