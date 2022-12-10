@@ -10,13 +10,13 @@ module.exports = {
 	organizationName: 'formidablejs',
 	projectName: 'formidablejs.org',
 	themeConfig: {
-		announcementBar: {
-			id: 'formidable-announcement',
-			content: "Formidable is currently in Public Beta. Please report any bugs or suggestions at <a href='https://github.com/orgs/formidablejs/discussions'>GitHub</a>.",
-			backgroundColor: '#000',
-			textColor: '#fff',
-			isCloseable: false
-		},
+		// announcementBar: {
+		// 	id: 'formidable-announcement',
+		// 	content: "Formidable is currently in Public Beta. Please report any bugs or suggestions at <a href='https://github.com/orgs/formidablejs/discussions'>GitHub</a>.",
+		// 	backgroundColor: '#000',
+		// 	textColor: '#fff',
+		// 	isCloseable: false
+		// },
 		algolia: {
 			appId: 'BH4D9OD16A',
 			apiKey: 'a445a9bfec68203859d07885f532285b',
