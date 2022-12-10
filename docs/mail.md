@@ -250,6 +250,129 @@ the `cid` must be unique for each attachment.
 
 :::
 
+## Events
+
+### onSuccess
+
+`onSuccess` runs if the email was successfully sent:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```js
+import { Mail } from '@formidablejs/mailer'
+import type { SentMessageInfo } from '@formidablejs/mailer'
+
+Mail.to('email@example').send(new Welcome, {
+	onSuccess: do(response\SentMessageInfo)
+		console.log response.messageId
+})
+```
+
+</TabItem>
+
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+import type { SentMessageInfo } from '@formidablejs/mailer'
+
+Mail.to('email@example').send(new Welcome, {
+	onSuccess: (response: SentMessageInfo) => {
+		console.log(response.messageId)
+	}
+})
+```
+
+</TabItem>
+</Tabs>
+
+### onError
+
+`onError` runs when the email fails:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```js
+import { Mail } from '@formidablejs/mailer'
+
+Mail.to('email@example').send(new Welcome, {
+	onError: do(reason)
+		console.log reason
+})
+```
+
+</TabItem>
+
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+
+Mail.to('email@example').send(new Welcome, {
+	onError: (reason) => {
+		console.log reason
+	}
+})
+```
+
+</TabItem>
+</Tabs>
+
+### onComplete
+
+`onComplete` runs when the email is task is done:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```js
+import { Mail } from '@formidablejs/mailer'
+import type { SentMessageInfo } from '@formidablejs/mailer'
+
+Mail.to('email@example').send(new Welcome, {
+	onComplete: do
+		console.log 'done'
+})
+```
+
+</TabItem>
+
+<TabItem value="ts">
+
+```ts
+import { Mail } from '@formidablejs/mailer'
+import type { SentMessageInfo } from '@formidablejs/mailer'
+
+Mail.to('email@example').send(new Welcome, {
+	onComplete: () => {
+		console.log('done')
+	}
+})
+```
+
+</TabItem>
+</Tabs>
+
 ## Sending HTML Emails
 
 Before you can start sending html emails, you will need to create a new Mailable. All Mailables must extend the `Mailable` class:
