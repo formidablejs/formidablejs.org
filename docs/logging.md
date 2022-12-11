@@ -89,9 +89,9 @@ You may call any of these methods to log a message for the corresponding level. 
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Log } from '@formidablejs/logger'
-import { Command } from './Command'
+import { Controller } from './Controller'
 
-export class TaskController < Command
+export class TaskController < Controller
 
     def show request\Request
         const id\number = request.param('id')
@@ -108,9 +108,9 @@ export class TaskController < Command
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Log } from '@formidablejs/logger'
-import { Command } from './Command'
+import { Controller } from './Controller'
 
-export class TaskController extends Command {
+export class TaskController extends Controller {
     show(request: Request) {
         const id: number = request.param('id')
 
