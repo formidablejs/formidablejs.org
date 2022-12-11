@@ -26,8 +26,10 @@ Each log channel is powered by a "driver". The driver returns a handler whoch de
 Name       | Description
 -----------|------------
  `console` | A `ConsoleHandler` based Livy driver which writes to the terminal
- `daily`   | A `FileHandler` based Livy driver which rotates daily
+ `daily`   | A `RotatingFileHandler` based Livy driver which rotates daily
  `single`  | A `FileHandler` based Livy driver which writes to a single file or path
+ `slack`   | A `SlackWebhookHandler` based Livy driver which writes to a Slack Workspace
+ `stack`   | A wrapper to facilitate creating "multi-channel" channels
 
 ## Writing Log Messages
 
