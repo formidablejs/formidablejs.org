@@ -180,27 +180,29 @@ Formidable supports [Fastify](https://www.fastify.io/docs/latest/Reference/Hooks
 <TabItem value="imba">
 
 ```py
-import { ServiceResolver } from '@formidablejs/framework'
 import { FastifyRequest } from '@formidablejs/framework'
+import { Log } from '@formidablejs/logger'
+import { ServiceResolver } from '@formidablejs/framework'
 
 export class HttpLoggerServiceResolver < ServiceResolver
 
 	def boot
 		self.app.addHook 'onRequest', do(request\FastifyRequest)
-			console.log "{request.method}: {request.url}"
+			Log.info "{request.method}: {request.url}"
 ```
 
 </TabItem>
 <TabItem value="ts">
 
 ```ts
-import { ServiceResolver } from '@formidablejs/framework'
+import { Log } from '@formidablejs/logger'
 import { FastifyRequest } from '@formidablejs/framework'
+import { ServiceResolver } from '@formidablejs/framework'
 
 export class HttpLoggerServiceResolver extends ServiceResolver {
 	boot(): void {
 		this.app.addHook('onRequest', (request: FastifyRequest) => {
-			console.log("{request.method}: {request.url}")
+			Log.info("{request.method}: {request.url}")
 		})
 	}
 ```

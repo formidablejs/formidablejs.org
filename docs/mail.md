@@ -266,12 +266,13 @@ the `cid` must be unique for each attachment.
 <TabItem value="imba">
 
 ```js
+import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
 
 Mail.to('email@example').send(new Welcome, {
 	onSuccess: do(response\SentMessageInfo)
-		console.log response.messageId
+		Log.info response.messageId
 })
 ```
 
@@ -280,12 +281,13 @@ Mail.to('email@example').send(new Welcome, {
 <TabItem value="ts">
 
 ```ts
+import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
 
 Mail.to('email@example').send(new Welcome, {
 	onSuccess: (response: SentMessageInfo) => {
-		console.log(response.messageId)
+		Log.info(response.messageId)
 	}
 })
 ```
@@ -307,11 +309,12 @@ Mail.to('email@example').send(new Welcome, {
 <TabItem value="imba">
 
 ```js
+import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 
 Mail.to('email@example').send(new Welcome, {
 	onError: do(reason)
-		console.log reason
+		Log.info reason
 })
 ```
 
@@ -320,11 +323,12 @@ Mail.to('email@example').send(new Welcome, {
 <TabItem value="ts">
 
 ```ts
+import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 
 Mail.to('email@example').send(new Welcome, {
 	onError: (reason) => {
-		console.log reason
+		Log.info reason
 	}
 })
 ```
@@ -346,12 +350,13 @@ Mail.to('email@example').send(new Welcome, {
 <TabItem value="imba">
 
 ```js
+import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
 
 Mail.to('email@example').send(new Welcome, {
 	onComplete: do
-		console.log 'done'
+		Log.info 'done'
 })
 ```
 
@@ -360,12 +365,13 @@ Mail.to('email@example').send(new Welcome, {
 <TabItem value="ts">
 
 ```ts
+import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
 
 Mail.to('email@example').send(new Welcome, {
 	onComplete: () => {
-		console.log('done')
+		Log.info('done')
 	}
 })
 ```

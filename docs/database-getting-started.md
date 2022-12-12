@@ -768,6 +768,7 @@ To retrieve data from Redis, we can use the `get` method from the `connection` m
 <TabItem value="imba">
 
 ```js title="routes/api.imba"
+import { Log } from '@formidablejs/logger'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -775,7 +776,7 @@ Route.get '/', do(request)
 	Redis.connection!.get 'name', do(error, response)
 		if error then throw new Error 'Could not retrieve name from Redis'
 
-		console.log response
+		Log.info response
 
 ```
 
@@ -783,6 +784,7 @@ Route.get '/', do(request)
 <TabItem value="ts">
 
 ```ts title="routes/api.ts"
+import { Log } from '@formidablejs/logger'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -792,7 +794,7 @@ Route.get('/', (request) => {
 			throw new Error('Could not retrieve name from Redis')
 		}
 
-		console.log(response)
+		Log.info(response)
 	})
 })
 
