@@ -27,6 +27,7 @@ Name       | Description
 -----------|------------
  `console` | A `ConsoleHandler` based Livy driver which writes to the terminal
  `daily`   | A `RotatingFileHandler` based Livy driver which rotates daily
+ `discord` | A `DiscordWebhookHandler` based driver which writes to a Discord Server
  `single`  | A `FileHandler` based Livy driver which writes to a single file or path
  `slack`   | A `SlackWebhookHandler` based Livy driver which writes to a Slack Workspace
  `stack`   | A wrapper to facilitate creating "multi-channel" channels
@@ -156,6 +157,37 @@ import { Log } from '@formidablejs/logger'
 Log.info('A new task has been created', {
     id: task.id
 })
+```
+
+</TabItem>
+</Tabs>
+
+## Writing To Specific Channels
+
+Sometimes you may wish to log a message to a channel other than your application's default channel. You may use the channel method on the `Log` class to retrieve and log to any channel defined in your configuration file:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```js
+import { Log } from '@formidablejs/logger'
+
+Log.channel('discord').info('Something happened!')
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Log } from '@formidablejs/logger'
+
+Log.channel('discord').info('Something happened!')
 ```
 
 </TabItem>
