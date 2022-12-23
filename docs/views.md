@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem'
 
 # Views
 
-Just like any other morden framework, Formidable ships with a views feature. Formidable's views are powered by [Imba](https://imba.io/) allowing you to quickly write beautiful Imba views and use them in your application.
+Just like any other modern framework, Formidable ships with a views feature. Formidable's views are powered by [Imba](https://imba.io/) allowing you to quickly write beautiful Imba views and use them in your application.
 
 A typical view in Formidable looks like this:
 
