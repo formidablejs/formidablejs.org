@@ -36,7 +36,7 @@ module.exports = {
 			},
 			{
 				name: 'twitter:image',
-				content: 'https://www.formidablejs.org/img/og-image-2.png'
+				content: 'https://www.formidablejs.org/img/og-image-3.png'
 			},
 			{
 				name: 'twitter:site',
@@ -64,7 +64,7 @@ module.exports = {
 			},
 			{
 				name: 'og:image',
-				content: 'https://www.formidablejs.org/img/og-image-2.png'
+				content: 'https://www.formidablejs.org/img/og-image-3.png'
 			},
 		],
 		algolia: {
