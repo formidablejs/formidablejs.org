@@ -36,7 +36,7 @@ module.exports = {
 			},
 			{
 				name: 'twitter:image',
-				content: 'https://formidablejs.org/img/og-image.png'
+				content: 'https://formidablejs.org/img/og-image-2.png'
 			},
 			{
 				name: 'og:type',
@@ -56,7 +56,7 @@ module.exports = {
 			},
 			{
 				name: 'og:image',
-				content: 'https://formidablejs.org/img/og-image.png'
+				content: 'https://formidablejs.org/img/og-image-2.png'
 			},
 		],
 		algolia: {
