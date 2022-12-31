@@ -17,6 +17,48 @@ module.exports = {
 		// 	textColor: '#fff',
 		// 	isCloseable: false
 		// },
+		metadata: [
+			{
+				name: 'twitter:card',
+				content: 'summary_large_image'
+			},
+			{
+				name: 'twitter:url',
+				content: 'https://formidablejs.org'
+			},
+			{
+				name: 'twitter:title',
+				content: 'FormidableJS - The One Person Framework ✌️'
+			},
+			{
+				name: 'twitter:description',
+				content: 'Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications. It uses Imba by default and supports JavaScript and TypeScript.'
+			},
+			{
+				name: 'twitter:image',
+				content: 'https://formidablejs.org/img/og-image.png'
+			},
+			{
+				name: 'og:type',
+				content: 'website',
+			},
+			{
+				name: 'og:url',
+				content: 'https://formidablejs.org'
+			},
+			{
+				name: 'og:title',
+				content: 'FormidableJS - The One Person Framework ✌️'
+			},
+			{
+				name: 'og:description',
+				content: 'Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications. It uses Imba by default and supports JavaScript and TypeScript.'
+			},
+			{
+				name: 'og:image',
+				content: 'https://formidablejs.org/img/og-image.png'
+			},
+		],
 		algolia: {
 			appId: 'BH4D9OD16A',
 			apiKey: 'a445a9bfec68203859d07885f532285b',
