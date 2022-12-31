@@ -39,6 +39,14 @@ module.exports = {
 				content: 'https://www.formidablejs.org/img/og-image-2.png'
 			},
 			{
+				name: 'twitter:site',
+				content: '@formidablejs'
+			},
+			{
+				name: 'twitter:creator',
+				content: '@donaldpakkies'
+			},
+			{
 				name: 'og:type',
 				content: 'website',
 			},
