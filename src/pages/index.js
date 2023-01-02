@@ -70,19 +70,19 @@ export default function Home() {
 
 					<div className="frameworks">
 						<div className="framework" title="Imba">
-							<img src="https://raw.githubusercontent.com/imba/branding-imba/04d4fca156c665554debb78317a7d6b608953d31/imba-icon.svg" height="50" width="150" alt="" />
+							<img src="https://raw.githubusercontent.com/imba/branding-imba/04d4fca156c665554debb78317a7d6b608953d31/imba-icon.svg" height="50" width="150" alt="Imba Icon" loading='lazy' />
 						</div>
 						<div className="framework" title="TypeScript">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="50" width="150" alt="" />
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="50" width="150" alt="TypeScript Icon" loading='lazy' />
 						</div>
 						<div className="framework" title="Vue.js">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" height="50" width="150" alt="" />
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" height="50" width="150" alt="Vue.js Icon" loading='lazy' />
 						</div>
 						<div className="framework" title="React.js">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" width="150" alt="" />
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" width="150" alt="React.js Icon" loading='lazy' />
 						</div>
 						<div className="framework" title="GraphQL">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" height="50" width="150" alt="" />
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" height="50" width="150" alt="GraphQL Icon" loading='lazy' />
 						</div>
 					</div>
 				</div>
