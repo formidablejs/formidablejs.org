@@ -42,8 +42,8 @@ export default function Home() {
 				</div> */}
 
 				<div style={{ width: '100%', marginBottom: '-60px' }}>
-					<img src="/img/code.gif" className='img-code live-img large-img' />
-					<img src="/img/code-split.gif" className='img-code live-img small-img' />
+					<img src="/img/code.gif" className='img-code live-img large-img' loading="lazy" />
+					<img src="/img/code-split.gif" className='img-code live-img small-img' loading="lazy" />
 				</div>
 
 				<div style={{ textAlign: 'center' }}>
@@ -133,7 +133,7 @@ export default function Home() {
 						See how your application may potentially look like without leaving your personal browser.
 					</p>
 
-					<div dangerouslySetInnerHTML={{ __html: "<iframe src='https://codesandbox.io/embed/formidable-pn32bs?fontsize=14&autoresize=1&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba' style='width:100%;height:500px;border:0;border-radius:4px;overflow:hidden;' title='formidable' allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>" }} />
+					<div dangerouslySetInnerHTML={{ __html: "<iframe src='https://codesandbox.io/embed/formidable-pn32bs?fontsize=14&autoresize=1&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba' style='width:100%;height:500px;border:0;border-radius:4px;overflow:hidden;' title='formidable' allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts' loading='lazy'></iframe>" }} />
 				</div>
 
 				<div className='community'>
