@@ -41,7 +41,7 @@ export default function Home() {
 					<img src="/img/main-ts-dark.png" theme="dark" className='img-code' />
 				</div> */}
 
-				<div style={{ width: '100%' }}>
+				<div style={{ width: '100%', marginBottom: '-60px' }}>
 					<img src="/img/code.gif" className='img-code live-img large-img' />
 					<img src="/img/code-split.gif" className='img-code live-img small-img' />
 				</div>
@@ -51,12 +51,12 @@ export default function Home() {
 						Brought to you by <a href='https://lunaql.com/' target='_blank'>LunaQL</a>
 					</p> */}
 
-					<p style={{
+					{/* <p style={{
 						opacity: '.5', fontWeight: '800', fontSize: '1.125rem', lineHeight: '1.75rem', textTransform: 'uppercase', letterSpacing: '.05em'
 					}}>
 						Sponsored by
 					</p>
-					<img src="/img/jb_beam.svg" />
+					<img src="/img/jb_beam.svg" /> */}
 				</div>
 
 				<div className='frameworks-container'>
