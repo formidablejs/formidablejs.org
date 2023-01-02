@@ -108,7 +108,8 @@ html[data-theme='dark'] .navbar-sidebar {
 
 @media screen and (min-width: 1024px) {
 	.hero__title {
-		font-size: 100px;
+		/* font-size: 100px; */
+		font-size: 80px;
 		line-height: 1;
 	}
 
@@ -490,6 +491,17 @@ html[data-theme='dark'] .hero--primary {
 	display: none;
 }
 
+.live-img {
+	max-width: 100%;
+	width: 78%;
+	top: -80px;
+	filter: brightness(1.40);
+}
+
+.large-img {
+	display: block;
+}
+
 html[data-theme='dark'] .img-code[theme="dark"] {
 	display: block;
 }
@@ -500,13 +512,26 @@ html[data-theme='light'] .img-code[theme="light"] {
 
 @media only screen and (max-width: 1200px) {
 	.img-code {
-		max-width: 60%;
+		/* max-width: 60%; */
+	}
+
+	.large-img {
+		display: block;
+	}
+
+	small-img {
+		display: none;
 	}
 }
 
 @media only screen and (max-width: 700px) {
 	.img-code {
 		max-width: 80%;
+	}
+
+	.live-img {
+		width: 100%;
+		max-width: 90%;
 	}
 }
 
@@ -527,6 +552,14 @@ html[data-theme='light'] .img-code[theme="light"] {
 
 	.navbar-sidebar__backdrop {
 		height: 100vh;
+	}
+
+	.large-img {
+		display: none;
+	}
+
+	.small-img {
+		display: block;
 	}
 
 	.features>.container>.grid-container {

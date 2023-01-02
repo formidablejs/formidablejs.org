@@ -36,9 +36,14 @@ export default function Home() {
 						</div>
 					</div>
 				</header>
-				<div style={{ width: '100%' }}>
+				{/* <div style={{ width: '100%' }}>
 					<img src="/img/main-ts-light.png" theme="light" className='img-code' />
 					<img src="/img/main-ts-dark.png" theme="dark" className='img-code' />
+				</div> */}
+
+				<div style={{ width: '100%' }}>
+					<img src="/img/code.gif" className='img-code live-img large-img' />
+					<img src="/img/code-split.gif" className='img-code live-img small-img' />
 				</div>
 
 				<div style={{ textAlign: 'center' }}>
@@ -46,12 +51,18 @@ export default function Home() {
 						Brought to you by <a href='https://lunaql.com/' target='_blank'>LunaQL</a>
 					</p> */}
 
-					<p style={{ fontWeight: 'bolder' }}>Sponsored by</p>
+					<p style={{
+						opacity: '.5', fontWeight: '800', fontSize: '1.125rem', lineHeight: '1.75rem', textTransform: 'uppercase', letterSpacing: '.05em'
+					}}>
+						Sponsored by
+					</p>
 					<img src="/img/jb_beam.svg" />
 				</div>
 
 				<div className='frameworks-container'>
-					<h2>
+					<h2 style={{
+						fontWeight: '800'
+					}}>
 						Supported Technologies
 					</h2>
 
