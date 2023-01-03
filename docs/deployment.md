@@ -9,7 +9,7 @@ When you're ready to deploy your Formidable application to production, there are
 
 The Formidable framework has a few system requirements. You should ensure that your web server has the following minimum Node version:
 
-* `Node >=14.*`
+* `Node >=16.*`
 * `NPM/Yarn`
 
 ## Deploy

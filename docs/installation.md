@@ -6,14 +6,14 @@ slug: /
 
 ## Meet Formidable
 
-Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications. It uses Imba by default and supports JavaScript and TypeScript.
+Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications.
 
 Formidable uses [Fastify](https://www.fastify.io/) under the hood.
 
 ## Your First Formidable Project
 
 #### Prerequisites {#prerequisites}
-Please make sure that [Node.js](https://nodejs.org/) (>= 14.*) is installed on your operating system.
+Please make sure that [Node.js](https://nodejs.org/) (>= 16.*) is installed on your operating system.
 
 #### Tooling
 
@@ -21,7 +21,6 @@ For a better development experience, we recommend using the following tools:
 
 1. [VS Code](https://code.visualstudio.com/) - A free and open source code editor for Windows, Mac, and Linux.
 2. [Imba Extension](https://marketplace.visualstudio.com/items?itemName=scrimba.vsimba) - VS Code Language support for Imba.
-3. [Imba Shell](https://github.com/donaldp/imba-shell) - Interactive debugger, REPL and runtime for Imba, inspired by PsySH.
 
 #### Installation {#installation}
 
