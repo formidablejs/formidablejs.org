@@ -24,7 +24,7 @@
 }
 
 html[data-theme='dark']:root {
-	--ifm-background-color: #18191a;
+	--ifm-background-color: #101011;
 }
 
 .row {
@@ -236,7 +236,7 @@ html[data-theme='dark'] .framework:hover {
 }
 
 html[data-theme='dark'] .features {
-	background-color: #0d0c0c;
+	background-color: #000000;
 }
 
 .community {
@@ -246,7 +246,7 @@ html[data-theme='dark'] .features {
 }
 
 html[data-theme='dark'] .community {
-	background-color: #0d0c0c;
+	background-color: #000000;
 }
 
 .communities {
@@ -468,7 +468,7 @@ html[data-theme='dark'] a {
 }
 
 html[data-theme='dark'] .hero.hero--primary {
-	background-color: #18191a !important;
+	background-color: #101011 !important;
 }
 
 html[data-theme='dark'] .hero--primary {
