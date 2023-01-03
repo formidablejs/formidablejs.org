@@ -60,13 +60,17 @@ export default function Home() {
 				</div>
 
 				<div className='frameworks-container'>
-					<h2 style={{
+					{/* <h2 style={{
 						fontWeight: '800'
 					}}>
 						Supported Technologies
 					</h2>
 
-					<p>Build with your favorite technologies</p>
+					<p>Build with your favorite technologies</p> */}
+
+					<p style={{
+						textTransform: 'uppercase', letterSpacing: '.025em', fontSize: '.875rem', lineHeight: '1.25rem'
+					}}>Works with</p>
 
 					<div className="frameworks">
 						<div className="framework" title="Imba">
@@ -133,7 +137,7 @@ export default function Home() {
 						See how your application may potentially look like without leaving your personal browser.
 					</p>
 
-					<div dangerouslySetInnerHTML={{ __html: "<iframe src='https://codesandbox.io/embed/formidable-pn32bs?fontsize=14&autoresize=1&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba' style='width:100%;height:500px;border:0;border-radius:4px;overflow:hidden;' title='formidable' allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts' loading='lazy'></iframe>" }} />
+					<div dangerouslySetInnerHTML={{ __html: "<iframe src='https://codesandbox.io/embed/formidable-pn32bs?fontsize=14&autoresize=1&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba' style='width:100%;height:500px;border:0;border-radius:4px;overflow:hidden;' title='formidable' allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>" }} />
 				</div>
 
 				<div className='community'>
