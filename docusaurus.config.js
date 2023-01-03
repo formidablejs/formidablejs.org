@@ -83,6 +83,11 @@ module.exports = {
 			},
 			items: [
 				{
+					href: 'https://github.com/formidablejs/framework',
+					position: 'right',
+					label: "★ Star us on Github"
+				},
+				{
 					href: 'https://github.com/formidablejs',
 					position: 'right',
 					className: 'header-github-link',
