@@ -11,14 +11,21 @@ import styles from './styles.module.css';
 export default function Home() {
 	const context = useDocusaurusContext();
 	const { siteConfig = {} } = context;
+	const [ isUpdated, setIsUpdated ] = useState(false)
 	const [ props, setProps ] = useState({})
 
 	if (ExecutionEnvironment.canUseDOM) {
+		if (isUpdated) {
+			return
+		}
+
 		const props = !/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
 			? { loading: 'lazy' }
 			: {}
 
 		setProps(props)
+
+		setIsUpdated(true)
 	}
 
 	return (
