@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -11,6 +11,10 @@ import styles from './styles.module.css';
 export default function Home() {
 	const context = useDocusaurusContext();
 	const { siteConfig = {} } = context;
+
+	const props = !/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+		? { loading: 'lazy' }
+		: {}
 
 	return (
 		<Fragment>
@@ -42,8 +46,8 @@ export default function Home() {
 				</div> */}
 
 				<div style={{ width: '100%', marginBottom: '-60px' }}>
-					<img src="/img/code.gif" className='img-code live-img large-img' loading="lazy" />
-					<img src="/img/code-split.gif" className='img-code live-img small-img' loading="lazy" />
+					<img src="/img/code.gif" className='img-code live-img large-img' {...props} />
+					<img src="/img/code-split.gif" className='img-code live-img small-img' {...props} />
 				</div>
 
 				<div style={{ textAlign: 'center' }}>
@@ -137,7 +141,7 @@ export default function Home() {
 						See how your application may potentially look like without leaving your personal browser.
 					</p>
 
-					<iframe src='https://codesandbox.io/embed/formidable-pn32bs?codemirror=1&fontsize=14&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba&moduleview=1&theme=dark' style={{ width: '100%', height: '500px', border: '1px solid #555', borderRadius: '8px', overflow: 'hidden' }} title='formidable' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+					<iframe src='https://codesandbox.io/embed/formidable-pn32bs?codemirror=1&fontsize=14&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba&moduleview=1&theme=dark' style={{ width: '100%', height: '500px', border: '1px solid #555', borderRadius: '8px', overflow: 'hidden' }} title='formidable' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts' {...props}></iframe>
 				</div>
 
 				<div className='community'>
