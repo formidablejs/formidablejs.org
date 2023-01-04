@@ -11,10 +11,15 @@ import styles from './styles.module.css';
 export default function Home() {
 	const context = useDocusaurusContext();
 	const { siteConfig = {} } = context;
+	const [ props, setProps ] = useState({})
 
-	const props = !/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-		? { loading: 'lazy' }
-		: {}
+	if (ExecutionEnvironment.canUseDOM) {
+		const props = !/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+			? { loading: 'lazy' }
+			: {}
+
+		setProps(props)
+	}
 
 	return (
 		<Fragment>
