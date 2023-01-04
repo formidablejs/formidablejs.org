@@ -133,55 +133,17 @@ When your application is in maintenance mode, a custom view will be displayed fo
 
 To enable maintenance mode, execute the `down` Craftsman command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman down
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman down
-```
-
-</TabItem>
-</Tabs>
 
 #### Bypassing Maintenance Mode
 
 Even while in maintenance mode, you may use the `secret` option to specify a maintenance mode bypass secret:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman down --secret="a-private-secret"
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman down --secret="a-private-secret"
-```
-
-</TabItem>
-</Tabs>
 
 After placing the application in maintenance mode, you may navigate to the application URL matching this secret and Formidable will issue a maintenance mode bypass cookie to your browser:
 
@@ -195,25 +157,6 @@ When accessing this hidden route, you will then be redirected to the / route of 
 
 To disable maintenance mode, use the `up` command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman up
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman up
-```
-
-</TabItem>
-</Tabs>

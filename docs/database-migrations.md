@@ -19,28 +19,9 @@ Formidable Database Migrations are stored in the `/database/migrations` director
 
 To create a new migration, run the following command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman make:migration CreatePostsTable --table=posts
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman make:migration CreatePostsTable --table=posts
-```
-
-</TabItem>
-</Tabs>
 
 The command above will create a new migration file under `/database/migrations` and will generate the following migration:
 
@@ -70,28 +51,9 @@ exports.up = (knex) => {
 
 After defining our schema, we can now run the migration:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman migrate:latest
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman migrate:latest
-```
-
-</TabItem>
-</Tabs>
 
 This will add a mew table to your database.
 
@@ -103,28 +65,9 @@ Formidable allows you to modify existing tables by creating new migrations that 
 
 Here is an example of a migration that adds a new column to an existing table:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
-```
-
-</TabItem>
-</Tabs>
 
 ```js
 /**

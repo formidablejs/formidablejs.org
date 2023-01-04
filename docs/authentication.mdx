@@ -36,28 +36,9 @@ Formidable will automatically enable authentication for you. Should you not want
 
 Its important to note that you will need to create a database for your application to use authentication. If a database has been created, head over to your `.env` file and `config/database.imba` or `config/database.ts` config file to configure your database connection, once this is done, you can run:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman migrate:latest
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman migrate:latest
-```
-
-</TabItem>
-</Tabs>
 
 This will create all the tables needed for authentication. `users`, `password_resets` and `personal_access_tokens` tables will be created.
 

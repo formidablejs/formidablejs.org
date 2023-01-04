@@ -13,19 +13,20 @@ You can report a bug by creating an issue under the specific repository that con
 
 Here are all the repositories that contain the Formidable source code:
 
-* [Formidable Application](https://github.com/formidablejs/formidablejs)
+* [Formidable Application (TypeScript) ](https://github.com/formidablejs/formidablejs-typescript)
+* [Formidable Application (Imba)](https://github.com/formidablejs/formidablejs)
 * [Formidable Framework](https://github.com/formidablejs/framework)
 * [Formidable View](https://github.com/formidablejs/view)
-* [Formidable Craftsman](https://github.com/formidablejs/craftsman)
 * [Formidable Console](https://github.com/formidablejs/console)
 * [Formidable Mailer](https://github.com/formidablejs/mailer)
-* [Formidable Helpers](https://github.com/formidablejs/helpers)
 * [Formidable Stubs](https://github.com/formidablejs/stubs)
 * [Formidable Pretty Errors](https://github.com/formidablejs/pretty-errors)
 * [Formidable Bugsnag Plugin](https://github.com/formidablejs/bugsnag-plugin)
 * [Formidable Inertia Adapter](https://github.com/formidablejs/inertia-adapter)
-* [Formidable Next Bridge](https://github.com/formidablejs/next-bridge)
 * [Formidable Installer](https://github.com/formidablejs/installer)
+* [Formidable TS Ports](https://github.com/formidablejs/ts-ports)
+* [Formidable Logger](https://github.com/formidablejs/logger)
+* [Formidable Scheduler](https://github.com/formidablejs/scheduler)
 
 ## Support Questions
 

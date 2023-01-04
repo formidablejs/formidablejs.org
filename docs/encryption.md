@@ -13,25 +13,6 @@ Before running your application for the first time, you will need to set an appl
 
 To set the application key, run the following command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman key:generate
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman key:generate
-```
-
-</TabItem>
-</Tabs>

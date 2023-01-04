@@ -13,53 +13,15 @@ import TabItem from '@theme/TabItem'
 
 Craftsman is the command line interface included with Formidable. It provides a number of helpful commands that can assist you while you build your application. To view a list of all available Craftsman commands, you may call the `craftsman` command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman
 ```
 
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman
-```
-
-</TabItem>
-</Tabs>
-
 Every command also includes a "help" screen which displays and describes the command's available arguments and options. To view a help screen, precede the name of the command with the `--help` flag:
-
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
 
 ```bash
 node craftsman migrate:latest --help
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman migrate:latest --help
-```
-
-</TabItem>
-</Tabs>
 
 ### Shell (REPL)
 
@@ -69,28 +31,9 @@ Craftsman Shell is a powerful REPL for the Formidable framework, powered by the 
 
 Shell allows you to interact with your Formidable application on the command line. To enter the Shell environment, run the `shell` Craftsman command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman shell
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman shell
-```
-
-</TabItem>
-</Tabs>
 
 In order for a class or function to be accessible in the Shell environment, it needs to be added in the `context` config file. To get started, open `config/context.imba` or `config/context.ts`:
 
@@ -172,28 +115,9 @@ In addition to the commands provided with Craftsman, you may build your own cust
 
 To create a new command, you may use the `make:command` Craftsman command. This command will create a new command class in the `app/Console/Commands` directory:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman make:command Hello
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman make:command Hello
-```
-
-</TabItem>
-</Tabs>
 
 ### Command Structure
 
@@ -214,39 +138,25 @@ import { Prop } from '@formidablejs/framework'
 
 export class Hello < Command
 
-    /**
-	 * The name and signature of the console command.
-	 *
-	 * @type {string}
-	 */
-	get signature
+	# The name and signature of the console command.
+	get signature\string
 		'hello {?name}'
 
-    /**
-	 * The console command description.
-	 *
-	 * @type {string}
-	 */
-	get description
+	# The console command description.
+	get description\string
 		'My command description'
 
-    /**
-	 * Command props.
-	 *
-	 * @type {object}
-	 */
-	get props
+	# Command props.
+	get props\object
 		{
 			name: Prop.string!.description('Your name')
 		}
 
-    /**
-	 * Execute the console command.
-	 *
-	 * @returns {mixed}
-	 */
-	def handle
+	# Execute the console command.
+	def handle\void
 		self.write "<fg:green>Hello {argument('name', 'Stranger')}</fg:green>"
+
+        self.exit!
 ```
 
 </TabItem>
@@ -286,6 +196,8 @@ export class Hello extends Command {
 	 */
 	handle(): void {
 		this.write("<fg:green>Hello {argument('name', 'Stranger')}</fg:green>")
+
+        this.exit()
 	}
 ```
 
@@ -310,12 +222,8 @@ All user supplied arguments and options are wrapped in curly braces. In the foll
 <TabItem value="imba">
 
 ```py
-/**
- * The name and signature of the console command.
- *
- * @type {string}
- */
-get signature
+# The name and signature of the console command.
+get signature\string
     'hello {name}'
 ```
 
@@ -352,12 +260,8 @@ If you want to define a default value, you can use the `props` property:
 <TabItem value="imba">
 
 ```py
-/**
- * Command props.
- *
- * @type {object}
- */
-get props
+# Command props.
+get props\object
 	{
 		name: Prop.string!.default('Donald')
 	}
@@ -394,12 +298,8 @@ Options, like arguments, are another form of user input. Options are prefixed by
 <TabItem value="imba">
 
 ```py
-/**
- * The name and signature of the console command.
- *
- * @type {string}
- */
-get signature
+# The name and signature of the console command.
+get signature\string
     'hello {name} {--time}'
 ```
 
@@ -420,28 +320,9 @@ get signature(): string {
 
 In this example, the `--time` switch may be specified when calling the command. If the `--time` flag is passed, the value will of the option will be `true`. Otherwise, the value will be `false`:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman hello Luna --time
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```py
-bun run craftsman hello Luna --time
-```
-
-</TabItem>
-</Tabs>
 
 #### Options With Values
 
@@ -457,20 +338,12 @@ Next, let's take a look at an option that expects a value. If the user must spec
 <TabItem value="imba">
 
 ```py
-/**
- * The name and signature of the console command.
- *
- * @type {string}
- */
-get signature
+# The name and signature of the console command.
+get signature\string
     'hello {name} {--time}'
 
-/**
- * Command props.
- *
- * @type {object}
- */
-get props
+# Command props.
+get props\object
 	{
 		name: Prop.string!.default('Donald')
 		time: Prop.string!
@@ -503,28 +376,9 @@ get props(): object {
 
 When invoking the command, you may give the `--time` flag a value:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman hello Luna --time=19:05
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman hello Luna --time=19:05
-```
-
-</TabItem>
-</Tabs>
 
 #### Option Alias
 
@@ -540,12 +394,8 @@ To assign an alias when defining an option, you may specify it in the `props` pr
 <TabItem value="imba">
 
 ```py
-/**
- * Command props.
- *
- * @type {object}
- */
-get props
+# Command props.
+get props\object
 	{
 		time: Prop.string!.alias('t')
 	}
@@ -570,28 +420,9 @@ get props(): object {
 
 When invoking the command, you may use `-t` instead of `--time`:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman hello Luna -t=19:05
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman hello Luna -t=19:05
-```
-
-</TabItem>
-</Tabs>
 
 ### Input Descriptions
 
@@ -607,12 +438,8 @@ You may assign descriptions to input arguments and options in the `props` proper
 <TabItem value="imba">
 
 ```py
-/**
- * Command props.
- *
- * @type {object}
- */
-get props
+# Command props.
+get props\object
 	{
 		time: Prop.string!.description('Current time')
 	}
@@ -651,12 +478,8 @@ While your command is executing, you will likely need to access the values for t
 <TabItem value="imba">
 
 ```py
-/**
- * Execute the console command.
- *
- * @returns {mixed}
- */
-def handle
+# Execute the console command.
+def handle\void
     const name\string = self.argument('name')
 ```
 
@@ -687,12 +510,8 @@ Options may be retrieved just as easily as arguments using the `option` method:
 <TabItem value="imba">
 
 ```py
-/**
- * Execute the console command.
- *
- * @returns {mixed}
- */
-def handle
+# Execute the console command.
+def handle\void
     const time\string = self.option('time')
 ```
 
@@ -723,12 +542,8 @@ You may also pass a default value as the second parameter if the value is `null`
 <TabItem value="imba">
 
 ```py
-/**
- * Execute the console command.
- *
- * @returns {mixed}
- */
-def handle
+# Execute the console command.
+def handle\void
     const name\string = self.argument('name', 'Donald')
     const time\string = self.option('time', '19:05')
 ```
@@ -765,12 +580,8 @@ To send output to the console, you may use the line, `info`, `write`, `line`, an
 <TabItem value="imba">
 
 ```py
-/**
- * Execute the console command.
- *
- * @returns {mixed}
- */
-def handle
+# Execute the console command.
+def handle\void
     # ...
 
     self.info('The command was successful')

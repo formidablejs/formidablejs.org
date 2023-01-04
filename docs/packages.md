@@ -153,7 +153,7 @@ For formidable to be aware of the `Package.js` file, you must include it in the 
 
 The `Package.js` file contains a `publish` function which should always return an object. In this object, you can specify the files that must be copied from the package to the framework.
 
-e.g. The package above will copy the `formidable/config/bugsnag.imba` or `formidable/config/bugsnag.ts` file from the package to `config` folder in a formidable application when running the `package:publish` [Craftsman](docs/craftsman) command:
+e.g. The package above will copy the `formidable/config/bugsnag.imba` or `formidable/config/bugsnag.ts` file from the package to `config` folder in a formidable application when running the `package:publish` [Craftsman](/docs/craftsman) command:
 
 ```
 node craftsman package:publish --package=<package-name> --tag=config

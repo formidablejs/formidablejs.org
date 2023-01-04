@@ -18,12 +18,12 @@ By default Formidable uses Imba for its frontend development. You can build your
 To build a multi-page application, use the `formidable new` command with the following flags:
 
 ```bash
-formidable new example-app --type "full-stack" --stack "imba" --scaffolding "blank"
+formidable new example-app --type "full-stack" --stack "imba" --scaffolding "mpa"
 ```
 
-This will create a new project with `web` related files.
+This will create a new project with mpa related files.
 
-See the [Views](docs/views) documentation for more information.
+See the [Views](/docs/views) documentation for more information.
 
 #### Single-page Application
 
@@ -35,10 +35,10 @@ formidable new example-app --type "full-stack" --stack "imba" --scaffolding "spa
 
 This will create a new project and install the `@formidablejs/view` package, then publish spa related files.
 
-The frontend files will be published in the `resources/imba` folder.
-To get started, open the `resources/imba/App.imba` file.
+The frontend files will be published in the `resources/frontend` folder.
+To get started, open the `resources/frontend/App.imba` file.
 
-See the [Views](docs/views) documentation for more information.
+See the [Views](/docs/views) documentation for more information.
 
 ## Vue.js & React
 
@@ -163,7 +163,7 @@ The default inertia root view is defined in the `config/inertia.imba` or `config
     ]}>
 <TabItem value="imba">
 
-```py title=config/inertia.imba
+```py title=config/inertia.imba {11}
 import { App } from '../resources/views/app'
 
 export default {
@@ -176,13 +176,22 @@ export default {
 
 	rootView: App
 
+	# --------------------------------------------------------------------------
+	# Laravel Mix Command
+	# --------------------------------------------------------------------------
+	#
+	# Command that runs to execute Laravel Mix when Formidable is in development
+	# mode.
+
+	mix: "npm run mix:watch"
+
 }
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts title=config/inertia.ts
+```ts title=config/inertia.ts {13}
 import { App } from '../resources/views/app'
 
 export default {
@@ -196,6 +205,16 @@ export default {
 	 */
 
 	rootView: App
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Laravel Mix Command
+	 * --------------------------------------------------------------------------
+	 * Command that runs to execute Laravel Mix when Formidable is in development
+	 * mode.
+	 */
+
+	mix: "npm run mix:watch"
 
 }
 ```
@@ -261,4 +280,4 @@ Inertia.render('Welcome').withViewData({
 
 -----
 
-For more information on how to use Laravel Mix and Inertia, see the Laravel [documentation](https://laravel.com/docs/8.x/mix) and the Inertia [documentation](https://inertiajs.com/).
+For more information on how to use Laravel Mix and Inertia, see the Laravel Mix [documentation](https://laravel-mix.com/docs/6.0/installation) and the Inertia [documentation](https://inertiajs.com/).

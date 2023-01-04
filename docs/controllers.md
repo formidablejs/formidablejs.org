@@ -19,28 +19,9 @@ Instead of defining all of your request handling logic as anonymous functions in
 
 To create a new controller, use the `make:controller` Craftsman command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman make:controller UserController
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman make:controller UserController
-```
-
-</TabItem>
-</Tabs>
 
 This command will place a new `UserController` class within your `app/Http/Controllers` directory.
 

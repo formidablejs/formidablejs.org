@@ -15,34 +15,15 @@ Many web applications require users to verify their email addresses before using
 
 Next, your `users` table must contain an `email_verified_at` column to store the date and time that the user's email address was verified. By default, the `users` table migration included with the Formidable framework already includes this column. So, all you need to do is run your database migrations:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman migrate:up
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman migrate:up
-```
-
-</TabItem>
-</Tabs>
 
 ## Routing
 
 Formidable provides email verification routes for your application. These routes are automatically added to your `routes/api.imba` or `routes/api.ts` files by the `RouterServiceResolver`.
 
-See [Authentication Routes](docs/authentication) for more information.
+See [Authentication Routes](/docs/authentication) for more information.
 
 ## Customization
 

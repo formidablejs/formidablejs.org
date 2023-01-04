@@ -22,28 +22,9 @@ There are several middleware included in the Formidable framework, including mid
 
 To create a new middleware, use the `make:middleware` Craftsman command:
 
-<Tabs
-    defaultValue={State.runtime}
-	groupId="runtime-snippets"
-    values={[
-        {label: 'Node', value: 'node'},
-        {label: 'Bun', value: 'bun'},
-    ]}>
-<TabItem value="node">
-
 ```bash
 node craftsman make:middleware CheckAge
 ```
-
-</TabItem>
-<TabItem value="bun">
-
-```bash
-bun run craftsman make:middleware CheckAge
-```
-
-</TabItem>
-</Tabs>
 
 This command will place a new `CheckAge` class within your `app/Http/Middleware` directory. In this middleware, we will only allow access to the route if the supplied `age` is greater than 18. Otherwise, we will throw an Exception.
 
