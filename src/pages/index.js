@@ -14,11 +14,7 @@ export default function Home() {
 	const [ isUpdated, setIsUpdated ] = useState(false)
 	const [ props, setProps ] = useState({})
 
-	if (ExecutionEnvironment.canUseDOM) {
-		if (isUpdated) {
-			return
-		}
-
+	if (ExecutionEnvironment.canUseDOM && !isUpdated) {
 		const props = !/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
 			? { loading: 'lazy' }
 			: {}
