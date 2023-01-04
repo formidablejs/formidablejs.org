@@ -13,9 +13,9 @@ import TabItem from '@theme/TabItem'
 
 By default Formidable uses Imba for its frontend development. You can build your frontend either as a single-page application or as a web application.
 
-#### Web Application
+#### Multi-page Application
 
-To build a web application, use the `formidable new` command with the following flags:
+To build a multi-page application, use the `formidable new` command with the following flags:
 
 ```bash
 formidable new example-app --type "full-stack" --stack "imba" --scaffolding "blank"
