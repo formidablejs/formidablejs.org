@@ -138,8 +138,8 @@ export tag Create
 					<input type="text" bind=form.first_name>
 
 				<div[d:block]>
-					<label> "First Name"
-					<input type="text" bind=form.first_name>
+					<label> "Last Name"
+					<input type="text" bind=form.last_name>
 
 				<div[d:block]>
 					<button> "Add"
@@ -345,7 +345,7 @@ Specify this to change the parent container. (default: `body`):
 
 The `useRoute` hook allows you to generate routes based on thier name and any required parameters:
 
-```py
+```py title="resources/frontend/App.imba"
 import { useRoute } from '@formidablejs/view'
 
 export tag App
@@ -395,7 +395,7 @@ Route.get('/user/:id', (request: Request) => {
 
 #### *Components*
 
-```py
+```py title="resources/frontend/App.imba"
 import { useRoute } from '@formidablejs/view'
 
 export tag App
@@ -410,7 +410,7 @@ export tag App
 
 If we want to include a query string to our route, we can pass a second parameter to the `useRoute` hook with an object of properties of a query string. If the properties are not expected as parameters, then they will be added as a query string:
 
-```py
+```py title="resources/frontend/App.imba"
 import { useRoute } from '@formidablejs/view'
 
 export tag App
@@ -425,7 +425,7 @@ export tag App
 
 But how would we handle a case where our query string properties clash with our route parameters? Well, we can pass a `_query` with our query string properties:
 
-```py
+```py title="resources/frontend/App.imba"
 import { useRoute } from '@formidablejs/view'
 
 export tag App
