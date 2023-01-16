@@ -55,7 +55,7 @@ After defining our schema, we can now run the migration:
 node craftsman migrate:latest
 ```
 
-This will add a mew table to your database.
+This will add a new table to your database.
 
 ## Migration Modifications
 
