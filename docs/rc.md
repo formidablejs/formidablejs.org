@@ -9,7 +9,7 @@ Formidablerc config is part of the `package.json` file. In this file, we can add
 
 ## Mode
 
-The `mode` option allows you to switch between `nodemon` and `imba`. Both of these modes control how your application re-builds when running in development mode. By default, Formidable uses `imba`:
+The `mode` option allows you to switch between `nodemon` and `imba`. Both of these modes control how your application re-builds when running in development mode. By default, Formidable uses `nodemon`:
 
 ```js {3} title="package.json"
 {
