@@ -1,6 +1,7 @@
 const State = {
     runtime: 'node',
-    language: 'ts'
+    language: 'ts',
+	manager: 'npm'
 }
 
 
