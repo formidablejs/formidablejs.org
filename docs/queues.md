@@ -341,7 +341,7 @@ import { ProcessAudio } from '../Jobs/ProcessAudio'
 ...
 export class Kernel extends ConsoleKernel {
 	...
-	get jobs() : Array<typeof Queueable> {
+	get jobs(): Array<typeof Queueable> {
 		return [
 			ProcessAudio
 		]
