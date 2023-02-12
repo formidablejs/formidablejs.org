@@ -551,3 +551,112 @@ module.exports = {
 	]
 }
 ```
+
+## Events
+
+Formidable Queues come with handy events that you can tap into during the lifecycle of your jobs.
+
+### onReady
+
+The `onReady` event gets called when the queue worker is ready:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+import { Queue } from '@formidablejs/queues'
+
+Queue.onReady(do(queueName\string)
+	# do something
+)
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Queue } from '@formidablejs/queues'
+
+Queue.onReady((queueName: string) => {
+	// do something
+})
+```
+
+</TabItem>
+</Tabs>
+
+### onError
+
+The `onError` event, gets called when a job fails:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+import { Queue } from '@formidablejs/queues'
+
+Queue.onError(do(queueName\string, job, error\Error)
+	# do something
+)
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Queue } from '@formidablejs/queues'
+
+Queue.onReady((queueName: string, job, error: Error) => {
+	// do something
+})
+```
+
+</TabItem>
+</Tabs>
+
+### onLog
+
+The `onLog` event gets called when the queue logs the current state of jobs:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+import { Queue } from '@formidablejs/queues'
+
+Queue.onLog(do(queueName\string, job, type\string)
+	# do something
+)
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+import { Queue } from '@formidablejs/queues'
+
+Queue.onLog((queueName: string, job, type: string) => {
+	// do something
+})
+```
+
+</TabItem>
+</Tabs>
