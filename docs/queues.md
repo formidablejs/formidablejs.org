@@ -533,7 +533,7 @@ Should you wish to know more about your application's jobs, you may use the `que
 node craftsman queue:flush
 ```
 
-## Production Considerations
+### Production Consideration
 
 When running your application in production, it is recommended to use pm2 for your queues:
 
