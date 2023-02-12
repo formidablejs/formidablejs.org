@@ -304,6 +304,92 @@ export class ProcessAudio extends Queueable {
 </TabItem>
 </Tabs>
 
+#### Custom Queue
+
+By default, Formidable Queues use the `default` queue. You can change this per job. If you want a specific job to use a specific queue, you can add a `queue` getter in the job class:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py title="app/Jobs/ProcessAudio.imba" {6-7}
+import { Queueable } from '@formidablejs/queues'
+
+export class ProcessAudio < Queueable
+
+	# Queue to run job on.
+	get queue\string
+		'custom_queue'
+
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Jobs/ProcessAudio.ts" {7-9}
+import { Queueable } from '@formidablejs/queues'
+
+export class ProcessAudio extends Queueable {
+	/**
+	 * Queue to run job on.
+	 */
+    get queue(): string {
+		return 'custom_queue'
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### Timeout
+
+You can also define a timeout for specific jobs by adding a `timeout` getter that returns the delay in human readable format as a string:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py title="app/Jobs/ProcessAudio.imba" {6-7}
+import { Queueable } from '@formidablejs/queues'
+
+export class ProcessAudio < Queueable
+
+	# The timeout time for the job.
+	get timeout\string
+		'2 hours'
+
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Jobs/ProcessAudio.ts" {7-9}
+import { Queueable } from '@formidablejs/queues'
+
+export class ProcessAudio extends Queueable {
+	/**
+	 * The timeout time for the job.
+	 */
+    get timeout(): string {
+		return '2 hours'
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
 ## Registering Jobs
 
 Once you have created your first job, you will need to register it for the framework to know which job to run when the queue is running.
@@ -428,7 +514,7 @@ export class AudioController extends Controller {
 </TabItem>
 </Tabs>
 
-#### Delayed Dispatching
+### Delayed Dispatching
 
 You may also delay a job with the `delay` method:
 
