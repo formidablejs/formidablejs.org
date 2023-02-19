@@ -83,7 +83,7 @@ export default function Home() {
 					<p>Build with your favorite technologies</p> */}
 
 					<p style={{
-						textTransform: 'uppercase', letterSpacing: '.025em', fontSize: '.875rem', lineHeight: '1.25rem'
+						letterSpacing: '.025em', fontSize: '20px', lineHeight: '1.25rem'
 					}}>Works with</p>
 
 					<div className="frameworks">
@@ -152,6 +152,16 @@ export default function Home() {
 					</p>
 
 					<iframe src='https://codesandbox.io/embed/formidable-pn32bs?codemirror=1&fontsize=14&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba&moduleview=1&theme=dark' style={{ width: '100%', height: '500px', border: '1px solid #555', borderRadius: '8px', overflow: 'hidden' }} title='formidable' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts' {...props}></iframe>
+				</div>
+
+				<div className="live" style={{ marginTop: '-30px', marginBottom: '100px' }}>
+					<h1>
+						Support us
+					</h1>
+					<p style={{ marginBottom: '20px' }}>
+						Formidable is an MIT-licensed open-source project that relies on the support of its users to continue improving and growing. If you enjoy using Formidable, please consider contributing to the project by submitting bug reports, feature requests, or even making a financial contribution.
+					</p>
+					<iframe src="https://github.com/sponsors/donaldp/button" title="Sponsor donaldp" height="32" width="114" style={{border: 0, borderRadius: '6px'}}></iframe>
 				</div>
 
 				<div className='community'>
