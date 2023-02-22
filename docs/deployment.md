@@ -3,6 +3,10 @@ id: deployment
 title: Deployment
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 When you're ready to deploy your Formidable application to production, there are some important things you can do to make sure your application is running as efficiently as possible. In this document, we'll cover some great starting points for making sure your Formidable application is deployed properly.
 
 ## Server Requirements
@@ -33,3 +37,207 @@ Then add a `heroku-postbuild` script:
 > This will cache the config.
 
 When done with the initial setup, add production `.env` details to Heroku, that's all!
+
+### Nginx
+
+If you need more control over your server and application, we recommend deploying to a Linux server and using Nginx and PM2.
+
+Before getting started, make sure the following prerequisites are met:
+* [Node >=16.*](https://nodejs.org/en/download/) (we recommend using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
+* [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install)
+* [PM2](https://pm2.keymetrics.io/)
+* [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)
+
+#### Serving Your Application
+
+Now that you have all the dependencies, you can go ahead and create a `ecosystem.config.js` file in the root of your application:
+
+```js title="ecosystem.config.js"
+module.exports = {
+	apps: [
+		{
+			name: "web",
+			script: "node craftsman serve --no-ansi",
+			time: true,
+			error_file: "./storage/logs/web/error.log",
+			out_file: "./storage/logs/web/log.log"
+		},
+		{
+			name: "cron",
+			script: "node craftsman schedule:run --no-ansi",
+			max_memory_restart: "100M",
+			time: true,
+			error_file: "./storage/logs/cron/error.log",
+			out_file: "./storage/logs/cron/log.log"
+		}
+	]
+}
+```
+
+And finally, start your application:
+
+```bash
+pm2 start ecosystem.config.js
+```
+
+By default, this will start our application on `http://localhost:3000`, we can change the port by passing a `--port` flag:
+
+```js title="ecosystem.config.js" {5}
+module.exports = {
+	apps: [
+		{
+			name: "main",
+			script: "node craftsman serve --port=3002 --no-ansi",
+			time: true,
+			error_file: "./storage/logs/main/error.log",
+			out_file: "./storage/logs/main/log.log"
+		}
+	]
+}
+```
+
+:::info
+
+We also recommend you enable PM2 to auto start your application on system boot. You can do this by running the command: `pm2 startup`
+
+:::
+
+#### Creating a Reverse Proxy
+
+Now that you have started your application you can go ahead and create a virtual host:
+
+```conf title="/etc/nginx/sites-available/app.conf"
+server {
+    listen 80;
+	server_name _;
+
+	location / {
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_cache_bypass $http_upgrade;
+		proxy_set_header Host $host;
+		proxy_pass http://localhost:3000;
+		proxy_http_version 1.0;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+	}
+}
+```
+Once thats done, we can check for any issues on our newly created `app.conf`:
+
+```bash
+sudo nginx -t
+```
+
+If everything is fine, we should see a "success" message. Then we can enable our application by creating a symbolic link of the `app.conf` file from the `/etc/nginx/sites-available/` directory to `/etc/nginx/sites-enabled/`:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/
+```
+
+Now, for changes to reflect, you will need to restart Nginx:
+
+```bash
+sudo systemctl reload nginx
+```
+
+And now you should be able to access your application 🎉🎉🎉
+
+#### Automating things
+
+Its not always practical to ssh into your server to pull your latest changes. Because of this, we may wish to automate things a bit using Bash scripts.
+
+Here's a simple bash script that pulls the latest changes from a repo and run the necessary commands:
+
+<Tabs
+    defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'NPM', value: 'npm'},
+        {label: 'Yarn', value: 'yarn'},
+    ]}>
+<TabItem value="npm">
+
+```bash title="/root/deploy.sh"
+echo "Jump to application folder"
+cd /root/app
+
+echo "Update application from Git"
+git pull
+
+echo "Install application dependencies"
+npm install
+
+echo "Stop application"
+pm2 stop ecosystem.config.js
+
+echo "Cache config"
+node craftsman config:cache
+
+echo "Run database migrations"
+node craftsman migrate:latest --no-interaction
+
+echo "Start application again"
+pm2 start ecosystem.config.js
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash title="/root/deploy.sh"
+echo "Jump to application folder"
+cd /root/app
+
+echo "Update application from Git"
+git pull
+
+echo "Install application dependencies"
+yarn install
+
+echo "Stop application"
+pm2 stop ecosystem.config.js
+
+echo "Cache config"
+node craftsman config:cache
+
+echo "Run database migrations"
+node craftsman migrate:latest --no-interaction
+
+echo "Start application again"
+pm2 start ecosystem.config.js
+```
+
+</TabItem>
+</Tabs>
+
+This script can be triggered by a Github Action, for example. When we push to our `main` branch, we can have a Github Workflow that ssh's into our server on our behalf and executes the `deploy.sh` script:
+
+```yaml title=".github/workflows/deploy.yaml"
+name: Deploying
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          script: sh /root/deploy.sh
+```
+
+:::info
+
+This is only an example. You don't have to use Github to be able to Automate your deployments. The same can also be achieved with Gitlab and Bitbucket Pipelines.
+
+:::
