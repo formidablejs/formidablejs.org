@@ -115,7 +115,7 @@ export default function Home() {
 								<h3>Craftsman</h3>
 								<p>
 									Easily build your Formidable application, tinker with your database data and control your application directly from the terminal using the
-									Craftsman Development CLI tool. Craftsman lets you easily scaffold common classes such as Controllers, Models, and Migrations.
+									Craftsman Development CLI tool. Craftsman lets you easily scaffold common classes such as Controllers, Repositories, and Migrations.
 								</p>
 							</div>
 							<div style={{ flex: 1 }}>

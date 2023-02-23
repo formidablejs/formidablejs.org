@@ -111,17 +111,17 @@ In this example we're passing a single prop, called `post` to the Post/Show page
 ```py title=app/Http/Controllers/PostController.imba
 import { @use } from '@formidablejs/framework'
 import { Inertia } from '@formidablejs/inertia'
-import { Post } from '../../Models/Post'
+import { PostRepository } from '../../Repositories/PostRepository'
 import { Controller } from './Controller'
 
 export class PostController < Controller
 
-	@use(Post)
+	@use(PostRepository)
 	def show post\Promise<Post>
-		const { attributes } = await post
+		post = await post
 
 		Inertia.render('Post/Show', {
-			post: attributes
+			post: post
 		})
 ```
 
@@ -132,16 +132,16 @@ export class PostController < Controller
 import { use } from '@formidablejs/framework'
 import { Inertia } from '@formidablejs/inertia'
 import { InertiaResponse } from '@formidablejs/inertia'
-import { Post } from '../../Models/Post'
+import { PostRepository } from '../../Repositories/PostRepository'
 import { Controller } from './Controller'
 
 export class PostController extends Controller
-	@use(Post)
+	@use(PostRepository)
 	async show(post: Promise<Post>): Promise<InertiaResponse> {
-		const { attributes } = await post
+		post = await post
 
 		return Inertia.render('Post/Show', {
-			post: attributes
+			post: post
 		})
 	}
 }

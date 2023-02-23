@@ -68,7 +68,7 @@ export default {
 </TabItem>
 </Tabs>
 
-Out of the box, Formidable exposes the Framework's helper function to the Shell environment. Lets add the `User` model:
+Out of the box, Formidable exposes the Framework's helper function to the Shell environment. Lets add the `User` repository:
 
 <Tabs
     defaultValue={State.language}
@@ -81,10 +81,10 @@ Out of the box, Formidable exposes the Framework's helper function to the Shell 
 
 ```py title="config/context.imba"
 import { helpers } from '@formidablejs/framework'
-import { User } from '../app/Models/User'
+import { UserRepository } from '../app/Repositories/UserRepository'
 
 export default {
-	User: User
+	UserRepository: UserRepository
 	...helpers
 }
 ```
@@ -94,10 +94,10 @@ export default {
 
 ```ts title="config/context.ts"
 import { helpers } from '@formidablejs/framework'
-import { User } from '../app/Models/User'
+import { UserRepository } from '../app/Repositories/UserRepository'
 
 export default {
-	User: User,
+	UserRepository: UserRepository,
 	...helpers
 }
 ```
@@ -105,7 +105,7 @@ export default {
 </TabItem>
 </Tabs>
 
-Now that you've added your `User` model, you can access it from the Shell environment by just calling `User` in the environment. [Imba-Shell](https://github.com/donaldp/imba-shell) will autocomplete your code.
+Now that you've added your `User` repository, you can access it from the Shell environment by just calling `User` in the environment. [Imba-Shell](https://github.com/donaldp/imba-shell) will autocomplete your code.
 
 ## Writing Commands
 
