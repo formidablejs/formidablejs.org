@@ -44,7 +44,7 @@ import { Controller } from './Controller'
 export class UserController < Controller
 
 	def show request\Request
-		const user = await DB.where('id', request.param('id')).first!
+		const user = await DB.table('users').where('id', request.param('id')).first!
 
 		if !user then throw new NotFoundException 'User does not exist'
 
@@ -62,7 +62,7 @@ import { Controller } from './Controller'
 
 export class UserController extends Controller {
 	async show(request: Request): Promise<object> {
-		const user = await DB.where('id', request.param('id')).first()
+		const user = await DB.table('users').where('id', request.param('id')).first()
 
 		if (!user) {
 			throw new NotFoundException('User does not exist')
