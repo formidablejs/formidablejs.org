@@ -373,7 +373,7 @@ The field under validation must be present in the input data but can be empty.
 
 #### required
 
-Checks if the length of the String representation of the value is >
+Checks if the length of the String representation of the value is > than 0.
 
 #### required_if:anotherfield,value
 
