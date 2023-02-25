@@ -33,7 +33,7 @@ import { App } from '../resources/views/app'
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
 
-Route.get('/*', do
+Route.get('/', do
 	view(App, {
 		name: 'Donald'
 	})
