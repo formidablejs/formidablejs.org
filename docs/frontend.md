@@ -18,7 +18,7 @@ By default Formidable uses Imba for its frontend development. You can build your
 To build a multi-page application, use the `formidable new` command with the following flags:
 
 ```bash
-formidable new example-app --type "full-stack" --stack "imba" --scaffolding "mpa"
+formidable new example-app --imba --scaffolding "mpa"
 ```
 
 This will create a new project with mpa related files.
@@ -27,10 +27,10 @@ See the [Views](/docs/views) documentation for more information.
 
 #### Single-page Application
 
-To build a single-page application, you can use the `formidable new` command with the following flags:
+To build a single-page application, you can use the `formidable new` command with the following flag:
 
 ```bash
-formidable new example-app --type "full-stack" --stack "imba" --scaffolding "spa"
+formidable new example-app --imba
 ```
 
 This will create a new project and install the `@formidablejs/view` package, then publish spa related files.
@@ -49,7 +49,7 @@ Formidable provides an Inertia Adapter through [Laravel Mix](https://github.com/
 In other words, Mix makes it a cinch to compile and minify your application's CSS and JavaScript files. Through simple method chaining, you can fluently define your asset pipeline. For example:
 
 ```js title=webpack.mix.js
-mix.js('resources/js/app.js', 'public/js')
+mix.ts('resources/js/app.ts', 'public/js')
     .postCss('resources/css/app.css', 'public/css');
 ```
 
@@ -60,13 +60,13 @@ To get started with an application powered by Inertia, use the following command
 #### React
 
 ```bash
-formidable new example-app --type "full-stack" --stack "react"
+formidable new example-app --react
 ```
 
 #### Vue
 
 ```bash
-formidable new example-app --type "full-stack" --stack "vue"
+formidable new example-app --vue
 ```
 
 > This will scaffold a Vuejs or React application for you.
@@ -281,3 +281,74 @@ Inertia.render('Welcome').withViewData({
 -----
 
 For more information on how to use Laravel Mix and Inertia, see the Laravel Mix [documentation](https://laravel-mix.com/docs/6.0/installation) and the Inertia [documentation](https://inertiajs.com/).
+
+### TailwindCSS
+
+You can use TailwindCSS with your React or Vue application. In this guide, we will setup TailwindCSS for your application.
+
+#### Installation
+
+Install tailwindcss and its peer dependencies via npm, and create your tailwind.config.js file:
+
+<Tabs
+    defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'NPM', value: 'npm'},
+        {label: 'Yarn', value: 'yarn'},
+    ]}>
+<TabItem value="npm">
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn add -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+
+</TabItem>
+</Tabs>
+
+#### Configuration
+
+In your `webpack.mix.js` file, add tailwindcss as a PostCSS plugin:
+
+```js title="webpack.mix.js" {2}
+.postCss('resources/css/app.css', './public/css', [
+	require("tailwindcss"),
+])
+```
+
+Add the paths to all of your template files in your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {4-7}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./resources/**/*.js",
+    "./resources/**/*.ts",
+    "./resources/**/*.tsx",
+    "./resources/**/*.vue",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Add the @tailwind directives for each of Tailwind’s layers to your `./resources/css/app.css` file:
+
+```css title="resources/css/app.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+You're done! Visit [https://tailwindcss.com/](https://tailwindcss.com/) for more information.
