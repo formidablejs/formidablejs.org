@@ -99,6 +99,9 @@ export default function Home() {
 						<div className="framework" title="React.js">
 							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" width="150" alt="React.js Icon" loading='lazy' />
 						</div>
+						<div className="framework" title="TailwindCSS">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" height="50" width="150" alt="TailwindCSS Icon" loading='lazy' />
+						</div>
 						<div className="framework" title="GraphQL">
 							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" height="50" width="150" alt="GraphQL Icon" loading='lazy' />
 						</div>
