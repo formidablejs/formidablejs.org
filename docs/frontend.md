@@ -75,6 +75,15 @@ formidable new example-app --vue
 
 Mix is a configuration layer on top of [webpack](https://webpack.js.org/), so to run your Mix tasks you only need to execute one of the NPM scripts that are included in the default Formidable `package.json` file. When you run the `dev` or `production` scripts, all of your application's CSS, TypeScript and JavaScript assets will be compiled and placed in your application's `public` directory:
 
+<Tabs
+    defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'NPM', value: 'npm'},
+        {label: 'Yarn', value: 'yarn'},
+    ]}>
+<TabItem value="npm">
+
 ```
 // Run all Mix tasks...
 npm run mix:dev
@@ -83,13 +92,48 @@ npm run mix:dev
 npm run mix:prod
 ```
 
+</TabItem>
+
+<TabItem value="yarn">
+
+```
+// Run all Mix tasks...
+yarn mix:dev
+
+// Run all Mix tasks and minify output...
+yarn mix:prod
+```
+
+</TabItem>
+</Tabs>
+
 #### Watching Assets For Changes
 
-The `npm run mix:watch` command will continue running in your terminal and watch all relevant CSS, TypeScript and JavaScript files for changes. Webpack will automatically recompile your assets when it detects a change to one of these files:
+The `mix:watch` script will continue running in your terminal and watch all relevant CSS, TypeScript and JavaScript files for changes. Webpack will automatically recompile your assets when it detects a change to one of these files:
 
-```
+<Tabs
+    defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'NPM', value: 'npm'},
+        {label: 'Yarn', value: 'yarn'},
+    ]}>
+<TabItem value="npm">
+
+```bash
 npm run mix:watch
 ```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn mix:watch
+```
+
+</TabItem>
+</Tabs>
 
 ### Inertia
 
@@ -183,7 +227,7 @@ export default {
 	# Command that runs to execute Laravel Mix when Formidable is in development
 	# mode.
 
-	mix: "npm run mix:watch"
+	mix: "npm run mix:watch" # or "yarn mix:watch"
 
 }
 ```
@@ -214,7 +258,7 @@ export default {
 	 * mode.
 	 */
 
-	mix: "npm run mix:watch"
+	mix: "npm run mix:watch" // or "yarn mix:watch"
 
 }
 ```
@@ -310,7 +354,7 @@ npx tailwindcss init
 
 ```bash
 yarn add -D tailwindcss postcss autoprefixer
-npx tailwindcss init
+yarn exec tailwindcss init
 ```
 
 </TabItem>
