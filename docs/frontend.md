@@ -73,7 +73,7 @@ formidable new example-app --vue
 
 ### Running Mix
 
-Mix is a configuration layer on top of [webpack](https://webpack.js.org/), so to run your Mix tasks you only need to execute one of the NPM scripts that are included in the default Formidable `package.json` file. When you run the `dev` or `production` scripts, all of your application's CSS and JavaScript assets will be compiled and placed in your application's `public` directory:
+Mix is a configuration layer on top of [webpack](https://webpack.js.org/), so to run your Mix tasks you only need to execute one of the NPM scripts that are included in the default Formidable `package.json` file. When you run the `dev` or `production` scripts, all of your application's CSS, TypeScript and JavaScript assets will be compiled and placed in your application's `public` directory:
 
 ```
 // Run all Mix tasks...
