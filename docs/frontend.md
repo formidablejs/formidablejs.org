@@ -44,9 +44,9 @@ See the [Views](/docs/views) documentation for more information.
 
 Formidable provides an Inertia Adapter through [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
 
-[Laravel Mix](https://github.com/JeffreyWay/laravel-mix) is a package developed by [Laracasts](https://laracasts.com/) creator Jeffrey Way. It provides a fluent API for defining webpack build steps for your Laravel and Formidable applications using several common CSS and JavaScript pre-processors.
+[Laravel Mix](https://github.com/JeffreyWay/laravel-mix) is a package developed by [Laracasts](https://laracasts.com/) creator Jeffrey Way. It provides a fluent API for defining webpack build steps for your Laravel and Formidable applications using several common CSS, TypeScript and JavaScript pre-processors.
 
-In other words, Mix makes it a cinch to compile and minify your application's CSS and JavaScript files. Through simple method chaining, you can fluently define your asset pipeline. For example:
+In other words, Mix makes it a cinch to compile and minify your application's CSS, TypeScript and JavaScript files. Through simple method chaining, you can fluently define your asset pipeline. For example:
 
 ```js title=webpack.mix.js
 mix.ts('resources/js/app.ts', 'public/js')
@@ -85,7 +85,7 @@ npm run mix:prod
 
 #### Watching Assets For Changes
 
-The `npm run mix:watch` command will continue running in your terminal and watch all relevant CSS and JavaScript files for changes. Webpack will automatically recompile your assets when it detects a change to one of these files:
+The `npm run mix:watch` command will continue running in your terminal and watch all relevant CSS, TypeScript and JavaScript files for changes. Webpack will automatically recompile your assets when it detects a change to one of these files:
 
 ```
 npm run mix:watch
@@ -95,7 +95,7 @@ npm run mix:watch
 
 #### Creating responses
 
-In your controller, provide both the name of the JavaScript page component, as well as any props (data) for the page.
+In your controller, provide both the name of the TypeScript or JavaScript page component, as well as any props (data) for the page.
 
 In this example we're passing a single prop, called `post` to the Post/Show page component:
 
