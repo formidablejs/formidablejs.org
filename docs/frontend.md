@@ -40,7 +40,7 @@ To get started, open the `resources/frontend/App.imba` file.
 
 See the [Views](/docs/views) documentation for more information.
 
-## Vue.js & React
+## Vue.js, React & Svelte
 
 Formidable provides an Inertia Adapter through [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
 
@@ -57,19 +57,25 @@ mix.ts('resources/js/app.ts', 'public/js')
 
 To get started with an application powered by Inertia, use the following commands:
 
-#### React
-
-```bash
-formidable new example-app --react
-```
-
 #### Vue
 
 ```bash
 formidable new example-app --vue
 ```
 
-> This will scaffold a Vuejs or React application for you.
+#### React
+
+```bash
+formidable new example-app --react
+```
+
+#### Svelte
+
+```bash
+formidable new example-app --svelte
+```
+
+> This will scaffold a Vuejs, React or Svelte application for you.
 
 ### Running Mix
 
@@ -79,8 +85,9 @@ Mix is a configuration layer on top of [webpack](https://webpack.js.org/), so to
     defaultValue={State.manager}
 	groupId="package-manager"
     values={[
-        {label: 'NPM', value: 'npm'},
-        {label: 'Yarn', value: 'yarn'},
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
     ]}>
 <TabItem value="npm">
 
@@ -90,6 +97,18 @@ npm run mix:dev
 
 // Run all Mix tasks and minify output...
 npm run mix:prod
+```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```
+// Run all Mix tasks...
+pnpm run mix:dev
+
+// Run all Mix tasks and minify output...
+pnpm run mix:prod
 ```
 
 </TabItem>
@@ -115,13 +134,22 @@ The `mix:watch` script will continue running in your terminal and watch all rele
     defaultValue={State.manager}
 	groupId="package-manager"
     values={[
-        {label: 'NPM', value: 'npm'},
-        {label: 'Yarn', value: 'yarn'},
+        {label: 'npm', value: 'npm'},
+		{label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
     ]}>
 <TabItem value="npm">
 
 ```bash
 npm run mix:watch
+```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```bash
+pnpm run mix:watch
 ```
 
 </TabItem>
@@ -135,7 +163,14 @@ yarn mix:watch
 </TabItem>
 </Tabs>
 
-### Inertia
+:::info
+
+You don't have to run the `mix:watch` script, running `node craftsman serve --dev` will also watch your assets for changes and recompile them when needed.
+
+:::
+
+
+### Component Rendering
 
 #### Creating responses
 
@@ -194,6 +229,64 @@ export class PostController extends Controller
 </TabItem>
 </Tabs>
 
+We can access the `post` prop in our page component like so:
+
+<Tabs
+    defaultValue={State.framework}
+	groupId="frameworks"
+    values={[
+        {label: 'Vue', value: 'vue'},
+        {label: 'React', value: 'react'},
+        {label: 'Svelte', value: 'svelte'},
+    ]}>
+<TabItem value="vue">
+
+```html title="resources/js/Pages/Post/Show.vue"
+<script lang="ts">
+defineProps({
+	post: {
+		type: Post,
+		required: true
+	}
+})
+</script>
+
+<template>
+	<h1>{{ post.title }}</h1>
+	<p>{{ post.body }}</p>
+</template>
+```
+
+</TabItem>
+<TabItem value="react">
+
+```tsx title="resources/js/Pages/Post/Show.tsx"
+export default function Show({ post }: { post: Post }) {
+	return (
+		<>
+			<h1>{post.title}</h1>
+			<p>{post.body}</p>
+		</>
+	)
+}
+```
+
+</TabItem>
+<TabItem value="svelte">
+
+```html title="resources/js/Pages/Post/Show.svelte"
+<script>
+	/** @type {Post} post */
+	export let post
+</script>
+
+<h1>{post.title}</h1>
+<p>{post.body}</p>
+```
+
+</TabItem>
+</Tabs>
+
 #### Root template data
 
 The default inertia root view is defined in the `config/inertia.imba` or `config/inertia.ts` config file:
@@ -227,7 +320,7 @@ export default {
 	# Command that runs to execute Laravel Mix when Formidable is in development
 	# mode.
 
-	mix: "npm run mix:watch" # or "yarn mix:watch"
+	mix: "npm run mix:watch" # "pnpm run mix:watch" || "yarn mix:watch"
 
 }
 ```
@@ -248,7 +341,7 @@ export default {
 	 * Sets the root template that's loaded on the first page visit.
 	 */
 
-	rootView: App
+	rootView: App,
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -258,7 +351,7 @@ export default {
 	 * mode.
 	 */
 
-	mix: "npm run mix:watch" // or "yarn mix:watch"
+	mix: "npm run mix:watch" // "pnpm run mix:watch" || "yarn mix:watch"
 
 }
 ```
@@ -338,14 +431,24 @@ Install tailwindcss and its peer dependencies via npm, and create your tailwind.
     defaultValue={State.manager}
 	groupId="package-manager"
     values={[
-        {label: 'NPM', value: 'npm'},
-        {label: 'Yarn', value: 'yarn'},
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
     ]}>
 <TabItem value="npm">
 
 ```bash
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init
+```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```bash
+pnpm install -D tailwindcss postcss autoprefixer
+pnpm exec tailwindcss init
 ```
 
 </TabItem>
@@ -372,7 +475,7 @@ In your `webpack.mix.js` file, add tailwindcss as a PostCSS plugin:
 
 Add the paths to all of your template files in your `tailwind.config.js` file:
 
-```js title="tailwind.config.js" {4-7}
+```js title="tailwind.config.js" {4-8}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -380,6 +483,7 @@ module.exports = {
     "./resources/**/*.ts",
     "./resources/**/*.tsx",
     "./resources/**/*.vue",
+    "./resources/**/*.svelte",
   ],
   theme: {
     extend: {},

@@ -28,13 +28,21 @@ To get started, install the `@formidablejs/queues` package:
     defaultValue={State.manager}
 	groupId="package-manager"
     values={[
-        {label: 'NPM', value: 'npm'},
-        {label: 'Yarn', value: 'yarn'},
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
     ]}>
 <TabItem value="npm">
 
 ```bash
-npm i @formidablejs/queues
+npm install @formidablejs/queues
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```bash
+pnpm install @formidablejs/queues
 ```
 
 </TabItem>

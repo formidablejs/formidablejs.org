@@ -14,7 +14,7 @@ When you're ready to deploy your Formidable application to production, there are
 The Formidable framework has a few system requirements. You should ensure that your web server has the following minimum Node version:
 
 * `Node >=16.*`
-* `NPM/Yarn`
+* `npm/pnpm/yarn`
 
 ## Deploy
 
@@ -44,7 +44,7 @@ If you need more control over your server and application, we recommend deployin
 
 Before getting started, make sure the following prerequisites are met:
 * [Node >=16.*](https://nodejs.org/en/download/) (we recommend using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
-* [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install)
+* [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install) or [PNPM](https://pnpm.io/installation)
 * [PM2](https://pm2.keymetrics.io/)
 * [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)
 
@@ -86,11 +86,11 @@ By default, this will start our application on `http://localhost:3000`, we can c
 module.exports = {
 	apps: [
 		{
-			name: "main",
+			name: "web",
 			script: "node craftsman serve --port=3002 --no-ansi",
 			time: true,
-			error_file: "./storage/logs/main/error.log",
-			out_file: "./storage/logs/main/log.log"
+			error_file: "./storage/logs/web/error.log",
+			out_file: "./storage/logs/web/log.log"
 		}
 	]
 }
@@ -154,8 +154,9 @@ Here's a simple bash script that pulls the latest changes from a repo and run th
     defaultValue={State.manager}
 	groupId="package-manager"
     values={[
-        {label: 'NPM', value: 'npm'},
-        {label: 'Yarn', value: 'yarn'},
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
     ]}>
 <TabItem value="npm">
 
@@ -183,6 +184,34 @@ pm2 start ecosystem.config.js
 ```
 
 </TabItem>
+
+<TabItem value="pnpm">
+
+```bash title="/root/deploy.sh"
+echo "Jump to application folder"
+cd /root/app
+
+echo "Update application from Git"
+git pull
+
+echo "Install application dependencies"
+pnpm install
+
+echo "Stop application"
+pm2 stop ecosystem.config.js
+
+echo "Cache config"
+node craftsman config:cache
+
+echo "Run database migrations"
+node craftsman migrate:latest --no-interaction
+
+echo "Start application again"
+pm2 start ecosystem.config.js
+```
+
+</TabItem>
+
 <TabItem value="yarn">
 
 ```bash title="/root/deploy.sh"

@@ -1,7 +1,8 @@
 const State = {
     runtime: 'node',
     language: 'ts',
-	manager: 'npm'
+	manager: 'npm',
+	framework: 'vue'
 }
 
 

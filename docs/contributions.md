@@ -97,7 +97,7 @@ If a type is `feat`, `fix` or `perf`, then the commit will appear in the CHANGEL
 If the commit reverts a previous commit, it should begin with `revert:`, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>`., where the hash is the SHA of the commit being reverted.
 
 #### Scope
-The scope could be anything specifying place of the commit change. For example: `router`, `view`, `querybuilder`, `database`, `model` and so on.
+The scope could be anything specifying place of the commit change. For example: `router`, `view`, `querybuilder`, `database`, `repository` and so on.
 
 #### Subject
 The subject contains succinct description of the change:
