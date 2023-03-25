@@ -871,7 +871,7 @@ This command will generate types for all of your request rules. The generated ty
 
 Once you have generated your types, you may use them in your frontend forms. For example, let's assume we have a `StorePersonRequest` class that contains the following rules:
 
-```ts title="app/Requests/StorePersonRequest.ts" {6-10}
+```ts title="app/Http/Requests/StorePersonRequest.ts" {6-10}
 import { Request } from '@formidablejs/framework'
 
 export class StorePersonRequest extends Request {
