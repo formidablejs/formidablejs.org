@@ -855,7 +855,13 @@ if(request.has('name')) {
 
 ## Type-safe
 
-When using TypeScript, you may generate types based on your request rules. You may do this for the purpose of type-hinting your request within your forms. This works with Imba, Vue, React, and Svelte.
+When using TypeScript, you may generate types based on your request rules. You may do this for the purpose of type-hinting your request within your forms. This works with Imba (SPA), Vue, React, and Svelte.
+
+:::info
+
+This feature is only available when using TypeScript as the default language and [nodemon](/docs/rc#mode) as the default development mode.
+
+:::
 
 ### Generating Types
 
@@ -1012,9 +1018,10 @@ let form = useForm({
 
 You may also generate types automatically when you run the `serve` command with the `--dev` flag. You can do this by adding the `node craftsman types:generate` command to your `package.json` file under `development.commands`:
 
-```json title="package.json" {4}
+```json title="package.json" {5}
 {
 	"development": {
+		"mode": "nodemon",
 		"commands": [
 			"node craftsman types:generate",
 		]
