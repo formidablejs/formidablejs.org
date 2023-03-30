@@ -10,13 +10,13 @@ module.exports = {
 	organizationName: 'formidablejs',
 	projectName: 'formidablejs.org',
 	themeConfig: {
-		// announcementBar: {
-		// 	id: 'formidable-announcement',
-		// 	content: "Formidable is currently in Public Beta. Please report any bugs or suggestions at <a href='https://github.com/orgs/formidablejs/discussions'>GitHub</a>.",
-		// 	backgroundColor: '#000',
-		// 	textColor: '#fff',
-		// 	isCloseable: false
-		// },
+		announcementBar: {
+			id: 'formidable-announcement',
+			content: 'Missed our "Open Source Friday" GitHub stream? Don\'t worry, you can watch the replay now <a href="https://www.youtube.com/watch?v=YJwzu8kPcPs">here</a>.',
+			backgroundColor: '#000',
+			textColor: '#fff',
+			isCloseable: false
+		},
 		metadata: [
 			{
 				name: 'twitter:card',
