@@ -12,7 +12,7 @@ module.exports = {
 	themeConfig: {
 		announcementBar: {
 			id: 'formidable-announcement',
-			content: 'Missed our "Open Source Friday" GitHub stream? Don\'t worry, you can watch the replay now <a href="https://www.youtube.com/watch?v=YJwzu8kPcPs">here</a>.',
+			content: 'Missed our "Ultimate Meta Framework" GitHub stream? Don\'t worry, you can watch the replay <a target="_blank" href="https://www.youtube.com/watch?v=YJwzu8kPcPs">here</a>.',
 			backgroundColor: '#000',
 			textColor: '#fff',
 			isCloseable: false
