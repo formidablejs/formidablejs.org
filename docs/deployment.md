@@ -20,13 +20,28 @@ The Formidable framework has a few system requirements. You should ensure that y
 
 ### Heroku (recommended)
 
-Formidable is Heroku-ready out of the box. Just push your application to Heroku and you're good to go!
+Formidable is Heroku-ready out of the box. Here are some few things you may need to do to get started:
+
+Create a `Procfile` in the root of your application with the following content:
+
+```bash title="Procfile"
+web: npm start
+cron: node craftsman schedule:run
+```
+
+If your application is making use of the queue system, you can add the following line to your `Procfile`:
+
+```bash title="Procfile"
+worker: node craftsman queue:work
+```
 
 :::info
 
 Don't forget to add production `.env` details to Heroku. Remember to set `APP_DEBUG` to `false`.
 
 :::
+
+That's all you need to do to get started.
 
 ### Nginx
 
