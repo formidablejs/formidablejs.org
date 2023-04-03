@@ -20,23 +20,13 @@ The Formidable framework has a few system requirements. You should ensure that y
 
 ### Heroku (recommended)
 
-If you aren't quite ready to manage your own server configuration, we recommend using Heroku.
+Formidable is Heroku-ready out of the box. Just push your application to Heroku and you're good to go!
 
-To get started, add a `port` flag and a `host` flag to your start script:
+:::info
 
-```json title="package.json"
-"start": "node craftsman serve --port=${PORT:=3000} --host=${HOST}"
-```
+Don't forget to add production `.env` details to Heroku. Remember to set `APP_DEBUG` to `false`.
 
-Then add a `heroku-postbuild` script:
-
-```json title="package.json"
-"heroku-postbuild": "node craftsman config:cache"
-```
-
-> This will cache the config.
-
-When done with the initial setup, add production `.env` details to Heroku, that's all!
+:::
 
 ### Nginx
 
