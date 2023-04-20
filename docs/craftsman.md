@@ -134,7 +134,7 @@ After generating your command, you should define appropriate values for the `sig
 
 ```py title="app/Console/Commands/Hello.imba"
 import { Command } from '@formidablejs/framework'
-import { Prop } from '@formidablejs/framework'
+import { PropList, string } from '@formidablejs/console'
 
 export class Hello < Command
 
@@ -147,9 +147,9 @@ export class Hello < Command
 		'My command description'
 
 	# Command props.
-	get props\object
+	get props\PropList
 		{
-			name: Prop.string!.description('Your name')
+			name: string('Your name')
 		}
 
 	# Execute the console command.
@@ -164,7 +164,7 @@ export class Hello < Command
 
 ```ts title="app/Console/Commands/Hello.ts"
 import { Command } from '@formidablejs/framework'
-import { Prop } from '@formidablejs/framework'
+import { PropList, string } from '@formidablejs/console'
 
 export class Hello extends Command {
 
@@ -185,9 +185,9 @@ export class Hello extends Command {
     /**
 	 * Command props.
 	 */
-	get props(): object {
+	get props(): PropList {
 		return {
-			name: Prop.string().description('Your name')
+			name: string('Your name')
 		}
 	}
 
@@ -195,7 +195,7 @@ export class Hello extends Command {
 	 * Execute the console command.
 	 */
 	handle(): void {
-		this.write("<fg:green>Hello {argument('name', 'Stranger')}</fg:green>")
+		this.write(`<fg:green>Hello ${argument('name', 'Stranger')}</fg:green>`)
 
         this.exit()
 	}
@@ -261,9 +261,9 @@ If you want to define a default value, you can use the `props` property:
 
 ```py
 # Command props.
-get props\object
+get props\PropList
 	{
-		name: Prop.string!.default('Donald')
+		name: string!.default('Donald')
 	}
 ```
 
@@ -274,9 +274,9 @@ get props\object
 /**
  * Command props.
  */
-get props(): object {
+get props(): PropList {
 	return {
-		name: Prop.string().default('Donald')
+		name: string().default('Donald')
 	}
 }
 ```
@@ -343,10 +343,10 @@ get signature\string
     'hello {name} {--time}'
 
 # Command props.
-get props\object
+get props\PropList
 	{
-		name: Prop.string!.default('Donald')
-		time: Prop.string!
+		name: string!.default('Donald')
+		time: string!
 	}
 ```
 
@@ -364,10 +364,10 @@ get signature(): string {
 /**
  * Command props.
  */
-get props(): object {
+get props(): PropList {
 	{
-		name: Prop.string().default('Donald')
-		time: Prop.string()
+		name: string().default('Donald')
+		time: string()
 	}
 ```
 
@@ -395,9 +395,9 @@ To assign an alias when defining an option, you may specify it in the `props` pr
 
 ```py
 # Command props.
-get props\object
+get props\PropList
 	{
-		time: Prop.string!.alias('t')
+		time: string!.alias('t')
 	}
 ```
 
@@ -408,9 +408,9 @@ get props\object
 /**
  * Command props.
  */
-get props(): object {
+get props(): PropList {
 	return {
-		time: Prop.string().alias('t')
+		time: string().alias('t')
 	}
 }
 ```
@@ -439,9 +439,9 @@ You may assign descriptions to input arguments and options in the `props` proper
 
 ```py
 # Command props.
-get props\object
+get props\PropList
 	{
-		time: Prop.string!.description('Current time')
+		time: string('Current time')
 	}
 ```
 
@@ -452,9 +452,9 @@ get props\object
 /**
  * Command props.
  */
-get props(): object {
+get props(): PropList {
 	return {
-		time: Prop.string().description('Current time')
+		time: string('Current time')
 	}
 }
 ```
@@ -568,7 +568,7 @@ handle(): void {
 
 ### Writing Output
 
-To send output to the console, you may use the line, `info`, `write`, `line`, and `error` methods. Each of these methods will use appropriate ANSI colors for their purpose. For example, let's display some general information to the user. Typically, the info method will display in the console as green colored text:
+To send output to the console, you may use the `message`, `info`, `succces,` `write`, `line`, and `error` methods. Each of these methods will use appropriate ANSI colors for their purpose. For example, let's display some general information to the user. Typically, the info method will display in the console as green colored text:
 
 <Tabs
     defaultValue={State.language}
@@ -584,7 +584,7 @@ To send output to the console, you may use the line, `info`, `write`, `line`, an
 def handle\void
     # ...
 
-    self.info('The command was successful')
+    self.success('The command was successful')
 ```
 
 </TabItem>
@@ -597,7 +597,7 @@ def handle\void
 handle(): void {
     // ...
 
-    this.info('The command was successful')
+    this.success('The command was successful')
 }
 ```
 
@@ -700,6 +700,7 @@ Tag          | Type       | Color
 `fg:white`   | Color      | White
 `fg:yellow`  | Color      | Yellow
 `dim`        | Style      | `null`
+`u`          | Style      | `null`
 `underline`  | Style      | `null`
 
 #### Tables
@@ -734,6 +735,34 @@ this.table([
 
 </TabItem>
 </Tabs>
+
+#### Columns
+
+The `column` method makes it easy to correctly format rows of data. All you need to do is provide the data for the column and Formidable will automatically calculate the appropriate width of the column for you:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+self.column('Name', 'Donald')
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+this.column('Name', 'Donald')
+```
+
+</TabItem>
+</Tabs>
+
 
 ## Registering Commands
 
