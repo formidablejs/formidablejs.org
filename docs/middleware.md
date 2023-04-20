@@ -201,7 +201,6 @@ get middlewareGroups
 		]
 
 		session: [
-			HasCsrfToken
 			VerifyCsrfToken
 		]
 	}
@@ -219,7 +218,6 @@ get middlewareGroups(): object {
 		],
 
 		session: [
-			HasCsrfToken,
 			VerifyCsrfToken
 		]
 	}
