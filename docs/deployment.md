@@ -275,3 +275,34 @@ jobs:
 This is only an example. You don't have to use Github to be able to Automate your deployments. The same can also be achieved with Gitlab and Bitbucket Pipelines.
 
 :::
+
+
+### Docker
+
+You can also use Docker to deploy your application. Here's a simple `Dockerfile` that you can use to build your application:
+
+```dockerfile title="Dockerfile"
+FROM node:18-alpine
+
+# Create app directory
+RUN mkdir -p /usr/app
+WORKDIR /usr/app
+
+# Install app dependencies
+COPY package.json /usr/app/
+RUN npm install
+
+# Bundle app source
+COPY . /usr/app
+RUN npm run build
+COPY . /usr/app
+
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+:::info
+
+Set `APP_DEBUG` to false in your `.env` file before building your application for production.
+
+:::
