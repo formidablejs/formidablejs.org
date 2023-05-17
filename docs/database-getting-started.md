@@ -11,6 +11,179 @@ import TabItem from '@theme/TabItem';
 
 Formidable has out of the box support for `SQL` Queries and `Redis`. The SQL data layer is powered by Knex.js, while the Redis data layer is powered by Node-Redis.
 
+## Supported Drivers
+
+Thanks to Knex.js, Formidable supports a number of different database drivers. The following drivers are supported out of the box:
+
+* [SQLite (default)](#using-sqlite)
+* [MySQL / MariaDB](#using-mysql--mariadb)
+* [PostgreSQL](#using-postgresql)
+* [Microsoft SQL Server](#using-microsoft-sql-server)
+
+### Using SQLite
+
+SQLite is a great database for getting started with Formidable. It's file-based, meaning you don't need to install any additional software to get started. To use SQLite, simply set the `DB_CONNECTION` environment variable to `sqlite` in your `.env` file:
+
+```bash title=".env"
+DB_CONNECTION=sqlite
+```
+
+You can go ahead and install the `sqlite3` driver using your package manager of choice:
+
+<Tabs
+	defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+    ]}>
+<TabItem value="npm">
+
+```bash
+npm install sqlite3
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add sqlite3
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```bash
+pnpm add sqlite3
+```
+
+</TabItem>
+</Tabs>
+
+### Using MySQL / MariaDB
+
+To use MySQL or MariaDB, simply set the `DB_CONNECTION` environment variable to `mysql` in your `.env` file:
+
+```bash title=".env"
+DB_CONNECTION=mysql
+```
+
+You can go ahead and install the `mysql` driver using your package manager of choice:
+
+<Tabs
+	defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+    ]}>
+<TabItem value="npm">
+
+```bash
+npm install mysql2
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add mysql2
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```bash
+pnpm add mysql2
+```
+
+</TabItem>
+</Tabs>
+
+### Using PostgreSQL
+
+To use PostgreSQL, simply set the `DB_CONNECTION` environment variable to `pgsql` in your `.env` file:
+
+```bash title=".env"
+DB_CONNECTION=pgsql
+```
+
+You can go ahead and install the `pg` driver using your package manager of choice:
+
+<Tabs
+	defaultValue={State.manager}
+	groupId="package-manager"
+	values={[
+		{label: 'npm', value: 'npm'},
+		{label: 'pnpm', value: 'pnpm'},
+		{label: 'yarn', value: 'yarn'},
+	]}>
+<TabItem value="npm">
+
+```bash
+npm install pg
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add pg
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```bash
+pnpm add pg
+```
+
+</TabItem>
+</Tabs>
+
+### Using Microsoft SQL Server
+
+To use Microsoft SQL Server, simply set the `DB_CONNECTION` environment variable to `mssql` in your `.env` file:
+
+```bash title=".env"
+DB_CONNECTION=mssql
+```
+
+You can go ahead and install the `tedious` driver using your package manager of choice:
+
+<Tabs
+	defaultValue={State.manager}
+	groupId="package-manager"
+	values={[
+		{label: 'npm', value: 'npm'},
+		{label: 'pnpm', value: 'pnpm'},
+		{label: 'yarn', value: 'yarn'},
+	]}>
+<TabItem value="npm">
+
+```bash
+npm install tedious
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add tedious
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```bash
+pnpm add tedious
+```
+
+</TabItem>
+</Tabs>
+
 ## Configuration
 
 The configuration for all the supported database drivers and redis db's can be found in the `config/database.imba` or `config/database.ts` config file:
