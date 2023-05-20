@@ -594,7 +594,7 @@ html[data-theme='light'] .img-code[theme="light"] {
 	display: block;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 701px) {
 	.img-code {
 		/* max-width: 60%; */
 	}
