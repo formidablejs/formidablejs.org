@@ -15,10 +15,10 @@ By default Formidable uses Imba for its frontend development. You can build your
 
 #### Multi-page Application
 
-To build a multi-page application, use the `formidable new` command with the following flags:
+To build a multi-page application, use the `create-formidable-app` CLI with the following flags:
 
 ```bash
-formidable new example-app --imba --scaffolding "mpa"
+npx create-formidable-app@latest example-app --imba --scaffolding "mpa"
 ```
 
 This will create a new project with mpa related files.
@@ -27,10 +27,10 @@ See the [Views](/docs/views) documentation for more information.
 
 #### Single-page Application
 
-To build a single-page application, you can use the `formidable new` command with the following flag:
+To build a single-page application, you can use the `create-formidable-app` CLI with the following flag:
 
 ```bash
-formidable new example-app --imba
+npx create-formidable-app@latest example-app --imba
 ```
 
 This will create a new project and install the `@formidablejs/view` package, then publish spa related files.
@@ -60,19 +60,19 @@ To get started with an application powered by Inertia, use the following command
 #### Vue
 
 ```bash
-formidable new example-app --vue
+npx create-formidable-app@latest example-app --vue
 ```
 
 #### React
 
 ```bash
-formidable new example-app --react
+npx create-formidable-app@latest example-app --react
 ```
 
 #### Svelte
 
 ```bash
-formidable new example-app --svelte
+npx create-formidable-app@latest example-app --svelte
 ```
 
 > This will scaffold a Vuejs, React or Svelte application for you.
