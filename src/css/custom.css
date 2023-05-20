@@ -143,6 +143,60 @@ html[data-theme='dark'] .navbar-sidebar {
 	}
 }
 
+.installer {
+	color: #666;
+	padding-top: 25px;
+	display: flex;
+	justify-content: center;
+}
+
+.installer .installer__copy {
+	position: absolute;
+	width: 350px;
+	height: 30px;
+	z-index: 1;
+	display: flex;
+	justify-content: flex-end;
+	cursor: copy;
+}
+
+.installer .installer__copy div {
+	-webkit-transition: background-color 100ms linear;
+    -moz-transition: background-color 100ms linear;
+    -o-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+	background-color: #fff;
+	width: 40px;
+}
+
+.installer .installer__copy:hover > div {
+	background-color: #fff0;
+}
+
+.installer p {
+	margin: auto 0;
+	font-family: "Roboto Mono",Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace;
+	font-size: 13px;
+    line-height: 24px;
+    border: 0;
+    background: none;
+    padding: 0 12px;
+    border-radius: 9999px;
+}
+
+.installer svg {
+	width: 16px;
+}
+
+.installer .copy {
+	display: block;
+}
+
+.installer .check {
+	display: none;
+}
+
 .frameworks-container {
 	width: 100%;
 	margin: 0 auto;
