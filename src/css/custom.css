@@ -161,11 +161,11 @@ html[data-theme='dark'] .navbar-sidebar {
 }
 
 .installer .installer__copy div {
-	-webkit-transition: background-color 100ms linear;
-    -moz-transition: background-color 100ms linear;
-    -o-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
-    transition: background-color 100ms linear;
+	/* -webkit-transition: background-color 10ms linear;
+    -moz-transition: background-color 10ms linear;
+    -o-transition: background-color 10ms linear;
+    -ms-transition: background-color 10ms linear;
+    transition: background-color 10ms linear; */
 	background-color: #fff;
 	width: 40px;
 }
@@ -197,18 +197,16 @@ html[data-theme='dark'] .navbar-sidebar {
 	display: none;
 }
 
-html[data-theme='dark'] {
-	.installer {
-		color: #acacac;
-	}
+html[data-theme='dark'] .installer {
+	color: #acacac;
+}
 
-	.installer .installer__copy div {
-		background-color: #101011;
-	}
+html[data-theme='dark'] .installer .installer__copy div {
+	background-color: #101011;
+}
 
-	.installer .installer__copy:hover > div {
-		background-color: #10101100;
-	}
+html[data-theme='dark'] .installer .installer__copy:hover > div {
+	background-color: #10101100;
 }
 
 .frameworks-container {
