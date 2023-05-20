@@ -83,8 +83,8 @@ export default function Home() {
 				</div> */}
 
 				<div style={{ width: '100%', marginBottom: '-60px' }}>
-					<img src="/img/code.gif" className='img-code live-img large-img' {...props} />
-					<img src="/img/code-split.gif" className='img-code live-img small-img' {...props} />
+					<img src="/img/code.gif" className='img-code live-img large-img' loading='lazy' />
+					<img src="/img/code-split.gif" className='img-code live-img small-img' loading='lazy' />
 				</div>
 
 				<div style={{ textAlign: 'center' }}>

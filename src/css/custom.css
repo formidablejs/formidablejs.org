@@ -197,6 +197,20 @@ html[data-theme='dark'] .navbar-sidebar {
 	display: none;
 }
 
+html[data-theme='dark'] {
+	.installer {
+		color: #acacac;
+	}
+
+	.installer .installer__copy div {
+		background-color: #101011;
+	}
+
+	.installer .installer__copy:hover > div {
+		background-color: #10101100;
+	}
+}
+
 .frameworks-container {
 	width: 100%;
 	margin: 0 auto;
