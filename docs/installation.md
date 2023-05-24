@@ -27,7 +27,7 @@ For a better development experience, we recommend using the following tools:
 You may create a new Formidable project by using the `create-formidable-app` CLI. After the application has been created, you may start Formidable's local development server using the `dev` script:
 
 ```bash
-npx create-formidable-app@latest example-app
+npx create-formidable@latest example-app
 
 cd example-app
 
@@ -37,7 +37,7 @@ npm run dev
 For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
 
 ```bash
-npx create-formidable-app@latest example-app --git
+npx create-formidable@latest example-app --git
 ```
 
 This command will initialize a new Git repository for your project.
@@ -45,7 +45,7 @@ This command will initialize a new Git repository for your project.
 By default, the `create-formidable-app` CLI will scaffold your application with TypeScript. If you would like to scaffold your application with Imba, you may pass the `--language` flag and set the value to "imba":
 
 ```bash
-npx create-formidable-app@latest example-app --language imba
+npx create-formidable@latest example-app --language imba
 ```
 
 ## Initial Configuration
