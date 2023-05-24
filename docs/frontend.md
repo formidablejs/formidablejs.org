@@ -18,7 +18,7 @@ By default Formidable uses Imba for its frontend development. You can build your
 To build a multi-page application, use the `create-formidable-app` CLI with the following flags:
 
 ```bash
-npx create-formidable@latest example-app --imba --scaffolding "mpa"
+npx create-formidable@latest example-app --imba --scaffolding mpa
 ```
 
 This will create a new project with mpa related files.
