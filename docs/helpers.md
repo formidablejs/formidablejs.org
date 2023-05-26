@@ -707,7 +707,7 @@ The `env` function retrieves the value of an environment variable or returns a d
 ```js
 const appUrl = env('APP_URL')
 
-const appUrl = env('APP_URL', 'http://localhost:3000')
+const appUrl = env('APP_URL', 'http://127.0.0.1:3000')
 ```
 
 </TabItem>
@@ -716,7 +716,7 @@ const appUrl = env('APP_URL', 'http://localhost:3000')
 ```ts
 const appUrl = env('APP_URL')
 
-const appUrl = env('APP_URL', 'http://localhost:3000')
+const appUrl = env('APP_URL', 'http://127.0.0.1:3000')
 ```
 
 </TabItem>
