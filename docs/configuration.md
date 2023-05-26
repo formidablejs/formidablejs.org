@@ -35,6 +35,14 @@ If you need to define an environment variable with a value that contains spaces,
 APP_NAME="My Application"
 ```
 
+### Updating Environment Variables
+
+Formidable caches your environment variables so you will need to restart your server to load any changes you make to your `.env` file. To refresh the cached environment variables, you will need to run the `node craftsman config:cache` and restart your server:
+
+```bash
+node craftsman config:cache
+```
+
 ## Retrieving Environment Configuration
 
 All of the variables listed in this file will be loaded into the `process.env` object when your application does an initial boot. However, you may use the `env` helper to retrieve values from these variables in your configuration files:
@@ -49,7 +57,7 @@ All of the variables listed in this file will be loaded into the `process.env` o
 <TabItem value="imba">
 
 ```py title="config/app.imba"
-import { env } from '@formidablejs/framework/lib/Support/Helpers'
+import { env } from '@formidablejs/framework'
 
 export {
     ...
@@ -61,7 +69,7 @@ export {
 <TabItem value="ts">
 
 ```ts title="config/app.ts"
-import { env } from '@formidablejs/framework/lib/Support/Helpers'
+import { env } from '@formidablejs/framework'
 
 export {
     ...
@@ -88,7 +96,7 @@ You may easily access your configuration values using the global `config` helper
 <TabItem value="imba">
 
 ```py
-import { config } from '@formidablejs/framework/lib/Support/Helpers'
+import { config } from '@formidablejs/framework'
 
 let value\string = config('app.name')
 
@@ -100,7 +108,7 @@ let value\string = config('app.name', 'Formidable')
 <TabItem value="ts">
 
 ```ts
-import { config } from '@formidablejs/framework/lib/Support/Helpers'
+import { config } from '@formidablejs/framework'
 
 let value: string = config('app.name')
 
