@@ -15,12 +15,6 @@ When referencing the Formidable framework or its components from your applicatio
 
 For LTS releases, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 18 months and security fixes are provided for 2 years.
 
-Version       | Node        | Release        | Bug Fixes Until | Security Fixes Until
-:-------------|:------------|:---------------|:----------------|:--------------------
-1.0.0 (LTS)   | 16.x - 20.x | July 2nd, 2024 | July 2nd, 2026  | July 2nd, 2027 
-
-:::warning
-
-**Note:** Dates for 1.0.0 (LTS) are subject to change.
-
-:::
+Version       | Release             | Bug Fixes Until     | Security Fixes Until
+:-------------|:--------------------|:--------------------|:--------------------
+1.0.0 (LTS)   | TBA                 | TBA                 | TBA
