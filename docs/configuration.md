@@ -35,14 +35,6 @@ If you need to define an environment variable with a value that contains spaces,
 APP_NAME="My Application"
 ```
 
-### Updating Environment Variables
-
-Formidable caches your environment variables so you will need to restart your server to load any changes you make to your `.env` file. To refresh the cached environment variables, you will need to run the `node craftsman config:cache` and restart your server:
-
-```bash
-node craftsman config:cache
-```
-
 ## Retrieving Environment Configuration
 
 All of the variables listed in this file will be loaded into the `process.env` object when your application does an initial boot. However, you may use the `env` helper to retrieve values from these variables in your configuration files:
