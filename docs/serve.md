@@ -17,6 +17,18 @@ You can also use the `--host` option to specify the host address:
 node craftsman serve --host=127.0.0.1
 ```
 
+And to run your application in development mode, you can use the `--dev` option:
+
+```bash
+node craftsman serve --dev
+```
+
+:::info
+
+Run `node craftsman serve --help` to see all available options.
+
+:::
+
 ## Cors
 
 Formidable expects `APP_URL` and `CLIENT_URL` environment variables to be set. These variables are used to configure CORS. If you do not set these variables, your application will not be able to make requests to itself.
