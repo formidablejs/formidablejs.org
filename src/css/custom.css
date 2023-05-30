@@ -254,6 +254,10 @@ html[data-theme='dark'] .installer .installer__copy:hover > div {
 	/* filter: hue-rotate(45deg); */
 }
 
+.framework img:hover {
+	filter: grayscale(0%);
+}
+
 .framework {
 	cursor: pointer;
 	/* border: 1px solid #eaeaea;
