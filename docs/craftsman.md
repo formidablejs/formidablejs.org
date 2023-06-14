@@ -167,7 +167,6 @@ import { Command } from '@formidablejs/framework'
 import { PropList, string } from '@formidablejs/console'
 
 export class Hello extends Command {
-
     /**
 	 * The name and signature of the console command.
 	 */
@@ -199,6 +198,7 @@ export class Hello extends Command {
 
         this.exit()
 	}
+}
 ```
 
 </TabItem>
@@ -369,6 +369,7 @@ get props(): PropList {
 		name: string().default('Donald')
 		time: string()
 	}
+}
 ```
 
 </TabItem>

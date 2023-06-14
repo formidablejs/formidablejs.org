@@ -5,7 +5,7 @@ import { URL } from '@formidablejs/framework'
 export class EmailVerify < View
 
     def render
-        const verifyUrl = URL.route('email.verify', null, {
+        const verifyUrl = URL.route('email.verify', {
             email: get('email'),
             signature: get('signature')
         })
