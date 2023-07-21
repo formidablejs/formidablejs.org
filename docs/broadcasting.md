@@ -495,7 +495,7 @@ export tag Chat
 	messages\string[] = []
 
 	def mount
-		subscribe('public-channel', {
+		subscribe('chat', {
 			onMessage: do(message)
 				messages.push(message)
 				imba.commit!
