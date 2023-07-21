@@ -277,7 +277,7 @@ export default function Show({ post }: { post: Post }) {
 ```html title="resources/js/Pages/Post/Show.svelte"
 <script>
 	/** @type {Post} post */
-	export let post
+	let post
 </script>
 
 <h1>{post.title}</h1>
