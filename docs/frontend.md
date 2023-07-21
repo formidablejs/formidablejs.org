@@ -242,7 +242,7 @@ We can access the `post` prop in our page component like so:
 <TabItem value="vue">
 
 ```html title="resources/js/Pages/Post/Show.vue"
-<script lang="ts">
+<script lang="ts" setup>
 defineProps({
 	post: {
 		type: Post,
