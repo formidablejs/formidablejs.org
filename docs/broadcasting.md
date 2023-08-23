@@ -351,7 +351,7 @@ node craftsman config:cache
 
 :::tip
 
-Whenever you make changes to the broadcasting configuration, you should run the `config:clear` command. This will clear the configuration cache so that fresh configuration values will be loaded on the next request.
+Whenever you make changes to the broadcasting configuration, you should run the `config:cache` command. This will clear the configuration cache so that fresh configuration values will be loaded on the next request.
 
 :::
 
