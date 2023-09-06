@@ -201,7 +201,7 @@ node craftsman migrate:up
 To run a specific migration, execute the `migrate:up` Craftsman command with the `-m` option:
 
 ```bash
-node craftsman migrate:up -m 20210402215000-create_posts_table
+node craftsman migrate:up -m 20210820161410_create_posts_table
 ```
 
 ### Rolling Back Migrations
@@ -215,7 +215,7 @@ node craftsman migrate:rollback
 To roll back a specific migration, execute the `migrate:down` Craftsman command with the `-m` option:
 
 ```bash
-node craftsman migrate:down -m 20210402215000-create_posts_table
+node craftsman migrate:down -m 20210820161410_create_posts_table
 ```
 
 ## Schema Builder
