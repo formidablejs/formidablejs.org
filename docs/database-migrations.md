@@ -26,20 +26,25 @@ node craftsman make:migration CreatePostsTable --table=posts
 The command above will create a new migration file under `/database/migrations` and will generate the following migration:
 
 ```js
-exports.up = (knex) => {
-	return knex.schema.createTable('posts', (table) => {
+const { Database } = require('@formidablejs/framework');
+
+/** @param {Database} DB */
+exports.up = (DB) => {
+	return DB.schema.createTable('posts', (table) => {
 
 	});
 };
 
-exports.down = (knex) => knex.schema.dropTable('posts');
+/** @param {Database} DB */
+exports.down = (DB) => DB.schema.dropTable('posts');
+
 ```
 
 We can now define our migration's schema in the `up` function:
 
 ```js
-exports.up = (knex) => {
-	return knex.schema.createTable('posts', (table) => {
+exports.up = (DB) => {
+	return DB.schema.createTable('posts', (table) => {
 		table.increments('id').primary();
 		table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 		table.string('title');
@@ -70,19 +75,29 @@ node craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
 ```
 
 ```js
+const { Database } = require('@formidablejs/framework');
+
 /**
  * Add a softDeletes (delete_at) column to the posts table.
+ *
+ * @param {Database} DB
  */
-exports.up = (knex) => {
-	return knex.schema.table('posts', (table) => {
+exports.up = (DB) => {
+	return DB.schema.table('posts', (table) => {
 		table.timestamp('deleted_at').nullable();
 	});
 };
 
 /**
  * Remove the softDeletes (deleted_at) column from the posts table.
+ *
+ * @param {Database} DB
  */
-exports.down = (knex) => knex.schema.dropColumn('deleted_at');
+exports.down = (DB) => {
+	return DB.schema.table('posts', (table) => {
+		table.schema.dropColumn('deleted_at')
+	});
+};
 ```
 
 This migration will add a new column to the `posts` table when `migrate up` is ran, and will remove the column when `migrate down` is ran.
@@ -92,20 +107,26 @@ This migration will add a new column to the `posts` table when `migrate up` is r
 Here is an example of a migration that removes a column from an existing table:
 
 ```js
+const { Database } = require('@formidablejs/framework');
+
 /**
  * Remove the softDeletes (deleted_at) column from the posts table.
+ *
+ * @param {Database} DB
  */
-exports.up = (knex) => {
-	return knex.schema.table('posts', (table) => {
+exports.up = (DB) => {
+	return DB.schema.table('posts', (table) => {
 		table.dropColumn('deleted_at');
 	});
 };
 
 /**
  * Add a softDeletes (delete_at) column to the posts table.
+ *
+ * @param {Database} DB
  */
-exports.down = (knex) => {
-	return knex.schema.table('posts', (table) => {
+exports.down = (DB) => {
+	return DB.schema.table('posts', (table) => {
 		table.timestamp('deleted_at').nullable();
 	});
 };
@@ -116,15 +137,21 @@ exports.down = (knex) => {
 Here is an example of a migration that renames a column in an existing table:
 
 ```js
+const { Database } = require('@formidablejs/framework');
+
 /**
  * Rename the deleted_at column to delete_when in the posts table.
+ *
+ * @param {Database} DB
  */
-exports.up = (knex) => knex.schema.table('posts').renameColumn('deleted_at', 'deleted_when');
+exports.up = (DB) => DB.schema.table('posts').renameColumn('deleted_at', 'deleted_when');
 
 /**
  * Rename the deleted_when column from posts table back to deleted_at.
+ *
+ * @param {Database} DB
  */
-exports.down = (knex) => knex.schema.table('posts').renameColumn('deleted_when', 'deleted_at');
+exports.down = (DB) => DB.schema.table('posts').renameColumn('deleted_when', 'deleted_at');
 ```
 
 ### Changing A Column
@@ -132,20 +159,26 @@ exports.down = (knex) => knex.schema.table('posts').renameColumn('deleted_when',
 Here is an example of a migration that changes a column in an existing table:
 
 ```js
+const { Database } = require('@formidablejs/framework');
+
 /**
  * Change the type of the deleted_at column from timestamp to boolean.
+ *
+ * @param {Database} DB
  */
-exports.up = (knex) => {
-	return knex.schema.table('posts', (table) => {
+exports.up = (DB) => {
+	return DB.schema.table('posts', (table) => {
 		table.boolean('deleted_at').alter();
 	});
 };
 
 /**
  * Change the type of the deleted_at column from boolean to timestamp and make it nullable.
+ *
+ * @param {Database} DB
  */
-exports.down = (knex) => {
-	return knex.schema.table('posts', (table) => {
+exports.down = (DB) => {
+	return DB.schema.table('posts', (table) => {
 		table.timestamp('deleted_at').nullable().alter();
 	});
 };
