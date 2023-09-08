@@ -64,7 +64,7 @@ module.exports = {
 			},
 			{
 				name: 'og:image',
-				content: 'https://www.formidablejs.org/img/og-image-3.png'
+				content: 'https://www.formidablejs.org/img/og-image-4.png'
 			},
 		],
 		algolia: {
