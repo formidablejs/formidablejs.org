@@ -36,7 +36,7 @@ module.exports = {
 			},
 			{
 				name: 'twitter:image',
-				content: 'https://www.formidablejs.org/img/og-image-3.png'
+				content: 'https://www.formidablejs.org/img/og-image-4.png'
 			},
 			{
 				name: 'twitter:site',
@@ -91,11 +91,6 @@ module.exports = {
 					href: 'https://github.com/formidablejs',
 					position: 'right',
 					className: 'header-github-link',
-				},
-				{
-					href: 'https://discord.gg/QdXM7eV5Yj',
-					position: 'right',
-					className: 'header-discord-link',
 				},
 			],
 		},
