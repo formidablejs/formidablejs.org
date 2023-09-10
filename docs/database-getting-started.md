@@ -37,6 +37,7 @@ You can go ahead and install the `sqlite3` driver using your package manager of 
         {label: 'npm', value: 'npm'},
         {label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -59,6 +60,14 @@ pnpm add sqlite3
 ```
 
 </TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun add sqlite3
+```
+
+</TabItem>
 </Tabs>
 
 ### Using MySQL / MariaDB
@@ -78,6 +87,7 @@ You can go ahead and install the `mysql` driver using your package manager of ch
         {label: 'npm', value: 'npm'},
         {label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -100,6 +110,14 @@ pnpm add mysql2
 ```
 
 </TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun add mysql2
+```
+
+</TabItem>
 </Tabs>
 
 ### Using PostgreSQL
@@ -119,6 +137,7 @@ You can go ahead and install the `pg` driver using your package manager of choic
 		{label: 'npm', value: 'npm'},
 		{label: 'pnpm', value: 'pnpm'},
 		{label: 'yarn', value: 'yarn'},
+		{label: 'bun', value: 'bun'},
 	]}>
 <TabItem value="npm">
 
@@ -141,6 +160,14 @@ pnpm add pg
 ```
 
 </TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun add pg
+```
+
+</TabItem>
 </Tabs>
 
 ### Using Microsoft SQL Server
@@ -160,6 +187,7 @@ You can go ahead and install the `tedious` driver using your package manager of 
 		{label: 'npm', value: 'npm'},
 		{label: 'pnpm', value: 'pnpm'},
 		{label: 'yarn', value: 'yarn'},
+		{label: 'bun', value: 'bun'},
 	]}>
 <TabItem value="npm">
 
@@ -179,6 +207,14 @@ yarn add tedious
 
 ```bash
 pnpm add tedious
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun add tedious
 ```
 
 </TabItem>

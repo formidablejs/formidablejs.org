@@ -88,6 +88,7 @@ Mix is a configuration layer on top of [webpack](https://webpack.js.org/), so to
         {label: 'npm', value: 'npm'},
         {label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -124,6 +125,18 @@ yarn mix:prod
 ```
 
 </TabItem>
+
+<TabItem value="bun">
+
+```
+// Run all Mix tasks...
+bun mix:dev
+
+// Run all Mix tasks and minify output...
+bun mix:prod
+```
+
+</TabItem>
 </Tabs>
 
 #### Watching Assets For Changes
@@ -137,6 +150,7 @@ The `mix:watch` script will continue running in your terminal and watch all rele
         {label: 'npm', value: 'npm'},
 		{label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -158,6 +172,14 @@ pnpm run mix:watch
 
 ```bash
 yarn mix:watch
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun mix:watch
 ```
 
 </TabItem>
@@ -320,7 +342,7 @@ export default {
 	# Command that runs to execute Laravel Mix when Formidable is in development
 	# mode.
 
-	mix: "npm run mix:watch" # "pnpm run mix:watch" || "yarn mix:watch"
+	mix: "npm run mix:watch" # "pnpm run mix:watch" || "yarn mix:watch" || "bun mix:watch"
 
 }
 ```
@@ -434,6 +456,7 @@ Install tailwindcss and its peer dependencies via npm, and create your tailwind.
         {label: 'npm', value: 'npm'},
         {label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -458,6 +481,15 @@ pnpm exec tailwindcss init
 ```bash
 yarn add -D tailwindcss postcss autoprefixer
 yarn exec tailwindcss init
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun add --dev tailwindcss postcss autoprefixer
+bunx tailwindcss init
 ```
 
 </TabItem>

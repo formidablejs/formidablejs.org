@@ -14,7 +14,7 @@ When you're ready to deploy your Formidable application to production, there are
 The Formidable framework has a few system requirements. You should ensure that your web server has the following minimum Node version:
 
 * `Node >=16.*`
-* `npm/pnpm/yarn`
+* `npm/pnpm/yarn/bun`
 
 ## Deploy
 
@@ -49,7 +49,7 @@ If you need more control over your server and application, we recommend deployin
 
 Before getting started, make sure the following prerequisites are met:
 * [Node >=16.*](https://nodejs.org/en/download/) (we recommend using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
-* [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install) or [PNPM](https://pnpm.io/installation)
+* [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install) or [PNPM](https://pnpm.io/installation) or [Bun](https://bun.sh/docs/installation)
 * [PM2](https://pm2.keymetrics.io/)
 * [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)
 
@@ -162,6 +162,7 @@ Here's a simple bash script that pulls the latest changes from a repo and run th
         {label: 'npm', value: 'npm'},
         {label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -228,6 +229,33 @@ git pull
 
 echo "Install application dependencies"
 yarn install
+
+echo "Stop application"
+pm2 stop ecosystem.config.js
+
+echo "Cache config"
+node craftsman config:cache
+
+echo "Run database migrations"
+node craftsman migrate:latest --no-interaction
+
+echo "Start application again"
+pm2 start ecosystem.config.js
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash title="/root/deploy.sh"
+echo "Jump to application folder"
+cd /root/app
+
+echo "Update application from Git"
+git pull
+
+echo "Install application dependencies"
+bun install
 
 echo "Stop application"
 pm2 stop ecosystem.config.js

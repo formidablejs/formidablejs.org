@@ -31,6 +31,7 @@ To get started, install the `@formidablejs/queues` package:
         {label: 'npm', value: 'npm'},
         {label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -50,6 +51,14 @@ pnpm install @formidablejs/queues
 
 ```bash
 yarn add @formidablejs/queues
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun add @formidablejs/queues
 ```
 
 </TabItem>

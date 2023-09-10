@@ -33,6 +33,7 @@ Install the package using your preferred package manager:
         {label: 'npm', value: 'npm'},
         {label: 'pnpm', value: 'pnpm'},
         {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
     ]}>
 <TabItem value="npm">
 
@@ -54,6 +55,14 @@ pnpm install @formidablejs/broadcaster
 
 ```bash
 yarn add @formidablejs/broadcaster
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun add @formidablejs/broadcaster
 ```
 
 </TabItem>
