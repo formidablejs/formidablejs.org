@@ -203,7 +203,6 @@ window.FormConfig = {
 }
 ```
 
-
 ### Successful Responses
 
 So what happens when the `useForm` hook returns a success status. Well, the `onSuccess` event handler will be invoked:
@@ -248,6 +247,31 @@ To change this for all forms in your application, you can set a `FormConfig` in 
 window.FormConfig = {
 	recentlySuccessful: 5000
 }
+```
+
+### Validation
+
+The `useForm` hook also allows you to validate your form fields using your server side validation rules. To do this, you need to invoke the `validate` method on your form with the name of the field you want to validate:
+
+```py {3-4} title="resources/frontend/pages/People/Create.imba"
+export tag Create
+
+	prop form = useForm({
+		first_name: ''
+		last_name: ''
+	}).as('post', '/api/people')
+
+	def validate
+		form.validate('first_name')
+
+	def render
+		<self>
+			<form @submit.prevent=form.submit()>
+				<div[d:block]>
+					<label> "First Name"
+					<input type="text" bind=form.first_name @input.debounce(500ms).validate('first_name')>
+
+				...
 ```
 
 ### FormProgress

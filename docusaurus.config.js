@@ -83,6 +83,18 @@ module.exports = {
 			},
 			items: [
 				{
+					to: 'docs',
+					label: 'Docs',
+					position: 'left',
+					className: 'left-header-link',
+				},
+				{
+					to: 'blog',
+					label: 'Blog',
+					position: 'left',
+					className: 'left-header-link',
+				},
+				{
 					href: 'https://github.com/formidablejs/framework',
 					position: 'right',
 					label: "★ Star us on Github"
@@ -111,6 +123,17 @@ module.exports = {
 					editUrl: "https://github.com/formidablejs/formidablejs.org/edit/main/",
 					sidebarCollapsed: false,
 					sidebarCollapsible: false,
+				},
+				blog: {
+					blogTitle: 'The Formidable Framework blog!',
+					blogDescription: 'A journey into a full-stack framework powering the next generation of web applications.',
+					postsPerPage: 10,
+					blogSidebarCount: 0,
+					// blogSidebarTitle: 'All posts',
+					// blogSidebarCount: 'ALL',
+					showReadingTime: true, // When set to false, the "x min read" won't be shown
+					readingTime: ({content, frontMatter, defaultReadingTime}) =>
+						defaultReadingTime({content, options: {wordsPerMinute: 300}}),
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),

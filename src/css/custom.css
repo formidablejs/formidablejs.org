@@ -251,6 +251,7 @@ html[data-theme='dark'] .installer .installer__copy:hover > div {
 .framework img {
 	align-self: center;
 	filter: grayscale(100%);
+	transition: filter 0.4s ease;
 	/* filter: hue-rotate(45deg); */
 }
 
@@ -398,9 +399,18 @@ html[data-theme='dark'] .features>.container>.grid-container>div>svg {
 	margin-bottom: 100px;
 }
 
+.left-header-link {
+	font-size: 13px;
+	color: #666 !important;
+}
+
+html[data-theme='dark'] .left-header-link {
+	color: #888 !important;
+}
+
 .navbar__title,
-.navbar__item,
-.navbar__link {
+.navbar__item {
+/* .navbar__link { */
 	color: #222 !important;
 }
 
@@ -523,7 +533,7 @@ html[data-theme='dark'] .navbar {
 	border-bottom: 1px solid #1c1e20 !important;
 }
 
-html[data-theme='dark'] .navbar__link,
+/* html[data-theme='dark'] .navbar__link, */
 html[data-theme='dark'] .navbar__title {
 	color: #fff !important;
 }
@@ -706,3 +716,11 @@ div[role="banner"] div {
 button.DocSearch-Button {
 	border-radius: 8px !important;
 }
+
+header > h2 > a, .avatar__name > a {
+	color: #101011!important;
+}
+
+/* a {
+	color: #101011!important;
+} */
