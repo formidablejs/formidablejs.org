@@ -12,6 +12,16 @@ image: https://formidablejs.org/img/formidable-origins.png
 hide_table_of_contents: true
 ---
 
+<head>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@formidablejs" />
+	<meta name="twitter:creator" content="@donaldpakkies" />
+	<meta name="twitter:title" content="Something is brewing and it's Formidable" />
+	<meta name="twitter:description" content="A quick introduction to the Formidable Framework." />
+	<meta name="twitter:image" content="https://formidablejs.org/img/formidable-origins.png" />
+	<meta name="twitter:url" content="https://formidablejs.org/blog/origins" />
+</head>
+
 A quick deep dive into the Formidable Framework and what it can do for you.
 
 <!--truncate-->
