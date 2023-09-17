@@ -204,7 +204,9 @@ Here's a complete list of all the [commands](/docs/craftsman) that are available
 
 ![image](/img/craftsman-commands.png)
 
-Now, as you can see, the Formidable Framework takes care of a lot of things for you, so you can focus on building your application. One of the most important things I focused on was making sure that the DX is as good as it possibly can be. I wanted to make sure that the framework is easy to use and that it is easy to learn, and exciting.
+Now, as you can see, the Formidable Framework takes care of a lot of things for you, so you can focus on building your application. One of the most important things I focused on was making sure that the DX is as good as it possibly can be. I wanted to make sure that the framework is easy to use, easy to learn, and most importantly, exciting.
+
+So, after you create a new Formidable Framework application, run the command `node craftsman inspire` to be inspired before getting your hands dirty 🎉.
 
 I do hope that you will give the Formidable Framework a try and that you will enjoy using it as much as I enjoyed building it. If you have any questions, please feel free to reach out to me on [Twitter](https://twitter.com/donaldpakkies).
 
