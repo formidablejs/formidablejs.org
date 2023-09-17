@@ -8,7 +8,7 @@ authors:
     url: https://x.com/donaldpakkies
     image_url: https://github.com/donaldp.png
 tags: [hello, origins]
-# image: https://i.imgur.com/mErPwqL.png
+image: https://formidablejs.org/img/formidable-origins.png
 hide_table_of_contents: true
 ---
 
