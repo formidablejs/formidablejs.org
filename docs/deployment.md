@@ -62,7 +62,7 @@ module.exports = {
 	apps: [
 		{
 			name: "web",
-			script: "node craftsman serve --no-ansi",
+			script: "npm run start",
 			time: true,
 			error_file: "./storage/logs/web/error.log",
 			out_file: "./storage/logs/web/log.log"
@@ -85,20 +85,15 @@ And finally, start your application:
 pm2 start ecosystem.config.js
 ```
 
-By default, this will start our application on `http://127.0.0.1:3000`, we can change the port by passing a `--port` flag:
+By default, this will start our application on `http://127.0.0.1:3000`, we can change port in the `server` file:
 
-```js title="ecosystem.config.js" {5}
-module.exports = {
-	apps: [
-		{
-			name: "web",
-			script: "node craftsman serve --port=3002 --no-ansi",
-			time: true,
-			error_file: "./storage/logs/web/error.log",
-			out_file: "./storage/logs/web/log.log"
-		}
-	]
-}
+```js title="server" {4}
+Server
+	.use(require('./.formidable/build').default)
+	.start({
+		port: 3000,
+		host: 'localhost'
+	})
 ```
 
 :::info
@@ -176,17 +171,20 @@ git pull
 echo "Install application dependencies"
 npm install
 
-echo "Stop application"
-pm2 stop ecosystem.config.js
+echo "Build application"
+npm run build
 
-echo "Cache config"
-node craftsman config:cache
+echo "Put application in maintenance mode"
+node craftsman down
 
 echo "Run database migrations"
 node craftsman migrate:latest --no-interaction
 
-echo "Start application again"
-pm2 start ecosystem.config.js
+echo "Restart application"
+pm2 restart ecosystem.config.js
+
+echo "Put application back online"
+node craftsman up
 ```
 
 </TabItem>
@@ -203,17 +201,20 @@ git pull
 echo "Install application dependencies"
 pnpm install
 
-echo "Stop application"
-pm2 stop ecosystem.config.js
+echo "Build application"
+pnpm run build
 
-echo "Cache config"
-node craftsman config:cache
+echo "Put application in maintenance mode"
+node craftsman down
 
 echo "Run database migrations"
 node craftsman migrate:latest --no-interaction
 
-echo "Start application again"
-pm2 start ecosystem.config.js
+echo "Restart application"
+pm2 restart ecosystem.config.js
+
+echo "Put application back online"
+node craftsman up
 ```
 
 </TabItem>
@@ -230,17 +231,20 @@ git pull
 echo "Install application dependencies"
 yarn install
 
-echo "Stop application"
-pm2 stop ecosystem.config.js
+echo "Build application"
+yarn run build
 
-echo "Cache config"
-node craftsman config:cache
+echo "Put application in maintenance mode"
+node craftsman down
 
 echo "Run database migrations"
 node craftsman migrate:latest --no-interaction
 
-echo "Start application again"
-pm2 start ecosystem.config.js
+echo "Restart application"
+pm2 restart ecosystem.config.js
+
+echo "Put application back online"
+node craftsman up
 ```
 
 </TabItem>
@@ -257,17 +261,20 @@ git pull
 echo "Install application dependencies"
 bun install
 
-echo "Stop application"
-pm2 stop ecosystem.config.js
+echo "Build application"
+bun run build
 
-echo "Cache config"
-node craftsman config:cache
+echo "Put application in maintenance mode"
+node craftsman down
 
 echo "Run database migrations"
 node craftsman migrate:latest --no-interaction
 
-echo "Start application again"
-pm2 start ecosystem.config.js
+echo "Restart application"
+pm2 restart ecosystem.config.js
+
+echo "Put application back online"
+node craftsman up
 ```
 
 </TabItem>
