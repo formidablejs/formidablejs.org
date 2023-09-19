@@ -13,7 +13,7 @@ When you're ready to deploy your Formidable application to production, there are
 
 The Formidable framework has a few system requirements. You should ensure that your web server has the following minimum Node version:
 
-* `Node >=16.*`
+* `Node >=18.*`
 * `npm/pnpm/yarn/bun`
 
 ## Deploy
@@ -48,7 +48,7 @@ That's all you need to do to get started.
 If you need more control over your server and application, we recommend deploying to a Linux server and using Nginx and PM2.
 
 Before getting started, make sure the following prerequisites are met:
-* [Node >=16.*](https://nodejs.org/en/download/) (we recommend using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
+* [Node >=18.*](https://nodejs.org/en/download/) (we recommend using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
 * [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install) or [PNPM](https://pnpm.io/installation) or [Bun](https://bun.sh/docs/installation)
 * [PM2](https://pm2.keymetrics.io/)
 * [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)

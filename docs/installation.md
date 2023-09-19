@@ -13,7 +13,7 @@ Formidable uses [Fastify](https://www.fastify.io/) under the hood.
 ## Your First Formidable Project
 
 #### Prerequisites {#prerequisites}
-Please make sure that [Node.js](https://nodejs.org/) (>= 16.*) is installed on your operating system.
+Please make sure that [Node.js](https://nodejs.org/) (>= 18.*) is installed on your operating system.
 
 #### Tooling
 
