@@ -341,3 +341,244 @@ CMD ["npm", "start"]
 Set `APP_DEBUG` to false in your `.env` file before building your application for production.
 
 :::
+
+### Vercel
+
+Vercel is another great option for deploying your Formidable application. While Formidable is not officially supported by Vercel, you can still deploy your application to Vercel by following these steps:
+
+#### Configure your application
+
+First, you need to trust a couple of dependencies by adding them to your `package.json` file:
+
+```json title="package.json" {3-7}
+{
+	...
+	"trustedDependencies": [
+		"bcrypt",
+		"esbuild",
+		"sqlite3"
+	],
+	...
+}
+```
+
+Then create a `vercel.json` file in the root of your application:
+
+```json title="vercel.json"
+{
+	"buildCommand": "bun run build",
+	"installCommand": "bun install",
+	"outputDirectory": ".formidable/public",
+	"devCommand": "bun run dev",
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/api/serverless.js"
+        }
+    ]
+}
+```
+
+> You can also use `npm` or `yarn` or `pnpm` instead of `bun`. However, we recommend using the `bun` package manager in this case.
+
+#### Create a serverless function
+
+Next, we need to create a serverless function that will serve as our entry point. Create a `serverless.js` file in the `api` directory:
+
+```js title="api/serverless.js"
+const formidable = require('../.formidable/build').default
+
+export default async (req, res) => {
+	const application = await formidable
+	const app = application.fastify()
+
+	await app.ready()
+	app.server.emit('request', req, res)
+}
+```
+
+:::info
+
+Your serverless function must be named `serverless.js` and must be located in the `api` directory.
+
+:::
+
+#### Deploy
+
+Finally, you can deploy your application to Vercel by running the following command:
+
+```bash
+vercel
+```
+
+:::info
+
+You can find the instructions for installing the Vercel CLI [here](https://vercel.com/docs/cli).
+
+:::
+
+#### Considerations
+
+While this approach works, there are some things you need to consider:
+
+##### Database
+
+Vercel supports Formidable's `pgsql` driver. So, you can use Postgres as your database. However, you will need to use Vercel's [Postgres](https://vercel.com/docs/storage/vercel-postgres) service. Once you have the credentials, you can add them to your `.env` file:
+
+```bash title=".env"
+DB_CONNECTION=pgsql
+DATABASE_URL=postgres://default:**********@**********.eu-central-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require
+```
+
+:::info
+
+Don't forget to add `?sslmode=require` to your `DATABASE_URL`.
+
+:::
+
+And finally, ensure that you have the `pgsql` driver installed:
+
+```bash
+bun add pgsql
+```
+
+##### Redis
+
+Vercel only supports the `memory` and `redis` session drivers. So, we recommend using the `memory` driver for your application if you do not have a redis server.
+
+You can however use [Vercel KV](https://vercel.com/docs/storage/vercel-kv). Once you have the credentials, you can add them to your `.env` file:
+
+```bash title=".env"
+REDIS_URL=redis://default:**********@**********.kv.vercel-storage.com:32857
+```
+
+Once that's done, you can use the `redis` driver for your application:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py title="config/session.imba" {15}
+export default {
+
+	# --------------------------------------------------------------------------
+	# Default Session Driver
+	# --------------------------------------------------------------------------
+	#
+	# This option controls the default session "driver" that will be used on
+	# requests. By default, we will use the lightweight native driver but
+	# you may specify any of the other wonderful drivers provided here.
+	#
+	# Supported: "memory", "file", "redis"
+	#
+	# See: "config > app.imba > resolvers"
+
+	driver: 'redis'
+
+	...
+}
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="config/session.ts" {17}
+export default {
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Default Session Driver
+	 * --------------------------------------------------------------------------
+	 *
+	 * This option controls the default session "driver" that will be used on
+	 * requests. By default, we will use the lightweight native driver but
+	 * you may specify any of the other wonderful drivers provided here.
+	 *
+	 * Supported: "memory", "file", "redis"
+	 *
+	 * See: "config > app.ts > resolvers"
+	 */
+
+	driver: 'redis',
+
+	...
+```
+
+</TabItem>
+</Tabs>
+
+The next step would be to update your redis' default connection in the `config/database.{imba,ts}` file:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+<TabItem value="imba">
+
+```py title="config/database.imba"
+export default {
+
+	...
+
+	# --------------------------------------------------------------------------
+	# Redis Databases
+	# --------------------------------------------------------------------------
+	#
+	# You can configure your redis databases here.
+
+	redis: {
+		default: {
+			url: helpers.env('REDIS_URL')
+			database: helpers.env('REDIS_DB', '0')
+			tls: true
+		}
+	}
+}
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="config/database.ts"
+export default {
+
+	...
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Redis Databases
+	 * --------------------------------------------------------------------------
+	 *
+	 * You can configure your redis databases here.
+	 */
+
+	redis: {
+		default: {
+			url: helpers.env('REDIS_URL'),
+			database: helpers.env('REDIS_DB', '0'),
+			tls: true
+		}
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+
+In the default `redis` connection, we set `tls` to `true`. This is because Vercel KV uses TLS. And we removed the `host`, `port` and `password` options because they are not needed.
+
+:::
+
+##### Package Lock
+
+Please ensure that you remove your `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` or `bun.lockb` file before deploying to Vercel. You may encounter some issues if you don't.
