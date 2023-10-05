@@ -421,6 +421,14 @@ You can find the instructions for installing the Vercel CLI [here](https://verce
 
 While this approach works, there are some things you need to consider:
 
+##### Logging
+
+By default, Formidable logs to the `storage/logs` directory. However, Vercel does not allow writing to the file system. So, you will need to use the `console` channel instead. You can change the default log channel in the `.env` file:
+
+```bash title=".env"
+LOG_CHANNEL=console
+```
+
 ##### Database
 
 Vercel supports Formidable's `pgsql` driver. So, you can use Postgres as your database. However, you will need to use Vercel's [Postgres](https://vercel.com/docs/storage/vercel-postgres) service. Once you have the credentials, you can add them to your `.env` file:
