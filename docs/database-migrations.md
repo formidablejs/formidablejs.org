@@ -291,11 +291,7 @@ exports.up = (DB) => {
 Drops a column, specified by the column's name
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.dropColumn('deleted_at');
-	});
-};
+table.dropColumn('deleted_at');
 ```
 
 ##### dropColumns
@@ -303,11 +299,7 @@ exports.up = (DB) => {
 Drops multiple columns, specified by an array of column names
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.dropColumns(['deleted_at', 'deleted_by']);
-	});
-};
+table.dropColumns(['deleted_at', 'deleted_by']);
 ```
 
 ##### renameColumn
@@ -315,11 +307,15 @@ exports.up = (DB) => {
 Renames a column from one name to another
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.renameColumn('deleted_at', 'deleted_when');
-	});
-};
+table.renameColumn('deleted_at', 'deleted_when');
+```
+
+##### rememberToken
+
+Adds a `remember_token` column to the table
+
+```js
+table.rememberToken();
 ```
 
 ##### increments
@@ -327,11 +323,7 @@ exports.up = (DB) => {
 Adds an auto incrementing column. This is the same as `integer` with `autoIncrement` set to `true`.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.increments('id').primary();
-	});
-};
+table.increments('id').primary();
 ```
 
 ##### integer
@@ -339,11 +331,7 @@ exports.up = (DB) => {
 Adds an integer column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.integer('age');
-	});
-};
+table.integer('age');
 ```
 
 ##### bigInteger
@@ -351,11 +339,7 @@ exports.up = (DB) => {
 Adds a big integer column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.bigInteger('views');
-	});
-};
+table.bigInteger('views');
 ```
 
 ##### tinyint
@@ -363,11 +347,7 @@ exports.up = (DB) => {
 Adds a tiny integer column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.tinyint('views');
-	});
-};
+table.tinyint('views');
 ```
 
 ##### smallint
@@ -375,11 +355,7 @@ exports.up = (DB) => {
 Adds a small integer column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.smallint('views');
-	});
-};
+table.smallint('views');
 ```
 
 ##### mediumint
@@ -387,11 +363,7 @@ exports.up = (DB) => {
 Adds a medium integer column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.mediumint('views');
-	});
-};
+table.mediumint('views');
 ```
 
 ##### bigint
@@ -399,11 +371,7 @@ exports.up = (DB) => {
 Adds a big integer column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.bigint('views');
-	});
-};
+table.bigint('views');
 ```
 
 ##### text
@@ -411,11 +379,7 @@ exports.up = (DB) => {
 Adds a text column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.text('description');
-	});
-};
+table.text('description');
 ```
 
 ##### string
@@ -423,11 +387,7 @@ exports.up = (DB) => {
 Adds a string column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email');
-	});
-};
+table.string('email');
 ```
 
 ##### float
@@ -435,11 +395,7 @@ exports.up = (DB) => {
 Adds a float column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.float('amount');
-	});
-};
+table.float('amount');
 ```
 
 ##### double
@@ -447,11 +403,7 @@ exports.up = (DB) => {
 Adds a double column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.double('amount');
-	});
-};
+table.double('amount');
 ```
 
 ##### decimal
@@ -459,11 +411,7 @@ exports.up = (DB) => {
 Adds a decimal column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.decimal('amount');
-	});
-};
+table.decimal('amount');
 ```
 
 ##### boolean
@@ -471,11 +419,7 @@ exports.up = (DB) => {
 Adds a boolean column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.boolean('confirmed');
-	});
-};
+table.boolean('confirmed');
 ```
 
 ##### date
@@ -483,11 +427,7 @@ exports.up = (DB) => {
 Adds a date column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.date('created_at');
-	});
-};
+table.date('created_at');
 ```
 
 ##### datetime
@@ -495,11 +435,7 @@ exports.up = (DB) => {
 Adds a datetime column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.datetime('created_at');
-	});
-};
+table.datetime('created_at');
 ```
 
 ##### time
@@ -507,11 +443,7 @@ exports.up = (DB) => {
 Adds a time column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.time('sunrise');
-	});
-};
+table.time('sunrise');
 ```
 
 ##### timestamp
@@ -519,11 +451,7 @@ exports.up = (DB) => {
 Adds a timestamp column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.timestamp('created_at');
-	});
-};
+table.timestamp('created_at');
 ```
 
 ##### timestamps
@@ -531,11 +459,7 @@ exports.up = (DB) => {
 Adds `created_at` and `updated_at` columns.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.timestamps();
-	});
-};
+table.timestamps();
 ```
 
 ##### dropTimestamps
@@ -543,11 +467,23 @@ exports.up = (DB) => {
 Drops `created_at` and `updated_at` columns.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.dropTimestamps();
-	});
-};
+table.dropTimestamps();
+```
+
+##### softDeletes
+
+Adds a `deleted_at` column to the table.
+
+```js
+table.softDeletes();
+```
+
+##### dropSoftDeletes
+
+Drops the `deleted_at` column from the table.
+
+```js
+table.dropSoftDeletes();
 ```
 
 ##### binary
@@ -555,11 +491,7 @@ exports.up = (DB) => {
 Adds a binary column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.binary('photo');
-	});
-};
+table.binary('photo');
 ```
 
 ##### enum
@@ -567,11 +499,7 @@ exports.up = (DB) => {
 Adds an enum column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.enum('role', ['admin', 'user']);
-	});
-};
+table.enum('role', ['admin', 'user']);
 ```
 
 ##### json
@@ -579,11 +507,7 @@ exports.up = (DB) => {
 Adds a json column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.json('options');
-	});
-};
+table.json('options');
 ```
 
 ##### jsonb
@@ -591,11 +515,7 @@ exports.up = (DB) => {
 Adds a jsonb column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.jsonb('options');
-	});
-};
+table.jsonb('options');
 ```
 
 ##### uuid
@@ -603,11 +523,7 @@ exports.up = (DB) => {
 Adds a uuid column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.uuid('id').defaultTo(DB.fn.uuid());
-	});
-};
+table.uuid('id').defaultTo(DB.fn.uuid());
 ```
 
 ##### comment
@@ -615,11 +531,7 @@ exports.up = (DB) => {
 Adds a comment to the column.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email').comment('The user\'s email address');
-	});
-};
+table.string('email').comment('The user\'s email address');
 ```
 
 ##### engine
@@ -627,11 +539,7 @@ exports.up = (DB) => {
 Sets the table's storage engine.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.engine('InnoDB');
-	});
-};
+table.engine('InnoDB');
 ```
 
 ##### charset
@@ -639,11 +547,7 @@ exports.up = (DB) => {
 Sets the table's character set.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.charset('utf8mb4');
-	});
-};
+table.charset('utf8mb4');
 ```
 
 ##### collate
@@ -651,11 +555,7 @@ exports.up = (DB) => {
 Sets the table's collation.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.collate('utf8mb4_unicode_ci');
-	});
-};
+table.collate('utf8mb4_unicode_ci');
 ```
 
 ##### inherits
@@ -663,11 +563,7 @@ exports.up = (DB) => {
 Sets the table's inheritance.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.inherits('users');
-	});
-};
+table.inherits('users');
 ```
 
 ##### specificType
@@ -675,11 +571,7 @@ exports.up = (DB) => {
 Sets the table's specific type.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.specificType('email', 'varchar(100)');
-	});
-};
+table.specificType('email', 'varchar(100)');
 ```
 
 ##### index
@@ -687,11 +579,7 @@ exports.up = (DB) => {
 Adds an index.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.index('email');
-	});
-};
+table.index('email');
 ```
 
 ##### dropIndex
@@ -699,11 +587,7 @@ exports.up = (DB) => {
 Drops an index.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.dropIndex('email');
-	});
-};
+table.dropIndex('email');
 ```
 
 ##### setNullable
@@ -711,11 +595,7 @@ exports.up = (DB) => {
 Sets the column to be nullable.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email').setNullable();
-	});
-};
+table.string('email').setNullable();
 ```
 
 ##### dropNullable
@@ -723,11 +603,7 @@ exports.up = (DB) => {
 Drops the column's nullable property.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email').dropNullable();
-	});
-};
+table.string('email').dropNullable();
 ```
 
 ##### primary
@@ -735,11 +611,7 @@ exports.up = (DB) => {
 Sets the column to be the primary key.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email').primary();
-	});
-};
+table.string('email').primary();
 ```
 
 ##### unique
@@ -747,11 +619,7 @@ exports.up = (DB) => {
 Sets the column to be unique.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email').unique();
-	});
-};
+table.string('email').unique();
 ```
 
 ##### foreign
@@ -759,11 +627,7 @@ exports.up = (DB) => {
 Sets the column to be a foreign key.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
-	});
-};
+table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 ```
 
 ##### dropForeign
@@ -771,11 +635,7 @@ exports.up = (DB) => {
 Drops the column's foreign key.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.dropForeign('user_id');
-	});
-};
+table.dropForeign('user_id');
 ```
 
 ##### dropUnique
@@ -783,11 +643,7 @@ exports.up = (DB) => {
 Drops the column's unique property.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email').dropUnique();
-	});
-};
+table.string('email').dropUnique();
 ```
 
 ##### dropPrimary
@@ -795,11 +651,7 @@ exports.up = (DB) => {
 Drops the column's primary property.
 
 ```js
-exports.up = (DB) => {
-	return DB.schema.table('users', (table) => {
-		table.string('email').dropPrimary();
-	});
-};
+table.string('email').dropPrimary();
 ```
 
 For more information, visit the [Knex.js documentations](https://knexjs.org/#Schema).
