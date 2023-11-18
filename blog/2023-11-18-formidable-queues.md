@@ -8,6 +8,7 @@ authors:
     url: https://x.com/donaldpakkies
     image_url: https://github.com/donaldp.png
 tags: [queues, redis, sync]
+image: https://formidablejs.org/img/formidable-queues.png
 hide_table_of_contents: true
 ---
 
@@ -19,6 +20,10 @@ hide_table_of_contents: true
 	<meta name="twitter:description" content="Looking into the Formidable Framework's queueing system." />
 	<meta name="twitter:url" content="https://formidablejs.org/blog/formidable-queues" />
 </head>
+
+A quick deep dive into the Formidable Framework's queueing system and what it can do for you.
+
+<!--truncate-->
 
 The Formidable Framework now ships with [Formidable Queues](https://github.com/formidablejs/queues) out of the box - a queueing system that allows you to queue jobs and process them in the background.
 
