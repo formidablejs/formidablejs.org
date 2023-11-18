@@ -20,118 +20,117 @@ Formidable Queues don't come pre-configured with Formidable applications. But we
 * [Redis](https://redis.io/)
 * [PM2](https://pm2.keymetrics.io/)
 
-### Installation
+### Configuration
 
-To get started, install the `@formidablejs/queues` package:
-
-<Tabs
-    defaultValue={State.manager}
-	groupId="package-manager"
-    values={[
-        {label: 'npm', value: 'npm'},
-        {label: 'pnpm', value: 'pnpm'},
-        {label: 'yarn', value: 'yarn'},
-        {label: 'bun', value: 'bun'},
-    ]}>
-<TabItem value="npm">
-
-```bash
-npm install @formidablejs/queues
-```
-
-</TabItem>
-<TabItem value="pnpm">
-
-```bash
-pnpm install @formidablejs/queues
-```
-
-</TabItem>
-<TabItem value="yarn">
-
-```bash
-yarn add @formidablejs/queues
-```
-
-</TabItem>
-
-<TabItem value="bun">
-
-```bash
-bun add @formidablejs/queues
-```
-
-</TabItem>
-</Tabs>
-
-### Publish
-
-Once installed, we can publish the `config` file:
-
-```bash
-node craftsman package:publish --package=@formidablejs/queues --tag=config
-```
-
-This will add a `config/queue.ts` or `config/quueue.imba` file.
-
-Next, you will need to register the queue config file in the `config/index.ts` or `config/index.imba` file:
+Out of the box, a new Formidable application comes with a `config/queue.ts` or `config/queue.imba` config file. This file contains the default configuration for the queue. You can change the default configuration to suit your needs:
 
 <Tabs
-    defaultValue={State.language}
+	defaultValue={State.language}
 	groupId="code-snippets"
-    values={[
-        {label: 'Imba', value: 'imba'},
-        {label: 'TypeScript', value: 'ts'},
-    ]}>
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
 <TabItem value="imba">
 
-```py title="config/index.imba" {2,13}
-...
-import queue from './queue'
-...
-export class Config < ConfigRepository
+```py title="config/queue.imba"
+import { env } from '@formidablejs/framework'
 
-	# All of the configuration items.
+export default {
+
+	# --------------------------------------------------------------------------
+	# Default Queue Connection Name
+	# --------------------------------------------------------------------------
 	#
-	# @type {object}
+	# Here you may specify which of the queue connections below you wish
+	# to use as your default connection for all queue workers.
 
-	get registered
-		return {
-			...
-			queue
-			...
+	default: env('QUEUE_CONNECTION', 'sync')
+
+	# --------------------------------------------------------------------------
+	# Queue Connections
+	# --------------------------------------------------------------------------
+	#
+	# Here are each of the queue connections setup for your application.
+	# Feel free to add more.
+	#
+	# Drivers: "sync", "redis"
+
+	connections: {
+		sync: {
+			driver: 'sync'
+			queue: 'sync'
 		}
+
+		redis: {
+			driver: 'redis'
+			queue: 'default'
+			redis: env('REDIS_QUEUE', 'queue')
+			timeout: 3000
+			retries: 3
+		}
+	}
+
+}
 ```
 
 </TabItem>
+
 <TabItem value="ts">
 
-```ts title="config/index.ts" {2,13}
-...
-import queue from './queue'
-...
-export class Config extends ConfigRepository
-{
+```ts title="config/queue.ts"
+import { env } from '@formidablejs/framework'
+
+export default {
+
 	/**
-	 * All of the configuration items.
+	 * --------------------------------------------------------------------------
+	 * Default Queue Connection Name
+	 * --------------------------------------------------------------------------
+	 *
+	 * Here you may specify which of the queue connections below you wish
+	 * to use as your default connection for all queue workers.
 	 */
-	get registered(): object
-	{
-		return {
-			...
-			queue,
-			...
+
+	default: env('QUEUE_CONNECTION', 'sync'),
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Queue Connections
+	 * --------------------------------------------------------------------------
+	 *
+	 * Here are each of the queue connections setup for your application.
+	 * Feel free to add more.
+	 *
+	 * Drivers: "sync", "redis"
+	 */
+
+	connections: {
+		sync: {
+			driver: 'sync',
+			queue: 'sync'
+		},
+
+		redis: {
+			driver: 'redis',
+			queue: 'default',
+			redis: env('REDIS_QUEUE', 'queue'),
+			timeout: 3000,
+			retries: 3
 		}
 	}
+
 }
 ```
 
 </TabItem>
 </Tabs>
 
+In the `config/queue.ts` or `config/queue.imba` config file, you can configure the default queue connection. By default, Formidable Queues ships with a `sync` driver. This driver will run the jobs synchronously within the same process as the server. This is great for development, but not ideal for production. For production, you should use a queue driver such as `redis`. This will allow you to run your jobs in the background.
+
 ### Database Consideration
 
-Now that we have a queue config file. We need to add a redis database in the `config/database.ts` or `config/database.imba` config file:
+When using the `redis` driver, Formidable Queues will attempt to use the `queues` redis connection defined in the `config/database.ts` or `config/database.imba` config file. If you wish to use a different redis connection, you can add a new connection in the `config/database.ts` or `config/database.imba` config file under the `redis` key:
 
 <Tabs
     defaultValue={State.language}
@@ -183,88 +182,6 @@ export default {
 
 </TabItem>
 </Tabs>
-
-### Enabling Service Resolver
-
-And finally, we can start using queues by enabling the `QueueServiceResolver`.
-
-Import the `QueueServiceResolver` from `@formidablejs/queues` in the `config/app.ts` or `config/app.imba` config file:
-
-<Tabs
-    defaultValue={State.language}
-	groupId="code-snippets"
-    values={[
-        {label: 'Imba', value: 'imba'},
-        {label: 'TypeScript', value: 'ts'},
-    ]}>
-<TabItem value="imba">
-
-```py title="config/app.imba" {1}
-import { QueueServiceResolver } from '@formidablejs/queues'
-...
-```
-
-</TabItem>
-<TabItem value="ts">
-
-```ts title="config/app.ts" {1}
-import { QueueServiceResolver } from '@formidablejs/queues'
-...
-```
-
-</TabItem>
-</Tabs>
-
-Add the `QueueServiceResolver` to `resolvers` after the `RedisServiceResolver` in the `config/app.ts` or `config/app.imba` config file:
-
-<Tabs
-    defaultValue={State.language}
-	groupId="code-snippets"
-    values={[
-        {label: 'Imba', value: 'imba'},
-        {label: 'TypeScript', value: 'ts'},
-    ]}>
-<TabItem value="imba">
-
-```py title="config/app.imba" {7}
-export default {
-	...
-
-	resolvers: {
-		...
-		RedisServiceResolver
-		QueueServiceResolver
-		...
-	}
-}
-```
-
-</TabItem>
-<TabItem value="ts">
-
-```ts title="config/app.ts" {7}
-export default {
-	...
-
-	resolvers: {
-		...
-		RedisServiceResolver,
-		QueueServiceResolver,
-		...
-	}
-}
-```
-
-</TabItem>
-</Tabs>
-
-### Caching Changes
-
-When done setting up, you can cache the changes:
-
-```bash
-node craftsman config:cache
-```
 
 ## Creating Jobs
 
