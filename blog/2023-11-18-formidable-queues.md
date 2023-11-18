@@ -18,6 +18,7 @@ hide_table_of_contents: true
 	<meta name="twitter:creator" content="@donaldpakkies" />
 	<meta name="twitter:title" content="Queing with the Formidable Framework" />
 	<meta name="twitter:description" content="Looking into the Formidable Framework's queueing system." />
+	<meta name="twitter:image" content="https://formidablejs.org/img/formidable-queues.png" />
 	<meta name="twitter:url" content="https://formidablejs.org/blog/formidable-queues" />
 </head>
 
