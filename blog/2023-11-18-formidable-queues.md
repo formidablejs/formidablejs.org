@@ -1,5 +1,5 @@
 ---
-title: Queing with the Formidable Framework
+title: Queuing with the Formidable Framework
 description: Looking into the Formidable Framework's queueing system.
 slug: formidable-queues
 authors:
@@ -16,7 +16,7 @@ hide_table_of_contents: true
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@formidablejs" />
 	<meta name="twitter:creator" content="@donaldpakkies" />
-	<meta name="twitter:title" content="Queing with the Formidable Framework" />
+	<meta name="twitter:title" content="Queuing with the Formidable Framework" />
 	<meta name="twitter:description" content="Looking into the Formidable Framework's queueing system." />
 	<meta name="twitter:image" content="https://formidablejs.org/img/formidable-queues.png" />
 	<meta name="twitter:url" content="https://formidablejs.org/blog/formidable-queues" />
