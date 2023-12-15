@@ -491,7 +491,7 @@ export tag People
 	def render
 		<self>
 			<form @submit.prevent=search({ search: query.search })>
-				<input type="text" placeholder="Search" value=query.search @input=(query.search = e.target.value)>
+				<input type="text" placeholder="Search" value=query.search @input.debounce(2000)=(query.search = e.target.value)>
 
 			<ul>
 				for person in people
