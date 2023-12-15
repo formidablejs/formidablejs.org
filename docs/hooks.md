@@ -466,7 +466,7 @@ export tag App
 
 ## useUrlState
 
-The `useUrlState` hook allows you to add state to your url. This is useful when you want to share a specific state with someone else. For example, if you want to share a specific page with a friend, you can use the `useUrlState` hook to add the state of the page to the url.
+The `useUrlState` hook allows you to add state to your url. This is useful when you want to keep your SPA pages in sync with your backend. For example, if you have a search page, you may want to keep the search query in sync with your backend:
 
 ```py title="resources/frontend/pages/People/index.imba"
 
@@ -498,6 +498,12 @@ export tag People
 					<li> person.name
 
 ```
+
+::: info
+
+This also allows your pages to be shareable. Your users can share pages without having to worry about the state of the page.
+
+:::
 
 ### onPageLoad
 
