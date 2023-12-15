@@ -474,9 +474,9 @@ import { useForm, useUrlState } from '@formidablejs/view'
 
 export tag People
 
-	prop people = []
+	prop people\Array<Person> = []
 
-	prop query = useUrlState({
+	query = useUrlState({
 		search: ''
 	}, {
 		onPageLoad: do(loaded, all) search all
