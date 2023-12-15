@@ -499,7 +499,7 @@ export tag People
 
 ```
 
-::: info
+:::info
 
 This also allows your pages to be shareable. Your users can share pages without having to worry about the state of the page.
 
