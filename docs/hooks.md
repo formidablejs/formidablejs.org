@@ -463,3 +463,38 @@ export tag App
 			}
 		})
 ```
+
+## useUrlState
+
+The `useUrlState` hook allows you to add state to your url. This is useful when you want to share a specific state with someone else. For example, if you want to share a specific page with a friend, you can use the `useUrlState` hook to add the state of the page to the url.
+
+```py title="resources/frontend/pages/People/index.imba"
+
+import { useForm, useUrlState } from '@formidablejs/view'
+
+export tag People
+
+	prop people = []
+
+	prop query = useUrlState({
+		search: ''
+	}, {
+		onPageLoad: do(loaded, all) search all
+		onChange: do(param, value, all) search all
+	})
+
+	def search all
+		useForm(all, {
+			onSuccess: do(response) people = response.data
+		})
+
+	def render
+		<self>
+			<form @submit.prevent=form.submit()>
+				<input type="text" placeholder="Search" value=query.search @input=(query.search = e.target.value)>
+
+			<ul>
+				for person in people
+					<li> person.name
+
+```
