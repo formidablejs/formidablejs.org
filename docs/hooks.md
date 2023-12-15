@@ -498,3 +498,36 @@ export tag People
 					<li> person.name
 
 ```
+
+### onPageLoad
+
+The `onPageLoad` event handler is invoked when the page loads. It passes the loaded state as the first parameter and all the values of the state as the second parameter:
+
+```py
+{
+	onPageLoad: do(loaded, all)
+		# do something
+}
+```
+
+### onChange
+
+The `onChange` event handler is invoked when the state changes. It passes the query/state parameter name as the first parameter, the new value as the second parameter and all the values of the state as the third parameter:
+
+```py
+{
+	onChange: do(param, value, all)
+		# do something
+}
+```
+
+### onInitialLoad
+
+The `onInitialLoad` event handler is invoked when the page loads for the first time. It passes the loaded state as the first parameter:
+
+```py
+{
+	onInitialLoad: do(state)
+		# do something
+}
+```
