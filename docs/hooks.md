@@ -505,7 +505,59 @@ This also allows your pages to be shareable. Your users can share pages without 
 
 :::
 
-### onPageLoad
+### Setter
+
+To set state, we can assign a value to a property on the `query` object:
+
+```py title="resources/frontend/pages/People/index.imba" {9}
+import { useUrlState } from '@formidablejs/view'
+
+export tag People
+	query = useUrlState({
+		search: ''
+	})
+
+	def mount
+		query.search = 'Donald'
+```
+
+When setting state, the [onChange](#onchange) event handler will be invoked if its been set. If you wish to set state without invoking the [onChange](#onchange) event handler, you can use the `quitelyUpdate` method:
+
+```py title="resources/frontend/pages/People/index.imba" {9}
+import { useUrlState } from '@formidablejs/view'
+
+export tag People
+	query = useUrlState({
+		search: ''
+	})
+
+	def mount
+		query.quitelyUpdate 'search', 'Donald'
+```
+
+### Getter
+
+To get state, we can access a property on the `query` object:
+
+```py title="resources/frontend/pages/People/index.imba" {13}
+import { useUrlState } from '@formidablejs/view'
+
+export tag People
+	query = useUrlState({
+		search: ''
+	})
+
+	def mount
+		query.search = 'Donald'
+
+	def render
+		<self>
+			<p> query.search
+```
+
+### Configuration
+
+#### onPageLoad
 
 The `onPageLoad` event handler is invoked when the page loads. It passes the loaded state as the first parameter and all the values of the state as the second parameter:
 
@@ -516,7 +568,7 @@ The `onPageLoad` event handler is invoked when the page loads. It passes the loa
 }
 ```
 
-### onChange
+#### onChange
 
 The `onChange` event handler is invoked when the state changes. It passes the query/state parameter name as the first parameter, the new value as the second parameter and all the values of the state as the third parameter:
 
@@ -527,7 +579,7 @@ The `onChange` event handler is invoked when the state changes. It passes the qu
 }
 ```
 
-### onInitialLoad
+#### onInitialLoad
 
 The `onInitialLoad` event handler is invoked when the page loads for the first time. It passes the loaded state as the first parameter:
 
