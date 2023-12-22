@@ -695,6 +695,8 @@ UserRepository.onlyTrashed().where('active', false).get()
 
 ## Pagination
 
+You may paginate query results using the `pagination` or `autoPaginate` methods. Both methods return an object with the `data` and `pagination` properties. The `data` property contains the query results and the `pagination` property contains the pagination information.
+
 ### pagination
 
 The `pagination` method, paginates the query results:
