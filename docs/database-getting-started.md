@@ -628,13 +628,13 @@ import { Controller } from './Controller'
 export class PostController < Controller
 
 	def index request\Request
-		const page = request.get('page', 1)
+		const page = request.query('page', 1)
 
 		DB.table('posts')
 			.orderBy('id', 'desc')
-			.paginate({
-				perPage: 1
-				currentPage: page
+			.pagination({
+				page: page
+				perPage: 10
 			})
 ```
 
@@ -652,9 +652,9 @@ export class PostController extends Controller {
 
 		return DB.table('posts')
 			.orderBy('id', 'desc')
-			.paginate({
-				perPage: 1
-				currentPage: page
+			.pagination({
+				page: page,
+				perPage: 10
 			})
 	}
 }
@@ -665,12 +665,12 @@ export class PostController extends Controller {
 
 #### Pagination
 
-Key           | Value
---------------|:----
-`perPage`     | The number of records to show per page.
-`currentPage` | The current page number.
-`from`        | Counting ID of the first item of the current page.
-`to`          | Counting ID of the last item of the current page.
+Property | Type               | Description
+-------- | :----------------- | :-----------
+page     | `number`           | The current page. The default value is `1`.
+perPage  | `number` or `null` | The number of records per page. The default value is `20`.
+query    | `object` or `null` | The query object of the request.
+url      | `string` or `null` | The url of the request.
 
 #### Insert A New Row
 
@@ -699,6 +699,39 @@ const [ taskId ] = await DB.table('tasks')
 ```ts
 const [ taskId: number ] = await DB.table('tasks')
 	.insert({
+		title: 'Learn imba',
+		description: 'Learn imba by building a new framework'
+	})
+```
+
+</TabItem>
+</Tabs>
+
+Alternatively, we can use the `create` method, which is an alias for the `insert` method but instead of returning an array of ID's, it returns the created row(s):
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const task = await DB.table('tasks')
+	.create({
+		title: 'Learn imba'
+		description: 'Learn imba by building a new framework'
+	})
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const task = await DB.table('tasks')
+	.create({
 		title: 'Learn imba',
 		description: 'Learn imba by building a new framework'
 	})

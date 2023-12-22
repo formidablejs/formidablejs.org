@@ -693,11 +693,9 @@ The `onlyTrashed` method may be used to only retrieve soft deleted records:
 UserRepository.onlyTrashed().where('active', false).get()
 ```
 
-## Pagination
+### Pagination
 
 You may paginate query results using the `pagination` or `autoPaginate` methods. Both methods return an object with the `data` and `pagination` properties. The `data` property contains the query results and the `pagination` property contains the pagination information.
-
-### pagination
 
 The `pagination` method, paginates the query results:
 
@@ -710,16 +708,14 @@ UserRepository.pagination({
 })
 ```
 
-Property | Type | Description
---- | --- | ---
-page | `number` | The current page. The default value is `1`.
-perPage | `number` or `null` | The number of records per page. The default value is `20`.
-query | `object` or `null` | The query object of the request.
-url | `string` or `null` | The url of the request.
+Property | Type               | Description
+-------- | :----------------- | :---
+page     | `number`           | The current page. The default value is `1`.
+perPage  | `number` or `null` | The number of records per page. The default value is `20`.
+query    | `object` or `null` | The query object of the request.
+url      | `string` or `null` | The url of the request.
 
-### autoPaginate
-
-The `autoPaginate` method, paginates the query results automatically:
+Or you can use the `autoPaginate` method:
 
 ```ts
 UserRepository.autoPaginate(15)
