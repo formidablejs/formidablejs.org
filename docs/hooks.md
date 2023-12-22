@@ -521,9 +521,9 @@ export tag People
 		query.search = 'Donald'
 ```
 
-When setting state, the [onChange](#onchange) event handler will be invoked if its been set. If you wish to set state without invoking the [onChange](#onchange) event handler, you can use the `quitelyUpdate` method:
+We can also bind the value of an input to a property on the `query` object:
 
-```py title="resources/frontend/pages/People/index.imba" {9}
+```py title="resources/frontend/pages/People/index.imba" {10}
 import { useUrlState } from '@formidablejs/view'
 
 export tag People
@@ -531,8 +531,35 @@ export tag People
 		search: ''
 	})
 
-	def mount
-		query.quitelyUpdate 'search', 'Donald'
+	def render
+		<self>
+			<input type="text" bind=query.search>
+```
+
+Now, whenever the value of the input changes, the `search` property on the `query` object will be updated.
+
+### Quietly Update
+
+By default, when updating state, the [onChange](#onchange) event handler will be invoked and the url will be updated. If you wish to update the state without invoking the [onChange](#onchange) event and updating the url, you can use the `quietlyUpdate` method:
+
+```py title="resources/frontend/pages/People/index.imba" {11}
+import { useUrlState } from '@formidablejs/view'
+
+export tag People
+	query = useUrlState({
+		search: ''
+		page: 1
+	})
+
+	def updateSearchTerm event
+		if event.target.value.length > 1
+			query.quietlyUpdate 'page', 1
+
+		query.search = event.target.value
+
+	def render
+		<self>
+			<input type="text" value=query.search @input.debounce(2000)=updateSearchTerm>
 ```
 
 ### Getter
