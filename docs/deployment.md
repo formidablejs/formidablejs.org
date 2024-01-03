@@ -85,7 +85,7 @@ And finally, start your application:
 pm2 start ecosystem.config.js
 ```
 
-By default, this will start our application on `http://127.0.0.1:3000`, we can change port in the `server` file:
+By default, this will start our application on `http://localhost:3000`, we can change port in the `server` file:
 
 ```js title="server" {4}
 Server
@@ -117,7 +117,7 @@ server {
 		proxy_set_header X-Forwarded-Proto $scheme;
 		proxy_cache_bypass $http_upgrade;
 		proxy_set_header Host $host;
-		proxy_pass http://127.0.0.1:3000;
+		proxy_pass http://localhost:3000;
 		proxy_http_version 1.0;
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection "upgrade";

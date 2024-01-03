@@ -36,8 +36,8 @@ Formidable expects `APP_URL` and `CLIENT_URL` environment variables to be set. T
 The `APP_URL` variable should be set to the URL of your application. The `CLIENT_URL` variable should be set to the URL of your client application. If you do not have a client application, you can set the `CLIENT_URL` variable to the same value as the `APP_URL` variable:
 
 ```bash title=".env"
-APP_URL=http://127.0.0.1:3000
-CLIENT_URL=http://127.0.0.1:3000
+APP_URL=http://localhost:3000
+CLIENT_URL=http://localhost:3000
 ```
 
 :::info

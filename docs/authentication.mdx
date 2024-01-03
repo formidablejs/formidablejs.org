@@ -132,7 +132,7 @@ Verify a user's email address
 Resend an email verification email to a user
 
 ```
-POST http://127.0.0.1:3000/email/resend
+POST http://localhost:3000/email/resend
 Content-Type: application/json
 
 {
@@ -145,7 +145,7 @@ Content-Type: application/json
 Request a password reset email
 
 ```
-POST http://127.0.0.1:3000/password/forgot
+POST http://localhost:3000/password/forgot
 Content-Type: application/json
 
 {
@@ -158,7 +158,7 @@ Content-Type: application/json
 Reset a password
 
 ```
-POST http://127.0.0.1:3000/password/reset
+POST http://localhost:3000/password/reset
 Content-Type: application/json
 
 {
@@ -969,7 +969,7 @@ When logging your users in, a JWT token will be returned in the response:
 Now, to access `/ping` you can pass the JWT token in the `Authorization` header as a Bearer token:
 
 ```
-POST http://127.0.0.1:3000/ping
+POST http://localhost:3000/ping
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5YTNkZWY0MDkxMzFjNThjNGY3NzYwNWU2NjNmYmRmIiwiaWF0IjoxNjM4ODA0NzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAifQ.A008sYS3973q-6uH2cQbgPf4Xq-v93UCvNLql0knIJ8
 ```
 
@@ -1026,7 +1026,7 @@ export class RouterServiceResolver extends ServiceResolver
 When logging your users in, a new session will be created and a cookie will be set in the response. You may need to set a `X-CSRF-TOKEN` header in your authentication routes if you have CSRF protection enabled:
 
 ```
-POST http://127.0.0.1:3000/login
+POST http://localhost:3000/login
 X-CSRF-TOKEN: qpCuH2vmjhxgcDMkVnzfdV4tsdr9InVBgZzPTOw6Rt3YG8Hz-t1WbthldpuBOV3hrtUGMihiTraU
 Content-Type: application/json
 
