@@ -36,6 +36,10 @@ Here's an example of a `UserRepository`:
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository < Repository
+	# The table associated with the repsitory.
+	get tableName
+		'users'
+
 	# Context reference.
 	static get context\string
 		'UserRepository'
@@ -48,6 +52,13 @@ export class UserRepository < Repository
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository extends Repository {
+	/**
+	 * The table associated with the repsitory.
+	 */
+	get tableName(): string {
+		return 'users'
+	}
+
     /**
      * Context reference.
      */
@@ -83,13 +94,13 @@ You may override this convention by defining a `tableName` getter on the reposit
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository < Repository
+	# The table associated with the repsitory.
+	get tableName\string
+		'users'
+
 	# Context reference.
 	static get context\string
 		'UserRepository'
-
-	# Table name.
-	get tableName\string
-		'users'
 ```
 
 </TabItem>
@@ -100,17 +111,17 @@ import { Repository } from '@formidablejs/framework'
 
 export class UserRepository extends Repository {
 	/**
+	 * The table associated with the repsitory.
+	 */
+	get tableName(): string {
+		return 'users'
+	}
+
+	/**
 	 * Context reference.
 	 */
 	static get context(): string {
 		return 'UserRepository'
-	}
-
-	/**
-	 * Table name.
-	 */
-	get tableName(): string {
-		return 'users'
 	}
 }
 ```
@@ -754,43 +765,43 @@ Here's an example response:
             "1": {
                 "label": 1,
                 "active": true,
-                "url": "http://localhost:3000/api/users/?value=&page=1"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=1"
             },
             "2": {
                 "label": 2,
                 "active": false,
-                "url": "http://localhost:3000/api/users/?value=&page=2"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=2"
             },
             "3": {
                 "label": 3,
                 "active": false,
-                "url": "http://localhost:3000/api/users/?value=&page=3"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=3"
             },
             "4": {
                 "label": 4,
                 "active": false,
-                "url": "http://localhost:3000/api/users/?value=&page=4"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=4"
             },
             "5": {
                 "label": 5,
                 "active": false,
-                "url": "http://localhost:3000/api/users/?value=&page=5"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=5"
             },
             "firstPage": {
                 "label": "First",
                 "active": true,
-                "url": "http://localhost:3000/api/users/?value=&page=1"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=1"
             },
             "prevPage": null,
             "nextPage": {
                 "label": "Next",
                 "active": false,
-                "url": "http://localhost:3000/api/users/?value=&page=2"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=2"
             },
             "lastPage": {
                 "label": "Last",
                 "active": false,
-                "url": "http://localhost:3000/api/users/?value=&page=300"
+                "url": "http://127.0.0.1:3000/api/users/?value=&page=300"
             }
         }
     }

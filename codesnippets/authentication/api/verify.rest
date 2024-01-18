@@ -1,1 +1,1 @@
-POST http://localhost:3000/email/verify?email={email-address}&signature={signature}
+POST http://127.0.0.1:3000/email/verify?email={email-address}&signature={signature}
