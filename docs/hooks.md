@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem'
 
 # Introduction
 
-SPA hooks allow you to make your application a bit more interactive. These hooks can only be used within SPA applications running on imba componnets.
+SPA hooks allow you to make your application a bit more interactive. These hooks can only be used within SPA applications running on imba components.
 
 ## useProp
 
