@@ -253,7 +253,7 @@ window.FormConfig = {
 
 The `useForm` hook also allows you to validate your form fields using your server side validation rules. To do this, you need to invoke the `validate` method on your form with the name of the field you want to validate:
 
-```py {3-4} title="resources/frontend/pages/People/Create.imba"
+```py {9} title="resources/frontend/pages/People/Create.imba"
 export tag Create
 
 	prop form = useForm({
