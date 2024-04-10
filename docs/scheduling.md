@@ -154,14 +154,44 @@ schedule.call(() => {
 
 ## Running The Scheduler
 
-Now that we have learned how to define scheduled tasks, let's discuss how to actually run them on our server. The `schedule:run` Craftsman command will evaluate all of your scheduled tasks and determine if they need to run based on the server's current time:
+Now that we have learned how to define scheduled tasks, let's discuss how to actually run them on our server. The `schedule:work` Craftsman command will evaluate all of your scheduled tasks and determine if they need to run based on the server's current time:
 
 ```bash
-node craftsman schedule:run
+node craftsman schedule:work
 ```
 
 When not testing, you can use `pm2` to run the scheduled tasks in the background:
 
 ```bash
-pm2 start "node craftsman schedule:run"
+pm2 start "node craftsman schedule:work"
 ```
+
+### Crontab Based Task Scheduling (Optional)
+
+If you would like to define your scheduled tasks using the server's `cron` facility and not use `pm2`, you may use the `schedule:run` command. This command will evaluate all of your scheduled tasks and run the tasks that are due.
+
+Before getting started, make sure you have aliased current node version to `/usr/bin/node` (if you don't have it installed globally yet):
+
+```bash
+sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
+```
+
+Then, make sure the `craftsman` cli in your project is executable:
+
+```bash
+chmod +x craftsman
+```
+
+Finally, add following Cron entry:
+
+```bash
+* * * * * cd /path-to-your-project && node craftsman --MODE=production schedule:run >> /dev/null 2>&1
+```
+
+This Cron will call the `schedule:run` command every minute. When the `schedule:run` command is called, Formidable will evaluate your scheduled tasks and run the tasks that are due.
+
+:::note
+
+When running the scheduler in a production environment, you should ensure that you have built your project for production using `npm run build`.
+
+:::
