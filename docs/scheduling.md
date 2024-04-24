@@ -191,7 +191,7 @@ crontab -e
 Add the following line to the crontab file:
 
 ```bash
-* * * * * cd /path-to-your-project && node craftsman --MODE=production schedule:run >> /dev/null 2>&1
+* * * * * cd /path-to-your-project && /usr/local/bin/node craftsman --MODE=production schedule:run >> /dev/null 2>&1
 ```
 
 This Cron will call the `schedule:run` command every minute. When the `schedule:run` command is called, Formidable will evaluate your scheduled tasks and run the tasks that are due.
