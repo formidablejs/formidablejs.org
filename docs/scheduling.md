@@ -182,7 +182,13 @@ Then, make sure the `craftsman` cli in your project is executable:
 chmod +x craftsman
 ```
 
-Finally, add following Cron entry:
+Finally, add cron entry to your server by running the following command:
+
+```bash
+crontab -e
+```
+
+Add the following line to the crontab file:
 
 ```bash
 * * * * * cd /path-to-your-project && node craftsman --MODE=production schedule:run >> /dev/null 2>&1
