@@ -484,7 +484,7 @@ export default {
 	#
 	# Supported: "memory", "file", "redis"
 	#
-	# See: "config > app.imba > resolvers"
+	# See: "bootstrap > resolvers.imba"
 
 	driver: 'redis'
 
@@ -509,7 +509,7 @@ export default {
 	 *
 	 * Supported: "memory", "file", "redis"
 	 *
-	 * See: "config > app.ts > resolvers"
+	 * See: "bootstrap > resolvers.ts"
 	 */
 
 	driver: 'redis',

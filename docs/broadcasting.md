@@ -143,7 +143,7 @@ export class Config extends ConfigRepository
 </TabItem>
 </Tabs>
 
-And finally, register the `BroadcastServiceResolver` in the `config/app.imba` or `config/app.ts` file under `resolvers`:
+And finally, register the `BroadcastServiceResolver` in the `bootstrap/resolvers.imba` or `bootstrap/resolvers.ts` file:
 
 <Tabs
 	defaultValue={State.language}
@@ -154,20 +154,16 @@ And finally, register the `BroadcastServiceResolver` in the `config/app.imba` or
 	]}>
 <TabItem value="imba">
 
-```py title="config/app.imba" {2,9}
+```py title="bootstrap/resolvers.imba" {2,7}
 ...
 import BroadcastServiceResolver from '../app/Resolvers/BroadcastServiceResolver'
 ...
 
-export default {
+export default [
 	...
-	resolvers: {
-		...
-		BroadcastServiceResolver
-		...
-	}
+	BroadcastServiceResolver
 	...
-}
+]
 
 ```
 
@@ -175,20 +171,16 @@ export default {
 
 <TabItem value="ts">
 
-```ts title="config/app.ts" {2,9}
+```ts title="bootstrap/resolvers.ts" {2,7}
 ...
 import BroadcastServiceResolver from '../app/Resolvers/BroadcastServiceResolver'
 ...
 
-export default {
+export default [
 	...
-	resolvers: {
-		...
-		BroadcastServiceResolver,
-		...
-	},
+	BroadcastServiceResolver,
 	...
-}
+]
 ```
 
 </TabItem>

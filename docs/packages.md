@@ -72,7 +72,7 @@ export class QuotesServiceResolver extends ServiceResolver {
 </TabItem>
 </Tabs>
 
-We can then register the resolver in a formidable application in the `config/app.imba` or `config/app.ts` config file:
+We can then register the resolver in a formidable application in the `bootstrap/resolvers.imba` or `bootstrap/resolvers.ts` config file:
 
 <Tabs
     defaultValue={State.language}
@@ -83,29 +83,25 @@ We can then register the resolver in a formidable application in the `config/app
     ]}>
 <TabItem value="imba">
 
-```py title="config/app.imba" {1,8}
+```py title="bootstrap/resolvers.imba" {1,6}
 import { QuotesServiceResolver } from '<custom-package>'
 ...
 
-export default {
+export default [
 	...
-	resolvers: {
-		...
-		QuotesServiceResolver
+	QuotesServiceResolver
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/app.ts" {1,8}
+```ts title="bootstrap/resolvers.ts" {1,6}
 import { QuotesServiceResolver } from '<custom-package>'
 ...
 
-export default {
+export default [
 	...
-	resolvers: {
-		...
-		QuotesServiceResolver,
+	QuotesServiceResolver,
 ```
 
 </TabItem>
