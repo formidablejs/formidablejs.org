@@ -38,7 +38,7 @@ Install the package using your preferred package manager:
 <TabItem value="npm">
 
 ```bash
-npm install @formidablejs/broadcaster
+npm install @formidablejs/broadcaster@0.1.1
 ```
 
 </TabItem>
@@ -46,7 +46,7 @@ npm install @formidablejs/broadcaster
 <TabItem value="pnpm">
 
 ```bash
-pnpm install @formidablejs/broadcaster
+pnpm install @formidablejs/broadcaster@0.1.1
 ```
 
 </TabItem>
@@ -54,7 +54,7 @@ pnpm install @formidablejs/broadcaster
 <TabItem value="yarn">
 
 ```bash
-yarn add @formidablejs/broadcaster
+yarn add @formidablejs/broadcaster@0.1.1
 ```
 
 </TabItem>
@@ -62,7 +62,7 @@ yarn add @formidablejs/broadcaster
 <TabItem value="bun">
 
 ```bash
-bun add @formidablejs/broadcaster
+bun add @formidablejs/broadcaster@0.1.1
 ```
 
 </TabItem>
@@ -457,6 +457,38 @@ import { ConversationRepository } from '../app/Repositories/ConversationReposito
 Broadcast.channel('chat/:chat_id/:conversation_id', ({ user, params }) => {
 	return ConversationRepository.canAccess(user, params.chat_id, params.conversation_id)
 })
+```
+
+</TabItem>
+</Tabs>
+
+## Broadcasting To Channels
+
+To Broadcast to a channel, you can use the `Channel` class:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+<TabItem value="imba">
+
+```py
+import { Channel } from '@formidablejs/broadcaster'
+
+Channel.publish('message').on('channel-name')
+```
+
+</TabItem>
+
+<TabItem value="ts">
+
+```ts
+import { Channel } from '@formidablejs/broadcaster'
+
+Channel.publish('message').on('channel-name')
 ```
 
 </TabItem>
