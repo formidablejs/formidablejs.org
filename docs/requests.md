@@ -1030,3 +1030,490 @@ You may also generate types automatically when you run the `serve` command with 
 ```
 
 This will generate types for all of your request rules whenever you make changes to your application.
+
+
+## File Uploads
+
+Formidable provides an easy way to work with file uploads. You may access uploaded files using the `file` method on the `FormRequest` instance. The `file` method returns an instance of `FileCollection`:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const files = request.file('avatar')
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const files = request.file('avatar')
+```
+
+</TabItem>
+</Tabs>
+
+### File Methods
+
+#### Retrieving A File
+
+The `file` method returns an instance of `FileCollection`. You may use the `first` method to retrieve the first file in the collection:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+<TabItem value="imba">
+
+```py
+const file = request.file('avatar').first()
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const file = request.file('avatar').first()
+```
+
+</TabItem>
+</Tabs>
+
+#### Retrieving All Files
+
+The `all` method may be used to retrieve all of the files in the collection:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+
+<TabItem value="imba">
+
+```py
+const files = request.file('avatar').all()
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const files = request.file('avatar').all()
+```
+
+</TabItem>
+</Tabs>
+
+You may also use the `get` method to retrieve all of the files in the collection:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const files = request.file('avatar').get()
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const files = request.file('avatar').get()
+```
+
+</TabItem>
+</Tabs>
+
+#### Retrieving First File
+
+The `first` method may be used to retrieve the first file in the collection:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const file = request.file('avatar').first()
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const file = request.file('avatar').first()
+```
+
+</TabItem>
+</Tabs>
+
+#### Retrieving Last File
+
+The `last` method may be used to retrieve the last file in the collection:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const file = request.file('avatar').last()
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const file = request.file('avatar').last()
+```
+
+</TabItem>
+</Tabs>
+
+#### Retrieving A File By Filter
+
+You may use the `filter` method to retrieve files that match a given filter. The `filter` method accepts a callback function that will be used to filter the files:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const files = request.file('avatar').filter do(file)
+    file.size > 1000
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const files = request.file('avatar').filter(file => file.size > 1000)
+```
+
+</TabItem>
+</Tabs>
+
+You may also use the `where` method to retrieve files that match a given key-value pair:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const files = request.file('avatar').where('mimetype', 'image/png').get()
+```
+
+</TabItem>
+
+<TabItem value="ts">
+
+```ts
+const files = request.file('avatar').where('mimetype', 'image/png').get()
+```
+
+</TabItem>
+</Tabs>
+
+
+#### Mapping Through Files
+
+You may use the `map` method to iterate over the files in the collection. The `map` method accepts a callback function that will be used to map over the files:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const files = request.file('avatar').map do(file)
+    # do something
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const files = request.file('avatar').map(file => {
+    // do something
+})
+```
+
+</TabItem>
+</Tabs>
+
+#### Iterating Over Files
+
+You may use the `each` method to iterate over the files in the collection. The `each` method accepts a callback function that will be used to iterate over the files:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+request.file('avatar').each do(file)
+    # do something
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+request.file('avatar').each(file => {
+    // do something
+})
+```
+
+
+</TabItem>
+</Tabs>
+
+#### Counting Files
+
+You may use the `count` method to count the number of files in the collection:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const count = request.file('avatar').count()
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const count = request.file('avatar').count()
+```
+
+</TabItem>
+</Tabs>
+
+#### Determining If Files Are Present
+
+You may use the `hasFiles` method to determine if files are present in the collection. The `hasFiles` method returns `true` if files are present in the collection:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+if request.file('avatar').hasFiles()
+    # do something
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+if (request.file('avatar').hasFiles()) {
+    // do something
+}
+```
+
+</TabItem>
+</Tabs>
+
+You may also use the `hasFile` method on the `Request` or `FormRequest` instance to determine if a file is present on the request. The `hasFile` method returns `true` if the file is present on the request:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+if request.hasFile('avatar')
+    # do something
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+if (request.hasFile('avatar')) {
+    // do something
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Working With Files
+
+#### Storing Files
+
+You may use the `move` method to move an uploaded file to a new location. The `move` method accepts two arguments: the destination directory and overwriting the file if it already exists:
+
+<Tabs
+    defaultValue={State.language}
+    groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```py
+const avatar = request.file('avatar').first()
+
+avatar.move("storage/avatars/{avatar.name}", true)
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const avatar = request.file('avatar').first()
+
+avatar.move("storage/avatars/{avatar.name}", true)
+```
+
+</TabItem>
+</Tabs>
+
+
+#### Retrieving File Information
+
+You may retrieve information about an uploaded file using the following getters:
+
+Property | Description
+--- | ---
+`name` | The name of the file.
+`filename` | The name of the file.
+`encoding` | The encoding of the file.
+`mime` | The MIME type of the file.
+`mimetype` | The MIME type of the file.
+`type` | The MIME type of the file.
+`path` | The path to the file.
+`extension` | The extension of the file.
+`ext` | The extension of the file.
+`size` | The size of the file in MB.
+
+For example, to retrieve the extension of an uploaded file, you may use the `extension` getter:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+<TabItem value="imba">
+
+```py
+const avatar = request.file('avatar').first()
+
+const extension = avatar.extension
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts
+const avatar = request.file('avatar').first()
+
+const extension = avatar.extension
+```
+
+</TabItem>
+</Tabs>
+
+#### Validating File Uploads
+
+When working with file uploads, you may use the `file` rule to validate that the uploaded file is a file. The `file` rule may be used to validate that the uploaded file is an image, audio, video, or PDF file. The `file` rule may be used to validate that the uploaded file is an image file:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+<TabItem value="imba">
+
+```py title="app/Http/Requests/StorePersonRequest.imba" {6}
+import { Request } from '@formidablejs/framework'
+
+export class StorePersonRequest < Request
+
+	def rules
+		avatar: 'required|file|image'
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Http/Requests/StorePersonRequest.ts" {6}
+import { Request } from '@formidablejs/framework'
+
+export class StorePersonRequest extends Request {
+	rules() {
+		return {
+			avatar: 'required|file|image'
+		}
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
+For a list of available file validation rules, see the [Validation documentation](/docs/validation#available-rules).
