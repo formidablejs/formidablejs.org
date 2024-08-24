@@ -852,186 +852,6 @@ if(request.has('name')) {
 </TabItem>
 </Tabs>
 
-
-## Type-safe
-
-When using TypeScript, you may generate types based on your request rules. You may do this for the purpose of type-hinting your request within your forms. This works with Imba (SPA), Vue, React, and Svelte.
-
-:::info
-
-This feature is only available when using TypeScript as the default language and [nodemon](/docs/rc#mode) as the default development mode.
-
-:::
-
-### Generating Types
-
-To generate types, you may use the `types:generate` Craftsman command:
-
-```bash
-node craftsman types:generate
-```
-
-This command will generate types for all of your request rules. The generated types will be placed in the `app/Types/Forms` directory.
-
-### Using Generated Types
-
-Once you have generated your types, you may use them in your frontend forms. For example, let's assume we have a `StorePersonRequest` class that contains the following rules:
-
-```ts title="app/Http/Requests/StorePersonRequest.ts" {6-10}
-import { Request } from '@formidablejs/framework'
-
-export class StorePersonRequest extends Request {
-	rules() {
-		return {
-			first_name: 'required|string',
-			last_name: 'required|string',
-			email: 'required|email',
-			phone: 'nullable|string',
-			address: 'nullable|string',
-		}
-	}
-}
-```
-
-After running the `types:generate` command, we will have a `StorePersonForm` type generated in the `app/Types/Forms` directory:
-
-```ts title="app/Types/Forms/StorePersonForm.ts"
-type StorePersonForm = {
-	first_name: string
-	last_name: string
-	email: string
-	phone: string | null
-	address: string | null
-}
-```
-
-We may now use this type in our frontend form:
-
-<Tabs
-    defaultValue={State.framework}
-	groupId="frameworks"
-    values={[
-        {label: 'Imba', value: 'imba'},
-        {label: 'Vue', value: 'vue'},
-        {label: 'React', value: 'react'},
-        {label: 'Svelte', value: 'svelte'},
-    ]}>
-<TabItem value="imba">
-
-Create a `useStorePersonForm` typescript file that exports a `useStorePersonForm` function in the `resources/frontend/Pages/People` directory:
-
-```ts title="resources/frontend/Pages/People/useStorePersonForm.ts"
-import { useForm } from '@formidablejs/view'
-
-export const useStorePersonForm = useForm<StorePersonForm>
-```
-
-And finally, import the `useStorePersonForm` function in your `Create.imba` file:
-
-```js title="resources/frontend/Pages/People/Create.imba" {4-10}
-import { useStorePersonForm } from './useStorePersonForm'
-
-export tag Create
-	prop form = useStorePersonForm({
-		first_name: ''
-		last_name: ''
-		email: ''
-		phone: ''
-		address: ''
-	})
-
-	...
-```
-</TabItem>
-
-<TabItem value="vue">
-
-Create a `Create.vue` file in the `resources/js/Pages/People` directory:
-
-```html title="resources/js/Pages/People/Create.vue" {4-10}
-<script lang="ts" setup>
-import { useForm } from '@inertia/vue3'
-
-const form = useForm<StorePersonForm>({
-	first_name: '',
-	last_name: '',
-	email: '',
-	phone: null,
-	address: null
-})
-</script>
-
-...
-```
-
-</TabItem>
-
-<TabItem value="react">
-
-Create a `Create.tsx` file in the `resources/js/Pages/People` directory:
-
-```tsx title="resources/js/Pages/People/Create.tsx" {4-10}
-import { useForm } from '@inertiajs/react'
-
-export default function Create() {
-	const { data, setData, post, processing, errors } = useForm<StorePersonForm>({
-		first_name: '',
-		last_name: '',
-		email: '',
-		phone: null,
-		address: null
-	})
-
-	...
-}
-```
-
-</TabItem>
-
-<TabItem value="svelte">
-
-Create a `Create.svelte` file in the `resources/js/Pages/People` directory:
-
-```html title="resources/js/Pages/People/Create.svelte" {5-11}
-<script>
-import { useForm } from '@inertiajs/svelte'
-
-/** @type {StorePersonForm} form */
-let form = useForm({
-	first_name: '',
-	last_name: '',
-	email: '',
-	phone: null,
-	address: null
-})
-
-</script>
-
-...
-
-```
-</TabItem>
-
-</Tabs>
-
-### Auto-generation
-
-You may also generate types automatically when you run the `serve` command with the `--dev` flag. You can do this by adding the `node craftsman types:generate` command to your `package.json` file under `development.commands`:
-
-```json title="package.json" {5}
-{
-	"development": {
-		"mode": "nodemon",
-		"commands": [
-			"node craftsman types:generate",
-		]
-	}
-}
-```
-
-This will generate types for all of your request rules whenever you make changes to your application.
-
-
 ## File Uploads
 
 Formidable provides an easy way to work with file uploads. You may access uploaded files using the `file` method on the `FormRequest` instance. The `file` method returns an instance of `FileCollection`:
@@ -1516,4 +1336,187 @@ export class StorePersonRequest extends Request {
 </TabItem>
 </Tabs>
 
+:::info
+
 For a list of available file validation rules, see the [Validation documentation](/docs/validation#available-rules).
+
+:::
+
+
+## Type-safe
+
+When using TypeScript, you may generate types based on your request rules. You may do this for the purpose of type-hinting your request within your forms. This works with Imba (SPA), Vue, React, and Svelte.
+
+:::info
+
+This feature is only available when using TypeScript as the default language and [nodemon](/docs/rc#mode) as the default development mode.
+
+:::
+
+### Generating Types
+
+To generate types, you may use the `types:generate` Craftsman command:
+
+```bash
+node craftsman types:generate
+```
+
+This command will generate types for all of your request rules. The generated types will be placed in the `app/Types/Forms` directory.
+
+### Using Generated Types
+
+Once you have generated your types, you may use them in your frontend forms. For example, let's assume we have a `StorePersonRequest` class that contains the following rules:
+
+```ts title="app/Http/Requests/StorePersonRequest.ts" {6-10}
+import { Request } from '@formidablejs/framework'
+
+export class StorePersonRequest extends Request {
+	rules() {
+		return {
+			first_name: 'required|string',
+			last_name: 'required|string',
+			email: 'required|email',
+			phone: 'nullable|string',
+			address: 'nullable|string',
+		}
+	}
+}
+```
+
+After running the `types:generate` command, we will have a `StorePersonForm` type generated in the `app/Types/Forms` directory:
+
+```ts title="app/Types/Forms/StorePersonForm.ts"
+type StorePersonForm = {
+	first_name: string
+	last_name: string
+	email: string
+	phone: string | null
+	address: string | null
+}
+```
+
+We may now use this type in our frontend form:
+
+<Tabs
+    defaultValue={State.framework}
+	groupId="frameworks"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'Vue', value: 'vue'},
+        {label: 'React', value: 'react'},
+        {label: 'Svelte', value: 'svelte'},
+    ]}>
+<TabItem value="imba">
+
+Create a `useStorePersonForm` typescript file that exports a `useStorePersonForm` function in the `resources/frontend/Pages/People` directory:
+
+```ts title="resources/frontend/Pages/People/useStorePersonForm.ts"
+import { useForm } from '@formidablejs/view'
+
+export const useStorePersonForm = useForm<StorePersonForm>
+```
+
+And finally, import the `useStorePersonForm` function in your `Create.imba` file:
+
+```js title="resources/frontend/Pages/People/Create.imba" {4-10}
+import { useStorePersonForm } from './useStorePersonForm'
+
+export tag Create
+	prop form = useStorePersonForm({
+		first_name: ''
+		last_name: ''
+		email: ''
+		phone: ''
+		address: ''
+	})
+
+	...
+```
+</TabItem>
+
+<TabItem value="vue">
+
+Create a `Create.vue` file in the `resources/js/Pages/People` directory:
+
+```html title="resources/js/Pages/People/Create.vue" {4-10}
+<script lang="ts" setup>
+import { useForm } from '@inertia/vue3'
+
+const form = useForm<StorePersonForm>({
+	first_name: '',
+	last_name: '',
+	email: '',
+	phone: null,
+	address: null
+})
+</script>
+
+...
+```
+
+</TabItem>
+
+<TabItem value="react">
+
+Create a `Create.tsx` file in the `resources/js/Pages/People` directory:
+
+```tsx title="resources/js/Pages/People/Create.tsx" {4-10}
+import { useForm } from '@inertiajs/react'
+
+export default function Create() {
+	const { data, setData, post, processing, errors } = useForm<StorePersonForm>({
+		first_name: '',
+		last_name: '',
+		email: '',
+		phone: null,
+		address: null
+	})
+
+	...
+}
+```
+
+</TabItem>
+
+<TabItem value="svelte">
+
+Create a `Create.svelte` file in the `resources/js/Pages/People` directory:
+
+```html title="resources/js/Pages/People/Create.svelte" {5-11}
+<script>
+import { useForm } from '@inertiajs/svelte'
+
+/** @type {StorePersonForm} form */
+let form = useForm({
+	first_name: '',
+	last_name: '',
+	email: '',
+	phone: null,
+	address: null
+})
+
+</script>
+
+...
+
+```
+</TabItem>
+
+</Tabs>
+
+### Auto-generation
+
+You may also generate types automatically when you run the `serve` command with the `--dev` flag. You can do this by adding the `node craftsman types:generate` command to your `package.json` file under `development.commands`:
+
+```json title="package.json" {5}
+{
+	"development": {
+		"mode": "nodemon",
+		"commands": [
+			"node craftsman types:generate",
+		]
+	}
+}
+```
+
+This will generate types for all of your request rules whenever you make changes to your application.
