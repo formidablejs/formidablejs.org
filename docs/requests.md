@@ -1015,7 +1015,7 @@ const file = request.file('avatar').last()
 </TabItem>
 </Tabs>
 
-#### Retrieving A File By Filter
+#### Retrieving Files By Filter
 
 You may use the `filter` method to retrieve files that match a given filter. The `filter` method accepts a callback function that will be used to filter the files:
 
