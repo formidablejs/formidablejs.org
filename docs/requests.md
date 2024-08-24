@@ -1338,7 +1338,7 @@ export class StorePersonRequest extends Request {
 
 :::info
 
-For a list of available file validation rules, see the [Validation documentation](/docs/validation#available-rules).
+For a list of available validation rules, see the [Validation documentation](/docs/validation#available-rules).
 
 :::
 
