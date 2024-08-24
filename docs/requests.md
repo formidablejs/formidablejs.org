@@ -1243,7 +1243,7 @@ avatar.move("storage/avatars/{avatar.name}", true)
 ```ts
 const avatar = request.file('avatar').first()
 
-avatar.move("storage/avatars/{avatar.name}", true)
+avatar.move(`storage/avatars/${avatar.name}`, true)
 ```
 
 </TabItem>
