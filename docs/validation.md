@@ -309,17 +309,15 @@ The given field must be different than the field under validation.
 
 The field under validation must be formatted as an e-mail address.
 
-#### exists
+#### exists:table,id
 
 The field under validation must exist on a given database table.
 
-```ts
-{
-	email: 'exists:users,email'
-}
+```
+state: 'exists:states,id'
 ```
 
-The above rule will check if the email exists in the `users` table under the `email` column.
+The above rule will check if the selected state exists in the `states` table under the `id` column.
 
 #### file
 
@@ -423,34 +421,29 @@ The field under validation must have a size matching the given value. For string
 
 The field under validation must be a string.
 
-#### unique
+#### unique:table,column...
 
 The field under validation must be unique on a given database table.
 
-```ts
-{
-	email: 'unique:users,email'
-}
+```
+email: 'unique:users,email'
 ```
 
 The above rule will check if the email is unique in the `users` table under the `email` column.
 
 You can also ignore a given ID:
 
-```ts
-{
-	email: 'unique:users,email,1'
-}
+```
+email: 'unique:users,email,1'
 ```
 
 The above rule will check if the email is unique in the `users` table under the `email` column, but will ignore the record with the ID of 1.
 
 If you wish to ignore a custom column name, you may append the column identifier using : as the separator to the given identifier value:
 
-```ts
-{
-	email: 'unique:users,email,1:custom_id'
-}
+```
+email: 'unique:users,email,1:custom_id'
+```
 
 #### url
 
