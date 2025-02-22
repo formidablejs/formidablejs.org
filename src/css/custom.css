@@ -243,16 +243,21 @@ html[data-theme='dark'] .installer .installer__copy:hover > div {
 
 .frameworks {
 	display: grid;
-	grid-gap: 60px;
-	gap: 60px;
+	/* grid-gap: 60px;
+	gap: 60px; */
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .framework img {
 	align-self: center;
+	/* filter: grayscale(100%);
+	transition: filter 0.4s ease; */
+	/* filter: hue-rotate(45deg); */
+}
+
+[data-theme='dark'] .framework img {
 	filter: grayscale(100%);
 	transition: filter 0.4s ease;
-	/* filter: hue-rotate(45deg); */
 }
 
 .framework img:hover {
@@ -363,6 +368,19 @@ html[data-theme='dark'] .community {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 20px;
+}
+
+.features>.container>.grid-container>div {
+	padding: 20px;
+	border-radius: 13px;
+	background-color: #fff;
+	box-shadow: 0 5px 15px rgba(154, 154, 154, 0.151);
+}
+
+html[data-theme='dark'] .features>.container>.grid-container>div {
+	background-color: #000;
+	border: 1px solid #1c1e20;
+	box-shadow: 0 5px 15px rgba(65, 58, 58, 0.3);
 }
 
 .features>.container>.grid-container>div>p {

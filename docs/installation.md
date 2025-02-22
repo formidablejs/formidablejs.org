@@ -48,6 +48,16 @@ By default, the `create-formidable` CLI will scaffold your application with Type
 npx create-formidable@latest example-app --language imba
 ```
 
+#### Windows Considations
+
+To ensure compatibility and smooth operation on Windows, it is recommended to enable [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development) or use [Windows Subsystem for Linux (WSL)](https://ubuntu.com/desktop/wsl). This will help avoid potential issues with command execution and file paths that may arise when using the default Command Prompt or PowerShell.
+
+:::info
+
+This is a crucial step for Windows users to avoid potential issues with command execution and file paths that may arise when using the default Command Prompt or PowerShell.
+
+:::
+
 ## Initial Configuration
 
 All of the configuration files for the Formidable framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.

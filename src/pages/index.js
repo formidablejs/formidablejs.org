@@ -111,9 +111,20 @@ export default function Home() {
 
 					<p>Build with your favorite technologies</p> */}
 
-					<p style={{
+					{/* <p style={{
 						letterSpacing: '.025em', fontSize: '20px', lineHeight: '1.25rem'
-					}}>Works with</p>
+					}}>Works with</p> */}
+
+					<p style={{
+						fontSize: '24px',
+						lineHeight: '1.25',
+						fontWeight: '700',
+						margin: '0',
+						paddingBottom: '80px',
+						paddingTop: '50px'
+					}}>
+						Build and ship with your favorite technologies
+					</p>
 
 					<div className="frameworks">
 						<div className="framework" title="TypeScript">

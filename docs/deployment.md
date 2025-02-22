@@ -419,7 +419,7 @@ You can find the instructions for installing the Vercel CLI [here](https://verce
 
 #### Considerations
 
-While this approach works, there are some things you need to consider:
+While this approach works, there are a few things you need to consider:
 
 ##### Logging
 
