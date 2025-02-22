@@ -38,7 +38,7 @@ Install the package using your preferred package manager:
 <TabItem value="npm">
 
 ```bash
-npm install @formidablejs/broadcaster@0.1.1
+npm install @formidablejs/broadcaster
 ```
 
 </TabItem>
@@ -46,7 +46,7 @@ npm install @formidablejs/broadcaster@0.1.1
 <TabItem value="pnpm">
 
 ```bash
-pnpm install @formidablejs/broadcaster@0.1.1
+pnpm install @formidablejs/broadcaster
 ```
 
 </TabItem>
@@ -54,7 +54,7 @@ pnpm install @formidablejs/broadcaster@0.1.1
 <TabItem value="yarn">
 
 ```bash
-yarn add @formidablejs/broadcaster@0.1.1
+yarn add @formidablejs/broadcaster
 ```
 
 </TabItem>
@@ -62,7 +62,7 @@ yarn add @formidablejs/broadcaster@0.1.1
 <TabItem value="bun">
 
 ```bash
-bun add @formidablejs/broadcaster@0.1.1
+bun add @formidablejs/broadcaster
 ```
 
 </TabItem>
@@ -311,10 +311,12 @@ The `redis` object allows you to configure the redis connection name and expirat
 export default {
 	...
 	redis: {
-		connection: 'default'
+		connection: env('BROADCAST_CONNECTION', 'cache')
+		publish_mode: env('BROADCAST_PUBLISH_MODE', 'overwrite')
+		refresh_rate: env('BROADCAST_REFRESH_RATE', 100)
 		expiration: {
-			mode: 'PX'
-			ttl: 300
+			mode: env('BROADCAST_EXPIRATION_MODE', 'PX')
+			ttl: env('BROADCAST_EXPIRATION_TTL', 1000)
 		}
 	}
 	...
@@ -329,12 +331,14 @@ export default {
 export default {
 	...
 	redis: {
-		connection: 'default',
-		expiration: {
-			mode: 'PX',
-			ttl: 300,
-		},
-	},
+        connection: env('BROADCAST_CONNECTION', 'cache'),
+        publish_mode: env('BROADCAST_PUBLISH_MODE', 'overwrite'),
+        refresh_rate: env('BROADCAST_REFRESH_RATE', 100),
+        expiration: {
+            mode: env('BROADCAST_EXPIRATION_MODE', 'PX'),
+            ttl: env('BROADCAST_EXPIRATION_TTL', 1000)
+        }
+    },
 	...
 }
 ```
@@ -356,9 +360,9 @@ Whenever you make changes to the broadcasting configuration, you should run the 
 
 :::
 
-## Defining Broadcasts
+## Defining Channels
 
-Broadcasts are channels that broadcast messages to other clients. For example, a chat application may broadcast messages to a conversation channel. All clients listening on that channel will receive the message. Broadcasts may be defined using the `channel` method on the `Broadcast` class. The `channel` method accepts two arguments: the channel name and the data that should be broadcast to the channel:
+Channels are broadcasting events that clients can listen to. For example, a chat application may broadcast messages to a conversation channel. All clients listening on that channel will receive the message. Channels may be defined using the `channel` method on the `Broadcast` class. The `channel` method accepts 2 arguments: the channel name and an optional callback that can be used to authorize the channel:
 
 <Tabs
 	defaultValue={State.language}
@@ -384,6 +388,38 @@ Broadcast.channel('chat')
 import { Broadcast } from '@formidablejs/broadcaster'
 
 Broadcast.channel('chat')
+```
+
+</TabItem>
+</Tabs>
+
+### Naming Channels
+
+You may assign a name to a channel using the `name` method. This name will be used to identify the channel when broadcasting messages. The `name` method accepts a single argument: the channel name:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+<TabItem value="imba">
+
+```py title="routes/channels.imba"
+import { Broadcast } from '@formidablejs/broadcaster'
+
+Broadcast.channel('chat').name('chat')
+```
+
+</TabItem>
+
+<TabItem value="ts">
+
+```ts title="routes/channels.ts"
+import { Broadcast } from '@formidablejs/broadcaster'
+
+Broadcast.channel('chat').name('chat')
 ```
 
 </TabItem>
@@ -405,7 +441,7 @@ Before broadcasting to a channel, you should authorize that the currently authen
 ```py title="routes/channels.imba"
 import { Broadcast } from '@formidablejs/broadcaster'
 
-Broadcast.channel('chat', do(message) message.user !== null)
+Broadcast.channel('chat', do(message) message.user !== null).name('chat')
 ```
 
 </TabItem>
@@ -415,14 +451,13 @@ Broadcast.channel('chat', do(message) message.user !== null)
 ```ts title="routes/channels.ts"
 import { Broadcast } from '@formidablejs/broadcaster'
 
-Broadcast.channel('chat', message => message.user !== null)
+Broadcast.channel('chat', message => message.user !== null).name('chat')
 ```
 
 </TabItem>
 </Tabs>
 
 If the `channel` method returns `false`, the user will be denied access to the channel. If the `channel` method returns `true`, the user will be authorized to listen on the channel.
-
 
 ### Parameterized Channels
 
@@ -461,6 +496,155 @@ Broadcast.channel('chat/:chat_id/:conversation_id', ({ user, params }) => {
 
 </TabItem>
 </Tabs>
+
+### Class-Based Channels
+
+You may also define channels using a class-based approach. This approach gives you more control over the channel's behavior and allows you to define additional methods and properties on the channel class.
+
+To get started, you can use the `make:channel` [Craftsman](/docs/craftsman) command to generate a new channel class:
+
+```
+node craftsman make:channel ConversationChannel
+```
+
+This command will create a new channel class in the `app/Broadcasting` directory. You may then define the channel's behavior within the class:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+
+<TabItem value="imba">
+
+```py title="app/Broadcasting/ConversationChannel.imba"
+import { BroadcastChannel } from '@formidablejs/broadcaster'
+import type { ChannelMessage, ConnectionEvent } from '@formidablejs/broadcaster'
+
+export class ConversationChannel < BroadcastChannel
+
+	# Subscribes a user to the channel.
+	#
+	# @param {ConnectionEvent} event
+	# @return {Promise<void> | void}
+	def subscribe event\ConnectionEvent
+		console.log "Subscribed to \"{name}\" 🎉"
+
+	# Unsubscribes a user from the channel.
+	#
+	# @param {ConnectionEvent} event
+	# @return {Promise<void> | void}
+	def unsubscribe event\ConnectionEvent
+		console.log "Unsubscribed from \"{name}\" 👋"
+
+	# Publishes a message to the channel.
+	#
+	# @param {ChannelMessage} message
+	# @return {Promise<boolean> | boolean}
+	def publish message\ChannelMessage
+		return true
+
+```
+
+</TabItem>
+
+<TabItem value="ts">
+
+```ts title="app/Broadcasting/ConversationChannel.ts"
+import { BroadcastChannel } from '@formidablejs/broadcaster'
+import type { ChannelMessage, ConnectionEvent } from '@formidablejs/broadcaster'
+
+export class ConversationChannel extends BroadcastChannel
+{
+	/**
+	 * Subscribes a user to the channel.
+	 */
+	subscribe(event: ConnectionEvent): void
+	{
+		console.log(`Subscribed to "${this.name}" 🎉`)
+	}
+
+	/**
+	 * Unsubscribes a user from the channel.
+	 */
+	unsubscribe(event: ConnectionEvent): void
+	{
+		console.log(`Unsubscribed from "${this.name}" 👋`)
+	}
+
+	/**
+	 * Publishes a message to the channel.
+	 */
+	publish(message: ChannelMessage): boolean
+	{
+		return true
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
+Once you have defined your channel class, you can register it in the `routes/channels.{ts,imba}` file:
+
+<Tabs
+	defaultValue={State.language}
+	groupId="code-snippets"
+	values={[
+		{label: 'Imba', value: 'imba'},
+		{label: 'TypeScript', value: 'ts'},
+	]}>
+
+<TabItem value="imba">
+
+```py title="routes/channels.imba"
+import { Broadcast } from '@formidablejs/broadcaster'
+import { ConversationChannel } from '../app/Broadcasting/ConversationChannel'
+
+Broadcast.channel('chat', ConversationChannel)
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="routes/channels.ts"
+import { Broadcast } from '@formidablejs/broadcaster'
+import { ConversationChannel } from '../app/Broadcasting/ConversationChannel'
+
+Broadcast.channel('chat', ConversationChannel)
+```
+
+</TabItem>
+</Tabs>
+
+#### Understanding `ConnectionEvent` Object
+
+The `ConnectionEvent` object contains information about the connection event. It has the following properties:
+
+| Property | Type | Description |
+| --- | --- | --- |
+user | `User?` | The authenticated user.
+userAgent | `string?` | The user agent of the client.
+params | `object?` | The channel parameters.
+query | `object?` | The query parameters.
+event | `open|close|error` | The connection event type.
+error | `Error?` | The error object if an error occurred.
+
+#### Understanding `ChannelMessage` Object
+
+The `ChannelMessage` object contains information about the message being broadcast. It has the following properties:
+
+| Property | Type | Description |
+| --- | --- | --- |
+id | `string` | The message ID.
+user | `User?` | The user who is waiting for the message.
+userAgent | `string?` | The user agent of the client.
+params | `object?` | The channel parameters.
+query | `object?` | The query parameters.
+payload | `object` | The message payload.
+connection | `number` | The connection number.
 
 ## Broadcasting To Channels
 
@@ -737,4 +921,3 @@ export default function Chat() {
 
 Now, you're listening for broadcasts on the `chat/1/1` channel. Any messages broadcast to the `chat/1/1` channel will be received by the `onMessage` callback.
 
-##
