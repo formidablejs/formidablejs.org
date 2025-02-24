@@ -32,7 +32,7 @@ module.exports = {
 			},
 			{
 				name: 'twitter:description',
-				content: 'Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications.'
+				content: 'Formidable (or formidablejs) is a modern full-stack framework for building scalable backend applications and APIs with TypeScript or Imba.'
 			},
 			{
 				name: 'twitter:image',
@@ -60,7 +60,7 @@ module.exports = {
 			},
 			{
 				name: 'og:description',
-				content: 'Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications.'
+				content: 'Formidable (or formidablejs) is a modern full-stack framework for building scalable backend applications and APIs with TypeScript or Imba.'
 			},
 			{
 				name: 'og:image',
