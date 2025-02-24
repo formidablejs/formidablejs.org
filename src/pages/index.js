@@ -7,6 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import styles from './styles.module.css';
+import { title } from '../../docusaurus.config';
 
 export default function Home() {
 	const context = useDocusaurusContext();
@@ -42,7 +43,6 @@ export default function Home() {
 	return (
 		<Fragment>
 			<Layout
-				title={siteConfig.title}
 				description={siteConfig.tagline}>
 				<header className={clsx('hero hero--primary', styles.heroBanner)}>
 					<div className="container">

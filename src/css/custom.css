@@ -27,6 +27,10 @@ html[data-theme='dark']:root {
 	--ifm-background-color: #101011;
 }
 
+.docs-wrapper .left-header-link, .blog-wrapper .left-header-link {
+	display: none;
+}
+
 .row {
 	margin: 0;
 }

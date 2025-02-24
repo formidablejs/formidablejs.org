@@ -82,7 +82,7 @@ export class TaskController < Controller
 <TabItem value="ts">
 
 ```ts title="app/Http/Controllers/TaskController.ts" showLineNumbers
-import { use } from '@formidablejs/ts-ports'
+import { use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
 

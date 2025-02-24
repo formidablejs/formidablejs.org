@@ -109,7 +109,14 @@ module.exports = {
 		footer: {
 			style: 'light',
 			links: [
-
+				{
+					label: 'Docs',
+					to: '/docs'
+				},
+				{
+					label: 'Blog',
+					to: '/blog'
+				}
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies | Brought to you by <a href='https://lunaql.com/' target='_blank'>LunaQL</a>. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>.`,
 		},
