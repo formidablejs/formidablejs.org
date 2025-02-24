@@ -36,7 +36,7 @@ Here's an example of how to send an email:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 
 Mail.to('email@example').raw('This is a test email')
@@ -45,7 +45,7 @@ Mail.to('email@example').raw('This is a test email')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 
 Mail.to('email@example').raw('This is a test email')
@@ -67,7 +67,7 @@ Here's an example of how to send an email with an attachment:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -79,7 +79,7 @@ Mail.to('email@example').attach({ path: file }).raw('This is a test email')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -102,7 +102,7 @@ You can also send multiple attachments:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -118,7 +118,7 @@ Mail.to('email@example')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -145,7 +145,7 @@ You may also pass an array of attachments instead of a single attachment each ti
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -163,7 +163,7 @@ Mail.to('email@example')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -208,7 +208,7 @@ Attachments can be used as embedded images in the HTML body. To use this feature
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -226,7 +226,7 @@ Mail.to('email@example')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Mail } from '@formidablejs/mailer'
 import path from 'path'
 
@@ -265,7 +265,7 @@ the `cid` must be unique for each attachment.
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
@@ -280,7 +280,7 @@ Mail.to('email@example').send(new Welcome, {
 
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
@@ -308,7 +308,7 @@ Mail.to('email@example').send(new Welcome, {
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 
@@ -322,7 +322,7 @@ Mail.to('email@example').send(new Welcome, {
 
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 
@@ -349,7 +349,7 @@ Mail.to('email@example').send(new Welcome, {
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
@@ -364,7 +364,7 @@ Mail.to('email@example').send(new Welcome, {
 
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Mail } from '@formidablejs/mailer'
 import type { SentMessageInfo } from '@formidablejs/mailer'
@@ -383,7 +383,7 @@ Mail.to('email@example').send(new Welcome, {
 
 Before you can start sending html emails, you will need to create a new Mailable. All Mailables must extend the `Mailable` class:
 
-```py
+```py showLineNumbers
 import { Mailable } from '@formidablejs/mailer'
 
 export default WelcomeEmail < Mailable
@@ -412,14 +412,14 @@ Now that you've created a Mailable, you can use the `send` method of the `Mail` 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 Mail.to('email@example').send(new WelcomeEmail)
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Mail.to('email@example').send(new WelcomeEmail)
 ```
 
@@ -430,7 +430,7 @@ Mail.to('email@example').send(new WelcomeEmail)
 
 You can attach files to the email by passing an array of attachment objects or a single object to the `attach` method:
 
-```js
+```js showLineNumbers
 import { Mailable } from '@formidablejs/mailer'
 import path from 'path'
 

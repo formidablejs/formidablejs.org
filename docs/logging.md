@@ -45,7 +45,7 @@ You may write information to the logs using the `Log` class. Below is a list of 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Log } from '@formidablejs/logger'
 
 Log.emergency(message)
@@ -61,7 +61,7 @@ Log.debug(message)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Log } from '@formidablejs/logger'
 
 Log.emergency(message)
@@ -88,7 +88,7 @@ You may call any of these methods to log a message for the corresponding level. 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Log } from '@formidablejs/logger'
@@ -107,7 +107,7 @@ export class TaskController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Log } from '@formidablejs/logger'
@@ -140,7 +140,7 @@ An `object` of contextual data may be passed to the log methods. This contextual
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Log } from '@formidablejs/logger'
 
 Log.info('A new task has been created', {
@@ -151,7 +151,7 @@ Log.info('A new task has been created', {
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Log } from '@formidablejs/logger'
 
 Log.info('A new task has been created', {
@@ -175,7 +175,7 @@ Sometimes you may wish to log a message to a channel other than your application
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Log } from '@formidablejs/logger'
 
 Log.channel('discord').info('Something happened!')
@@ -184,7 +184,7 @@ Log.channel('discord').info('Something happened!')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Log } from '@formidablejs/logger'
 
 Log.channel('discord').info('Something happened!')

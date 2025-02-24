@@ -6,9 +6,11 @@ slug: /
 
 ## Meet Formidable
 
-Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications.
+Formidable (or formidablejs) is a modern full-stack framework designed to help you build scalable backend applications with a strong focus on developer experience. With Formidable, you can effortlessly create full-stack Node.js applications using TypeScript or Imba, offering a solid foundation for your projects.
 
-Formidable uses [Fastify](https://www.fastify.io/) under the hood.
+Formidable uses Fastify for optimal performance and scalability, ensuring your application runs efficiently even under heavy loads.
+
+For the frontend, you can choose from popular frameworks like Vue, React, and Svelte, giving you the flexibility to craft modern, dynamic user interfaces with ease.
 
 ## Your First Formidable Project
 

@@ -25,7 +25,7 @@ You may define all of your scheduled tasks in the `schedule` method of your appl
     ]}>
 <TabItem value="imba">
 
-```py title="app/Console/Kernel.imba"
+```py title="app/Console/Kernel.imba" showLineNumbers
 import { ConsoleKernel } from '@formidablejs/framework'
 import { DB } from '@formidablejs/framework'
 import { Schedule } from '@formidablejs/scheduler'
@@ -46,7 +46,7 @@ export class Kernel < ConsoleKernel
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="app/Console/Kernel.ts"
+```typescript title="app/Console/Kernel.ts" showLineNumbers
 import { ConsoleKernel } from '@formidablejs/framework'
 import { DB } from '@formidablejs/framework'
 import { Schedule } from '@formidablejs/scheduler'
@@ -134,7 +134,7 @@ Using the `timezone` method, you may specify that a scheduled task's time should
     ]}>
 <TabItem value="imba">
 
-```py title="app/Console/Kernel.imba"
+```py title="app/Console/Kernel.imba" showLineNumbers
 schedule.call(do
     DB.table('recent_users').delete!
 ).timezone('Pacific/Funafuti').everyDay!
@@ -143,7 +143,7 @@ schedule.call(do
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="app/Console/Kernel.ts"
+```typescript title="app/Console/Kernel.ts" showLineNumbers
 schedule.call(() => {
     DB.table('recent_users').delete()
 }).timezone('Pacific/Funafuti').everyDay()

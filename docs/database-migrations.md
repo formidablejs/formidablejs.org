@@ -25,7 +25,7 @@ node craftsman make:migration CreatePostsTable --table=posts
 
 The command above will create a new migration file under `/database/migrations` and will generate the following migration:
 
-```js
+```js showLineNumbers
 const { Database } = require('@formidablejs/framework');
 
 /** @param {Database} DB */
@@ -42,7 +42,7 @@ exports.down = (DB) => DB.schema.dropTable('posts');
 
 We can now define our migration's schema in the `up` function:
 
-```js
+```js showLineNumbers
 exports.up = (DB) => {
 	return DB.schema.createTable('posts', (table) => {
 		table.increments('id').primary();
@@ -74,7 +74,7 @@ Here is an example of a migration that adds a new column to an existing table:
 node craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
 ```
 
-```js
+```js showLineNumbers
 const { Database } = require('@formidablejs/framework');
 
 /**
@@ -106,7 +106,7 @@ This migration will add a new column to the `posts` table when `migrate up` is r
 
 Here is an example of a migration that removes a column from an existing table:
 
-```js
+```js showLineNumbers
 const { Database } = require('@formidablejs/framework');
 
 /**
@@ -136,7 +136,7 @@ exports.down = (DB) => {
 
 Here is an example of a migration that renames a column in an existing table:
 
-```js
+```js showLineNumbers
 const { Database } = require('@formidablejs/framework');
 
 /**
@@ -158,7 +158,7 @@ exports.down = (DB) => DB.schema.table('posts').renameColumn('deleted_when', 'de
 
 Here is an example of a migration that changes a column in an existing table:
 
-```js
+```js showLineNumbers
 const { Database } = require('@formidablejs/framework');
 
 /**
@@ -224,7 +224,7 @@ The Formidable Framework uses [Knex.js](https://knexjs.org/) to build database s
 
 Let's take a look at an example migration:
 
-```js
+```js showLineNumbers
 const { Database } = require('@formidablejs/framework');
 
 /**
@@ -256,7 +256,7 @@ The `up` method receives a `Database` instance as its first argument. This insta
 
 To create a new database table, use the `createTable` method on the `Database` instance you receive in your migration:
 
-```js
+```js showLineNumbers
 exports.up = (DB) => {
 	return DB.schema.createTable('users', (table) => {
 		table.increments('id').primary();
@@ -273,7 +273,7 @@ The `createTable` method accepts two arguments: the first is the name of the tab
 
 The `TableBuilder` class contains a variety of column types that you may use when building your tables:
 
-```js
+```js showLineNumbers
 exports.up = (DB) => {
 	return DB.schema.createTable('users', (table) => {
 		table.increments('id').primary();
@@ -290,7 +290,7 @@ exports.up = (DB) => {
 
 Drops a column, specified by the column's name
 
-```js
+```js showLineNumbers
 table.dropColumn('deleted_at');
 ```
 
@@ -298,7 +298,7 @@ table.dropColumn('deleted_at');
 
 Drops multiple columns, specified by an array of column names
 
-```js
+```js showLineNumbers
 table.dropColumns(['deleted_at', 'deleted_by']);
 ```
 
@@ -306,7 +306,7 @@ table.dropColumns(['deleted_at', 'deleted_by']);
 
 Renames a column from one name to another
 
-```js
+```js showLineNumbers
 table.renameColumn('deleted_at', 'deleted_when');
 ```
 
@@ -314,7 +314,7 @@ table.renameColumn('deleted_at', 'deleted_when');
 
 Adds a `remember_token` column to the table
 
-```js
+```js showLineNumbers
 table.rememberToken();
 ```
 
@@ -322,7 +322,7 @@ table.rememberToken();
 
 Adds an auto incrementing column. This is the same as `integer` with `autoIncrement` set to `true`.
 
-```js
+```js showLineNumbers
 table.increments('id').primary();
 ```
 
@@ -330,7 +330,7 @@ table.increments('id').primary();
 
 Adds an integer column.
 
-```js
+```js showLineNumbers
 table.integer('age');
 ```
 
@@ -338,7 +338,7 @@ table.integer('age');
 
 Adds a big integer column.
 
-```js
+```js showLineNumbers
 table.bigInteger('views');
 ```
 
@@ -346,7 +346,7 @@ table.bigInteger('views');
 
 Adds a tiny integer column.
 
-```js
+```js showLineNumbers
 table.tinyint('views');
 ```
 
@@ -354,7 +354,7 @@ table.tinyint('views');
 
 Adds a small integer column.
 
-```js
+```js showLineNumbers
 table.smallint('views');
 ```
 
@@ -362,7 +362,7 @@ table.smallint('views');
 
 Adds a medium integer column.
 
-```js
+```js showLineNumbers
 table.mediumint('views');
 ```
 
@@ -370,7 +370,7 @@ table.mediumint('views');
 
 Adds a big integer column.
 
-```js
+```js showLineNumbers
 table.bigint('views');
 ```
 
@@ -378,7 +378,7 @@ table.bigint('views');
 
 Adds a text column.
 
-```js
+```js showLineNumbers
 table.text('description');
 ```
 
@@ -386,7 +386,7 @@ table.text('description');
 
 Adds a string column.
 
-```js
+```js showLineNumbers
 table.string('email');
 ```
 
@@ -394,7 +394,7 @@ table.string('email');
 
 Adds a float column.
 
-```js
+```js showLineNumbers
 table.float('amount');
 ```
 
@@ -402,7 +402,7 @@ table.float('amount');
 
 Adds a double column.
 
-```js
+```js showLineNumbers
 table.double('amount');
 ```
 
@@ -410,7 +410,7 @@ table.double('amount');
 
 Adds a decimal column.
 
-```js
+```js showLineNumbers
 table.decimal('amount');
 ```
 
@@ -418,7 +418,7 @@ table.decimal('amount');
 
 Adds a boolean column.
 
-```js
+```js showLineNumbers
 table.boolean('confirmed');
 ```
 
@@ -426,7 +426,7 @@ table.boolean('confirmed');
 
 Adds a date column.
 
-```js
+```js showLineNumbers
 table.date('created_at');
 ```
 
@@ -434,7 +434,7 @@ table.date('created_at');
 
 Adds a datetime column.
 
-```js
+```js showLineNumbers
 table.datetime('created_at');
 ```
 
@@ -442,7 +442,7 @@ table.datetime('created_at');
 
 Adds a time column.
 
-```js
+```js showLineNumbers
 table.time('sunrise');
 ```
 
@@ -450,7 +450,7 @@ table.time('sunrise');
 
 Adds a timestamp column.
 
-```js
+```js showLineNumbers
 table.timestamp('created_at');
 ```
 
@@ -458,7 +458,7 @@ table.timestamp('created_at');
 
 Adds `created_at` and `updated_at` columns.
 
-```js
+```js showLineNumbers
 table.timestamps();
 ```
 
@@ -466,7 +466,7 @@ table.timestamps();
 
 Drops `created_at` and `updated_at` columns.
 
-```js
+```js showLineNumbers
 table.dropTimestamps();
 ```
 
@@ -474,7 +474,7 @@ table.dropTimestamps();
 
 Adds a `deleted_at` column to the table.
 
-```js
+```js showLineNumbers
 table.softDeletes();
 ```
 
@@ -482,7 +482,7 @@ table.softDeletes();
 
 Drops the `deleted_at` column from the table.
 
-```js
+```js showLineNumbers
 table.dropSoftDeletes();
 ```
 
@@ -490,7 +490,7 @@ table.dropSoftDeletes();
 
 Adds a binary column.
 
-```js
+```js showLineNumbers
 table.binary('photo');
 ```
 
@@ -498,7 +498,7 @@ table.binary('photo');
 
 Adds an enum column.
 
-```js
+```js showLineNumbers
 table.enum('role', ['admin', 'user']);
 ```
 
@@ -506,7 +506,7 @@ table.enum('role', ['admin', 'user']);
 
 Adds a json column.
 
-```js
+```js showLineNumbers
 table.json('options');
 ```
 
@@ -514,7 +514,7 @@ table.json('options');
 
 Adds a jsonb column.
 
-```js
+```js showLineNumbers
 table.jsonb('options');
 ```
 
@@ -522,7 +522,7 @@ table.jsonb('options');
 
 Adds a uuid column.
 
-```js
+```js showLineNumbers
 table.uuid('id').defaultTo(DB.fn.uuid());
 ```
 
@@ -530,7 +530,7 @@ table.uuid('id').defaultTo(DB.fn.uuid());
 
 Adds a comment to the column.
 
-```js
+```js showLineNumbers
 table.string('email').comment('The user\'s email address');
 ```
 
@@ -538,7 +538,7 @@ table.string('email').comment('The user\'s email address');
 
 Sets the table's storage engine.
 
-```js
+```js showLineNumbers
 table.engine('InnoDB');
 ```
 
@@ -546,7 +546,7 @@ table.engine('InnoDB');
 
 Sets the table's character set.
 
-```js
+```js showLineNumbers
 table.charset('utf8mb4');
 ```
 
@@ -554,7 +554,7 @@ table.charset('utf8mb4');
 
 Sets the table's collation.
 
-```js
+```js showLineNumbers
 table.collate('utf8mb4_unicode_ci');
 ```
 
@@ -562,7 +562,7 @@ table.collate('utf8mb4_unicode_ci');
 
 Sets the table's inheritance.
 
-```js
+```js showLineNumbers
 table.inherits('users');
 ```
 
@@ -570,7 +570,7 @@ table.inherits('users');
 
 Sets the table's specific type.
 
-```js
+```js showLineNumbers
 table.specificType('email', 'varchar(100)');
 ```
 
@@ -578,7 +578,7 @@ table.specificType('email', 'varchar(100)');
 
 Adds an index.
 
-```js
+```js showLineNumbers
 table.index('email');
 ```
 
@@ -586,7 +586,7 @@ table.index('email');
 
 Drops an index.
 
-```js
+```js showLineNumbers
 table.dropIndex('email');
 ```
 
@@ -594,7 +594,7 @@ table.dropIndex('email');
 
 Sets the column to be nullable.
 
-```js
+```js showLineNumbers
 table.string('email').setNullable();
 ```
 
@@ -602,7 +602,7 @@ table.string('email').setNullable();
 
 Drops the column's nullable property.
 
-```js
+```js showLineNumbers
 table.string('email').dropNullable();
 ```
 
@@ -610,7 +610,7 @@ table.string('email').dropNullable();
 
 Sets the column to be the primary key.
 
-```js
+```js showLineNumbers
 table.string('email').primary();
 ```
 
@@ -618,7 +618,7 @@ table.string('email').primary();
 
 Sets the column to be unique.
 
-```js
+```js showLineNumbers
 table.string('email').unique();
 ```
 
@@ -626,7 +626,7 @@ table.string('email').unique();
 
 Sets the column to be a foreign key.
 
-```js
+```js showLineNumbers
 table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 ```
 
@@ -634,7 +634,7 @@ table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 
 Drops the column's foreign key.
 
-```js
+```js showLineNumbers
 table.dropForeign('user_id');
 ```
 
@@ -642,7 +642,7 @@ table.dropForeign('user_id');
 
 Drops the column's unique property.
 
-```js
+```js showLineNumbers
 table.string('email').dropUnique();
 ```
 
@@ -650,7 +650,7 @@ table.string('email').dropUnique();
 
 Drops the column's primary property.
 
-```js
+```js showLineNumbers
 table.string('email').dropPrimary();
 ```
 

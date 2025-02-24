@@ -19,7 +19,7 @@ formidable new example-app --language typescript
 
 Formidable allows you to use the `@use` decorator to modify the behavior of any function within your application:
 
-```py
+```py showLineNumbers
 import { Controller } from './Controller'
 import { @use } from '@formidablejs/framework'
 
@@ -33,7 +33,7 @@ The snippet above will query the database to look for a user under the `users` t
 
 If we wanted to do the same thing in a TypeScript application, we would have to import the `use` decorator from the `@formidablejs/ts-ports` package instead:
 
-```ts
+```ts showLineNumbers
 import { Controller } from './Controller';
 import { use } from '@formidablejs/framework';
 

@@ -57,7 +57,7 @@ Before getting started, make sure the following prerequisites are met:
 
 Now that you have all the dependencies, you can go ahead and create a `ecosystem.config.js` file in the root of your application:
 
-```js title="ecosystem.config.js"
+```js title="ecosystem.config.js" showLineNumbers
 module.exports = {
 	apps: [
 		{
@@ -87,7 +87,7 @@ pm2 start ecosystem.config.js
 
 By default, this will start our application on `http://127.0.0.1:3000`, we can change port in the `server` file:
 
-```js title="server" {4}
+```js title="server" {4} showLineNumbers
 Server
 	.use(require('./.formidable/build').default)
 	.start({
@@ -106,7 +106,7 @@ We also recommend you enable PM2 to auto start your application on system boot. 
 
 Now that you have started your application you can go ahead and create a virtual host:
 
-```conf title="/etc/nginx/sites-available/app.conf"
+```conf title="/etc/nginx/sites-available/app.conf" showLineNumbers
 server {
     listen 80;
 	server_name _;
@@ -282,7 +282,7 @@ node craftsman up
 
 This script can be triggered by a Github Action, for example. When we push to our `main` branch, we can have a Github Workflow that ssh's into our server on our behalf and executes the `deploy.sh` script:
 
-```yaml title=".github/workflows/deploy.yaml"
+```yaml title=".github/workflows/deploy.yaml" showLineNumbers
 name: Deploying
 
 on:
@@ -316,7 +316,7 @@ This is only an example. You don't have to use Github to be able to Automate you
 
 You can also use Docker to deploy your application. Here's a simple `Dockerfile` that you can use to build your application:
 
-```dockerfile title="Dockerfile"
+```dockerfile title="Dockerfile" showLineNumbers
 FROM node:18-alpine
 
 # Create app directory
@@ -350,7 +350,7 @@ Vercel is another great option for deploying your Formidable application. While 
 
 First, you need to trust a couple of dependencies by adding them to your `package.json` file:
 
-```json title="package.json" {3-7}
+```json title="package.json" {3-7} showLineNumbers
 {
 	...
 	"trustedDependencies": [
@@ -364,7 +364,7 @@ First, you need to trust a couple of dependencies by adding them to your `packag
 
 Then create a `vercel.json` file in the root of your application:
 
-```json title="vercel.json"
+```json title="vercel.json" showLineNumbers
 {
 	"buildCommand": "bun run build",
 	"installCommand": "bun install",
@@ -385,7 +385,7 @@ Then create a `vercel.json` file in the root of your application:
 
 Next, we need to create a serverless function that will serve as our entry point. Create a `serverless.js` file in the `api` directory:
 
-```js title="api/serverless.js"
+```js title="api/serverless.js" showLineNumbers
 const formidable = require('../.formidable/build').default
 
 export default async (req, res) => {
@@ -471,7 +471,7 @@ Once that's done, you can use the `redis` driver for your application:
     ]}>
 <TabItem value="imba">
 
-```py title="config/session.imba" {15}
+```py title="config/session.imba" {15} showLineNumbers
 export default {
 
 	# --------------------------------------------------------------------------
@@ -495,7 +495,7 @@ export default {
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/session.ts" {17}
+```ts title="config/session.ts" {17} showLineNumbers
 export default {
 
 	/**
@@ -531,7 +531,7 @@ The next step would be to update your redis' default connection in the `config/d
 	]}>
 <TabItem value="imba">
 
-```py title="config/database.imba"
+```py title="config/database.imba" showLineNumbers
 export default {
 
 	...
@@ -555,7 +555,7 @@ export default {
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/database.ts"
+```ts title="config/database.ts" showLineNumbers
 export default {
 
 	...

@@ -99,7 +99,7 @@ Next, you will need to register the broadcasting config file in the `config/inde
     ]}>
 <TabItem value="imba">
 
-```py title="config/index.imba" {2,13}
+```py title="config/index.imba" {2,13} showLineNumbers
 ...
 import broadcasting from './broadcasting'
 ...
@@ -120,7 +120,7 @@ export class Config < ConfigRepository
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/index.ts" {2,13}
+```ts title="config/index.ts" {2,13} showLineNumbers
 ...
 import broadcasting from './broadcasting'
 ...
@@ -154,7 +154,7 @@ And finally, register the `BroadcastServiceResolver` in the `bootstrap/resolvers
 	]}>
 <TabItem value="imba">
 
-```py title="bootstrap/resolvers.imba" {2,7}
+```py title="bootstrap/resolvers.imba" {2,7} showLineNumbers
 ...
 import BroadcastServiceResolver from '../app/Resolvers/BroadcastServiceResolver'
 ...
@@ -171,7 +171,7 @@ export default [
 
 <TabItem value="ts">
 
-```ts title="bootstrap/resolvers.ts" {2,7}
+```ts title="bootstrap/resolvers.ts" {2,7} showLineNumbers
 ...
 import BroadcastServiceResolver from '../app/Resolvers/BroadcastServiceResolver'
 ...
@@ -203,7 +203,7 @@ The `prefix` option allows you to configure the prefix for all channels path:
 	]}>
 <TabItem value="imba">
 
-```py title="config/broadcasting.imba"
+```py title="config/broadcasting.imba" showLineNumbers
 export default {
 	...
 	prefix: '_broadcast'
@@ -215,7 +215,7 @@ export default {
 
 <TabItem value="ts">
 
-```ts title="config/broadcasting.ts"
+```ts title="config/broadcasting.ts" showLineNumbers
 export default {
 	...
 	prefix: '_broadcast',
@@ -239,7 +239,7 @@ Changing the `prefix` option in your config, will require you to also change it 
 	]}>
 <TabItem value="imba">
 
-```js title="resources/frontend/bootstrap.imba" {2}
+```js title="resources/frontend/bootstrap.imba" {2} showLineNumbers
 globalThis.BroadcastConfig = {
 	prefix: '_broadcast'
 }
@@ -248,7 +248,7 @@ globalThis.BroadcastConfig = {
 
 <TabItem value="ts">
 
-```ts title="resources/js/bootstrap.ts" {2}
+```ts title="resources/js/bootstrap.ts" {2} showLineNumbers
 window.BroadcastConfig = {
 	prefix: '_broadcast',
 }
@@ -271,7 +271,7 @@ The `middleware` option allows you to configure the middleware that will be appl
 	]}>
 <TabItem value="imba">
 
-```py title="config/broadcasting.imba"
+```py title="config/broadcasting.imba" showLineNumbers
 export default {
 	...
 	middleware: ['csrf:allow-get']
@@ -283,7 +283,7 @@ export default {
 
 <TabItem value="ts">
 
-```ts title="config/broadcasting.ts"
+```ts title="config/broadcasting.ts" showLineNumbers
 export default {
 	...
 	middleware: ['csrf:allow-get'],
@@ -307,7 +307,7 @@ The `redis` object allows you to configure the redis connection name and expirat
 	]}>
 <TabItem value="imba">
 
-```py title="config/broadcasting.imba"
+```py title="config/broadcasting.imba" showLineNumbers
 export default {
 	...
 	redis: {
@@ -327,7 +327,7 @@ export default {
 
 <TabItem value="ts">
 
-```ts title="config/broadcasting.ts"
+```ts title="config/broadcasting.ts" showLineNumbers
 export default {
 	...
 	redis: {
@@ -374,7 +374,7 @@ Channels are broadcasting events that clients can listen to. For example, a chat
 
 <TabItem value="imba">
 
-```py title="routes/channels.imba"
+```py title="routes/channels.imba" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 
 Broadcast.channel('chat')
@@ -384,7 +384,7 @@ Broadcast.channel('chat')
 
 <TabItem value="ts">
 
-```ts title="routes/channels.ts"
+```ts title="routes/channels.ts" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 
 Broadcast.channel('chat')
@@ -406,7 +406,7 @@ You may assign a name to a channel using the `name` method. This name will be us
 	]}>
 <TabItem value="imba">
 
-```py title="routes/channels.imba"
+```py title="routes/channels.imba" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 
 Broadcast.channel('chat').name('chat')
@@ -416,7 +416,7 @@ Broadcast.channel('chat').name('chat')
 
 <TabItem value="ts">
 
-```ts title="routes/channels.ts"
+```ts title="routes/channels.ts" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 
 Broadcast.channel('chat').name('chat')
@@ -438,7 +438,7 @@ Before broadcasting to a channel, you should authorize that the currently authen
 	]}>
 <TabItem value="imba">
 
-```py title="routes/channels.imba"
+```py title="routes/channels.imba" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 
 Broadcast.channel('chat', do(message) message.user !== null).name('chat')
@@ -448,7 +448,7 @@ Broadcast.channel('chat', do(message) message.user !== null).name('chat')
 
 <TabItem value="ts">
 
-```ts title="routes/channels.ts"
+```ts title="routes/channels.ts" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 
 Broadcast.channel('chat', message => message.user !== null).name('chat')
@@ -472,7 +472,7 @@ Sometimes you may need to broadcast to a channel that requires parameters. For e
 	]}>
 <TabItem value="imba">
 
-```py title="routes/channels.imba"
+```py title="routes/channels.imba" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 import { ConversationRepository } from '../app/Repositories/ConversationRepository'
 
@@ -485,7 +485,7 @@ Broadcast.channel('chat/:chat_id/:conversation_id', do({ user, params })
 
 <TabItem value="ts">
 
-```ts title="routes/channels.ts"
+```ts title="routes/channels.ts" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 import { ConversationRepository } from '../app/Repositories/ConversationRepository'
 
@@ -519,7 +519,7 @@ This command will create a new channel class in the `app/Broadcasting` directory
 
 <TabItem value="imba">
 
-```py title="app/Broadcasting/ConversationChannel.imba"
+```py title="app/Broadcasting/ConversationChannel.imba" showLineNumbers
 import { BroadcastChannel } from '@formidablejs/broadcaster'
 import type { ChannelMessage, ConnectionEvent } from '@formidablejs/broadcaster'
 
@@ -552,7 +552,7 @@ export class ConversationChannel < BroadcastChannel
 
 <TabItem value="ts">
 
-```ts title="app/Broadcasting/ConversationChannel.ts"
+```ts title="app/Broadcasting/ConversationChannel.ts" showLineNumbers
 import { BroadcastChannel } from '@formidablejs/broadcaster'
 import type { ChannelMessage, ConnectionEvent } from '@formidablejs/broadcaster'
 
@@ -599,7 +599,7 @@ Once you have defined your channel class, you can register it in the `routes/cha
 
 <TabItem value="imba">
 
-```py title="routes/channels.imba"
+```py title="routes/channels.imba" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 import { ConversationChannel } from '../app/Broadcasting/ConversationChannel'
 
@@ -609,7 +609,7 @@ Broadcast.channel('chat', ConversationChannel)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/channels.ts"
+```ts title="routes/channels.ts" showLineNumbers
 import { Broadcast } from '@formidablejs/broadcaster'
 import { ConversationChannel } from '../app/Broadcasting/ConversationChannel'
 
@@ -659,7 +659,7 @@ To Broadcast to a channel, you can use the `Channel` class:
 	]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { Channel } from '@formidablejs/broadcaster'
 
 Channel.publish('message').on('channel-name')
@@ -669,7 +669,7 @@ Channel.publish('message').on('channel-name')
 
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Channel } from '@formidablejs/broadcaster'
 
 Channel.publish('message').on('channel-name')
@@ -705,7 +705,7 @@ As mentioned above, the `subscribe` function accepts two arguments: the channel 
     ]}>
 <TabItem value="imba">
 
-```ts title="resources/frontend/Pages/Chat.imba" {1,7-11}
+```ts title="resources/frontend/Pages/Chat.imba" {1,7-11} showLineNumbers
 import { subscribe } from '@formidablejs/broadcaster/src/client'
 
 export tag Chat
@@ -729,7 +729,7 @@ export tag Chat
 
 <TabItem value="vue">
 
-```html title="resources/js/Pages/Chat.vue" {2,8-10}
+```html title="resources/js/Pages/Chat.vue" {2,8-10} showLineNumbers
 <script lang="ts" setup>
 import { subscribe } from '@formidablejs/broadcaster/src/client'
 import { onMounted, ref } from 'vue'
@@ -752,7 +752,7 @@ onMounted(() => {
 </TabItem>
 <TabItem value="react">
 
-```jsx title="resources/js/Pages/Chat.tsx" {1,8-10}
+```jsx title="resources/js/Pages/Chat.tsx" {1,8-10} showLineNumbers
 import { subscribe } from '@formidablejs/broadcaster/src/client'
 import { useEffect, useState } from 'react'
 
@@ -777,7 +777,7 @@ export default function Chat() {
 </TabItem>
 <TabItem value="svelte">
 
-```html title="resources/js/Pages/Chat.svelte" {2,8-10}
+```html title="resources/js/Pages/Chat.svelte" {2,8-10} showLineNumbers
 <script>
 	import { subscribe } from '@formidablejs/broadcaster/src/client'
 	import { onMount } from 'svelte';
@@ -817,7 +817,7 @@ Subscribing to a parameterized channel is similar to subscribing to a regular ch
 	]}>
 <TabItem value="imba">
 
-```ts title="resources/frontend/Pages/Chat.imba" {1,9-13}
+```ts title="resources/frontend/Pages/Chat.imba" {1,9-13} showLineNumbers
 import { subscribe } from '@formidablejs/broadcaster/src/client'
 
 export tag Chat
@@ -841,7 +841,7 @@ export tag Chat
 </TabItem>
 <TabItem value="vue">
 
-```html title="resources/js/Pages/Chat.vue" {2,10-12}
+```html title="resources/js/Pages/Chat.vue" {2,10-12} showLineNumbers
 <script lang="ts" setup>
 import { subscribe } from '@formidablejs/broadcaster/src/client'
 import { onMounted, ref } from 'vue'
@@ -867,7 +867,7 @@ onMounted(() => {
 </TabItem>
 <TabItem value="react">
 
-```jsx title="resources/js/Pages/Chat.tsx" {1,10-12}
+```jsx title="resources/js/Pages/Chat.tsx" {1,10-12} showLineNumbers
 import { subscribe } from '@formidablejs/broadcaster/src/client'
 import { useEffect, useState } from 'react'
 
@@ -895,7 +895,7 @@ export default function Chat() {
 </TabItem>
 <TabItem value="svelte">
 
-```html title="resources/js/Pages/Chat.svelte" {2,10-12}
+```html title="resources/js/Pages/Chat.svelte" {2,10-12} showLineNumbers
 <script>
 	import { subscribe } from '@formidablejs/broadcaster/src/client'
 	import { onMount } from 'svelte';

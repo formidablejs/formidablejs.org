@@ -30,7 +30,7 @@ You may hash a password with the `make` method of the `Hash` class:
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/PasswordController.imba" {12}
+```py title="app/Http/Controllers/PasswordController.imba" {12} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Hash } from '@formidablejs/framework'
@@ -50,7 +50,7 @@ export class PasswordController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/PasswordController.ts" {8}
+```ts title="app/Http/Controllers/PasswordController.ts" {8} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Hash } from '@formidablejs/framework'
@@ -89,7 +89,7 @@ The `check` method provided by the `Hash` class allows you to verify that a give
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if await Hash.check(request.get('password'), user.password)
 	# the passwords match
 ```
@@ -97,7 +97,7 @@ if await Hash.check(request.get('password'), user.password)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (await Hash.check(request.get('password'), user.password)) {
 	// the passwords match
 }

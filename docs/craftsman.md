@@ -46,7 +46,7 @@ In order for a class or function to be accessible in the Shell environment, it n
     ]}>
 <TabItem value="imba">
 
-```py title="config/context.imba"
+```py title="config/context.imba" showLineNumbers
 import { helpers } from '@formidablejs/framework'
 
 export default {
@@ -57,7 +57,7 @@ export default {
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/context.ts"
+```ts title="config/context.ts" showLineNumbers
 import { helpers } from '@formidablejs/framework'
 
 export default {
@@ -79,7 +79,7 @@ Out of the box, Formidable exposes the Framework's helper function to the Shell 
     ]}>
 <TabItem value="imba">
 
-```py title="config/context.imba"
+```py title="config/context.imba" showLineNumbers
 import { helpers } from '@formidablejs/framework'
 import { UserRepository } from '../app/Repositories/UserRepository'
 
@@ -92,7 +92,7 @@ export default {
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/context.ts"
+```ts title="config/context.ts" showLineNumbers
 import { helpers } from '@formidablejs/framework'
 import { UserRepository } from '../app/Repositories/UserRepository'
 
@@ -132,7 +132,7 @@ After generating your command, you should define appropriate values for the `sig
     ]}>
 <TabItem value="imba">
 
-```py title="app/Console/Commands/Hello.imba"
+```py title="app/Console/Commands/Hello.imba" showLineNumbers
 import { Command } from '@formidablejs/framework'
 import { PropList, string } from '@formidablejs/console'
 
@@ -162,7 +162,7 @@ export class Hello < Command
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Console/Commands/Hello.ts"
+```ts title="app/Console/Commands/Hello.ts" showLineNumbers
 import { Command } from '@formidablejs/framework'
 import { PropList, string } from '@formidablejs/console'
 
@@ -221,7 +221,7 @@ All user supplied arguments and options are wrapped in curly braces. In the foll
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # The name and signature of the console command.
 get signature\string
     'hello {name}'
@@ -230,7 +230,7 @@ get signature\string
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * The name and signature of the console command.
  */
@@ -244,7 +244,7 @@ get signature(): string {
 
 You may also make `arguments` optional:
 
-```py
+```py showLineNumbers
 `hello {?name}`
 ```
 
@@ -259,7 +259,7 @@ If you want to define a default value, you can use the `props` property:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # Command props.
 get props\PropList
 	{
@@ -270,7 +270,7 @@ get props\PropList
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * Command props.
  */
@@ -297,7 +297,7 @@ Options, like arguments, are another form of user input. Options are prefixed by
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # The name and signature of the console command.
 get signature\string
     'hello {name} {--time}'
@@ -306,7 +306,7 @@ get signature\string
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * The name and signature of the console command.
  */
@@ -337,7 +337,7 @@ Next, let's take a look at an option that expects a value. If the user must spec
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # The name and signature of the console command.
 get signature\string
     'hello {name} {--time}'
@@ -353,7 +353,7 @@ get props\PropList
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * The name and signature of the console command.
  */
@@ -394,7 +394,7 @@ To assign an alias when defining an option, you may specify it in the `props` pr
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # Command props.
 get props\PropList
 	{
@@ -405,7 +405,7 @@ get props\PropList
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * Command props.
  */
@@ -438,7 +438,7 @@ You may assign descriptions to input arguments and options in the `props` proper
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # Command props.
 get props\PropList
 	{
@@ -449,7 +449,7 @@ get props\PropList
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * Command props.
  */
@@ -478,7 +478,7 @@ While your command is executing, you will likely need to access the values for t
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # Execute the console command.
 def handle\void
     const name\string = self.argument('name')
@@ -487,7 +487,7 @@ def handle\void
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * Execute the console command.
  */
@@ -510,7 +510,7 @@ Options may be retrieved just as easily as arguments using the `option` method:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # Execute the console command.
 def handle\void
     const time\string = self.option('time')
@@ -519,7 +519,7 @@ def handle\void
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * Execute the console command.
  */
@@ -542,7 +542,7 @@ You may also pass a default value as the second parameter if the value is `null`
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # Execute the console command.
 def handle\void
     const name\string = self.argument('name', 'Donald')
@@ -552,7 +552,7 @@ def handle\void
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * Execute the console command.
  *
@@ -580,7 +580,7 @@ To send output to the console, you may use the `message`, `info`, `succces,` `wr
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 # Execute the console command.
 def handle\void
     # ...
@@ -591,7 +591,7 @@ def handle\void
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 /**
  * Execute the console command.
  */
@@ -616,14 +616,14 @@ To display an error message, use the `error` method. Error message text is typic
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 self.error('Something went wrong!')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 this.error('Something went wrong!')
 ```
 
@@ -641,14 +641,14 @@ You may use the `write` method to display plain, uncolored text:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 self.write('Display this on the screen')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 this.write('Display this on the screen')
 ```
 
@@ -668,14 +668,14 @@ You may custom style your output, for example, to display a text in `blue` and `
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 self.write('This is <fg:blue>blue</fg:blue> and this has a <bg:red>red</bg:red> background')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 this.write('This is <fg:blue>blue</fg:blue> and this has a <bg:red>red</bg:red> background')
 ```
 
@@ -717,7 +717,7 @@ The `table` method makes it easy to correctly format multiple rows / columns of 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 self.table([
     { name: "Donald" }
     { name: "Luna" }
@@ -727,7 +727,7 @@ self.table([
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 this.table([
     { name: "Donald" }
     { name: "Luna" }
@@ -750,14 +750,14 @@ The `column` method makes it easy to correctly format rows of data. All you need
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 self.column('Name', 'Donald')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 this.column('Name', 'Donald')
 ```
 
@@ -778,7 +778,7 @@ All of your console commands are registered within your application's `app/Conso
     ]}>
 <TabItem value="imba">
 
-```py title="app/Console/Kernel.imba"
+```py title="app/Console/Kernel.imba" showLineNumbers
 import { ConsoleKernel } from '@formidablejs/framework'
 import { Hello } from './Commands/Hello'
 
@@ -793,7 +793,7 @@ export class Kernel < ConsoleKernel
 </TabItem>
 <TabItem value="ts">
 
-```py title="app/Console/Kernel.ts"
+```py title="app/Console/Kernel.ts" showLineNumbers
 import { ConsoleKernel } from '@formidablejs/framework'
 import { Hello } from './Commands/Hello'
 

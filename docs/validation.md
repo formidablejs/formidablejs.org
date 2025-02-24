@@ -28,7 +28,7 @@ First, we will assume we have a post route for adding new tasks:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { TaskController } from '../app/Http/Controllers/TaskControllers'
 
@@ -38,7 +38,7 @@ Route.post('/tasks/store', [TaskController, 'store']).name('tasks.store')
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { TaskController } from '../app/Http/Controllers/TaskControllers'
 
@@ -61,7 +61,7 @@ Next, we will create a controller and add a store method that handles incoming r
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/TaskController.imba"
+```py title="app/Http/Controllers/TaskController.imba" showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -74,7 +74,7 @@ export class TaskController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/TaskController.ts"
+```ts title="app/Http/Controllers/TaskController.ts" showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -101,7 +101,7 @@ Then, we will create a `FormRequest` class that will be passed to the controller
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Requests/StoreTaskRequest.imba"
+```js title="app/Http/Requests/StoreTaskRequest.imba" showLineNumbers
 import { Request } from '@formidablejs/framework'
 
 export class StoreTaskRequest < Request
@@ -117,7 +117,7 @@ export class StoreTaskRequest < Request
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Requests/StoreTaskRequest.ts"
+```ts title="app/Http/Requests/StoreTaskRequest.ts" showLineNumbers
 import { Request } from '@formidablejs/framework'
 
 export class StoreTaskRequest extends Request {
@@ -148,7 +148,7 @@ Now that we have created our request, we can go back to our controller and use t
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/TaskController.imba"
+```py title="app/Http/Controllers/TaskController.imba" showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
@@ -163,7 +163,7 @@ export class TaskController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Requests/StoreTaskRequest.ts"
+```ts title="app/Http/Requests/StoreTaskRequest.ts" showLineNumbers
 import { use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
@@ -201,7 +201,7 @@ To customize the error messages, we can use the `messages` method from the `Form
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 def messages
 	{
 		title: {
@@ -218,7 +218,7 @@ def messages
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 messages(): object {
 	return {
 		title: {

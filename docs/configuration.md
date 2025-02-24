@@ -31,7 +31,7 @@ Formidable will automatically use the assumed types when reading any of the vari
 
 If you need to define an environment variable with a value that contains spaces, you may do so by enclosing the value in double quotes:
 
-```env title=".env"
+```env title=".env" showLineNumbers
 APP_NAME="My Application"
 ```
 
@@ -48,7 +48,7 @@ All of the variables listed in this file will be loaded into the `process.env` o
     ]}>
 <TabItem value="imba">
 
-```py title="config/app.imba"
+```py title="config/app.imba" showLineNumbers
 import { env } from '@formidablejs/framework'
 
 export {
@@ -60,7 +60,7 @@ export {
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/app.ts"
+```ts title="config/app.ts" showLineNumbers
 import { env } from '@formidablejs/framework'
 
 export {
@@ -87,7 +87,7 @@ You may easily access your configuration values using the global `config` helper
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { config } from '@formidablejs/framework'
 
 let value\string = config('app.name')
@@ -99,7 +99,7 @@ let value\string = config('app.name', 'Formidable')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { config } from '@formidablejs/framework'
 
 let value: string = config('app.name')
@@ -147,7 +147,7 @@ node craftsman down --secret="a-private-secret"
 
 After placing the application in maintenance mode, you may navigate to the application URL matching this secret and Formidable will issue a maintenance mode bypass cookie to your browser:
 
-```curl
+```curl showLineNumbers
 https://example.com/a-private-secret
 ```
 

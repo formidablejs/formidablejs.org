@@ -30,7 +30,7 @@ By default, the Formidable Framework will log all exceptions excluding `HttpExce
     ]}>
 <TabItem value="imba">
 
-```py title="app/Exceptions/Handler.imba"  {5-8}
+```py title="app/Exceptions/Handler.imba"  {5-8} showLineNumbers
 import { ExceptionHandler, HttpException } from '@formidablejs/framework'
 
 export class Handler < ExceptionHandler
@@ -44,7 +44,7 @@ export class Handler < ExceptionHandler
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Exceptions/Handler.ts" {4-8}
+```ts title="app/Exceptions/Handler.ts" {4-8} showLineNumbers
 import { ExceptionHandler, HttpException } from '@formidablejs/framework'
 
 export class Handler extends ExceptionHandler {
@@ -72,7 +72,7 @@ You can handle exceptions by adding a `handle` method in the `app/Exceptions/Han
 	]}>
 <TabItem value="imba">
 
-```py title="app/Exceptions/Handler.imba" {6-8}
+```py title="app/Exceptions/Handler.imba" {6-8} showLineNumbers
 import { ExceptionHandler, NotFoundException, view } from '@formidablejs/framework'
 import { NotFound } from '../../resources/views/errors/NotFound'
 
@@ -86,7 +86,7 @@ export class Handler < ExceptionHandler
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Exceptions/Handler.ts" {5-9}
+```ts title="app/Exceptions/Handler.ts" {5-9} showLineNumbers
 import { ExceptionHandler, NotFoundException, view } from '@formidablejs/framework'
 import { NotFound } from '../../resources/views/errors/NotFound'
 
@@ -115,7 +115,7 @@ If your application handles both web based and api based requests, you can use t
 	]}>
 <TabItem value="imba">
 
-```py title="app/Exceptions/Handler.imba" {6-11}
+```py title="app/Exceptions/Handler.imba" {6-11} showLineNumbers
 import { ExceptionHandler, NotFoundException, view, response } from '@formidablejs/framework'
 import { NotFound } from '../../resources/views/errors/NotFound'
 
@@ -132,7 +132,7 @@ export class Handler < ExceptionHandler
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Exceptions/Handler.ts" {5-13}
+```ts title="app/Exceptions/Handler.ts" {5-13} showLineNumbers
 import { ExceptionHandler, NotFoundException, view, response } from '@formidablejs/framework'
 import { NotFound } from '../../resources/views/errors/NotFound'
 
@@ -160,7 +160,7 @@ The Formidable Framework ships with a variety of exceptions that cover the major
 
 The `HttpException` is the base exception for all HTTP based exceptions. It accepts a `message` and `status` argument:
 
-```js
+```js showLineNumbers
 import { HttpException } from '@formidablejs/framework'
 
 throw new HttpException('Not Found', 404)
@@ -170,7 +170,7 @@ You can instead use some of the pre-defined http exceptions:
 
 #### 400
 
-```js
+```js showLineNumbers
 import { BadRequestException } from '@formidablejs/framework/lib/Http/Exceptions'
 
 throw new BadRequestException('Bad Request')
@@ -178,7 +178,7 @@ throw new BadRequestException('Bad Request')
 
 #### 401
 
-```js
+```js showLineNumbers
 import { AuthorizationException } from '@formidablejs/framework/lib/Auth/Exceptions'
 
 throw new AuthorizationException('Unauthorized')
@@ -186,7 +186,7 @@ throw new AuthorizationException('Unauthorized')
 
 #### 403
 
-```js
+```js showLineNumbers
 import { EmailNotVerifiedException, EmailVerifiedException } from '@formidablejs/framework/lib/Auth/Exceptions'
 import { ForbiddenException } from '@formidablejs/framework/lib/Http/Exceptions'
 
@@ -197,7 +197,7 @@ throw new ForbiddenException('Action not allowed')
 
 #### 404
 
-```js
+```js showLineNumbers
 import { NotFoundException } from '@formidablejs/framework'
 
 throw new NotFoundException('Not Found')
@@ -205,7 +205,7 @@ throw new NotFoundException('Not Found')
 
 #### 422
 
-```js
+```js showLineNumbers
 import { ValidationException } from '@formidablejs/framework'
 
 throw ValidationException.withMessages({

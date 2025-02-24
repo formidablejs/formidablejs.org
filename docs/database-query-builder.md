@@ -24,7 +24,7 @@ To select data from the database, use the `select` method from the `DB` class:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {5}
+```js title="routes/api.imba" {5} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -35,7 +35,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {4}
+```ts title="routes/api.ts" {4} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -56,7 +56,7 @@ If you want to select all columns from a table, you can leave the `select` metho
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {5}
+```js title="routes/api.imba" {5} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -67,7 +67,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {4}
+```ts title="routes/api.ts" {4} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -90,7 +90,7 @@ To insert data into the database, use the `insert` method after using the `table
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {6-9}
+```js title="routes/api.imba" {6-9} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -105,7 +105,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {6-9}
+```ts title="routes/api.ts" {6-9} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -132,7 +132,7 @@ Alternatively you can use the `into` method to specify the table to insert into 
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {9}
+```js title="routes/api.imba" {9} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -147,7 +147,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {9}
+```ts title="routes/api.ts" {9} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -176,7 +176,7 @@ To insert multiple rows at once, use the `insert` method with an array of object
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {6-15}
+```js title="routes/api.imba" {6-15} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -197,7 +197,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```js title="routes/api.ts" {6-15}
+```js title="routes/api.ts" {6-15} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -232,7 +232,7 @@ If you want to insert and return the created row or rows, use the `create` metho
 	]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {6-9}
+```js title="routes/api.imba" {6-9} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -249,7 +249,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {6-9}
+```ts title="routes/api.ts" {6-9} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -280,7 +280,7 @@ To soft delete a row, use the `softDelete` method. This method will set the `del
 	]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {7}
+```js title="routes/api.imba" {7} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -293,7 +293,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {7}
+```ts title="routes/api.ts" {7} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -320,7 +320,7 @@ To restore a soft deleted row, use the `restore` method. This method will set th
 	]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {7}
+```js title="routes/api.imba" {7} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -333,7 +333,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {7}
+```ts title="routes/api.ts" {7} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -360,7 +360,7 @@ To include soft deleted rows in your query, use the `withTrashed` method:
 	]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {6}
+```js title="routes/api.imba" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -373,7 +373,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {6}
+```ts title="routes/api.ts" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -400,7 +400,7 @@ To exclude soft deleted rows from your query, use the `withoutTrashed` method:
 	]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {6}
+```js title="routes/api.imba" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -413,7 +413,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {6}
+```ts title="routes/api.ts" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -440,7 +440,7 @@ To only include soft deleted rows in your query, use the `onlyTrashed` method:
 	]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {6}
+```js title="routes/api.imba" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -453,7 +453,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {6}
+```ts title="routes/api.ts" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -480,7 +480,7 @@ To run a raw query, use the `raw` method:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {5}
+```js title="routes/api.imba" {5} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -491,7 +491,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```js title="routes/api.ts" {4}
+```js title="routes/api.ts" {4} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -514,7 +514,7 @@ To join tables, use the `join` method:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {6}
+```js title="routes/api.imba" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -533,7 +533,7 @@ Route.get '/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {6}
+```ts title="routes/api.ts" {6} showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 

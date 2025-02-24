@@ -42,7 +42,7 @@ The Formidable Framework is built on top of [Fastify](https://fastify.dev), a fa
 
 The Formidable Framework allows you to easily create routes that can then return a react component, a vue component or a svelte component:
 
-```ts title="routes/web.ts"
+```ts title="routes/web.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { Inertia } from '@formidablejs/inertia'
 
@@ -55,7 +55,7 @@ This means, we can build full stack application in a single codebase. But of cou
 
 For example, you can build a backend API with the Formidable Framework and a frontend with [React](https://reactjs.org) and [Next.js](https://nextjs.org) like so:
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { UserRepository } from '../app/Repositories/UserRepository'
 
@@ -64,7 +64,7 @@ Route.get('/users', () => {
 })
 ```
 
-```tsx title="pages/users.tsx"
+```tsx title="pages/users.tsx" showLineNumbers
 import axios from 'axios'
 
 const Users = () => {
@@ -113,7 +113,7 @@ This command will add a controller, migration, 2 requests (one for creating, and
 
 Lets take a look at the migration:
 
-```ts title="database/migrations/20230916181244_create_people_table.js"
+```ts title="database/migrations/20230916181244_create_people_table.js" showLineNumbers
 const { Database } = require('@formidablejs/framework');
 
 /** @param {Database} DB */
@@ -133,7 +133,7 @@ exports.down = (DB) => DB.schema.dropTable('people');
 
 And the type:
 
-```ts title="app/Database/Types/Person.ts"
+```ts title="app/Database/Types/Person.ts" showLineNumbers
 type Person = {
 	id: number
 	first_name: string
@@ -146,7 +146,7 @@ type Person = {
 
 And finally, the controller:
 
-```ts title="app/Http/Controllers/PersonController.ts"
+```ts title="app/Http/Controllers/PersonController.ts" showLineNumbers
 import { Controller } from './Controller'
 import { StorePersonRequest } from '../Requests/StorePersonRequest'
 import { UpdatePersonRequest } from '../Requests/UpdatePersonRequest'

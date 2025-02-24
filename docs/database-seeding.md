@@ -23,7 +23,7 @@ A seeder contains one export by default: `seed`. This export returns an anonymou
 
 Here's an example of a `users` seeder that deletes all the users before adding a new one:
 
-```js title="database/seeds/20220508114827_users.js"
+```js title="database/seeds/20220508114827_users.js" showLineNumbers
 const { Database, Hash } = require('@formidablejs/framework');
 const { strRandom } = require('@formidablejs/framework/lib/Support/Helpers');
 

@@ -28,7 +28,7 @@ In order to pass props from our backend, we need to pass an object with all our 
     ]}>
 <TabItem value="imba">
 
-```py title="routes/web.imba"
+```py title="routes/web.imba" showLineNumbers
 import { App } from '../resources/views/app'
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
@@ -43,7 +43,7 @@ Route.get('/', do
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="routes/web.ts"
+```typescript title="routes/web.ts" showLineNumbers
 import { App } from '../resources/views/app'
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
@@ -61,7 +61,7 @@ Route.get('/', () => {
 
 To access our props in our view, we can use the `get` helper method. Then we can pass them, to our imba components as html attributes on the `<Props>` component and prefix them with `html:`:
 
-```py {3,20} title="resources/views/app.imba"
+```py {3,20} title="resources/views/app.imba" showLineNumbers
 import { config } from '@formidablejs/framework'
 import { View } from '@formidablejs/framework'
 import { Props } from '@formidablejs/view'
@@ -89,7 +89,7 @@ export class App < View
 
 And finally, we can access the props using the `useProp` hook:
 
-```py {1,5} title="resources/frontend/App.imba"
+```py {1,5} title="resources/frontend/App.imba" showLineNumbers
 import { useProp } from '@formidablejs/view'
 
 export tag App
@@ -107,7 +107,7 @@ When passing object from our backend, it can be a bit tricky. The first thing yo
 
 To avoid this, you will need to stringify your objects using `JSON.stringify`:
 
-```js
+```js showLineNumbers
 <Props html:user=JSON.stringify(get('user'))>
 ```
 
@@ -115,7 +115,7 @@ To avoid this, you will need to stringify your objects using `JSON.stringify`:
 
 The `useForm` hook allows you to send requests to a specific path:
 
-```py {1,5-8} title="resources/frontend/pages/People/Create.imba"
+```py {1,5-8} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 import { useForm } from '@formidablejs/view'
 
 export tag Create
@@ -152,7 +152,7 @@ The `useForm` hook above, will send a body with a new person's information to th
 
 If we want to display form errors, we may access the errors of a specific property on the `errors` object:
 
-```html {6-8} title="resources/frontend/pages/People/Create.imba"
+```html {6-8} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 <form @submit.prevent=submit>
 	<div[d:block]>
 		<label> "First Name"
@@ -165,7 +165,7 @@ If we want to display form errors, we may access the errors of a specific proper
 
 We can also conditionally style elements based on whether there are errors or not. For example, we can change the border color of a text input to red if its property has errors:
 
-```html {4} title="resources/frontend/pages/People/Create.imba"
+```html {4} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 <form @submit.prevent=submit>
 	<div[d:block]>
 		<label> "First Name"
@@ -174,7 +174,7 @@ We can also conditionally style elements based on whether there are errors or no
 
 If you don't want to handle errors on the rendered form itself, you can use `useForm` events:
 
-```py {3-4} title="resources/frontend/pages/People/Create.imba"
+```py {3-4} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 def submit
 	form.post('/api/person', {
 		onError: do(error)
@@ -186,7 +186,7 @@ The `onError` handler event, will pass an instance of `AxiosError`.
 
 When your application returns an error either than a `422`, a errors component will be rendered on top of our current page. If you want to hide this component by default, you can pass a `FormConfig` as a second object to the instantiation of your form:
 
-```py {5} title="resources/frontend/pages/People/Create.imba"
+```py {5} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 prop form = useForm({
 	first_name: ''
 	last_name: ''
@@ -197,7 +197,7 @@ prop form = useForm({
 
 To change this for all forms in your application, you can set a `FormConfig` in your bootstrap file located in the `resources/frontend` directory:
 
-```js title="resources/frontend/bootstrap.imba"
+```js title="resources/frontend/bootstrap.imba" showLineNumbers
 window.FormConfig = {
 	renderServerError: false
 }
@@ -207,7 +207,7 @@ window.FormConfig = {
 
 So what happens when the `useForm` hook returns a success status. Well, the `onSuccess` event handler will be invoked:
 
-```py {3-4} title="resources/frontend/pages/People/Create.imba"
+```py {3-4} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 def submit
 	form.post('/api/people', {
 		onSuccess: do(response)
@@ -219,7 +219,7 @@ The `onSuccess` handler event, will pass an instance of `AxiosResponse`.
 
 We can also show a success message on our page:
 
-```html {3-4} title="resources/frontend/pages/People/Create.imba"
+```html {3-4} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 def render
 	<self>
 		if form.recentlySuccessful
@@ -230,7 +230,7 @@ def render
 
 By default, the `<p>` element with the content "Success" will be shown for `2000` ms. To change this, you can pass a `FormConfig` as a second object to the instantiation of your form:
 
-```py {5} title="resources/frontend/pages/People/Create.imba"
+```py {5} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 prop form = useForm({
 	first_name: ''
 	last_name: ''
@@ -243,7 +243,7 @@ We have now changed `recentlySuccessful` to `5000` ms. This value can be anythin
 
 To change this for all forms in your application, you can set a `FormConfig` in your bootstrap file located in the `resources/frontend` directory:
 
-```js title="resources/frontend/bootstrap.imba"
+```js title="resources/frontend/bootstrap.imba" showLineNumbers
 window.FormConfig = {
 	recentlySuccessful: 5000
 }
@@ -253,7 +253,7 @@ window.FormConfig = {
 
 The `useForm` hook also allows you to validate your form fields using your server side validation rules. To do this, you need to invoke the `validate` method on your form with the name of the field you want to validate:
 
-```py {9} title="resources/frontend/pages/People/Create.imba"
+```py {9} title="resources/frontend/pages/People/Create.imba" showLineNumbers
 export tag Create
 
 	prop form = useForm({
@@ -278,7 +278,7 @@ export tag Create
 
 Since `useForm` requests are made via XHR, there's no default browser loading indicator when making requests to specified resources. To solve this, there's an optional `<FormProgress>` component, which shows a loading bar whenever you make a request or visit pages:
 
-```py {1,8} title="resources/frontend/App.imba"
+```py {1,8} title="resources/frontend/App.imba" showLineNumbers
 import { FormProgress } from '@formidablejs/view'
 import { useRoute } from '@formidablejs/view'
 
@@ -297,7 +297,7 @@ Since the `<FormProgress>` component is a wrapper around [NProgress](https://ric
 
 Set a default color for the loading indicator:
 
-```html
+```html showLineNumbers
 <FormProgress color="red">
 ```
 
@@ -305,7 +305,7 @@ Set a default color for the loading indicator:
 
 Show loading indicator when page changes. (default: `false`):
 
-```html
+```html showLineNumbers
 <FormProgress observeUrl=true>
 ```
 
@@ -313,7 +313,7 @@ Show loading indicator when page changes. (default: `false`):
 
 Changes the minimum percentage used upon starting. (default: `0.08`):
 
-```html
+```html showLineNumbers
 <FormProgress minimum="0.1">
 ```
 
@@ -321,7 +321,7 @@ Changes the minimum percentage used upon starting. (default: `0.08`):
 
 You can change the markup using template. To keep the progress bar working, keep an element with role='bar' in there:
 
-```html
+```html showLineNumbers
 <FormProgress template="<div class='....'>...</div>">
 ```
 
@@ -329,7 +329,7 @@ You can change the markup using template. To keep the progress bar working, keep
 
 Adjust animation settings using easing (a CSS easing string) and speed (in ms). (default: `ease` and `200`):
 
-```html
+```html showLineNumbers
 <FormProgress easing="ease" speed=500>
 ```
 
@@ -337,7 +337,7 @@ Adjust animation settings using easing (a CSS easing string) and speed (in ms). 
 
 Turn off the automatic incrementing behavior by setting this to `false`. (default: `true`):
 
-```html
+```html showLineNumbers
 <FormProgress trickle=false>
 ```
 
@@ -345,7 +345,7 @@ Turn off the automatic incrementing behavior by setting this to `false`. (defaul
 
 Adjust how often to trickle/increment, in ms:
 
-```html
+```html showLineNumbers
 <FormProgress trickleSpeed=200>
 ```
 
@@ -353,7 +353,7 @@ Adjust how often to trickle/increment, in ms:
 
 Turn on loading spinner by setting it to `true`. (default: `false`):
 
-```html
+```html showLineNumbers
 <FormProgress showSpinner=true>
 ```
 
@@ -361,7 +361,7 @@ Turn on loading spinner by setting it to `true`. (default: `false`):
 
 Specify this to change the parent container. (default: `body`):
 
-```html
+```html showLineNumbers
 <FormProgress parent="#container">
 ```
 
@@ -369,7 +369,7 @@ Specify this to change the parent container. (default: `body`):
 
 The `useRoute` hook allows you to generate routes based on thier name and any required parameters:
 
-```py title="resources/frontend/App.imba"
+```py title="resources/frontend/App.imba" showLineNumbers
 import { useRoute } from '@formidablejs/view'
 
 export tag App
@@ -393,7 +393,7 @@ Sometimes, our routes contain parameters, the `useRoute` hook makes it easy to p
     ]}>
 <TabItem value="imba">
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -405,7 +405,7 @@ Route.get('/user/:id', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="routes/api.ts"
+```typescript title="routes/api.ts" showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -419,7 +419,7 @@ Route.get('/user/:id', (request: Request) => {
 
 #### *Components*
 
-```py title="resources/frontend/App.imba"
+```py title="resources/frontend/App.imba" showLineNumbers
 import { useRoute } from '@formidablejs/view'
 
 export tag App
@@ -434,7 +434,7 @@ export tag App
 
 If we want to include a query string to our route, we can pass a second parameter to the `useRoute` hook with an object of properties of a query string. If the properties are not expected as parameters, then they will be added as a query string:
 
-```py title="resources/frontend/App.imba"
+```py title="resources/frontend/App.imba" showLineNumbers
 import { useRoute } from '@formidablejs/view'
 
 export tag App
@@ -449,7 +449,7 @@ export tag App
 
 But how would we handle a case where our query string properties clash with our route parameters? Well, we can pass a `_query` with our query string properties:
 
-```py title="resources/frontend/App.imba"
+```py title="resources/frontend/App.imba" showLineNumbers
 import { useRoute } from '@formidablejs/view'
 
 export tag App
@@ -468,7 +468,7 @@ export tag App
 
 The `useUrlState` hook allows you to add state to your url. This is useful when you want to keep your SPA pages in sync with your backend. For example, if you have a search page, you may want to keep the search query in sync with your backend:
 
-```py title="resources/frontend/pages/People/index.imba"
+```py title="resources/frontend/pages/People/index.imba" showLineNumbers
 
 import { useForm, useUrlState } from '@formidablejs/view'
 
@@ -509,7 +509,7 @@ This also allows your pages to be shareable. Your users can share pages without 
 
 To set state, we can assign a value to a property on the `query` object:
 
-```py title="resources/frontend/pages/People/index.imba" {9}
+```py title="resources/frontend/pages/People/index.imba" {9} showLineNumbers
 import { useUrlState } from '@formidablejs/view'
 
 export tag People
@@ -523,7 +523,7 @@ export tag People
 
 We can also bind the value of an input to a property on the `query` object:
 
-```py title="resources/frontend/pages/People/index.imba" {10}
+```py title="resources/frontend/pages/People/index.imba" {10} showLineNumbers
 import { useUrlState } from '@formidablejs/view'
 
 export tag People
@@ -542,7 +542,7 @@ Now, whenever the value of the input changes, the `search` property on the `quer
 
 By default, when updating state, the [onChange](#onchange) event handler will be invoked and the url will be updated. If you wish to update the state without invoking the [onChange](#onchange) event and updating the url, you can use the `quietlyUpdate` method:
 
-```py title="resources/frontend/pages/People/index.imba" {11}
+```py title="resources/frontend/pages/People/index.imba" {11} showLineNumbers
 import { useUrlState } from '@formidablejs/view'
 
 export tag People
@@ -566,7 +566,7 @@ export tag People
 
 To get state, we can access a property on the `query` object:
 
-```py title="resources/frontend/pages/People/index.imba" {13}
+```py title="resources/frontend/pages/People/index.imba" {13} showLineNumbers
 import { useUrlState } from '@formidablejs/view'
 
 export tag People
@@ -588,7 +588,7 @@ export tag People
 
 The `onPageLoad` event handler is invoked when the page loads. It passes the loaded state as the first parameter and all the values of the state as the second parameter:
 
-```py
+```py showLineNumbers
 {
 	onPageLoad: do(loaded, all)
 		# do something
@@ -599,7 +599,7 @@ The `onPageLoad` event handler is invoked when the page loads. It passes the loa
 
 The `onChange` event handler is invoked when the state changes. It passes the query/state parameter name as the first parameter, the new value as the second parameter and all the values of the state as the third parameter:
 
-```py
+```py showLineNumbers
 {
 	onChange: do(param, value, all)
 		# do something
@@ -610,7 +610,7 @@ The `onChange` event handler is invoked when the state changes. It passes the qu
 
 The `onInitialLoad` event handler is invoked when the page loads for the first time. It passes the loaded state as the first parameter:
 
-```py
+```py showLineNumbers
 {
 	onInitialLoad: do(state)
 		# do something

@@ -32,7 +32,7 @@ Here's an example of a `UserRepository`:
 	]}>
 <TabItem value="imba">
 
-```py title="app/Repositories/UserRepository.imba"
+```py title="app/Repositories/UserRepository.imba" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository < Repository
@@ -48,7 +48,7 @@ export class UserRepository < Repository
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Repositories/UserRepository.ts"
+```ts title="app/Repositories/UserRepository.ts" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository extends Repository {
@@ -90,7 +90,7 @@ You may override this convention by defining a `tableName` getter on the reposit
 	]}>
 <TabItem value="imba">
 
-```py title="app/Repositories/UserRepository.imba"
+```py title="app/Repositories/UserRepository.imba" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository < Repository
@@ -106,7 +106,7 @@ export class UserRepository < Repository
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Repositories/UserRepository.ts"
+```ts title="app/Repositories/UserRepository.ts" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository extends Repository {
@@ -143,7 +143,7 @@ By default, the `Repository` class will assume the primary key of the repository
 	]}>
 <TabItem value="imba">
 
-```py title="app/Repositories/UserRepository.imba"
+```py title="app/Repositories/UserRepository.imba" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository < Repository
@@ -159,7 +159,7 @@ export class UserRepository < Repository
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Repositories/UserRepository.ts"
+```ts title="app/Repositories/UserRepository.ts" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository extends Repository {
@@ -195,7 +195,7 @@ When doing Route Repository Binding, Formidable will dependency inject a reposit
 	]}>
 <TabItem value="imba">
 
-```py title="app/Repositories/UserRepository.imba"
+```py title="app/Repositories/UserRepository.imba" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository < Repository
@@ -211,7 +211,7 @@ export class UserRepository < Repository
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Repositories/UserRepository.ts"
+```ts title="app/Repositories/UserRepository.ts" showLineNumbers
 import { Repository } from '@formidablejs/framework'
 
 export class UserRepository extends Repository {
@@ -244,7 +244,7 @@ Lets take a look at an example. If you have a route defined like this:
 	]}>
 <TabItem value="imba">
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { UserController } from '../app/Http/Controllers/UserController'
 
@@ -254,7 +254,7 @@ Route.get('users/:id', [UserController, 'show'])
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { UserController } from '../app/Http/Controllers/UserController'
 
@@ -275,7 +275,7 @@ And you have a controller like this:
 	]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/UserController.imba"
+```py title="app/Http/Controllers/UserController.imba" showLineNumbers
 import { Controller, response } from '@formidablejs/framework'
 import { UserRepository } from '../../Repositories/UserRepository'
 
@@ -288,7 +288,7 @@ export class UserController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/UserController.ts"
+```ts title="app/Http/Controllers/UserController.ts" showLineNumbers
 import { Controller, response } from '@formidablejs/framework'
 import { UserRepository } from '../../Repositories/UserRepository'
 
@@ -308,7 +308,7 @@ The `user` parameter will be a record from the `users` table where the `id` colu
 
 The Repository class provides a variety of helpful methods that may be used to build database queries. In addition to these methods, you may also use the [Knex query builder](http://knexjs.org/) to write queries by accessing the `query` property on a repository instance:
 
-```ts
+```ts showLineNumbers
 UserRepository.query().where('active', true).orderBy('created_at', 'desc').get()
 ```
 
@@ -316,7 +316,7 @@ UserRepository.query().where('active', true).orderBy('created_at', 'desc').get()
 
 The `get` method returns all the records from the repository's table:
 
-```ts
+```ts showLineNumbers
 UserRepository.get()
 ```
 
@@ -324,7 +324,7 @@ UserRepository.get()
 
 The `get` method will also work with any query builder instance:
 
-```ts
+```ts showLineNumbers
 UserRepository.where('active', true).get()
 ```
 
@@ -334,13 +334,13 @@ UserRepository.where('active', true).get()
 
 The `first` method returns the first record from the repository's table:
 
-```ts
+```ts showLineNumbers
 UserRepository.first()
 ```
 
 The `first` method may also be used to retrieve the first record matching the given query conditions:
 
-```ts
+```ts showLineNumbers
 UserRepository.where('active', true).first()
 ```
 
@@ -348,7 +348,7 @@ UserRepository.where('active', true).first()
 
 The `find` method returns the record matching the given primary key value. If no matching record exists, it returns `null`.
 
-```ts
+```ts showLineNumbers
 UserRepository.find(12)
 ```
 
@@ -358,13 +358,13 @@ The `where` method may be used to add `WHERE` clauses to the query. The method a
 
 In addition to comparing primitive values, you may also compare a column against another column:
 
-```ts
+```ts showLineNumbers
 UserRepository.where('created_at', '>', 'updated_at')
 ```
 
 You may also chain multiple `where` methods to create more specific queries:
 
-```ts
+```ts showLineNumbers
 UserRepository.where('active', true).where('created_at', '>', 'updated_at')
 ```
 
@@ -372,7 +372,7 @@ UserRepository.where('active', true).where('created_at', '>', 'updated_at')
 
 The `whereNot` method verifies that the value of the given column is **not** equal to the given value:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereNot('active', true)
 ```
 
@@ -380,7 +380,7 @@ UserRepository.whereNot('active', true)
 
 The `whereIn` method verifies that a given column's value is contained within the given array:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereIn('id', [1, 2, 3])
 ```
 
@@ -388,7 +388,7 @@ UserRepository.whereIn('id', [1, 2, 3])
 
 The `whereNull` method verifies that the value of the given column is `NULL`:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereNull('updated_at')
 ```
 
@@ -396,7 +396,7 @@ UserRepository.whereNull('updated_at')
 
 The `whereNotNull` method verifies that the value of the given column is **not** `NULL`:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereNotNull('updated_at')
 ```
 
@@ -404,7 +404,7 @@ UserRepository.whereNotNull('updated_at')
 
 The `whereExists` method filters the query based on the existence of any records in the subquery:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereExists(function (query) {
 	query.select('*').from('accounts').whereRaw('users.account_id = accounts.id')
 })
@@ -414,7 +414,7 @@ UserRepository.whereExists(function (query) {
 
 The `whereNotExists` method filters the query based on the non-existence of any records in the subquery:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereNotExists(function (query) {
 	query.select('*').from('accounts').whereRaw('users.account_id = accounts.id')
 })
@@ -424,7 +424,7 @@ UserRepository.whereNotExists(function (query) {
 
 The `whereBetween` method verifies that a column's value is between two values:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereBetween('id', [1, 100])
 ```
 
@@ -432,7 +432,7 @@ UserRepository.whereBetween('id', [1, 100])
 
 The `whereNotBetween` method verifies that a column's value lies outside of two values:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereNotBetween('id', [1, 100])
 ```
 
@@ -440,7 +440,7 @@ UserRepository.whereNotBetween('id', [1, 100])
 
 The `whereRaw` method may be used to inject a raw `WHERE` clause into your query:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereRaw('id = ?', [1])
 ```
 
@@ -448,7 +448,7 @@ UserRepository.whereRaw('id = ?', [1])
 
 The `whereLike` method may be used to add a where clause with case-sensitive substring comparison on a given column with a given value:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereLike('name', 'John')
 ```
 
@@ -456,7 +456,7 @@ UserRepository.whereLike('name', 'John')
 
 The `whereILike` method may be used to add a where clause with case-insensitive substring comparison on a given column with a given value:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereILike('name', 'John')
 ```
 
@@ -464,7 +464,7 @@ UserRepository.whereILike('name', 'John')
 
 The `whereJsonObject` method may be used to add a where clause with json object comparison on given json column:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereJsonObject('options', { active: true })
 ```
 
@@ -472,7 +472,7 @@ UserRepository.whereJsonObject('options', { active: true })
 
 The `whereJsonPath` method may be used to add a where clause with comparison of a value returned by a JsonPath given an operator and a value:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereJsonPath('profile', '$.age', '>', 18)
 ```
 
@@ -480,7 +480,7 @@ UserRepository.whereJsonPath('profile', '$.age', '>', 18)
 
 The `whereJsonSupersetOf` method may be used to add a where clause where the comparison is true if a json given by the column include a given value. Only on MySQL, PostgreSQL and CockroachDB:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereJsonSupersetOf('profile', { age: 18 })
 ```
 
@@ -488,7 +488,7 @@ UserRepository.whereJsonSupersetOf('profile', { age: 18 })
 
 The `whereJsonSubsetOf` method may be used to add a where clause where the comparison is true if a json given by the column is included in a given value. Only on MySQL, PostgreSQL and CockroachDB:
 
-```ts
+```ts showLineNumbers
 UserRepository.whereJsonSubsetOf('profile', { age: 18 })
 ```
 
@@ -496,7 +496,7 @@ UserRepository.whereJsonSubsetOf('profile', { age: 18 })
 
 The `groupBy` method may be used to group the query results by a given column:
 
-```ts
+```ts showLineNumbers
 UserRepository.groupBy('team_id')
 ```
 
@@ -504,7 +504,7 @@ UserRepository.groupBy('team_id')
 
 The `groupByRaw` method may be used to group the query results by a raw SQL expression:
 
-```ts
+```ts showLineNumbers
 UserRepository.groupByRaw('extract(year from created_at)')
 ```
 
@@ -512,13 +512,13 @@ UserRepository.groupByRaw('extract(year from created_at)')
 
 The `orderBy` method allows you to sort the result of the query by a given column. The first argument to the `orderBy` method should be the column you wish to sort by, while the second argument controls the direction of the sort and may be either `asc` or `desc`:
 
-```ts
+```ts showLineNumbers
 UserRepository.orderBy('name', 'desc')
 ```
 
 You may also sort by multiple columns:
 
-```ts
+```ts showLineNumbers
 UserRepository.orderBy({
 	column: 'name',
 	order: 'desc'
@@ -532,7 +532,7 @@ UserRepository.orderBy({
 
 The `orderByRaw` method may be used to sort the query results by a raw SQL expression:
 
-```ts
+```ts showLineNumbers
 UserRepository.orderByRaw('updated_at - created_at DESC')
 ```
 
@@ -540,7 +540,7 @@ UserRepository.orderByRaw('updated_at - created_at DESC')
 
 The `having` method's signature is similar to that of the `where` method:
 
-```ts
+```ts showLineNumbers
 UserRepository.having('email', '>', 100)
 ```
 
@@ -548,7 +548,7 @@ UserRepository.having('email', '>', 100)
 
 The `havingRaw` method may be used to inject a raw `HAVING` clause into your query:
 
-```ts
+```ts showLineNumbers
 UserRepository.havingRaw('id = ?', [1])
 ```
 
@@ -556,7 +556,7 @@ UserRepository.havingRaw('id = ?', [1])
 
 The `havingIn` method may be used to add a `HAVING IN` clause to the query:
 
-```ts
+```ts showLineNumbers
 UserRepository.havingIn('id', [1, 2, 3])
 ```
 
@@ -564,7 +564,7 @@ UserRepository.havingIn('id', [1, 2, 3])
 
 The `havingNotIn` method may be used to add a `HAVING NOT IN` clause to the query:
 
-```ts
+```ts showLineNumbers
 UserRepository.havingNotIn('id', [1, 2, 3])
 ```
 
@@ -572,7 +572,7 @@ UserRepository.havingNotIn('id', [1, 2, 3])
 
 The `havingBetween` method may be used to add a `HAVING BETWEEN` clause to the query:
 
-```ts
+```ts showLineNumbers
 UserRepository.havingBetween('id', [1, 100])
 ```
 
@@ -580,7 +580,7 @@ UserRepository.havingBetween('id', [1, 100])
 
 The `havingNotBetween` method may be used to add a `HAVING NOT BETWEEN` clause to the query:
 
-```ts
+```ts showLineNumbers
 UserRepository.havingNotBetween('id', [1, 100])
 ```
 
@@ -588,7 +588,7 @@ UserRepository.havingNotBetween('id', [1, 100])
 
 The `min` method allows you to retrieve the minimum value of a given column:
 
-```ts
+```ts showLineNumbers
 UserRepository.min('age')
 ```
 
@@ -596,7 +596,7 @@ UserRepository.min('age')
 
 The `max` method allows you to retrieve the maximum value of a given column:
 
-```ts
+```ts showLineNumbers
 UserRepository.max('age')
 ```
 
@@ -604,7 +604,7 @@ UserRepository.max('age')
 
 The `sum` method allows you to retrieve the sum of a given column:
 
-```ts
+```ts showLineNumbers
 LikeRepository.sum('count')
 ```
 
@@ -612,7 +612,7 @@ LikeRepository.sum('count')
 
 The `sumDistinct` method allows you to retrieve the sum of a given column with distinct values:
 
-```ts
+```ts showLineNumbers
 LikeRepository.sumDistinct('count')
 ```
 
@@ -620,7 +620,7 @@ LikeRepository.sumDistinct('count')
 
 The `avg` method allows you to retrieve the average of a given column:
 
-```ts
+```ts showLineNumbers
 LikeRepository.avg('count')
 ```
 
@@ -628,7 +628,7 @@ LikeRepository.avg('count')
 
 The `avgDistinct` method allows you to retrieve the average of a given column with distinct values:
 
-```ts
+```ts showLineNumbers
 LikeRepository.avgDistinct('count')
 ```
 
@@ -636,7 +636,7 @@ LikeRepository.avgDistinct('count')
 
 The `offset` method skips the given number of results:
 
-```ts
+```ts showLineNumbers
 UserRepository.offset(10)
 ```
 
@@ -644,7 +644,7 @@ UserRepository.offset(10)
 
 The `limit` method limits the number of results returned from the query:
 
-```ts
+```ts showLineNumbers
 UserRepository.limit(10)
 ```
 
@@ -652,7 +652,7 @@ UserRepository.limit(10)
 
 The `count` method returns the total number of records matching the query constraints:
 
-```ts
+```ts showLineNumbers
 UserRepository.count()
 ```
 
@@ -660,7 +660,7 @@ UserRepository.count()
 
 The `countDistinct` method returns the total number of distinct records matching the query constraints:
 
-```ts
+```ts showLineNumbers
 UserRepository.countDistinct()
 ```
 
@@ -668,7 +668,7 @@ UserRepository.countDistinct()
 
 The `softDelete` method marks the given records as deleted. Soft deleted records are not actually removed from your database. Instead, a `deleted_at` column is set on the record. When querying a repository that uses soft deletes, the soft deleted records will be excluded from the results:
 
-```ts
+```ts showLineNumbers
 UserRepository.where('active', false).softDelete()
 ```
 
@@ -676,7 +676,7 @@ UserRepository.where('active', false).softDelete()
 
 The `restore` method restores the given records. Restored records will have their `deleted_at` column set to `null`:
 
-```ts
+```ts showLineNumbers
 UserRepository.where('active', false).restore()
 ```
 
@@ -684,7 +684,7 @@ UserRepository.where('active', false).restore()
 
 The `withTrashed` method may be used to include soft deleted records in the results:
 
-```ts
+```ts showLineNumbers
 UserRepository.withTrashed().where('active', false).get()
 ```
 
@@ -692,7 +692,7 @@ UserRepository.withTrashed().where('active', false).get()
 
 The `withoutTrashed` method may be used to only include records that are not soft deleted:
 
-```ts
+```ts showLineNumbers
 UserRepository.withoutTrashed().where('active', false).get()
 ```
 
@@ -700,7 +700,7 @@ UserRepository.withoutTrashed().where('active', false).get()
 
 The `onlyTrashed` method may be used to only retrieve soft deleted records:
 
-```ts
+```ts showLineNumbers
 UserRepository.onlyTrashed().where('active', false).get()
 ```
 
@@ -710,7 +710,7 @@ You may paginate query results using the `pagination` or `autoPaginate` methods.
 
 The `pagination` method, paginates the query results:
 
-```ts
+```ts showLineNumbers
 UserRepository.pagination({
 	page: 1,
 	perPage: 10,
@@ -728,7 +728,7 @@ url      | `string` or `null` | The url of the request.
 
 Or you can use the `autoPaginate` method:
 
-```ts
+```ts showLineNumbers
 UserRepository.autoPaginate(15)
 ```
 
@@ -736,7 +736,7 @@ The `autoPaginate` method accepts the number of records per page as the first ar
 
 Here's an example response:
 
-```json
+```json showLineNumbers
 {
     "data": [
         {

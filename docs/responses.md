@@ -24,14 +24,14 @@ All routes and controllers should return a response to be sent back to the clien
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 Route.get '/', do 'Hello World!'
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/', (): string => 'Hello World!')
 ```
 
@@ -49,14 +49,14 @@ In addition to returning strings from your routes and controllers, you may also 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 Route.get '/', do [ 'Donald', 'Luna' ]
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/', (): Array<string> => [ 'Donald', 'Luna' ]))
 ```
 
@@ -74,7 +74,7 @@ You may also return an object, Formidable will automatically convert the object 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 Route.get '/', do {
 	name: 'Luna'
 }
@@ -83,7 +83,7 @@ Route.get '/', do {
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/', (): object => {
 	name: 'Luna'
 })
@@ -107,14 +107,14 @@ You may use the `setHeader` method to attach a header to your response. The `hea
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 request.setHeader('x-header', 'x-value')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 request.setHeader('x-header', 'x-value')
 ```
 
@@ -132,7 +132,7 @@ You may also attach multiple headers by chaining the `setHeader` method:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 request
 	.setHeader('x-header-1', 'x-value')
 	.setHeader('x-header-2', 'x-value')
@@ -142,7 +142,7 @@ request
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 request
 	.setHeader('x-header-1', 'x-value')
 	.setHeader('x-header-2', 'x-value')
@@ -167,7 +167,7 @@ Redirect responses are instances of the `Redirect` class. To get started with a 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 import { Redirect } from '@formidablejs/framework'
 
 Redirect.to('posts/deleted')
@@ -176,7 +176,7 @@ Redirect.to('posts/deleted')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Redirect } from '@formidablejs/framework'
 
 Redirect.to('posts/deleted')
@@ -198,14 +198,14 @@ You may also redirect back to a named route by using the `route` method:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 Redirect.route('posts.deleted')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Redirect.route('posts.deleted')
 ```
 
@@ -223,7 +223,7 @@ If your route has parameters, you may pass them as the second argument to the `r
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 Redirect.route('posts.show', {
 	id: 1
 })
@@ -232,7 +232,7 @@ Redirect.route('posts.show', {
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Redirect.route('posts.show', {
 	id: 1
 })

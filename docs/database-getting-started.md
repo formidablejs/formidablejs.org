@@ -233,7 +233,7 @@ The configuration for all the supported database drivers and redis db's can be f
     ]}>
 <TabItem value="imba">
 
-```py title="config/database.imba"
+```py title="config/database.imba" showLineNumbers
 import { helpers } from '@formidablejs/framework'
 
 export default {
@@ -355,7 +355,7 @@ export default {
 </TabItem>
 <TabItem value="ts">
 
-```py title="config/database.ts"
+```py title="config/database.ts" showLineNumbers
 import { helpers } from '@formidablejs/framework'
 
 export default {
@@ -512,7 +512,7 @@ The `pool` object is used to define the minimum and maximum number of connection
     ]}>
 <TabItem value="imba">
 
-```py title="config/database.imba"
+```py title="config/database.imba" showLineNumbers
 	...
 
 	# --------------------------------------------------------------------------
@@ -533,7 +533,7 @@ The `pool` object is used to define the minimum and maximum number of connection
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/database.ts"
+```ts title="config/database.ts" showLineNumbers
 	...
 
 	/**
@@ -579,7 +579,7 @@ The following example shows how to use the `Database` class to query the databas
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/PostController.imba"
+```py title="app/Http/Controllers/PostController.imba" showLineNumbers
 import { Database as DB } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -593,7 +593,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/PostController.ts"
+```ts title="app/Http/Controllers/PostController.ts" showLineNumbers
 import { Database as DB } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -620,7 +620,7 @@ We can also sort and paginate the results:
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/PostController.imba"
+```py title="app/Http/Controllers/PostController.imba" showLineNumbers
 import { Database as DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Controller } from './Controller'
@@ -641,7 +641,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/PostController.ts"
+```ts title="app/Http/Controllers/PostController.ts" showLineNumbers
 import { Database as DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { Controller } from './Controller'
@@ -685,7 +685,7 @@ To insert a new row into a table, we can use the `insert` method:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const [ taskId ] = await DB.table('tasks')
 	.insert({
 		title: 'Learn imba'
@@ -696,7 +696,7 @@ const [ taskId ] = await DB.table('tasks')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const [ taskId: number ] = await DB.table('tasks')
 	.insert({
 		title: 'Learn imba',
@@ -718,7 +718,7 @@ Alternatively, we can use the `create` method, which is an alias for the `insert
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const task = await DB.table('tasks')
 	.create({
 		title: 'Learn imba'
@@ -729,7 +729,7 @@ const task = await DB.table('tasks')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const task = await DB.table('tasks')
 	.create({
 		title: 'Learn imba',
@@ -753,7 +753,7 @@ To update a row by ID, we can use the `update` method:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const updatedRowCount = await DB.table('tasks')
 	.where('id', 1)
 	.update({
@@ -764,7 +764,7 @@ const updatedRowCount = await DB.table('tasks')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const updatedRowCount = await DB.table('tasks')
 	.where('id', 1)
 	.update({
@@ -788,7 +788,7 @@ To delete a row by ID, we can use the `delete` method:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const deletedRowCount = await DB.table('tasks')
 	.where('id', 1)
 	.delete!
@@ -797,7 +797,7 @@ const deletedRowCount = await DB.table('tasks')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const deletedRowCount = await DB.table('tasks')
 	.where('id', 1)
 	.delete()
@@ -819,7 +819,7 @@ To quickly get started with setting values to Redis or retrieving data, we can u
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -833,7 +833,7 @@ Route.get '/', do(request)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -861,7 +861,7 @@ To set a value in Redis, we can use the `set` method from the `connection` metho
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -873,7 +873,7 @@ Route.get '/', do(request)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 
@@ -896,7 +896,7 @@ To check if an error occurred while, we can pass a `callback` function to the `s
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Redis.connection!.set 'name', 'Luna', do(error)
 	if error
 		# do something
@@ -905,7 +905,7 @@ Redis.connection!.set 'name', 'Luna', do(error)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Redis.connection().set('name', 'Luna', (error) => {
 	if (error) {
 		// do something
@@ -929,7 +929,7 @@ To set a value in Redis with an expiration time, we can use the `set` method fro
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 import { expiresIn } from '@formidablejs/framework'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -941,7 +941,7 @@ Route.get '/', do(request)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { expiresIn } from '@formidablejs/framework'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -965,7 +965,7 @@ Should you wish to pass a `callback` function, you can do so as the last argumen
     ]}>
 <TabItem value="imba">
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { expiresIn } from '@formidablejs/framework'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -979,7 +979,7 @@ Route.get '/', do(request)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { expiresIn } from '@formidablejs/framework'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -1009,7 +1009,7 @@ To retrieve data from Redis, we can use the `get` method from the `connection` m
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
@@ -1025,7 +1025,7 @@ Route.get '/', do(request)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { Redis } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'

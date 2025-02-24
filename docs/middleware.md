@@ -37,7 +37,7 @@ This command will place a new `CheckAge` class within your `app/Http/Middleware`
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Middleware/CheckAge.imba" {7}
+```py title="app/Http/Middleware/CheckAge.imba" {7} showLineNumbers
 import { ForbiddenException } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 
@@ -52,7 +52,7 @@ export class CheckAge
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Middleware/CheckAge.ts" {6,7,8}
+```ts title="app/Http/Middleware/CheckAge.ts" {6,7,8} showLineNumbers
 import { ForbiddenException } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 
@@ -91,7 +91,7 @@ If you would like to assign middleware to specific routes, you should first assi
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Kernel.imba" {3}
+```py title="app/Http/Kernel.imba" {3} showLineNumbers
 get routeMiddleware
 	{
 		'auth': Authenticate
@@ -105,7 +105,7 @@ get routeMiddleware
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Kernel.ts" {3}
+```ts title="app/Http/Kernel.ts" {3} showLineNumbers
 get routeMiddleware(): object {
 	return {
 		'auth': Authenticate,
@@ -131,7 +131,7 @@ Once the middleware has been defined in the HTTP kernel, you may use the `middle
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {3}
+```js title="routes/api.imba" {3} showLineNumbers
 Route.get('admin/profile', do
 	# do something...
 )->middleware(['auth'])
@@ -140,7 +140,7 @@ Route.get('admin/profile', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {3}
+```ts title="routes/api.ts" {3} showLineNumbers
 Route.get('admin/profile', () => {
 	// do something...
 })->middleware(['auth'])
@@ -160,7 +160,7 @@ You may also assign multiple middleware to the route:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {3}
+```js title="routes/api.imba" {3} showLineNumbers
 Route.get('/', do
 	# do something...
 ).middleware(['first', 'second'])
@@ -169,7 +169,7 @@ Route.get('/', do
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {3}
+```ts title="routes/api.ts" {3} showLineNumbers
 Route.get('/', () => {
 	// do something...
 }).middleware(['first', 'second'])
@@ -193,7 +193,7 @@ Out of the box, Formidable comes with `jwt` and `session` middleware groups:
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Kernel.imba" {3,7}
+```js title="app/Http/Kernel.imba" {3,7} showLineNumbers
 get middlewareGroups
 	{
 		jwt: [
@@ -210,7 +210,7 @@ get middlewareGroups
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Kernel.ts" {3,7}
+```ts title="app/Http/Kernel.ts" {3,7} showLineNumbers
 get middlewareGroups(): object {
 	return {
 		jwt: [

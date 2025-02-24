@@ -19,7 +19,7 @@ node craftsman make:model Post
 
 This will add a new model under the `app/Models` directory:
 
-```py title="app/Models/Post.imba"
+```py title="app/Models/Post.imba" showLineNumbers
 import { Model } from '@formidablejs/framework'
 
 export class Post < Model
@@ -29,7 +29,7 @@ export class Post < Model
 
 By default, Formidable will attempt to get the table name from the model name. If you want to override this, you can add a `tableName` getter:
 
-```py title="app/Models/Post.imba"
+```py title="app/Models/Post.imba" showLineNumbers
 import { Model } from '@formidablejs/framework'
 
 export class Post < Model
@@ -47,7 +47,7 @@ export class Post < Model
 
 Formidable uses the `id` column as the defauld primary key, to change it, you can add a `idAttribute` getter:
 
-```py title="app/Models/Post.imba"
+```py title="app/Models/Post.imba" showLineNumbers
 import { Model } from '@formidablejs/framework'
 
 export class Post < Model
@@ -64,7 +64,7 @@ export class Post < Model
 
 Formidable provides a way to hide attributes from the model. This is useful if you want to hide sensitive information from the database. To hide an attribute, you can add a `hidden` getter:
 
-```py title="app/Models/Post.imba"
+```py title="app/Models/Post.imba" showLineNumbers
 import { Model } from '@formidablejs/framework'
 
 export class Post < Model

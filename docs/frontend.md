@@ -48,7 +48,7 @@ Formidable provides an Inertia Adapter through [Laravel Mix](https://github.com/
 
 In other words, Mix makes it a cinch to compile and minify your application's CSS, TypeScript and JavaScript files. Through simple method chaining, you can fluently define your asset pipeline. For example:
 
-```js title=webpack.mix.js
+```js title=webpack.mix.js showLineNumbers
 mix.ts('resources/js/app.ts', 'public/js')
     .postCss('resources/css/app.css', 'public/css');
 ```
@@ -209,7 +209,7 @@ In this example we're passing a single prop, called `post` to the Post/Show page
     ]}>
 <TabItem value="imba">
 
-```py title=app/Http/Controllers/PostController.imba
+```py title=app/Http/Controllers/PostController.imba showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { Inertia } from '@formidablejs/inertia'
 import { PostRepository } from '../../Repositories/PostRepository'
@@ -229,7 +229,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title=app/Http/Controllers/PostController.ts
+```ts title=app/Http/Controllers/PostController.ts showLineNumbers
 import { use } from '@formidablejs/framework'
 import { Inertia } from '@formidablejs/inertia'
 import { InertiaResponse } from '@formidablejs/inertia'
@@ -263,7 +263,7 @@ We can access the `post` prop in our page component like so:
     ]}>
 <TabItem value="vue">
 
-```html title="resources/js/Pages/Post/Show.vue"
+```html title="resources/js/Pages/Post/Show.vue" showLineNumbers
 <script lang="ts" setup>
 defineProps({
 	post: {
@@ -282,7 +282,7 @@ defineProps({
 </TabItem>
 <TabItem value="react">
 
-```tsx title="resources/js/Pages/Post/Show.tsx"
+```tsx title="resources/js/Pages/Post/Show.tsx" showLineNumbers
 export default function Show({ post }: { post: Post }) {
 	return (
 		<>
@@ -296,7 +296,7 @@ export default function Show({ post }: { post: Post }) {
 </TabItem>
 <TabItem value="svelte">
 
-```html title="resources/js/Pages/Post/Show.svelte"
+```html title="resources/js/Pages/Post/Show.svelte" showLineNumbers
 <script>
 	/** @type {Post} post */
 	export let post
@@ -322,7 +322,7 @@ The default inertia root view is defined in the `config/inertia.imba` or `config
     ]}>
 <TabItem value="imba">
 
-```py title=config/inertia.imba {11}
+```py title=config/inertia.imba {11} showLineNumbers
 import { App } from '../resources/views/app'
 
 export default {
@@ -350,7 +350,7 @@ export default {
 </TabItem>
 <TabItem value="ts">
 
-```ts title=config/inertia.ts {13}
+```ts title=config/inertia.ts {13} showLineNumbers
 import { App } from '../resources/views/app'
 
 export default {
@@ -392,14 +392,14 @@ If you'd like to provide a custom root for for a specific component, you may do 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Inertia.render('Welcome').setRootView(CustomFormidableView)
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```py
+```py showLineNumbers
 Inertia.render('Welcome').setRootView(CustomFormidableView)
 ```
 
@@ -417,7 +417,7 @@ You can also pass data props to a root view by using `withViewData`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Inertia.render('Welcome').withViewData({
 	meta: meta
 })
@@ -426,7 +426,7 @@ Inertia.render('Welcome').withViewData({
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Inertia.render('Welcome').withViewData({
 	meta: meta
 })
@@ -499,7 +499,7 @@ bunx tailwindcss init
 
 In your `webpack.mix.js` file, add tailwindcss as a PostCSS plugin:
 
-```js title="webpack.mix.js" {2}
+```js title="webpack.mix.js" {2} showLineNumbers
 .postCss('resources/css/app.css', './public/css', [
 	require("tailwindcss"),
 ])
@@ -507,7 +507,7 @@ In your `webpack.mix.js` file, add tailwindcss as a PostCSS plugin:
 
 Add the paths to all of your template files in your `tailwind.config.js` file:
 
-```js title="tailwind.config.js" {4-8}
+```js title="tailwind.config.js" {4-8} showLineNumbers
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -526,7 +526,7 @@ module.exports = {
 
 Add the @tailwind directives for each of Tailwind’s layers to your `./resources/css/app.css` file:
 
-```css title="resources/css/app.css"
+```css title="resources/css/app.css" showLineNumbers
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

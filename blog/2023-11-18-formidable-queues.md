@@ -46,7 +46,7 @@ node craftsman make:job SendWelcomeEmail
 
 This will create a job in the `app/Jobs` directory. The job will look something like this:
 
-```ts title="app/Jobs/SendWelcomeEmail.ts"
+```ts title="app/Jobs/SendWelcomeEmail.ts" showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 
 export class SendWelcomeEmail extends Queueable {
@@ -63,7 +63,7 @@ The `handle` method is where we put the logic for the job. This is where we do t
 
 Let's say we want to send a welcome email to a user when they register. We can do that like so:
 
-```ts title="app/Jobs/SendWelcomeEmail.ts"
+```ts title="app/Jobs/SendWelcomeEmail.ts" showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 import { UserRepository } from '../Repositories/UserRepository'
 import { Mail } from '@formidablejs/mailer'
@@ -85,7 +85,7 @@ export class SendWelcomeEmail extends Queueable {
 
 We can then dispatch the job like so:
 
-```ts title="routes/api.ts" {9}
+```ts title="routes/api.ts" {9} showLineNumbers
 import { Route, Request } from '@formidablejs/framework'
 import { SendWelcomeEmail } from '../Jobs/SendWelcomeEmail'
 
@@ -102,7 +102,7 @@ Route.post('/register', async (request: Request) => {
 
 Should we want to dispatch the job later, we can use the `delay` method:
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 SendWelcomeEmail.delay('5 minutes').dispatch(user.id)
 ```
 
@@ -112,7 +112,7 @@ This will delay the job for 5 minutes.
 
 Now that we have a job, we need to register it. We can do that by adding it to the `jobs` array in the `app/Console/Kernel.ts` file:
 
-```ts title="app/Console/Kernel.ts" {17}
+```ts title="app/Console/Kernel.ts" {17} showLineNumbers
 import { ConsoleKernel } from '@formidablejs/framework'
 import { Log } from '@formidablejs/logger'
 import { Queueable } from '@formidablejs/queues'

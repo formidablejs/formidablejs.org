@@ -7,7 +7,7 @@ The default Formidable application structure is intended to provide a great star
 
 ## Overview
 
-```text
+```text showLineNumbers
 .
 ├── app
     ├── Console

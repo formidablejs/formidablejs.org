@@ -11,7 +11,7 @@ Formidablerc config is part of the `package.json` file. In this file, we can add
 
 The `mode` option allows you to switch between `nodemon` and `imba`. Both of these modes control how your application re-builds when running in development mode. By default, Formidable uses `nodemon`:
 
-```js {3} title="package.json"
+```js {3} title="package.json" showLineNumbers
 {
     "development": {
         "mode": "nodemon"
@@ -27,7 +27,7 @@ When switching to `nodemon`, a few more options will be available.
 
 The command option allows you to add a list of commands that should run everytime your application re-builds after changes have been made:
 
-```json {4-6} title="package.json"
+```json {4-6} title="package.json" showLineNumbers
 {
     "development": {
         "mode": "nodemon",
@@ -42,7 +42,7 @@ The command option allows you to add a list of commands that should run everytim
 
 The ignore option allows you to specify the directories that should be ignored when `nodemon` listens to file changes:
 
-```json {4-6} title="package.json"
+```json {4-6} title="package.json" showLineNumbers
 {
     "development": {
         "mode": "nodemon",
@@ -55,7 +55,7 @@ The ignore option allows you to specify the directories that should be ignored w
 
 By default, Formidable ignores the following directories:
 
-```json
+```json showLineNumbers
 [
 	"app/Types",
     "bootstrap/config",
@@ -79,7 +79,7 @@ Its advised to include the default ignored directories to your ignore list if yo
 
 the `ext` option allows you to specify the extensions that can trigger a re-build:
 
-```json {4} title="package.json"
+```json {4} title="package.json" showLineNumbers
 {
     "development": {
         "mode": "nodemon",
@@ -90,7 +90,7 @@ the `ext` option allows you to specify the extensions that can trigger a re-buil
 
 By default, Formidable listens to files ending with the following extensions:
 
-```json
+```json showLineNumbers
 [
     "imba",
     "js",
@@ -108,7 +108,7 @@ Its advised to include the default extensions to your ext list if you make chang
 
 The `delay` option allows you to specify how long in seconds nodemon should wait before triggering a re-build after files have been changed:
 
-```json {4} title="package.json"
+```json {4} title="package.json" showLineNumbers
 {
     "development": {
         "mode": "nodemon",
@@ -119,7 +119,7 @@ The `delay` option allows you to specify how long in seconds nodemon should wait
 
 You can also specify the delay in milliseconds by suffixing the value with "ms":
 
-```json {4} title="package.json"
+```json {4} title="package.json" showLineNumbers
 {
     "development": {
         "mode": "nodemon",
@@ -134,7 +134,7 @@ You might find yourself repeating the same commands over and over again, for exa
 
 So how would you go about doing this? Well, its as simple as adding "hooks" to your `package.json` file:
 
-```json
+```json showLineNumbers
 {
     ...,
     "hooks": {
