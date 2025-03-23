@@ -18,6 +18,9 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.{js,jsx,ts,tsx,md,mdx}\""
   },
+  "engines": {
+    "node": ">=18.12.1"
+  },
   "dependencies": {
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/plugin-content-docs": "^3.7.0",
