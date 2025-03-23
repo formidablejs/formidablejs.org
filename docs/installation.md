@@ -15,7 +15,7 @@ For the frontend, you can choose from popular frameworks like Vue, React, and Sv
 ## Your First Formidable Project
 
 #### Prerequisites {#prerequisites}
-Please make sure that [Node.js](https://nodejs.org/) (>= 18.*) is installed on your operating system.
+Please make sure that [Node.js](https://nodejs.org/) (>= 20.*) is installed on your operating system.
 
 #### Tooling
 

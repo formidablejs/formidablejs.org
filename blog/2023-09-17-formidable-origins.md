@@ -2,11 +2,7 @@
 title: Something is brewing and it's Formidable
 description: A quick introduction to the Formidable Framework.
 slug: origins
-authors:
-  - name: Donald Pakkies
-    title: Creator of the Formidable Framework
-    url: https://x.com/donaldpakkies
-    image_url: https://github.com/donaldp.png
+authors: donald
 tags: [hello, origins]
 image: https://formidablejs.org/img/formidable-origins.png
 hide_table_of_contents: true

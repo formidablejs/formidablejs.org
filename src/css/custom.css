@@ -502,20 +502,20 @@ html[data-theme='dark'] .clean-btn>svg {
 	}
 }
 
-div[class^="docPage_"] {
+div[class^="docRoot_"] {
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 @media only screen and (max-width: 1350px) {
-	div[class^="docPage_"] {
+	div[class^="docRoot_"] {
 		width: unset;
 	}
 }
 
 @media only screen and (max-width: 508px) {
-	div[class^="docPage_"] {
+	div[class^="docRoot_"] {
 		width: 100%;
 	}
 }

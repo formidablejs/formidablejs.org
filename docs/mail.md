@@ -187,7 +187,7 @@ Attachment object consists of the following properties:
 * **content** - String, Buffer or a Stream contents for the attachment
 * **path** - path to the file if you want to stream the file instead of including it (better for larger attachments)
 * **href** – an URL to the file (data uris are allowed as well)
-* **httpHeaders** - optional HTTP headers to pass on with the href request, eg. {authorization: "bearer ..."}
+* **httpHeaders** - optional HTTP headers to pass on with the href request, eg. `{ authorization: "bearer ..." }`
 * **contentType** - optional content type for the attachment, if not set will be derived from the filename property
 * **contentDisposition** - optional content disposition type for the attachment, defaults to ‘attachment’
 * **cid** - optional content id for using inline images in HTML message source

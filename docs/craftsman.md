@@ -35,7 +35,7 @@ Shell allows you to interact with your Formidable application on the command lin
 node craftsman shell
 ```
 
-In order for a class or function to be accessible in the Shell environment, it needs to be added in the `context` config file. To get started, open `config/context.imba` or `config/context.ts`:
+In order for a class or function to be accessible in the Shell environment, it needs to be added in the `context` config file. To get started, open `config/context.{imba,ts}`:
 
 <Tabs
     defaultValue={State.language}
@@ -167,21 +167,21 @@ import { Command } from '@formidablejs/framework'
 import { PropList, string } from '@formidablejs/console'
 
 export class Hello extends Command {
-    /**
+	/**
 	 * The name and signature of the console command.
 	 */
 	get signature(): string {
 		return 'hello {?name}'
 	}
 
-    /**
+	/**
 	 * The console command description.
 	 */
 	get description(): string {
 		return 'My command description'
 	}
 
-    /**
+	/**
 	 * Command props.
 	 */
 	get props(): PropList {
@@ -190,7 +190,7 @@ export class Hello extends Command {
 		}
 	}
 
-    /**
+	/**
 	 * Execute the console command.
 	 */
 	handle(): void {

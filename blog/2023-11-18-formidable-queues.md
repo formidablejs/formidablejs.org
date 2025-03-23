@@ -2,11 +2,7 @@
 title: Queuing with the Formidable Framework
 description: Looking into the Formidable Framework's queueing system.
 slug: formidable-queues
-authors:
-  - name: Donald Pakkies
-    title: Creator of the Formidable Framework
-    url: https://x.com/donaldpakkies
-    image_url: https://github.com/donaldp.png
+authors: donald
 tags: [queues, redis, sync]
 image: https://formidablejs.org/img/formidable-queues.png
 hide_table_of_contents: true

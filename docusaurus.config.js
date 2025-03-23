@@ -103,7 +103,7 @@ module.exports = {
 					href: 'https://github.com/formidablejs',
 					position: 'right',
 					className: 'header-github-link',
-				},
+				}
 			],
 		},
 		footer: {
@@ -130,6 +130,14 @@ module.exports = {
 					editUrl: "https://github.com/formidablejs/formidablejs.org/edit/main/",
 					sidebarCollapsed: false,
 					sidebarCollapsible: false,
+					// lastVersion: 'current',
+					// versions: {
+					// 	current: {
+					// 		label: '1.x-preview',
+					// 		path: '1.x',
+					// 		badge: true,
+					// 	},
+					// },
 				},
 				blog: {
 					blogTitle: 'The Formidable Framework blog!',
