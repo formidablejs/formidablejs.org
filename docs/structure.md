@@ -91,11 +91,15 @@ Contains the cached config file and database settings file.
 
 Contains application configuration files.
 
+#### database/seeders
+
+Houses your application [factories](/docs/database-factories).
+
 #### database/migrations
 
 Houses your application [migration](/docs/database-migrations) files.
 
-#### database/seeds
+#### database/seeders
 
 Houses your application [seeders](/docs/database-seeding).
 
