@@ -20,13 +20,15 @@ The default Formidable application structure is intended to provide a great star
     ├── Interfaces
     ├── Mail
     ├── Resolvers
+	├── Repositories
     └── Types
 ├── bootstrap
     └── cache
 ├── config
 ├── database
+	├── factories
     ├── migrations
-    └── seeds
+    └── seeders
 ├── public
 ├── resources
     ├── lang
@@ -78,6 +80,10 @@ Contains application [mailers](/docs/mail).
 
 Contains application service resolvers.
 
+#### app/Repositories
+
+Houses application [repositories](/docs/database-repositories).
+
 #### app/Types
 
 Houses application types.
@@ -91,7 +97,7 @@ Contains the cached config file and database settings file.
 
 Contains application configuration files.
 
-#### database/seeders
+#### database/factories
 
 Houses your application [factories](/docs/database-factories).
 
