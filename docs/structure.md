@@ -35,9 +35,9 @@ The default Formidable application structure is intended to provide a great star
     └── views
 ├── routes
 ├── storage
-	├── framework
-	├── logs
-	└── session
+    ├── framework
+    ├── logs
+    └── session
 └── test
 
 ```
