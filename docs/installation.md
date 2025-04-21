@@ -21,6 +21,12 @@ For the frontend, you can choose from popular frameworks like Vue, React, and Sv
 #### Prerequisites {#prerequisites}
 Please make sure that [Node.js](https://nodejs.org/) (>= 20.*) is installed on your operating system.
 
+:::info
+
+Please note Formidable is not yet fully compatible with Bun, but we are working on it. If you would like to use [Bun](https://bun.sh/), please install the latest version.
+
+:::
+
 #### Tooling
 
 For a better development experience, we recommend using the following tools:
