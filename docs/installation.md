@@ -4,6 +4,10 @@ title: Installation
 slug: /
 ---
 
+import State from '../src/state/State'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 ## Meet Formidable
 
 Formidable (or formidablejs) is a modern full-stack framework designed to help you build scalable backend applications with a strong focus on developer experience. With Formidable, you can effortlessly create full-stack Node.js applications using TypeScript or Imba, offering a solid foundation for your projects.
@@ -28,8 +32,20 @@ For a better development experience, we recommend using the following tools:
 
 You may create a new Formidable project by using the `create-formidable` CLI. After the application has been created, you may start Formidable's local development server using the `dev` script:
 
+
+<Tabs
+    defaultValue={State.manager}
+	groupId="code-snippets"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
 ```bash
-npx create-formidable@latest example-app
+npm create formidable@latest example-app
 
 cd example-app
 
@@ -39,7 +55,7 @@ npm run dev
 For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
 
 ```bash
-npx create-formidable@latest example-app --git
+npm create formidable@latest example-app --git
 ```
 
 This command will initialize a new Git repository for your project.
@@ -47,8 +63,86 @@ This command will initialize a new Git repository for your project.
 By default, the `create-formidable` CLI will scaffold your application with TypeScript. If you would like to scaffold your application with Imba, you may pass the `--language` flag and set the value to "imba":
 
 ```bash
-npx create-formidable@latest example-app --language imba
+npm create formidable@latest example-app --language imba
 ```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```bash
+pnpm create formidable@latest example-app
+
+cd example-app
+
+npm run dev
+```
+
+For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
+
+```bash
+pnpm create formidable@latest example-app --git
+```
+
+This command will initialize a new Git repository for your project.
+
+By default, the `create-formidable` CLI will scaffold your application with TypeScript. If you would like to scaffold your application with Imba, you may pass the `--language` flag and set the value to "imba":
+
+```bash
+pnpm create formidable@latest example-app --language imba
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn create formidable example-app
+
+cd example-app
+
+npm run dev
+```
+
+For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
+
+```bash
+yarn create formidable example-app --git
+```
+
+This command will initialize a new Git repository for your project.
+
+By default, the `create-formidable` CLI will scaffold your application with TypeScript. If you would like to scaffold your application with Imba, you may pass the `--language` flag and set the value to "imba":
+
+```bash
+yarn create formidable example-app --language imba
+```
+
+</TabItem>
+<TabItem value="bun">
+
+```bash
+bun create formidable@latest example-app
+
+cd example-app
+
+npm run dev
+```
+
+For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
+
+```bash
+bun create formidable@latest example-app --git
+```
+
+This command will initialize a new Git repository for your project.
+
+By default, the `create-formidable` CLI will scaffold your application with TypeScript. If you would like to scaffold your application with Imba, you may pass the `--language` flag and set the value to "imba":
+
+```bash
+bun create formidable@latest example-app --language imba
+```
+
+</TabItem>
+</Tabs>
 
 #### Windows Considations
 
