@@ -80,7 +80,7 @@ pnpm create formidable@latest example-app
 
 cd example-app
 
-npm run dev
+pnpm run dev
 ```
 
 For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
@@ -105,7 +105,7 @@ yarn create formidable example-app
 
 cd example-app
 
-npm run dev
+yarn run dev
 ```
 
 For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
@@ -130,7 +130,7 @@ bun create formidable@latest example-app
 
 cd example-app
 
-npm run dev
+bun run dev
 ```
 
 For convenience, the Formidable installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
