@@ -5,50 +5,49 @@ const waitForDiv = async (condition) => {
 		if (condition()) {
 			resolve();
 		} else {
-			setTimeout(() => poll(resolve), 50);
+			setTimeout(_ => poll(resolve), 50)
 		}
-	};
-	return new Promise(poll);
-};
-
-const updateUI = async () => {
-	await waitForDiv(() =>
-		document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1') !== null
-	);
-
-	const original = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1');
-	if (!original) return;
-
-	const clone = original.cloneNode(true); // full copy of the node
-
-	original.style.display = 'none';
-
-	clone.classList.add('centered-search');
-
-	if (window.location.pathname !== '/') {
-		clone.classList.add('patch');
 	}
 
-	const nav = document.querySelector('div.navbar__items');
-	nav.appendChild(clone); // inject our version instead of stealing React's
+	return new Promise(poll)
+}
+
+const updateUI = async () => {
+	await waitForDiv(() => {
+		return document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1') !== null
+	})
+
+	const search = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')
+
+	search.classList.add('centered-search')
+
+	if (window.location.pathname !== '/') {
+		search.classList.add('patch')
+	}
+
+	const nav = document.querySelector('div.navbar__items')
+
+	nav.appendChild(search)
 
 	document.addEventListener('click', () => {
-		if (!document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')) {
-			return;
+		const search = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')
+
+		if (search === null) {
+			return
 		}
 
-		const clickClone = original.cloneNode(true);
-		clickClone.classList.add('centered-search');
+		search.classList.add('centered-search')
 
 		if (window.location.pathname !== '/') {
-			clickClone.classList.add('patch');
+			search.classList.add('patch')
 		}
 
-		const nav = document.querySelector('div.navbar__items');
-		nav.appendChild(clickClone);
-	});
-};
+		const nav = document.querySelector('div.navbar__items')
+
+		nav.appendChild(search)
+	})
+}
 
 if (ExecutionEnvironment.canUseDOM) {
-	setTimeout(updateUI, 0); // let React fully render before running this
+	setTimeout(updateUI, 0);
 }
