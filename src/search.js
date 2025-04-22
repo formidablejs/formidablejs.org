@@ -5,49 +5,49 @@ const waitForDiv = async (condition) => {
 		if (condition()) {
 			resolve();
 		} else {
-			setTimeout(_ => poll(resolve), 50)
+			setTimeout(() => poll(resolve), 50);
 		}
-	}
-
-	return new Promise(poll)
-}
+	};
+	return new Promise(poll);
+};
 
 const updateUI = async () => {
-	await waitForDiv(() => {
-		return document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1') !== null
-	})
+	await waitForDiv(() =>
+		document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')
+	);
 
-	const search = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')
+	const original = document.querySelector(
+		'div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1'
+	);
 
-	search.classList.add('centered-search')
+	if (!original) return;
 
+	const clone = original.cloneNode(true);
+	clone.classList.add('centered-search');
 	if (window.location.pathname !== '/') {
-		search.classList.add('patch')
+		clone.classList.add('patch');
 	}
 
-	const nav = document.querySelector('div.navbar__items')
+	const centerNav = document.querySelector('div.navbar__items');
+	if (!centerNav) return;
 
-	nav.appendChild(search)
+	centerNav.appendChild(clone);
 
-	document.addEventListener('click', () => {
-		const search = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')
+	clone.addEventListener('click', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
 
-		if (search === null) {
-			return
-		}
+		const realButton = original.querySelector('button.DocSearch-Button');
+		if (realButton) realButton.click();
+	});
 
-		search.classList.add('centered-search')
-
-		if (window.location.pathname !== '/') {
-			search.classList.add('patch')
-		}
-
-		const nav = document.querySelector('div.navbar__items')
-
-		nav.appendChild(search)
-	})
-}
+	setTimeout(() => {
+		original.style.display = 'none';
+	}, 100);
+};
 
 if (ExecutionEnvironment.canUseDOM) {
-	setTimeout(updateUI, 0);
+	window.addEventListener('load', () => {
+		setTimeout(updateUI, 0);
+	});
 }
