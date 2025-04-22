@@ -106,5 +106,5 @@ const setup = () => {
 };
 
 if (ExecutionEnvironment.canUseDOM) {
-	setup();
+	// setup();
 }
