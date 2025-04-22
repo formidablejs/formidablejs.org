@@ -536,15 +536,6 @@ div[class^="docRoot_"] {
 	}
 }
 
-.navbarSearchContainer_Bca1 {
-	opacity: 0;
-	transition: opacity .1s ease-in;
-}
-
-.navbarSearchContainer_Bca1.visible {
-	opacity: 1;
-}
-
 .centered-search {
 	width: 500px;
     margin: auto;
