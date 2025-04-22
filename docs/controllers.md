@@ -133,7 +133,7 @@ export class UserController < Controller
 	def show request\Request
 
 		if (await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1
-            notFound!
+			notFound!
 ```
 
 </TabItem>
@@ -144,8 +144,8 @@ export class UserController < Controller
 export class UserController extends Controller {
 	async show(request: Request): Promise<any> {
 		if ((await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1) {
-            this.notFound()
-        }
+			this.notFound()
+		}
 
 		...
 ```
@@ -171,7 +171,7 @@ export class UserController < Controller
 	def show request\Request
 
 		if (await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1
-            notFound 'User does not exist'
+			notFound 'User does not exist'
 ```
 
 </TabItem>
@@ -182,8 +182,8 @@ export class UserController < Controller
 export class UserController extends Controller {
 	async show(request: Request): Promise<any> {
 		if ((await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1) {
-            this.notFound('User does not exist')
-        }
+			this.notFound('User does not exist')
+		}
 
 		...
 ```
@@ -221,8 +221,8 @@ export class UserController < Controller
 export class UserController extends Controller {
 	destroy(request: Request): any {
 		if (!request.auth().can('users:delete')) {
-            this.badRequest()
-        }
+			this.badRequest()
+		}
 
 		...
 ```
@@ -258,8 +258,8 @@ export class UserController < Controller
 export class UserController extends Controller {
 	destroy(request: Request): any {
 		if (!request.auth().can('users:delete')) {
-            this.badRequest('Permission denied')
-        }
+			this.badRequest('Permission denied')
+		}
 
 		...
 ```

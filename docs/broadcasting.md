@@ -331,14 +331,14 @@ export default {
 export default {
 	...
 	redis: {
-        connection: env('BROADCAST_CONNECTION', 'cache'),
-        publish_mode: env('BROADCAST_PUBLISH_MODE', 'overwrite'),
-        refresh_rate: env('BROADCAST_REFRESH_RATE', 100),
-        expiration: {
-            mode: env('BROADCAST_EXPIRATION_MODE', 'PX'),
-            ttl: env('BROADCAST_EXPIRATION_TTL', 1000)
-        }
-    },
+		connection: env('BROADCAST_CONNECTION', 'cache'),
+		publish_mode: env('BROADCAST_PUBLISH_MODE', 'overwrite'),
+		refresh_rate: env('BROADCAST_REFRESH_RATE', 100),
+		expiration: {
+			mode: env('BROADCAST_EXPIRATION_MODE', 'PX'),
+			ttl: env('BROADCAST_EXPIRATION_TTL', 1000)
+		}
+	},
 	...
 }
 ```
@@ -706,7 +706,7 @@ As mentioned above, the `subscribe` function accepts two arguments: the channel 
 <TabItem value="imba">
 
 ```ts title="resources/frontend/Pages/Chat.imba" {1,7-11} showLineNumbers
-import { subscribe } from '@formidablejs/broadcaster/src/client'
+import { subscribe } from '@formidablejs/broadcaster/client'
 
 export tag Chat
 	messages\string[] = []
@@ -731,7 +731,7 @@ export tag Chat
 
 ```html title="resources/js/Pages/Chat.vue" {2,8-10} showLineNumbers
 <script lang="ts" setup>
-import { subscribe } from '@formidablejs/broadcaster/src/client'
+import { subscribe } from '@formidablejs/broadcaster/client'
 import { onMounted, ref } from 'vue'
 
 const messages = ref<string[]>([]);
@@ -753,7 +753,7 @@ onMounted(() => {
 <TabItem value="react">
 
 ```jsx title="resources/js/Pages/Chat.tsx" {1,8-10} showLineNumbers
-import { subscribe } from '@formidablejs/broadcaster/src/client'
+import { subscribe } from '@formidablejs/broadcaster/client'
 import { useEffect, useState } from 'react'
 
 export default function Chat() {
@@ -779,7 +779,7 @@ export default function Chat() {
 
 ```html title="resources/js/Pages/Chat.svelte" {2,8-10} showLineNumbers
 <script>
-	import { subscribe } from '@formidablejs/broadcaster/src/client'
+	import { subscribe } from '@formidablejs/broadcaster/client'
 	import { onMount } from 'svelte';
 
 	let messages = []
@@ -818,7 +818,7 @@ Subscribing to a parameterized channel is similar to subscribing to a regular ch
 <TabItem value="imba">
 
 ```ts title="resources/frontend/Pages/Chat.imba" {1,9-13} showLineNumbers
-import { subscribe } from '@formidablejs/broadcaster/src/client'
+import { subscribe } from '@formidablejs/broadcaster/client'
 
 export tag Chat
 	messages\string[] = []
@@ -843,7 +843,7 @@ export tag Chat
 
 ```html title="resources/js/Pages/Chat.vue" {2,10-12} showLineNumbers
 <script lang="ts" setup>
-import { subscribe } from '@formidablejs/broadcaster/src/client'
+import { subscribe } from '@formidablejs/broadcaster/client'
 import { onMounted, ref } from 'vue'
 
 const messages = ref<string[]>([]);
@@ -868,7 +868,7 @@ onMounted(() => {
 <TabItem value="react">
 
 ```jsx title="resources/js/Pages/Chat.tsx" {1,10-12} showLineNumbers
-import { subscribe } from '@formidablejs/broadcaster/src/client'
+import { subscribe } from '@formidablejs/broadcaster/client'
 import { useEffect, useState } from 'react'
 
 export default function Chat() {
@@ -897,7 +897,7 @@ export default function Chat() {
 
 ```html title="resources/js/Pages/Chat.svelte" {2,10-12} showLineNumbers
 <script>
-	import { subscribe } from '@formidablejs/broadcaster/src/client'
+	import { subscribe } from '@formidablejs/broadcaster/client'
 	import { onMount } from 'svelte';
 
 	let messages = []

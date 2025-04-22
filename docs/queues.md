@@ -226,12 +226,12 @@ export class ProcessAudio < Queueable
 import { Queueable } from '@formidablejs/queues'
 
 export class ProcessAudio extends Queueable {
-    /**
-     * Handle job.
-     */
-    handle(audioId: number): any {
-        console.log('Process uploaded audio...')
-    }
+	/**
+	 * Handle job.
+	 */
+	handle(audioId: number): any {
+		console.log('Process uploaded audio...')
+	}
 }
 ```
 
@@ -272,7 +272,7 @@ export class ProcessAudio extends Queueable {
 	/**
 	 * Queue to run job on.
 	 */
-    get queue(): string {
+	get queue(): string {
 		return 'custom_queue'
 	}
 }
@@ -315,7 +315,7 @@ export class ProcessAudio extends Queueable {
 	/**
 	 * The timeout time for the job.
 	 */
-    get timeout(): string {
+	get timeout(): string {
 		return '2 hours'
 	}
 }

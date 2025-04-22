@@ -106,7 +106,7 @@ get routeMiddleware
 <TabItem value="ts">
 
 ```ts title="app/Http/Kernel.ts" {3} showLineNumbers
-get routeMiddleware(): object {
+get routeMiddleware(): MiddlewareAliases {
 	return {
 		'auth': Authenticate,
 		'cors': HandleCors,
@@ -197,7 +197,7 @@ Out of the box, Formidable comes with `jwt` and `session` middleware groups:
 get middlewareGroups
 	{
 		jwt: [
-
+			EnsureStateless // disable this if you wish to access sessions in your api routes.
 		]
 
 		session: [
@@ -211,10 +211,10 @@ get middlewareGroups
 <TabItem value="ts">
 
 ```ts title="app/Http/Kernel.ts" {3,7} showLineNumbers
-get middlewareGroups(): object {
+get middlewareGroups(): MiddlewareGroups {
 	return {
 		jwt: [
-
+			EnsureStateless // disable this if you wish to access sessions in your api routes.
 		],
 
 		session: [

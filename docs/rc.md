@@ -57,7 +57,7 @@ By default, Formidable ignores the following directories:
 
 ```json showLineNumbers
 [
-	"app/Types",
+    "app/Types",
     "bootstrap/config",
     "database",
     "dist",

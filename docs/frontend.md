@@ -17,9 +17,47 @@ By default Formidable uses Imba for its frontend development. You can build your
 
 To build a multi-page application, use the `create-formidable` CLI with the following flags:
 
+<Tabs
+    defaultValue={State.manager}
+	groupId="code-snippets"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
 ```bash
-npx create-formidable@latest example-app --imba --scaffolding mpa
+npm create formidable@latest example-app --imba --scaffolding mpa
 ```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```bash
+pnpm create formidable@latest example-app --imba --scaffolding mpa
+```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn create formidable example-app --imba --scaffolding mpa
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun create formidable@latest example-app --imba --scaffolding mpa
+```
+
+</TabItem>
+</Tabs>
 
 This will create a new project with mpa related files.
 
@@ -29,9 +67,47 @@ See the [Views](/docs/views) documentation for more information.
 
 To build a single-page application, you can use the `create-formidable` CLI with the following flag:
 
+<Tabs
+    defaultValue={State.manager}
+	groupId="code-snippets"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
 ```bash
-npx create-formidable@latest example-app --imba
+npm create formidable@latest example-app --imba
 ```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```bash
+pnpm create formidable@latest example-app --imba
+```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn create formidable example-app --imba
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun create formidable@latest example-app --imba
+```
+
+</TabItem>
+</Tabs>
 
 This will create a new project and install the `@formidablejs/view` package, then publish spa related files.
 
@@ -59,21 +135,135 @@ To get started with an application powered by Inertia, use the following command
 
 #### Vue
 
+<Tabs
+    defaultValue={State.manager}
+	groupId="code-snippets"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
 ```bash
-npx create-formidable@latest example-app --vue
+npm create formidable@latest example-app --vue
 ```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```bash
+pnpm create formidable@latest example-app --vue
+```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn create formidable example-app --vue
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun create formidable@latest example-app --vue
+```
+
+</TabItem>
+</Tabs>
 
 #### React
 
+<Tabs
+    defaultValue={State.manager}
+	groupId="code-snippets"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
 ```bash
-npx create-formidable@latest example-app --react
+npm create formidable@latest example-app --react
 ```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```bash
+pnpm create formidable@latest example-app --react
+```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn create formidable example-app --react
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun create formidable@latest example-app --react
+```
+
+</TabItem>
+</Tabs>
 
 #### Svelte
 
+<Tabs
+    defaultValue={State.manager}
+	groupId="code-snippets"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
 ```bash
-npx create-formidable@latest example-app --svelte
+npm create formidable@latest example-app --svelte
 ```
+
+</TabItem>
+
+<TabItem value="pnpm">
+
+```bash
+pnpm create formidable@latest example-app --svelte
+```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn create formidable example-app --svelte
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
+```bash
+bun create formidable@latest example-app --svelte
+```
+
+</TabItem>
+</Tabs>
 
 > This will scaffold a Vuejs, React or Svelte application for you.
 
@@ -118,10 +308,10 @@ pnpm run mix:prod
 
 ```
 // Run all Mix tasks...
-yarn mix:dev
+yarn run mix:dev
 
 // Run all Mix tasks and minify output...
-yarn mix:prod
+yarn run mix:prod
 ```
 
 </TabItem>
@@ -130,10 +320,10 @@ yarn mix:prod
 
 ```
 // Run all Mix tasks...
-bun mix:dev
+bun run mix:dev
 
 // Run all Mix tasks and minify output...
-bun mix:prod
+bun run mix:prod
 ```
 
 </TabItem>
@@ -171,7 +361,7 @@ pnpm run mix:watch
 <TabItem value="yarn">
 
 ```bash
-yarn mix:watch
+yarn run mix:watch
 ```
 
 </TabItem>
@@ -179,7 +369,7 @@ yarn mix:watch
 <TabItem value="bun">
 
 ```bash
-bun mix:watch
+bun run mix:watch
 ```
 
 </TabItem>
@@ -342,7 +532,7 @@ export default {
 	# Command that runs to execute Laravel Mix when Formidable is in development
 	# mode.
 
-	mix: "npm run mix:watch" # "pnpm run mix:watch" || "yarn mix:watch" || "bun mix:watch"
+	mix: "npm run mix:watch" # "pnpm run mix:watch" || "yarn run mix:watch" || "bun run mix:watch"
 
 }
 ```
@@ -373,7 +563,7 @@ export default {
 	 * mode.
 	 */
 
-	mix: "npm run mix:watch" // "pnpm run mix:watch" || "yarn mix:watch"
+	mix: "npm run mix:watch" // "pnpm run mix:watch" || "yarn run mix:watch" || "bun run mix:watch"
 
 }
 ```
@@ -443,7 +633,7 @@ For more information on how to use Laravel Mix and Inertia, see the Laravel Mix 
 
 ### TailwindCSS
 
-You can use TailwindCSS with your React or Vue application. In this guide, we will setup TailwindCSS for your application.
+You can use TailwindCSS with your React, Vue or Svelte application. In this guide, we will setup TailwindCSS for your application.
 
 #### Installation
 

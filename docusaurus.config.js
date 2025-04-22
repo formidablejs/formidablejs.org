@@ -9,6 +9,7 @@ module.exports = {
 	favicon: 'img/favicon.ico',
 	organizationName: 'formidablejs',
 	projectName: 'formidablejs.org',
+	clientModules: ['./src/search.js'],
 	themeConfig: {
 		announcementBar: {
 			id: 'formidable-announcement',
@@ -94,11 +95,6 @@ module.exports = {
 					position: 'left',
 					className: 'left-header-link',
 				},
-				// {
-				// 	href: 'https://github.com/formidablejs/framework',
-				// 	position: 'right',
-				// 	label: "★ Star us on Github"
-				// },
 				{
 					href: 'https://github.com/formidablejs',
 					position: 'right',

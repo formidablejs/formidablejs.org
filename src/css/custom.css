@@ -35,6 +35,11 @@ html[data-theme='dark']:root {
 	margin: 0;
 }
 
+table {
+	display: table;
+    width: 100%;
+}
+
 .docusaurus-highlight-code-line {
 	background-color: rgb(72, 77, 91);
 	display: block;
@@ -522,8 +527,52 @@ div[class^="docRoot_"] {
 
 @media only screen and (min-width: 996px) {
 	div[class^="toggle_"] {
-		order: 1;
+		order: 2;
 		margin-left: 10px;
+	}
+
+	.header-github-link {
+		order: 1;
+	}
+}
+
+.centered-search {
+	width: 500px;
+    margin: auto;
+    right: 95px;
+    position: relative;
+}
+
+.centered-search.patch {
+	right: 43px;
+}
+
+.centered-search > button.DocSearch-Button {
+	width: inherit;
+	border: 1px solid;
+}
+
+.centered-search > button.DocSearch-Button > .DocSearch-Button-Container > .DocSearch-Button-Placeholder {
+	font-size: 13px !important;
+}
+
+@media screen and (max-width: 1200px) {
+	.centered-search {
+		width: 400px;
+		position: relative;
+	}
+}
+
+@media screen and (max-width: 830px) {
+	.centered-search {
+		width: unset;
+		margin-right: unset;
+		right: 1px;
+		position: relative;
+	}
+
+	.centered-search.patch {
+		right: 1px;
 	}
 }
 

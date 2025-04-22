@@ -13,12 +13,12 @@ When you're ready to deploy your Formidable application to production, there are
 
 The Formidable framework has a few system requirements. You should ensure that your web server has the following minimum Node version:
 
-* `Node >=18.*`
+* `Node >=20.*`
 * `npm/pnpm/yarn/bun`
 
 ## Deploy
 
-### Heroku (recommended)
+### Heroku
 
 Formidable is Heroku-ready out of the box. Here are some few things you may need to do to get started:
 
@@ -48,7 +48,7 @@ That's all you need to do to get started.
 If you need more control over your server and application, we recommend deploying to a Linux server and using Nginx and PM2.
 
 Before getting started, make sure the following prerequisites are met:
-* [Node >=18.*](https://nodejs.org/en/download/) (we recommend using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
+* [Node >=20.*](https://nodejs.org/en/download/) (we recommend using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating))
 * [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install) or [PNPM](https://pnpm.io/installation) or [Bun](https://bun.sh/docs/installation)
 * [PM2](https://pm2.keymetrics.io/)
 * [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)
@@ -62,7 +62,7 @@ module.exports = {
 	apps: [
 		{
 			name: "web",
-			script: "npm run start",
+			script: "node server",
 			time: true,
 			error_file: "./storage/logs/web/error.log",
 			out_file: "./storage/logs/web/log.log"
@@ -74,6 +74,14 @@ module.exports = {
 			time: true,
 			error_file: "./storage/logs/cron/error.log",
 			out_file: "./storage/logs/cron/log.log"
+		},
+		{
+			name: "queue",
+			script: "node craftsman queue:work --no-ansi",
+			max_memory_restart: "100M",
+			time: true,
+			error_file: "./storage/logs/queue/error.log",
+			out_file: "./storage/logs/queue/log.log"
 		}
 	]
 }
@@ -311,58 +319,79 @@ This is only an example. You don't have to use Github to be able to Automate you
 
 :::
 
-
-### Docker
-
-You can also use Docker to deploy your application. Here's a simple `Dockerfile` that you can use to build your application:
-
-```dockerfile title="Dockerfile" showLineNumbers
-FROM node:18-alpine
-
-# Create app directory
-RUN mkdir -p /usr/app
-WORKDIR /usr/app
-
-# Install app dependencies
-COPY package.json /usr/app/
-RUN npm install
-
-# Bundle app source
-COPY . /usr/app
-RUN npm run build
-COPY . /usr/app
-
-EXPOSE 3000
-CMD ["npm", "start"]
-```
-
-:::info
-
-Set `APP_DEBUG` to false in your `.env` file before building your application for production.
-
-:::
-
 ### Vercel
 
 Vercel is another great option for deploying your Formidable application. While Formidable is not officially supported by Vercel, you can still deploy your application to Vercel by following these steps:
 
 #### Configure your application
 
-First, you need to trust a couple of dependencies by adding them to your `package.json` file:
+First, you need to create a `vercel.json` file in the root of your application:
 
-```json title="package.json" {3-7} showLineNumbers
+<Tabs
+	defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
+```json title="vercel.json" showLineNumbers
 {
-	...
-	"trustedDependencies": [
-		"bcrypt",
-		"esbuild",
-		"sqlite3"
-	],
-	...
+	"buildCommand": "npm run build",
+	"installCommand": "npm install",
+	"outputDirectory": ".formidable/public",
+	"devCommand": "npm run dev",
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/api/serverless.js"
+		}
+	]
 }
 ```
 
-Then create a `vercel.json` file in the root of your application:
+</TabItem>
+<TabItem value="yarn">
+
+```json title="vercel.json" showLineNumbers
+{
+	"buildCommand": "yarn run build",
+	"installCommand": "yarn install",
+	"outputDirectory": ".formidable/public",
+	"devCommand": "yarn run dev",
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/api/serverless.js"
+		}
+	]
+}
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```json title="vercel.json" showLineNumbers
+{
+	"buildCommand": "pnpm run build",
+	"installCommand": "pnpm install",
+	"outputDirectory": ".formidable/public",
+	"devCommand": "pnpm run dev",
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/api/serverless.js"
+		}
+	]
+}
+```
+
+</TabItem>
+
+<TabItem value="bun">
 
 ```json title="vercel.json" showLineNumbers
 {
@@ -370,16 +399,17 @@ Then create a `vercel.json` file in the root of your application:
 	"installCommand": "bun install",
 	"outputDirectory": ".formidable/public",
 	"devCommand": "bun run dev",
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/api/serverless.js"
-        }
-    ]
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/api/serverless.js"
+		}
+	]
 }
 ```
 
-> You can also use `npm` or `yarn` or `pnpm` instead of `bun`. However, we recommend using the `bun` package manager in this case.
+</TabItem>
+</Tabs>
 
 #### Create a serverless function
 
@@ -446,9 +476,45 @@ Don't forget to add `?sslmode=require` to your `DATABASE_URL`.
 
 And finally, ensure that you have the `pgsql` driver installed:
 
+<Tabs
+	defaultValue={State.manager}
+	groupId="package-manager"
+    values={[
+        {label: 'npm', value: 'npm'},
+        {label: 'pnpm', value: 'pnpm'},
+        {label: 'yarn', value: 'yarn'},
+        {label: 'bun', value: 'bun'},
+    ]}>
+<TabItem value="npm">
+
+```bash
+npm install pgsql
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add pgsql
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```bash
+pnpm add pgsql
+```
+
+</TabItem>
+
+<TabItem value="bun">
+
 ```bash
 bun add pgsql
 ```
+
+</TabItem>
+</Tabs>
 
 ##### Redis
 
@@ -589,4 +655,4 @@ In the default `redis` connection, we set `tls` to `true`. This is because Verce
 
 ##### Package Lock
 
-Please ensure that you remove your `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` or `bun.lockb` file before deploying to Vercel. You may encounter some issues if you don't.
+Please ensure that you remove your `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`, `bun.lockb` or `bun.lock` file before deploying to Vercel. You may encounter some issues if you don't.

@@ -23,7 +23,7 @@ Please make sure that [Node.js](https://nodejs.org/) (>= 20.*) is installed on y
 
 :::info
 
-Please note Formidable is not yet fully compatible with Bun, but we are working on it. If you would like to use [Bun](https://bun.sh/), please install the latest version.
+Please note Formidable is not yet fully compatible with [Bun](https://bun.sh/), but we are working on it.
 
 :::
 
