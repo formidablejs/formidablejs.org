@@ -49,5 +49,5 @@ const updateUI = async () => {
 }
 
 if (ExecutionEnvironment.canUseDOM) {
-	updateUI()
+	setTimeout(updateUI, 0);
 }
