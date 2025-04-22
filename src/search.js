@@ -5,49 +5,50 @@ const waitForDiv = async (condition) => {
 		if (condition()) {
 			resolve();
 		} else {
-			setTimeout(_ => poll(resolve), 50)
+			setTimeout(() => poll(resolve), 50);
 		}
-	}
-
-	return new Promise(poll)
-}
+	};
+	return new Promise(poll);
+};
 
 const updateUI = async () => {
-	await waitForDiv(() => {
-		return document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1') !== null
-	})
+	await waitForDiv(() =>
+		document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1') !== null
+	);
 
-	const search = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')
+	const original = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1');
+	if (!original) return;
 
-	search.classList.add('centered-search')
+	const clone = original.cloneNode(true); // full copy of the node
+
+	original.style.display = 'none';
+
+	clone.classList.add('centered-search');
 
 	if (window.location.pathname !== '/') {
-		search.classList.add('patch')
+		clone.classList.add('patch');
 	}
 
-	const nav = document.querySelector('div.navbar__items')
-
-	nav.appendChild(search)
+	const nav = document.querySelector('div.navbar__items');
+	nav.appendChild(clone); // inject our version instead of stealing React's
 
 	document.addEventListener('click', () => {
-		const search = document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')
-
-		if (search === null) {
-			return
+		if (!document.querySelector('div.navbar__items.navbar__items--right > div.navbarSearchContainer_Bca1')) {
+			return;
 		}
 
-		search.classList.add('centered-search')
+		const clickClone = original.cloneNode(true);
+		clickClone.classList.add('centered-search');
 
 		if (window.location.pathname !== '/') {
-			search.classList.add('patch')
+			clickClone.classList.add('patch');
 		}
 
-		const nav = document.querySelector('div.navbar__items')
-
-		nav.appendChild(search)
-	})
-}
+		const nav = document.querySelector('div.navbar__items');
+		nav.appendChild(clickClone);
+	});
+};
 
 if (ExecutionEnvironment.canUseDOM) {
-	setTimeout(updateUI, 0);
+	setTimeout(updateUI, 0); // let React fully render before running this
 }
