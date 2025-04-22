@@ -23,6 +23,9 @@ const moveSearch = () => {
 
 	const clone = original.cloneNode(true);
 	clone.classList.add('centered-search');
+	setTimeout(() => {
+		clone.classList.add('visible');
+	  }, 1);
 	if (window.location.pathname !== '/') {
 		clone.classList.add('patch');
 	}
