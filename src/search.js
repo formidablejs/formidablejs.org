@@ -77,16 +77,34 @@ const updateUI = async () => {
 	);
 
 	moveSearch();
+};
 
-	document.addEventListener('click', () => {
-		setTimeout(() => {
-			moveSearch();
-		}, 10)
-	});
+const setup = () => {
+	// Ensure search gets moved after hydration is complete
+	if ('requestIdleCallback' in window) {
+		requestIdleCallback(() => {
+			updateUI();
+
+			// Listen for route changes (single page app)
+			document.addEventListener('click', () => {
+				setTimeout(() => {
+					updateUI();
+				}, 300);
+			});
+		});
+	} else {
+		// Fallback
+		window.addEventListener('load', () => {
+			updateUI();
+			document.addEventListener('click', () => {
+				setTimeout(() => {
+					updateUI();
+				}, 300);
+			});
+		});
+	}
 };
 
 if (ExecutionEnvironment.canUseDOM) {
-	window.addEventListener('load', () => {
-		setTimeout(updateUI, 0);
-	});
+	setup();
 }
