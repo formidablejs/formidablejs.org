@@ -29,7 +29,7 @@ To build a multi-page application, use the `create-formidable` CLI with the foll
 <TabItem value="npm">
 
 ```bash
-npm create formidable@latest example-app --imba --scaffolding mpa
+npm create formidable@latest example-app -- --imba --scaffolding mpa
 ```
 
 </TabItem>
@@ -79,7 +79,7 @@ To build a single-page application, you can use the `create-formidable` CLI with
 <TabItem value="npm">
 
 ```bash
-npm create formidable@latest example-app --imba
+npm create formidable@latest example-app -- --imba
 ```
 
 </TabItem>
@@ -147,7 +147,7 @@ To get started with an application powered by Inertia, use the following command
 <TabItem value="npm">
 
 ```bash
-npm create formidable@latest example-app --vue
+npm create formidable@latest example-app -- --vue
 ```
 
 </TabItem>
@@ -191,7 +191,7 @@ bun create formidable@latest example-app --vue
 <TabItem value="npm">
 
 ```bash
-npm create formidable@latest example-app --react
+npm create formidable@latest example-app -- --react
 ```
 
 </TabItem>
@@ -235,7 +235,7 @@ bun create formidable@latest example-app --react
 <TabItem value="npm">
 
 ```bash
-npm create formidable@latest example-app --svelte
+npm create formidable@latest example-app -- --svelte
 ```
 
 </TabItem>
