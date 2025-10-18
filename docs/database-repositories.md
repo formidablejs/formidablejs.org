@@ -59,12 +59,12 @@ export class UserRepository extends Repository {
 		return 'users'
 	}
 
-    /**
-     * Context reference.
-     */
-    static get context(): string {
-        return 'UserRepository'
-    }
+	/**
+	 * Context reference.
+	 */
+	static get context(): string {
+		return 'UserRepository'
+	}
 }
 ```
 
@@ -738,72 +738,72 @@ Here's an example response:
 
 ```json
 {
-    "data": [
-        {
-            "id": 1001,
-            "name": "Dr. Maureen Cormier",
-            "email": "Tyrel_Emard@gmail.com",
-            "password": "$2b$10$bqL4Z.gWsEMevmNDWtP0YOu03YOXREiCbfOktXSjK85JKGjY/RP2K",
-            "remember_token": null,
-            "email_verified_at": null,
-            "created_at": "2023-12-16 05:58:26",
-            "updated_at": "2023-12-16 05:58:26"
-        },
+	"data": [
+		{
+			"id": 1001,
+			"name": "Dr. Maureen Cormier",
+			"email": "Tyrel_Emard@gmail.com",
+			"password": "$2b$10$bqL4Z.gWsEMevmNDWtP0YOu03YOXREiCbfOktXSjK85JKGjY/RP2K",
+			"remember_token": null,
+			"email_verified_at": null,
+			"created_at": "2023-12-16 05:58:26",
+			"updated_at": "2023-12-16 05:58:26"
+		},
 		...
-    ],
-    "pagination": {
-        "total": 3000,
-        "pageSize": 10,
-        "currentPage": 1,
-        "totalPages": 300,
-        "pages": [1, 2, 3, 4, 5],
-        "firstPage": 1,
-        "lastPage": 300,
-        "prevPage": null,
-        "nextPage": 2,
-        "links": {
-            "1": {
-                "label": 1,
-                "active": true,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=1"
-            },
-            "2": {
-                "label": 2,
-                "active": false,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=2"
-            },
-            "3": {
-                "label": 3,
-                "active": false,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=3"
-            },
-            "4": {
-                "label": 4,
-                "active": false,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=4"
-            },
-            "5": {
-                "label": 5,
-                "active": false,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=5"
-            },
-            "firstPage": {
-                "label": "First",
-                "active": true,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=1"
-            },
-            "prevPage": null,
-            "nextPage": {
-                "label": "Next",
-                "active": false,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=2"
-            },
-            "lastPage": {
-                "label": "Last",
-                "active": false,
-                "url": "http://127.0.0.1:3000/api/users/?value=&page=300"
-            }
-        }
-    }
+	],
+	"pagination": {
+		"total": 3000,
+		"pageSize": 10,
+		"currentPage": 1,
+		"totalPages": 300,
+		"pages": [1, 2, 3, 4, 5],
+		"firstPage": 1,
+		"lastPage": 300,
+		"prevPage": null,
+		"nextPage": 2,
+		"links": {
+			"1": {
+				"label": 1,
+				"active": true,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=1"
+			},
+			"2": {
+				"label": 2,
+				"active": false,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=2"
+			},
+			"3": {
+				"label": 3,
+				"active": false,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=3"
+			},
+			"4": {
+				"label": 4,
+				"active": false,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=4"
+			},
+			"5": {
+				"label": 5,
+				"active": false,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=5"
+			},
+			"firstPage": {
+				"label": "First",
+				"active": true,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=1"
+			},
+			"prevPage": null,
+			"nextPage": {
+				"label": "Next",
+				"active": false,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=2"
+			},
+			"lastPage": {
+				"label": "Last",
+				"active": false,
+				"url": "http://127.0.0.1:3000/api/users/?value=&page=300"
+			}
+		}
+	}
 }
 ```
