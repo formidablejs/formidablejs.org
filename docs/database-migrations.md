@@ -25,25 +25,24 @@ node craftsman make:migration CreatePostsTable --table=posts
 
 The command above will create a new migration file under `/database/migrations` and will generate the following migration:
 
-```js
-const { Database } = require('@formidablejs/framework');
+```ts
+import type { Database } from '@formidablejs/framework';
 
-/** @param {Database} DB */
-exports.up = (DB) => {
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('posts', (table) => {
 
 	});
 };
 
-/** @param {Database} DB */
-exports.down = (DB) => DB.schema.dropTable('posts');
-
+export async function down(DB: Database): Promise<void> {
+	return DB.schema.dropTable('posts');
+}
 ```
 
 We can now define our migration's schema in the `up` function:
 
-```js
-exports.up = (DB) => {
+```ts
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('posts', (table) => {
 		table.increments('id').primary();
 		table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
@@ -74,15 +73,13 @@ Here is an example of a migration that adds a new column to an existing table:
 node craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
 ```
 
-```js
-const { Database } = require('@formidablejs/framework');
+```ts
+import type { Database } from '@formidablejs/framework';
 
 /**
  * Add a softDeletes (delete_at) column to the posts table.
- *
- * @param {Database} DB
  */
-exports.up = (DB) => {
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.table('posts', (table) => {
 		table.timestamp('deleted_at').nullable();
 	});
@@ -90,10 +87,8 @@ exports.up = (DB) => {
 
 /**
  * Remove the softDeletes (deleted_at) column from the posts table.
- *
- * @param {Database} DB
  */
-exports.down = (DB) => {
+export async function down(DB: Database): Promise<void> {
 	return DB.schema.table('posts', (table) => {
 		table.schema.dropColumn('deleted_at')
 	});
@@ -106,15 +101,13 @@ This migration will add a new column to the `posts` table when `migrate up` is r
 
 Here is an example of a migration that removes a column from an existing table:
 
-```js
-const { Database } = require('@formidablejs/framework');
+```ts
+import type { Database } from '@formidablejs/framework';
 
 /**
  * Remove the softDeletes (deleted_at) column from the posts table.
- *
- * @param {Database} DB
  */
-exports.up = (DB) => {
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.table('posts', (table) => {
 		table.dropColumn('deleted_at');
 	});
@@ -122,10 +115,8 @@ exports.up = (DB) => {
 
 /**
  * Add a softDeletes (delete_at) column to the posts table.
- *
- * @param {Database} DB
  */
-exports.down = (DB) => {
+export async function down(DB: Database): Promise<void> {
 	return DB.schema.table('posts', (table) => {
 		table.timestamp('deleted_at').nullable();
 	});
@@ -136,37 +127,35 @@ exports.down = (DB) => {
 
 Here is an example of a migration that renames a column in an existing table:
 
-```js
-const { Database } = require('@formidablejs/framework');
+```ts
+import type { Database } from '@formidablejs/framework';
 
 /**
  * Rename the deleted_at column to delete_when in the posts table.
- *
- * @param {Database} DB
  */
-exports.up = (DB) => DB.schema.table('posts').renameColumn('deleted_at', 'deleted_when');
+export async function up(DB: Database): Promise<void> {
+	return DB.schema.table('posts').renameColumn('deleted_at', 'deleted_when');
+};
 
 /**
  * Rename the deleted_when column from posts table back to deleted_at.
- *
- * @param {Database} DB
  */
-exports.down = (DB) => DB.schema.table('posts').renameColumn('deleted_when', 'deleted_at');
+export async function down(DB: Database): Promise<void> {
+	return DB.schema.table('posts').renameColumn('deleted_when', 'deleted_at');
+};
 ```
 
 ### Changing A Column
 
 Here is an example of a migration that changes a column in an existing table:
 
-```js
-const { Database } = require('@formidablejs/framework');
+```ts
+import type { Database } from '@formidablejs/framework';
 
 /**
  * Change the type of the deleted_at column from timestamp to boolean.
- *
- * @param {Database} DB
  */
-exports.up = (DB) => {
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.table('posts', (table) => {
 		table.boolean('deleted_at').alter();
 	});
@@ -174,10 +163,8 @@ exports.up = (DB) => {
 
 /**
  * Change the type of the deleted_at column from boolean to timestamp and make it nullable.
- *
- * @param {Database} DB
  */
-exports.down = (DB) => {
+export async function down(DB: Database): Promise<void> {
 	return DB.schema.table('posts', (table) => {
 		table.timestamp('deleted_at').nullable().alter();
 	});
@@ -224,15 +211,13 @@ The Formidable Framework uses [Knex.js](https://knexjs.org/) to build database s
 
 Let's take a look at an example migration:
 
-```js
-const { Database } = require('@formidablejs/framework');
+```ts
+import type { Database } from '@formidablejs/framework';
 
 /**
  * Create the posts table.
- *
- * @param {Database} DB
  */
-exports.up = (DB) => {
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('posts', (table) => {
 		table.increments('id').primary();
 		table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
@@ -244,10 +229,10 @@ exports.up = (DB) => {
 
 /**
  * Drop the posts table.
- *
- * @param {Database} DB
  */
-exports.down = (DB) => DB.schema.dropTable('posts');
+export async function down(DB: Database): Promise<void> {
+	return DB.schema.dropTable('posts');
+};
 ```
 
 The `up` method receives a `Database` instance as its first argument. This instance provides a variety of methods that may be used to define the schema for the table. The `down` method receives the same `Database` instance, allowing you to reverse the operations performed by the `up` method.
@@ -256,8 +241,8 @@ The `up` method receives a `Database` instance as its first argument. This insta
 
 To create a new database table, use the `createTable` method on the `Database` instance you receive in your migration:
 
-```js
-exports.up = (DB) => {
+```ts
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('users', (table) => {
 		table.increments('id').primary();
 		table.string('email').unique();
@@ -273,8 +258,8 @@ The `createTable` method accepts two arguments: the first is the name of the tab
 
 The `TableBuilder` class contains a variety of column types that you may use when building your tables:
 
-```js
-exports.up = (DB) => {
+```ts
+export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('users', (table) => {
 		table.increments('id').primary();
 		table.string('email').unique();
@@ -290,7 +275,7 @@ exports.up = (DB) => {
 
 Drops a column, specified by the column's name
 
-```js
+```ts
 table.dropColumn('deleted_at');
 ```
 
@@ -298,7 +283,7 @@ table.dropColumn('deleted_at');
 
 Drops multiple columns, specified by an array of column names
 
-```js
+```ts
 table.dropColumns(['deleted_at', 'deleted_by']);
 ```
 
@@ -306,7 +291,7 @@ table.dropColumns(['deleted_at', 'deleted_by']);
 
 Renames a column from one name to another
 
-```js
+```ts
 table.renameColumn('deleted_at', 'deleted_when');
 ```
 
@@ -314,7 +299,7 @@ table.renameColumn('deleted_at', 'deleted_when');
 
 Adds a `remember_token` column to the table
 
-```js
+```ts
 table.rememberToken();
 ```
 
@@ -322,7 +307,7 @@ table.rememberToken();
 
 Adds an auto incrementing column. This is the same as `integer` with `autoIncrement` set to `true`.
 
-```js
+```ts
 table.increments('id').primary();
 ```
 
@@ -330,7 +315,7 @@ table.increments('id').primary();
 
 Adds an integer column.
 
-```js
+```ts
 table.integer('age');
 ```
 
@@ -338,7 +323,7 @@ table.integer('age');
 
 Adds a big integer column.
 
-```js
+```ts
 table.bigInteger('views');
 ```
 
@@ -346,7 +331,7 @@ table.bigInteger('views');
 
 Adds a tiny integer column.
 
-```js
+```ts
 table.tinyint('views');
 ```
 
@@ -354,7 +339,7 @@ table.tinyint('views');
 
 Adds a small integer column.
 
-```js
+```ts
 table.smallint('views');
 ```
 
@@ -362,7 +347,7 @@ table.smallint('views');
 
 Adds a medium integer column.
 
-```js
+```ts
 table.mediumint('views');
 ```
 
@@ -370,7 +355,7 @@ table.mediumint('views');
 
 Adds a big integer column.
 
-```js
+```ts
 table.bigint('views');
 ```
 
@@ -378,7 +363,7 @@ table.bigint('views');
 
 Adds a text column.
 
-```js
+```ts
 table.text('description');
 ```
 
@@ -386,7 +371,7 @@ table.text('description');
 
 Adds a string column.
 
-```js
+```ts
 table.string('email');
 ```
 
@@ -394,7 +379,7 @@ table.string('email');
 
 Adds a float column.
 
-```js
+```ts
 table.float('amount');
 ```
 
@@ -402,7 +387,7 @@ table.float('amount');
 
 Adds a double column.
 
-```js
+```ts
 table.double('amount');
 ```
 
@@ -410,7 +395,7 @@ table.double('amount');
 
 Adds a decimal column.
 
-```js
+```ts
 table.decimal('amount');
 ```
 
@@ -418,7 +403,7 @@ table.decimal('amount');
 
 Adds a boolean column.
 
-```js
+```ts
 table.boolean('confirmed');
 ```
 
@@ -426,7 +411,7 @@ table.boolean('confirmed');
 
 Adds a date column.
 
-```js
+```ts
 table.date('created_at');
 ```
 
@@ -434,7 +419,7 @@ table.date('created_at');
 
 Adds a datetime column.
 
-```js
+```ts
 table.datetime('created_at');
 ```
 
@@ -442,7 +427,7 @@ table.datetime('created_at');
 
 Adds a time column.
 
-```js
+```ts
 table.time('sunrise');
 ```
 
@@ -450,7 +435,7 @@ table.time('sunrise');
 
 Adds a timestamp column.
 
-```js
+```ts
 table.timestamp('created_at');
 ```
 
@@ -458,7 +443,7 @@ table.timestamp('created_at');
 
 Adds `created_at` and `updated_at` columns.
 
-```js
+```ts
 table.timestamps();
 ```
 
@@ -466,7 +451,7 @@ table.timestamps();
 
 Drops `created_at` and `updated_at` columns.
 
-```js
+```ts
 table.dropTimestamps();
 ```
 
@@ -474,7 +459,7 @@ table.dropTimestamps();
 
 Adds a `deleted_at` column to the table.
 
-```js
+```ts
 table.softDeletes();
 ```
 
@@ -482,7 +467,7 @@ table.softDeletes();
 
 Drops the `deleted_at` column from the table.
 
-```js
+```ts
 table.dropSoftDeletes();
 ```
 
@@ -490,7 +475,7 @@ table.dropSoftDeletes();
 
 Adds a binary column.
 
-```js
+```ts
 table.binary('photo');
 ```
 
@@ -498,7 +483,7 @@ table.binary('photo');
 
 Adds an enum column.
 
-```js
+```ts
 table.enum('role', ['admin', 'user']);
 ```
 
@@ -506,7 +491,7 @@ table.enum('role', ['admin', 'user']);
 
 Adds a json column.
 
-```js
+```ts
 table.json('options');
 ```
 
@@ -514,7 +499,7 @@ table.json('options');
 
 Adds a jsonb column.
 
-```js
+```ts
 table.jsonb('options');
 ```
 
@@ -522,7 +507,7 @@ table.jsonb('options');
 
 Adds a uuid column.
 
-```js
+```ts
 table.uuid('id').defaultTo(DB.fn.uuid());
 ```
 
@@ -530,7 +515,7 @@ table.uuid('id').defaultTo(DB.fn.uuid());
 
 Adds a comment to the column.
 
-```js
+```ts
 table.string('email').comment('The user\'s email address');
 ```
 
@@ -538,7 +523,7 @@ table.string('email').comment('The user\'s email address');
 
 Sets the table's storage engine.
 
-```js
+```ts
 table.engine('InnoDB');
 ```
 
@@ -546,7 +531,7 @@ table.engine('InnoDB');
 
 Sets the table's character set.
 
-```js
+```ts
 table.charset('utf8mb4');
 ```
 
@@ -554,7 +539,7 @@ table.charset('utf8mb4');
 
 Sets the table's collation.
 
-```js
+```ts
 table.collate('utf8mb4_unicode_ci');
 ```
 
@@ -562,7 +547,7 @@ table.collate('utf8mb4_unicode_ci');
 
 Sets the table's inheritance.
 
-```js
+```ts
 table.inherits('users');
 ```
 
@@ -570,7 +555,7 @@ table.inherits('users');
 
 Sets the table's specific type.
 
-```js
+```ts
 table.specificType('email', 'varchar(100)');
 ```
 
@@ -578,7 +563,7 @@ table.specificType('email', 'varchar(100)');
 
 Adds an index.
 
-```js
+```ts
 table.index('email');
 ```
 
@@ -586,7 +571,7 @@ table.index('email');
 
 Drops an index.
 
-```js
+```ts
 table.dropIndex('email');
 ```
 
@@ -594,7 +579,7 @@ table.dropIndex('email');
 
 Sets the column to be nullable.
 
-```js
+```ts
 table.string('email').setNullable();
 ```
 
@@ -602,7 +587,7 @@ table.string('email').setNullable();
 
 Drops the column's nullable property.
 
-```js
+```ts
 table.string('email').dropNullable();
 ```
 
@@ -610,7 +595,7 @@ table.string('email').dropNullable();
 
 Sets the column to be the primary key.
 
-```js
+```ts
 table.string('email').primary();
 ```
 
@@ -618,7 +603,7 @@ table.string('email').primary();
 
 Sets the column to be unique.
 
-```js
+```ts
 table.string('email').unique();
 ```
 
@@ -626,7 +611,7 @@ table.string('email').unique();
 
 Sets the column to be a foreign key.
 
-```js
+```ts
 table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 ```
 
@@ -634,7 +619,7 @@ table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 
 Drops the column's foreign key.
 
-```js
+```ts
 table.dropForeign('user_id');
 ```
 
@@ -642,7 +627,7 @@ table.dropForeign('user_id');
 
 Drops the column's unique property.
 
-```js
+```ts
 table.string('email').dropUnique();
 ```
 
@@ -650,7 +635,7 @@ table.string('email').dropUnique();
 
 Drops the column's primary property.
 
-```js
+```ts
 table.string('email').dropPrimary();
 ```
 

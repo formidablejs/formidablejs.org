@@ -19,30 +19,143 @@ To generate a seeder, execute the `make:seed` [Craftsman command](/docs/craftsma
 node craftsman make:seed Users --table="users"
 ```
 
-A seeder contains one export by default: `seed`. This export returns an anonymous function which is called when the `db:seed` [Craftsman command](/docs/craftsman) is executed. Within the function, you may insert data into your database however you wish. You may use the [Knex.js](http://knexjs.org/) query builder to manually insert data.
+A seeder contains one export by default: `seed`. This export is an async function which is called when the `db:seed` [Craftsman command](/docs/craftsman) is executed. Within the function, you may insert data into your database however you wish. You may use the [Knex.js](http://knexjs.org/) query builder to manually insert data or use factories.
 
-Here's an example of a `users` seeder that deletes all the users before adding a new one:
+## Using Factories
 
-```js title="database/seeds/20220508114827_users.js"
-const { Database, Hash } = require('@formidablejs/framework');
-const { strRandom } = require('@formidablejs/framework/lib/Support/Helpers');
+Here's an example of a `DatabaseSeeder` that uses factories to create data:
 
-/** @param {Database} DB */
-exports.seed = function (DB) {
+```ts title="database/seeders/DatabaseSeeder.ts"
+import { type Database } from '@formidablejs/framework';
+import { UserFactory } from '../factories/UserFactory';
+
+export const seed = async (DB: Database): Promise<void> => {
+	await UserFactory.factory(5).create()
+}
+```
+
+## Using Direct Insert Queries
+
+Here's an example of a `users` seeder that deletes all the users before adding new ones using direct insert queries:
+
+```ts title="database/seeders/UsersSeeder.ts"
+import { type Database, Hash } from '@formidablejs/framework';
+import { strRandom } from '@formidablejs/framework/lib/Support/Helpers';
+
+export const seed = async (DB: Database): Promise<void> => {
 	// Deletes ALL existing entries
-	return DB.table('users').del()
-		.then(async function () {
-			const password = await Hash.make('password');
+	await DB.table('users').del();
 
-			// Inserts seed entries
-			return DB.table('users').insert([
-				{
-					name: strRandom(10),
-					email: strRandom(10) + '@gmail.com',
-					password: password,
-				},
-			]);
+	const password = await Hash.make('password');
+
+	// Inserts seed entries
+	await DB.table('users').insert([
+		{
+			name: strRandom(10),
+			email: strRandom(10) + '@gmail.com',
+			password: password,
+		},
+	]);
+};
+```
+
+## Advanced Seeding
+
+### Seeding with Relationships
+
+Here's an example that seeds related data:
+
+```ts title="database/seeders/PostsSeeder.ts"
+import { type Database } from '@formidablejs/framework';
+
+export const seed = async (DB: Database): Promise<void> => {
+	// First, get a user to associate posts with
+	const users = await DB.table('users').select('id').limit(1);
+
+	if (users.length > 0) {
+		const userId = users[0].id;
+
+		// Insert posts with foreign key relationship
+		await DB.table('posts').insert([
+			{
+				user_id: userId,
+				title: 'My First Post',
+				body: 'This is the content of my first post.',
+				created_at: new Date(),
+				updated_at: new Date(),
+			},
+			{
+				user_id: userId,
+				title: 'Another Post',
+				body: 'This is another post with some content.',
+				created_at: new Date(),
+				updated_at: new Date(),
+			},
+		]);
+	}
+};
+```
+
+### Seeding with Raw Queries
+
+You can also use raw SQL queries for complex seeding scenarios:
+
+```ts title="database/seeders/ComplexSeeder.ts"
+import { type Database } from '@formidablejs/framework';
+
+export const seed = async (DB: Database): Promise<void> => {
+	// Using raw SQL for complex operations
+	await DB.raw(`
+		INSERT INTO categories (name, slug, created_at, updated_at)
+		VALUES
+			('Technology', 'technology', NOW(), NOW()),
+			('Lifestyle', 'lifestyle', NOW(), NOW()),
+			('Business', 'business', NOW(), NOW())
+		ON DUPLICATE KEY UPDATE updated_at = NOW()
+	`);
+
+	// Using query builder for conditional inserts
+	const existingUsers = await DB.table('users').count('* as count').first();
+
+	if (existingUsers.count === 0) {
+		await DB.table('users').insert({
+			name: 'Admin User',
+			email: 'admin@example.com',
+			password: await Hash.make('password'),
+			created_at: new Date(),
+			updated_at: new Date(),
 		});
+	}
+};
+```
+
+### Batch Insertion
+
+For large amounts of data, you can use batch insertion:
+
+```ts title="database/seeders/BatchSeeder.ts"
+import { type Database } from '@formidablejs/framework';
+
+export const seed = async (DB: Database): Promise<void> => {
+	const users = [];
+
+	// Generate 1000 users
+	for (let i = 0; i < 1000; i++) {
+		users.push({
+			name: `User ${i + 1}`,
+			email: `user${i + 1}@example.com`,
+			password: await Hash.make('password'),
+			created_at: new Date(),
+			updated_at: new Date(),
+		});
+	}
+
+	// Insert in batches of 100
+	const batchSize = 100;
+	for (let i = 0; i < users.length; i += batchSize) {
+		const batch = users.slice(i, i + batchSize);
+		await DB.table('users').insert(batch);
+	}
 };
 ```
 
@@ -52,4 +165,20 @@ You may execute the `db:seed` [Craftsman command](/docs/craftsman) to seed your 
 
 ```bash
 node craftsman db:seed
+```
+
+### Running Specific Seeders
+
+You can also run specific seeders by providing the seeder name:
+
+```bash
+node craftsman db:seed --seeder=UsersSeeder
+```
+
+### Refreshing and Seeding
+
+To refresh your database and run all seeders:
+
+```bash
+node craftsman migrate:fresh --seed
 ```
