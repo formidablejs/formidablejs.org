@@ -135,6 +135,59 @@ export class StoreTaskRequest extends Request {
 
 The `title` rule is required and must be at least 4 characters long. The `description` rule is also required and must be at least 10 characters long. Should the validation fail, Formidable will throw an `ValidationException`.
 
+### Advanced Example: User Registration with Unique Validation
+
+Let's look at a more complex example that demonstrates the `unique` validation rule for user registration:
+
+<Tabs
+    defaultValue={State.language}
+	groupId="code-snippets"
+    values={[
+        {label: 'Imba', value: 'imba'},
+        {label: 'TypeScript', value: 'ts'},
+    ]}>
+<TabItem value="imba">
+
+```js title="app/Http/Requests/RegisterUserRequest.imba"
+import { Request } from '@formidablejs/framework'
+
+export class RegisterUserRequest < Request
+
+	def rules
+		{
+			name: 'required|min:2|max:50'
+			email: 'required|email|unique:users,email'
+			username: 'required|alpha_dash|min:3|max:20|unique:users,username'
+			password: 'required|min:8|confirmed'
+			password_confirmation: 'required'
+		}
+
+```
+
+</TabItem>
+<TabItem value="ts">
+
+```ts title="app/Http/Requests/RegisterUserRequest.ts"
+import { Request } from '@formidablejs/framework'
+
+export class RegisterUserRequest extends Request {
+	rules(): object {
+		return {
+			name: 'required|min:2|max:50',
+			email: 'required|email|unique:users,email',
+			username: 'required|alpha_dash|min:3|max:20|unique:users,username',
+			password: 'required|min:8|confirmed',
+			password_confirmation: 'required'
+		}
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
+In this example, the `email` and `username` fields are validated to ensure they are unique in the `users` table. If a user tries to register with an email or username that already exists, the validation will fail with an appropriate error message.
+
 ### Using The Request In Our Controller
 
 Now that we have created our request, we can go back to our controller and use the `@use` decorator to inject the `FormRequest` into our `store` method:
@@ -421,6 +474,27 @@ The field under validation must match the given regular expression.
 
 **Note**: When using the ``regex`` pattern, it may be necessary to specify rules in an array instead of using pipe delimiters, especially if the regular expression contains a pipe character.
 For each backward slash that you used in your regex pattern, you must escape each one with another backward slash.
+
+#### unique:table,column,ignore_value:ignore_column
+
+The field under validation must be unique in a given database table. If the `ignore_value:ignore_column` option is specified, the given row will be ignored.
+
+**Basic Usage:**
+```
+'email' => 'unique:users,email'
+```
+
+**Ignoring a specific record (useful for updates):**
+```
+'email' => 'unique:users,email,123:id'
+```
+
+**With additional conditions:**
+```
+'email' => 'unique:users,email[whereNull(deleted_at,1)]'
+```
+
+**Note**: The unique rule performs case-insensitive comparisons and supports additional query conditions using the bracket syntax. Available condition methods include `where`, `whereNot`, `whereIn`, `whereNotIn`, `whereLike`, `whereILike`, `whereNull`, and `whereNotNull`.
 
 #### video
 
