@@ -7,7 +7,7 @@ The default Formidable application structure is intended to provide a great star
 
 ## Overview
 
-```text
+```text showLineNumbers
 .
 ├── app
     ├── Console
@@ -20,22 +20,24 @@ The default Formidable application structure is intended to provide a great star
     ├── Interfaces
     ├── Mail
     ├── Resolvers
+	├── Repositories
     └── Types
 ├── bootstrap
     └── cache
 ├── config
 ├── database
+	├── factories
     ├── migrations
-    └── seeds
+    └── seeders
 ├── public
 ├── resources
     ├── lang
     └── views
 ├── routes
 ├── storage
-	├── framework
-	├── logs
-	└── session
+    ├── framework
+    ├── logs
+    └── session
 └── test
 
 ```
@@ -78,6 +80,10 @@ Contains application [mailers](/docs/mail).
 
 Contains application service resolvers.
 
+#### app/Repositories
+
+Houses application [repositories](/docs/database-repositories).
+
 #### app/Types
 
 Houses application types.
@@ -91,11 +97,15 @@ Contains the cached config file and database settings file.
 
 Contains application configuration files.
 
+#### database/factories
+
+Houses your application [factories](/docs/database-factories).
+
 #### database/migrations
 
 Houses your application [migration](/docs/database-migrations) files.
 
-#### database/seeds
+#### database/seeders
 
 Houses your application [seeders](/docs/database-seeding).
 

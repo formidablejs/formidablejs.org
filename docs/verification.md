@@ -37,7 +37,7 @@ node craftsman make:mail CustomEmail
 
 The contents of the newely created `CustomEmail.imba` file will look like this:
 
-```py title="app/Mail/CustomEmail.imba"
+```py title="app/Mail/CustomEmail.imba" showLineNumbers
 import { Mailable } from '@formidablejs/framework'
 
 export class CustomEmail < Mailable
@@ -53,7 +53,7 @@ export class CustomEmail < Mailable
 
 You can remove the `subject` prop and `constructor` method, then import the `VerifyEmail` mailable from the `@formidablejs/framework` package and extend it with your custom mailable:
 
-```py title="app/Mail/CustomEmail.imba"
+```py title="app/Mail/CustomEmail.imba" showLineNumbers
 import Mailable from '@formidablejs/framework/lib/Auth/Mail/VerifyEmail'
 
 export class CustomEmail < Mailable
@@ -74,7 +74,7 @@ Formidable publishes layout tags for all of its email mailable classes in the `r
 
 To access the email verification URL, you can use the `verificationUrl` property of the `FormRequest` instance:
 
-```js
+```js showLineNumbers
 def render
 	const url = self.request.verificationUrl
 

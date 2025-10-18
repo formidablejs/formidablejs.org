@@ -15,7 +15,7 @@ Here is an example of how to create a new record:
 
 To get started, you will have to define a new route that points to a controller, we will assume that the controller is called `PostsController`:
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { PostController } from '../app/Http/Controllers/PostController'
 
@@ -32,7 +32,7 @@ node craftsman make:controller PostController
 
 Now, we want to add a store method in our controller. This method will be the point of entry for our new route:
 
-```py title="app/Http/Controllers/PostController.imba"
+```py title="app/Http/Controllers/PostController.imba" showLineNumbers
 import Controller from './Controller'
 
 export class PostController < Controller
@@ -51,7 +51,7 @@ node craftsman make:request StorePostRequest
 
 Once, we have created our request, we can add the validation rules to the request as well data saving logic:
 
-```py title="app/Http/Requests/StorePostRequest.imba"
+```py title="app/Http/Requests/StorePostRequest.imba" showLineNumbers
 import { FormRequest } from '@formidablejs/framework'
 import { Post } from '../../Models/Post'
 
@@ -78,7 +78,7 @@ export class StorePostRequest < FormRequest
 
 Finally, we can include our new request in our `PostController` and run the `persist` method to save the data to the database:
 
-```py title="app/Http/Controllers/PostController.imba"
+```py title="app/Http/Controllers/PostController.imba" showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { StorePostRequest } from '../Requests/StorePostRequest'
 import { Controller } from './Controller'
@@ -100,7 +100,7 @@ You can query the database using the following methods:
 
 To fetch all records from the database. you can use the `fetchAll` method:
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { Post } from '../app/Models/Post'
 
@@ -112,7 +112,7 @@ Route.get 'posts/all', do
 
 To fetch a single record from the database, you can use the `find` method:
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { Post } from '../app/Models/Post'
 
@@ -123,7 +123,7 @@ Route.get 'posts/:id', do(request)
 
 You may also use the `fetchOne` method:
 
-```js
+```js showLineNumbers
 new Post({ id: 1 }).fetchOne!
 ```
 
@@ -133,13 +133,13 @@ Formidable also provides a cleaner way of fetching records using a route paramet
 
 Let's take a look at an example. Code in our routes file:
 
-```py
+```py showLineNumbers
 Route.get 'posts/:post', [PostController, 'show']
 ```
 
 And our controller:
 
-```py title="app/Http/Controllers/PostController.imba"
+```py title="app/Http/Controllers/PostController.imba" showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { Post } from '../../Models/Post'
 import { Controller } from './Controller'
@@ -155,7 +155,7 @@ This will automatically bind the `post` parameter from the route to the `Post` m
 
 If you want to use a different column name, you can prefix the parameter with `:` and the name of the column you want to use:
 
-```py
+```py showLineNumbers
 Route.get 'posts/:post:slug', [PostController, 'show']
 ```
 
@@ -165,7 +165,7 @@ This will now use `slug` as the column name instead of `id`.
 
 To update a record in the database, you can use the `update` method:
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { Post } from '../app/Models/Post'
 
@@ -181,7 +181,7 @@ Route.get 'posts/:id', do(request)
 
 To delete a record in the database, you can use the `delete` method:
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { Post } from '../app/Models/Post'
 

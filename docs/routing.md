@@ -22,7 +22,7 @@ The most basic Formidable routes accept a URI and a Callback, providing a very s
     ]}>
 <TabItem value="imba">
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 
 Route.get '/', do 'Hello World'
@@ -31,7 +31,7 @@ Route.get '/', do 'Hello World'
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="routes/api.ts"
+```typescript title="routes/api.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 
 Route.get('/', () => 'Hello World')
@@ -53,7 +53,7 @@ All Formidable routes are defined in your route files, which are located in the 
     ]}>
 <TabItem value="imba">
 
-```py title="routes/api.imba"
+```py title="routes/api.imba" showLineNumbers
 import { UserController } from '../app/Http/Controllers/UserController'
 
 Route.get('/user', [UserController, 'index'])
@@ -62,7 +62,7 @@ Route.get('/user', [UserController, 'index'])
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="routes/api.ts"
+```typescript title="routes/api.ts" showLineNumbers
 import { UserController } from '../app/Http/Controllers/UserController'
 
 Route.get('/user', [UserController, 'index'])
@@ -77,7 +77,7 @@ Depending on the Language you're using, Formidable defines all routes in the `ro
 
 The router allows you to register routes that respond to any of the listed HTTP verbs:
 
-```js
+```js showLineNumbers
 Route.get(uri, callback)
 Route.post(uri, callback)
 Route.put(uri, callback)
@@ -101,7 +101,7 @@ You might find yourself in a situation where you would like to have dynamic rout
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 Route.get '/posts/:id', do (request\Request)
 	const postId\number = request.param('id')
 	''
@@ -110,7 +110,7 @@ Route.get '/posts/:id', do (request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="routes/api.ts"
+```typescript title="routes/api.ts" showLineNumbers
 Route.get('/posts/:id', (request: Request) => {
 	const postId: number = request.param('id')
 	''
@@ -133,7 +133,7 @@ You may also define as many route parameters as required by your route:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 Route.get '/user/:user/posts/:post', do (request\Request)
     const userId\number = request.param('user')
     const postId\number = request.param('post')
@@ -143,7 +143,7 @@ Route.get '/user/:user/posts/:post', do (request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```typescript title="routes/api.ts"
+```typescript title="routes/api.ts" showLineNumbers
 Route.get('/user/:user/posts/:post', (request: Request) => {
     const userId: number = request.param('user')
     const postId: number = request.param('post')
@@ -169,7 +169,7 @@ Formidable makes it easy to automatically load a database record based on a rout
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Controllers/PostController.imba" {1,6}
+```js title="app/Http/Controllers/PostController.imba" {1,6} showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -183,7 +183,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```js title="app/Http/Controllers/PostController.ts" {1,6}
+```js title="app/Http/Controllers/PostController.ts" {1,6} showLineNumbers
 import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -212,7 +212,7 @@ If you want to load multiple database records, you can do so by passing all the 
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Controllers/PostController.imba" {1,6}
+```js title="app/Http/Controllers/PostController.imba" {1,6} showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -227,7 +227,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```js title="app/Http/Controllers/PostController.ts" {1,6}
+```js title="app/Http/Controllers/PostController.ts" {1,6} showLineNumbers
 import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -257,7 +257,7 @@ You can also promote route params to your controller action using the `@use` dec
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Controllers/PostController.imba" {1,6}
+```js title="app/Http/Controllers/PostController.imba" {1,6} showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -270,7 +270,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/PostController.imba" {1,5}
+```ts title="app/Http/Controllers/PostController.imba" {1,5} showLineNumbers
 import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -297,7 +297,7 @@ You can also specify which param should be loaded:
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Controllers/PostController.imba" {1,6}
+```js title="app/Http/Controllers/PostController.imba" {1,6} showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -310,7 +310,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/PostController.imba" {1,5}
+```ts title="app/Http/Controllers/PostController.imba" {1,5} showLineNumbers
 import { use } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -337,7 +337,7 @@ You can also load multiple params:
     ]}>
 <TabItem value="imba">
 
-```js title="app/Http/Controllers/PostController.imba" {1,7}
+```js title="app/Http/Controllers/PostController.imba" {1,7} showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { DB } from '@formidablejs/framework'
 import { Controller } from './Controller'
@@ -351,7 +351,7 @@ export class PostController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/PostController.imba" {1,6}
+```ts title="app/Http/Controllers/PostController.imba" {1,6} showLineNumbers
 import { use } from '@formidablejs/framework'
 import { DB } from '@formidablejs/framework'
 import { Controller } from './Controller'
@@ -379,7 +379,7 @@ export class PostController extends Controller {
     ]}>
 <TabItem value="imba">
 
-```py title="routes/api.imba" {3}
+```py title="routes/api.imba" {3} showLineNumbers
 Route.get('/posts/:slug', do(request\Request)
 	# do somthing
 ).name('posts.show')
@@ -388,7 +388,7 @@ Route.get('/posts/:slug', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {3}
+```ts title="routes/api.ts" {3} showLineNumbers
 Route.get('/posts/:slug', (request: Request) => {
 	// do somthing
 }).name('posts.show')
@@ -408,14 +408,14 @@ You may also specify route names for controller actions:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 Route.get('/posts/:slug', [PostController, 'show']).name('posts.show')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 Route.get('/posts/:slug', [PostController, 'show']).name('posts.show')
 ```
 
@@ -435,7 +435,7 @@ Once you have assigned a name to a given route, you may use the route's name whe
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { URL } from '@formidablejs/framework'
 import { Redirect } from '@formidablejs/framework'
 
@@ -449,7 +449,7 @@ return Redirect.route('user')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { URL } from '@formidablejs/framework'
 import { Redirect } from '@formidablejs/framework'
 
@@ -474,7 +474,7 @@ If the named route defines parameters, you may pass the parameters as the second
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Route.get('/posts/:id', do(request\Request)
 	# do something
 ).name('posts.show')
@@ -487,7 +487,7 @@ const url = URL.route('posts.show', {
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/posts/:id', (request: Request) => {
 	# do something
 }).name('posts.show')
@@ -513,7 +513,7 @@ If you would like to determine if the current request was routed to a given name
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 def handle request\Request
 	if request.routeIs 'posts.show'
 		# do something
@@ -522,7 +522,7 @@ def handle request\Request
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 handle(request: Request) {
 	if (request.routeIs('posts.show')) {
 		// do something
@@ -550,7 +550,7 @@ To assign middleware to all routes within a group, you may add the `middleware` 
     ]}>
 <TabItem value="imba">
 
-```js {1}
+```js {1} showLineNumbers
 Route.group { middleware: ['first', 'second'] }, do
 	Route.get '/', do
 		# uses first & second Middleware
@@ -562,7 +562,7 @@ Route.group { middleware: ['first', 'second'] }, do
 </TabItem>
 <TabItem value="ts">
 
-```ts {1}
+```ts {1} showLineNumbers
 Route.group({ middleware: ['first', 'second'] }, () => {
 	Route.get('/', () => {
 		// uses first & second Middleware
@@ -590,7 +590,7 @@ The `prefix` keyword may be used to prefix each route in the group with a given 
     ]}>
 <TabItem value="imba">
 
-```js {1}
+```js {1} showLineNumbers
 Route.group { prefix: 'admin' }, do
 	Route.get 'users', do
 		# matches the "/admin/users" URL
@@ -600,7 +600,7 @@ Route.group { prefix: 'admin' }, do
 </TabItem>
 <TabItem value="ts">
 
-```ts {1}
+```ts {1} showLineNumbers
 Route.group({ prefix: 'admin' }, () => {
 	Route.get('users', () => {
 		// matches the "/admin/users" URL

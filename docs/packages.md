@@ -26,7 +26,7 @@ We can create a service resolver in our package that adds a route that returns a
     ]}>
 <TabItem value="imba">
 
-```py title="src/QuotesServiceResolver.imba"
+```py title="src/QuotesServiceResolver.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -48,7 +48,7 @@ export class QuotesServiceResolver < ServiceResolver
 </TabItem>
 <TabItem value="ts">
 
-```ts title="src/QuotesServiceResolver.ts"
+```ts title="src/QuotesServiceResolver.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
 
@@ -83,7 +83,7 @@ We can then register the resolver in a formidable application in the `bootstrap/
     ]}>
 <TabItem value="imba">
 
-```py title="bootstrap/resolvers.imba" {1,6}
+```py title="bootstrap/resolvers.imba" {1,6} showLineNumbers
 import { QuotesServiceResolver } from '<custom-package>'
 ...
 
@@ -95,7 +95,7 @@ export default [
 </TabItem>
 <TabItem value="ts">
 
-```ts title="bootstrap/resolvers.ts" {1,6}
+```ts title="bootstrap/resolvers.ts" {1,6} showLineNumbers
 import { QuotesServiceResolver } from '<custom-package>'
 ...
 
@@ -115,7 +115,7 @@ Before a package can be used by Formidable, it needs to be registered. This mean
 
 You can ship framework files such as a `config` file, along with your package. This can be done by including a `Package.js` file in your package:
 
-```js title="formidable/Package.js" {2,4}
+```js title="formidable/Package.js" {2,4} showLineNumbers
 exports.Package = class Package {
 	publish(language = 'imba') {
 		const ext = language.toLowerCase() == 'imba'
@@ -139,7 +139,7 @@ exports.Package = class Package {
 
 For formidable to be aware of the `Package.js` file, you must include it in the `package.json` npm file with the key `publisher`:
 
-```json title="package.json" {4}
+```json title="package.json" {4} showLineNumbers
 {
 	"name": "my-package",
 	"version": "1.0.0",
@@ -175,7 +175,7 @@ Formidable supports [Fastify](https://www.fastify.io/docs/latest/Reference/Hooks
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { FastifyRequest } from '@formidablejs/framework'
 import { Log } from '@formidablejs/logger'
 import { ServiceResolver } from '@formidablejs/framework'
@@ -190,7 +190,7 @@ export class HttpLoggerServiceResolver < ServiceResolver
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Log } from '@formidablejs/logger'
 import { FastifyRequest } from '@formidablejs/framework'
 import { ServiceResolver } from '@formidablejs/framework'
@@ -231,7 +231,7 @@ Update your Service Resolver:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 
 export class UnderPresureServiceResolver < ServiceResolver
@@ -251,7 +251,7 @@ export class UnderPresureServiceResolver < ServiceResolver
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 
 export class UnderPresureServiceResolver extends ServiceResolver {
@@ -284,7 +284,7 @@ If you want to tinker with the updated [Fastify](https://www.fastify.io) server 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 import { FastifyInstance } from '@formidablejs/framework'
 
@@ -308,7 +308,7 @@ export class UnderPresureServiceResolver < ServiceResolver
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 import { FastifyInstance } from '@formidablejs/framework'
 
@@ -352,7 +352,7 @@ To register a new route, just use the `Route` class:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
@@ -367,7 +367,7 @@ export class DashboardServiceResolver < ServiceResolver
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
@@ -400,7 +400,7 @@ You can register a package command using the `registerCommand` app function:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 import { MakeRoleCommand } from '../commands/MakeRoleCommand'
 
@@ -413,7 +413,7 @@ export class DashboardServiceResolver < ServiceResolver
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { ServiceResolver } from '@formidablejs/framework'
 import { MakeRoleCommand } from '../commands/MakeRoleCommand'
 

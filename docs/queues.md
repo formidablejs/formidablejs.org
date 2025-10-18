@@ -33,7 +33,7 @@ Out of the box, a new Formidable application comes with a `config/queue.ts` or `
 	]}>
 <TabItem value="imba">
 
-```py title="config/queue.imba"
+```py title="config/queue.imba" showLineNumbers
 import { env } from '@formidablejs/framework'
 
 export default {
@@ -78,7 +78,7 @@ export default {
 
 <TabItem value="ts">
 
-```ts title="config/queue.ts"
+```ts title="config/queue.ts" showLineNumbers
 import { env } from '@formidablejs/framework'
 
 export default {
@@ -141,7 +141,7 @@ When using the `redis` driver, Formidable Queues will attempt to use the `queues
     ]}>
 <TabItem value="imba">
 
-```py title="config/database.imba" {7-13}
+```py title="config/database.imba" {7-13} showLineNumbers
 export default {
 	...
 
@@ -162,7 +162,7 @@ export default {
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/database.ts" {7-13}
+```ts title="config/database.ts" {7-13} showLineNumbers
 export default {
 	...
 
@@ -208,7 +208,7 @@ Job classes are very simple, normally containing only a `handle` method that is 
     ]}>
 <TabItem value="imba">
 
-```py title="app/Jobs/ProcessAudio.imba" {6}
+```py title="app/Jobs/ProcessAudio.imba" {6} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 
 export class ProcessAudio < Queueable
@@ -222,16 +222,16 @@ export class ProcessAudio < Queueable
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Jobs/ProcessAudio.ts" {7}
+```ts title="app/Jobs/ProcessAudio.ts" {7} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 
 export class ProcessAudio extends Queueable {
-    /**
-     * Handle job.
-     */
-    handle(audioId: number): any {
-        console.log('Process uploaded audio...')
-    }
+	/**
+	 * Handle job.
+	 */
+	handle(audioId: number): any {
+		console.log('Process uploaded audio...')
+	}
 }
 ```
 
@@ -251,7 +251,7 @@ By default, Formidable Queues use the `default` queue. You can change this per j
     ]}>
 <TabItem value="imba">
 
-```py title="app/Jobs/ProcessAudio.imba" {6-7}
+```py title="app/Jobs/ProcessAudio.imba" {6-7} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 
 export class ProcessAudio < Queueable
@@ -265,14 +265,14 @@ export class ProcessAudio < Queueable
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Jobs/ProcessAudio.ts" {7-9}
+```ts title="app/Jobs/ProcessAudio.ts" {7-9} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 
 export class ProcessAudio extends Queueable {
 	/**
 	 * Queue to run job on.
 	 */
-    get queue(): string {
+	get queue(): string {
 		return 'custom_queue'
 	}
 }
@@ -294,7 +294,7 @@ You can also define a timeout for specific jobs by adding a `timeout` getter tha
     ]}>
 <TabItem value="imba">
 
-```py title="app/Jobs/ProcessAudio.imba" {6-7}
+```py title="app/Jobs/ProcessAudio.imba" {6-7} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 
 export class ProcessAudio < Queueable
@@ -308,14 +308,14 @@ export class ProcessAudio < Queueable
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Jobs/ProcessAudio.ts" {7-9}
+```ts title="app/Jobs/ProcessAudio.ts" {7-9} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 
 export class ProcessAudio extends Queueable {
 	/**
 	 * The timeout time for the job.
 	 */
-    get timeout(): string {
+	get timeout(): string {
 		return '2 hours'
 	}
 }
@@ -339,7 +339,7 @@ To register a job, simply import it in the `Kernel.ts` or `Kernel.imba` file und
     ]}>
 <TabItem value="imba">
 
-```py title="app/Console/Kernel.imba" {1-2,6-9}
+```py title="app/Console/Kernel.imba" {1-2,6-9} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 import { ProcessAudio } from '../Jobs/ProcessAudio'
 ...
@@ -355,7 +355,7 @@ export class Kernel < ConsoleKernel
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Console/Kernel.ts" {1-2,6-10}
+```ts title="app/Console/Kernel.ts" {1-2,6-10} showLineNumbers
 import { Queueable } from '@formidablejs/queues'
 import { ProcessAudio } from '../Jobs/ProcessAudio'
 ...
@@ -386,7 +386,7 @@ Once you have written your job class, you may dispatch it using the dispatch `me
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/AudioController.imba" {23}
+```py title="app/Http/Controllers/AudioController.imba" {23} showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { strRandom } from '@formidablejs/framework'
 import { AudioRepository } from '../../Repositories/AudioRepository'
@@ -415,7 +415,7 @@ export class AudioController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/AudioController.ts" {25}
+```ts title="app/Http/Controllers/AudioController.ts" {25} showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { strRandom } from '@formidablejs/framework'
 import { AudioRepository } from '../../Repositories/AudioRepository'
@@ -461,7 +461,7 @@ You may also delay a job with the `delay` method:
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/AudioController.imba" {9}
+```py title="app/Http/Controllers/AudioController.imba" {9} showLineNumbers
 export class AudioController < Controller
 	prop audio = new AudioRepository
 
@@ -477,7 +477,7 @@ export class AudioController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/AudioController.ts" {11}
+```ts title="app/Http/Controllers/AudioController.ts" {11} showLineNumbers
 export class AudioController extends Controller {
 	private readonly audio = new AudioRepository
 
@@ -557,7 +557,7 @@ node craftsman queue:flush
 
 When running your application in production, it is recommended to use pm2 for your queues:
 
-```js title="ecosystem.config.js"
+```js title="ecosystem.config.js" showLineNumbers
 module.exports = {
 	apps: [
 		{
@@ -589,7 +589,7 @@ The `onReady` event gets called when the queue worker is ready:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { Queue } from '@formidablejs/queues'
 
 Queue.onReady(do(queueName\string)
@@ -600,7 +600,7 @@ Queue.onReady(do(queueName\string)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Queue } from '@formidablejs/queues'
 
 Queue.onReady((queueName: string) => {
@@ -624,7 +624,7 @@ The `onError` event, gets called when a job fails:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { Queue } from '@formidablejs/queues'
 
 Queue.onError(do(queueName\string, job, error\Error)
@@ -635,7 +635,7 @@ Queue.onError(do(queueName\string, job, error\Error)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Queue } from '@formidablejs/queues'
 
 Queue.onReady((queueName: string, job, error: Error) => {
@@ -659,7 +659,7 @@ The `onLog` event gets called when the queue logs the current state of jobs:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { Queue } from '@formidablejs/queues'
 
 Queue.onLog(do(queueName\string, job, type\string)
@@ -670,7 +670,7 @@ Queue.onLog(do(queueName\string, job, type\string)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { Queue } from '@formidablejs/queues'
 
 Queue.onLog((queueName: string, job, type: string) => {

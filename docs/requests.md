@@ -26,7 +26,7 @@ Formidable loads requests to route actions as first parameters by default:
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/TaskController.imba"
+```py title="app/Http/Controllers/TaskController.imba" showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -39,7 +39,7 @@ export class TaskController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/TaskController.ts"
+```ts title="app/Http/Controllers/TaskController.ts" showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Controller } from './Controller'
 
@@ -66,7 +66,7 @@ To use a different `FormRequest`, you may use the `@use` decorator:
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/TaskController.imba"
+```py title="app/Http/Controllers/TaskController.imba" showLineNumbers
 import { @use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
@@ -81,8 +81,8 @@ export class TaskController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/TaskController.ts"
-import { use } from '@formidablejs/ts-ports'
+```ts title="app/Http/Controllers/TaskController.ts" showLineNumbers
+import { use } from '@formidablejs/framework'
 import { StoreTaskRequest } from '../Requests/StoreTaskRequest'
 import { Controller } from './Controller'
 
@@ -114,14 +114,14 @@ The `getHost` method returns the request's host:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const host\string = request.getHost!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```js
+```js showLineNumbers
 const host: string = request.getHost()
 ```
 
@@ -141,14 +141,14 @@ The `getOrigin` method returns the request's origin:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const origin\string = request.getOrigin!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const origin: string = request.getOrigin()
 ```
 
@@ -166,14 +166,14 @@ You may also use the `getFullOrigin` method to retrieve the full origin includin
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const fullOrigin\string = request.getFullOrigin!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const fullOrigin: string = request.getFullOrigin()
 ```
 
@@ -193,14 +193,14 @@ The `getOriginProtocol` method returns the request's protocol:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const protocol\string = request.getOriginProtocol!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const protocol: string = request.getOriginProtocol()
 ```
 
@@ -222,14 +222,14 @@ The `url` method returns the request's path. So, if the incoming request is targ
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const uri = request.url!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const uri = request.url()
 ```
 
@@ -249,7 +249,7 @@ The `isUrl` method allows you to verify that the incoming request path matches a
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if request.isUrl 'tasks/store'
 	# do somthing
 ```
@@ -257,7 +257,7 @@ if request.isUrl 'tasks/store'
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (request.isUrl('tasks/store')) {
 	// do somthing
 }
@@ -278,7 +278,7 @@ if (request.isUrl('tasks/store')) {
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if request.pathIs 'tasks/*'
 	# do somthing
 ```
@@ -286,7 +286,7 @@ if request.pathIs 'tasks/*'
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (request.pathIs('tasks/*')) {
 	// do somthing
 }
@@ -306,7 +306,7 @@ Using the `isRoute` method, you may determine if the incoming request has matche
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if request.isRoute 'tasks.*'
 	# do something
 ```
@@ -314,7 +314,7 @@ if request.isRoute 'tasks.*'
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (request.isRoute('tasks.*')) {
 	// do something
 }
@@ -336,7 +336,7 @@ To retrieve the full URL for the incoming request you may use the `url`, `urlWit
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const url\string = request.url!
 
 const urlWithoutQueryString\string = request.urlWithoutQuery!
@@ -347,7 +347,7 @@ const fullUrl\string = request.fullUrl!
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const url: string = request.url()
 
 const urlWithoutQueryString: string = request.urlWithoutQuery()
@@ -371,14 +371,14 @@ To retrieve a route parameter from the incoming request you may use the `param` 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const slug\string|null = request.param('slug')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const slug: string|null = request.param('slug')
 ```
 
@@ -396,14 +396,14 @@ To retrieve all route parameters, you may use the `params` method:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const params\object = request.params!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const params: object = request.params()
 ```
 
@@ -423,7 +423,7 @@ The `method` method will return the HTTP verb for the request. You may use the `
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const method\string = request.method!
 
 if request.isMethod 'POST'
@@ -433,7 +433,7 @@ if request.isMethod 'POST'
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const method: string = request.method()
 
 if (request.isMethod('POST')) {
@@ -457,7 +457,7 @@ You may retrieve a request header from the `FormRequest` instance using the head
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const value\string|null = request.header('header-name')
 
 const value\string = request.header('header-name', 'default')
@@ -466,7 +466,7 @@ const value\string = request.header('header-name', 'default')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const value: string|null = request.header('header-name')
 
 const value: string = request.header('header-name', 'default')
@@ -486,7 +486,7 @@ The `hasHeader` method may be used to determine if the request contains a given 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if request.hasHeader 'header-name'
 	# do something
 ```
@@ -494,7 +494,7 @@ if request.hasHeader 'header-name'
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (request.hasHeader('header-name')) {
 	// do something
 }
@@ -514,14 +514,14 @@ For convenience, the `bearerToken` method may be used to retrieve a bearer token
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const token\string|null = request.bearerToken!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const token: string|null = request.bearerToken()
 ```
 
@@ -541,14 +541,14 @@ The `ip` method may be used to retrieve the IP address of the client that made t
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const ipAddress\string = request.ip!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const ipAddress: string = request.ip()
 ```
 
@@ -572,14 +572,14 @@ You may retrieve all of the incoming request's input data as an `object` using t
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const input\object = request.all!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const input: object = request.all()
 ```
 
@@ -599,14 +599,14 @@ Using a few simple methods, you may access all of the user input from your `Form
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const name\string|null = request.input('name')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const name: string|null = request.input('name')
 ```
 
@@ -624,14 +624,14 @@ You may pass a default value as the second argument to the `input` method. This 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const name\string = request.input('name', 'Luna')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const name: string = request.input('name', 'Luna')
 ```
 
@@ -650,14 +650,14 @@ You may call the input method without any arguments in order to retrieve all of 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const input\object = request.input!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const input: object = request.input()
 ```
 
@@ -678,14 +678,14 @@ While the `input` method retrieves values from the entire request payload (inclu
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const name\string|null = request.name('name')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const name: string|null = request.name('name')
 ```
 
@@ -703,14 +703,14 @@ If the requested query string value data is not present, the second argument to 
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const name\string = request.name('name', 'Luna')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const name: string = request.name('name', 'Luna')
 ```
 
@@ -728,14 +728,14 @@ You may call the `query` method without any arguments in order to retrieve all o
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const query\object = request.query!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const query: object = request.query()
 ```
 
@@ -755,14 +755,14 @@ If you need to retrieve a subset of the `input` data, you may use the `only` met
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const input\object = request.only(['email', 'password'])
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const input: object = request.only(['email', 'password'])
 ```
 
@@ -782,14 +782,14 @@ If you are expecting data from both the query string data and input data, you ma
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const name\string|null = request.get('name')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const name: string|null = request.get('name')
 ```
 
@@ -808,14 +808,14 @@ If the requested query string value data or input data is not present, the secon
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const name\string = request.get('name', 'Luna')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const name: string = request.get('name', 'Luna')
 ```
 
@@ -835,7 +835,7 @@ You may use the `has` method to determine if a value is present on the request. 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if request.has 'name'
 	# do something
 ```
@@ -843,7 +843,7 @@ if request.has 'name'
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if(request.has('name')) {
 	// do something
 }
@@ -865,14 +865,14 @@ Formidable provides an easy way to work with file uploads. You may access upload
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const files = request.file('avatar')
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const files = request.file('avatar')
 ```
 
@@ -894,14 +894,14 @@ The `file` method returns an instance of `FileCollection`. You may use the `firs
 	]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const file = request.file('avatar').first()
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const file = request.file('avatar').first()
 ```
 
@@ -922,14 +922,14 @@ The `all` method may be used to retrieve all of the files in the collection:
 
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const files = request.file('avatar').all()
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const files = request.file('avatar').all()
 ```
 
@@ -947,14 +947,14 @@ You may also use the `get` method to retrieve all of the files in the collection
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const files = request.file('avatar').get()
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const files = request.file('avatar').get()
 ```
 
@@ -974,14 +974,14 @@ The `first` method may be used to retrieve the first file in the collection:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const file = request.file('avatar').first()
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const file = request.file('avatar').first()
 ```
 
@@ -1001,14 +1001,14 @@ The `last` method may be used to retrieve the last file in the collection:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const file = request.file('avatar').last()
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const file = request.file('avatar').last()
 ```
 
@@ -1028,7 +1028,7 @@ You may use the `filter` method to retrieve files that match a given filter. The
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const files = request.file('avatar').filter do(file)
     file.size > 1000
 ```
@@ -1036,7 +1036,7 @@ const files = request.file('avatar').filter do(file)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const files = request.file('avatar').filter(file => file.size > 1000)
 ```
 
@@ -1054,7 +1054,7 @@ You may also use the `where` method to retrieve files that match a given key-val
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const files = request.file('avatar').where('mimetype', 'image/png').get()
 ```
 
@@ -1062,7 +1062,7 @@ const files = request.file('avatar').where('mimetype', 'image/png').get()
 
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const files = request.file('avatar').where('mimetype', 'image/png').get()
 ```
 
@@ -1083,7 +1083,7 @@ You may use the `map` method to iterate over the files in the collection. The `m
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const files = request.file('avatar').map do(file)
     # do something
 ```
@@ -1091,7 +1091,7 @@ const files = request.file('avatar').map do(file)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const files = request.file('avatar').map(file => {
     // do something
 })
@@ -1113,7 +1113,7 @@ You may use the `each` method to iterate over the files in the collection. The `
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 request.file('avatar').each do(file)
     # do something
 ```
@@ -1121,7 +1121,7 @@ request.file('avatar').each do(file)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 request.file('avatar').each(file => {
     // do something
 })
@@ -1144,14 +1144,14 @@ You may use the `count` method to count the number of files in the collection:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const count = request.file('avatar').count()
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const count = request.file('avatar').count()
 ```
 
@@ -1171,7 +1171,7 @@ You may use the `hasFiles` method to determine if files are present in the colle
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if request.file('avatar').hasFiles()
     # do something
 ```
@@ -1179,7 +1179,7 @@ if request.file('avatar').hasFiles()
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (request.file('avatar').hasFiles()) {
     // do something
 }
@@ -1199,7 +1199,7 @@ You may also use the `hasFile` method on the `Request` or `FormRequest` instance
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if request.hasFile('avatar')
     # do something
 ```
@@ -1207,7 +1207,7 @@ if request.hasFile('avatar')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (request.hasFile('avatar')) {
     // do something
 }
@@ -1231,7 +1231,7 @@ You may use the `move` method to move an uploaded file to a new location. The `m
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const avatar = request.file('avatar').first()
 
 avatar.move("storage/avatars/{avatar.name}", true)
@@ -1240,7 +1240,7 @@ avatar.move("storage/avatars/{avatar.name}", true)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const avatar = request.file('avatar').first()
 
 avatar.move(`storage/avatars/${avatar.name}`, true)
@@ -1278,7 +1278,7 @@ For example, to retrieve the extension of an uploaded file, you may use the `ext
 	]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const avatar = request.file('avatar').first()
 
 const extension = avatar.extension
@@ -1287,7 +1287,7 @@ const extension = avatar.extension
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const avatar = request.file('avatar').first()
 
 const extension = avatar.extension
@@ -1309,7 +1309,7 @@ When working with file uploads, you may use the `file` rule to validate that the
 	]}>
 <TabItem value="imba">
 
-```py title="app/Http/Requests/StorePersonRequest.imba" {6}
+```py title="app/Http/Requests/StorePersonRequest.imba" {6} showLineNumbers
 import { Request } from '@formidablejs/framework'
 
 export class StorePersonRequest < Request
@@ -1321,7 +1321,7 @@ export class StorePersonRequest < Request
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Requests/StorePersonRequest.ts" {6}
+```ts title="app/Http/Requests/StorePersonRequest.ts" {6} showLineNumbers
 import { Request } from '@formidablejs/framework'
 
 export class StorePersonRequest extends Request {
@@ -1367,7 +1367,7 @@ This command will generate types for all of your request rules. The generated ty
 
 Once you have generated your types, you may use them in your frontend forms. For example, let's assume we have a `StorePersonRequest` class that contains the following rules:
 
-```ts title="app/Http/Requests/StorePersonRequest.ts" {6-10}
+```ts title="app/Http/Requests/StorePersonRequest.ts" {6-10} showLineNumbers
 import { Request } from '@formidablejs/framework'
 
 export class StorePersonRequest extends Request {
@@ -1385,7 +1385,7 @@ export class StorePersonRequest extends Request {
 
 After running the `types:generate` command, we will have a `StorePersonForm` type generated in the `app/Types/Forms` directory:
 
-```ts title="app/Types/Forms/StorePersonForm.ts"
+```ts title="app/Types/Forms/StorePersonForm.ts" showLineNumbers
 type StorePersonForm = {
 	first_name: string
 	last_name: string
@@ -1410,7 +1410,7 @@ We may now use this type in our frontend form:
 
 Create a `useStorePersonForm` typescript file that exports a `useStorePersonForm` function in the `resources/frontend/Pages/People` directory:
 
-```ts title="resources/frontend/Pages/People/useStorePersonForm.ts"
+```ts title="resources/frontend/Pages/People/useStorePersonForm.ts" showLineNumbers
 import { useForm } from '@formidablejs/view'
 
 export const useStorePersonForm = useForm<StorePersonForm>
@@ -1418,7 +1418,7 @@ export const useStorePersonForm = useForm<StorePersonForm>
 
 And finally, import the `useStorePersonForm` function in your `Create.imba` file:
 
-```js title="resources/frontend/Pages/People/Create.imba" {4-10}
+```js title="resources/frontend/Pages/People/Create.imba" {4-10} showLineNumbers
 import { useStorePersonForm } from './useStorePersonForm'
 
 export tag Create
@@ -1438,7 +1438,7 @@ export tag Create
 
 Create a `Create.vue` file in the `resources/js/Pages/People` directory:
 
-```html title="resources/js/Pages/People/Create.vue" {4-10}
+```html title="resources/js/Pages/People/Create.vue" {4-10} showLineNumbers
 <script lang="ts" setup>
 import { useForm } from '@inertia/vue3'
 
@@ -1460,7 +1460,7 @@ const form = useForm<StorePersonForm>({
 
 Create a `Create.tsx` file in the `resources/js/Pages/People` directory:
 
-```tsx title="resources/js/Pages/People/Create.tsx" {4-10}
+```tsx title="resources/js/Pages/People/Create.tsx" {4-10} showLineNumbers
 import { useForm } from '@inertiajs/react'
 
 export default function Create() {
@@ -1482,7 +1482,7 @@ export default function Create() {
 
 Create a `Create.svelte` file in the `resources/js/Pages/People` directory:
 
-```html title="resources/js/Pages/People/Create.svelte" {5-11}
+```html title="resources/js/Pages/People/Create.svelte" {5-11} showLineNumbers
 <script>
 import { useForm } from '@inertiajs/svelte'
 
@@ -1508,7 +1508,7 @@ let form = useForm({
 
 You may also generate types automatically when you run the `serve` command with the `--dev` flag. You can do this by adding the `node craftsman types:generate` command to your `package.json` file under `development.commands`:
 
-```json title="package.json" {5}
+```json title="package.json" {5} showLineNumbers
 {
 	"development": {
 		"mode": "nodemon",

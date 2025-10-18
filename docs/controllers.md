@@ -36,7 +36,7 @@ Below is an example of a basic controller class. Note that the controller extend
     ]}>
 <TabItem value="imba">
 
-```py title="app/Http/Controllers/UserController.imba"
+```py title="app/Http/Controllers/UserController.imba" showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { NotFoundException } from '@formidablejs/framework'
 import { Controller } from './Controller'
@@ -54,7 +54,7 @@ export class UserController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts title="app/Http/Controllers/UserController.ts"
+```ts title="app/Http/Controllers/UserController.ts" showLineNumbers
 import { DB } from '@formidablejs/framework'
 import { Request } from '@formidablejs/framework'
 import { NotFoundException } from '@formidablejs/framework'
@@ -87,7 +87,7 @@ You can define a route to this controller action like this:
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba"
+```js title="routes/api.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { UserController } from '../app/Http/Controllers/UserController'
 
@@ -97,7 +97,7 @@ Route.get('/user/:id', [UserController, 'show'])
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts"
+```ts title="routes/api.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { UserController } from '../app/Http/Controllers/UserController'
 
@@ -126,26 +126,26 @@ The `notFound` function throws a `404` Exception:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 ...
 export class UserController < Controller
 
 	def show request\Request
 
 		if (await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1
-            notFound!
+			notFound!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 ...
 export class UserController extends Controller {
 	async show(request: Request): Promise<any> {
 		if ((await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1) {
-            this.notFound()
-        }
+			this.notFound()
+		}
 
 		...
 ```
@@ -164,26 +164,26 @@ You may also pass a custom error message:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 ...
 export class UserController < Controller
 
 	def show request\Request
 
 		if (await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1
-            notFound 'User does not exist'
+			notFound 'User does not exist'
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 ...
 export class UserController extends Controller {
 	async show(request: Request): Promise<any> {
 		if ((await DB.table('users').where('id', request.param('id')).count())[0]["count(*)"] < 1) {
-            this.notFound('User does not exist')
-        }
+			this.notFound('User does not exist')
+		}
 
 		...
 ```
@@ -204,7 +204,7 @@ The `badRequest` function throws a `400` Exception:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 ...
 export class UserController < Controller
 
@@ -216,13 +216,13 @@ export class UserController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 ...
 export class UserController extends Controller {
 	destroy(request: Request): any {
 		if (!request.auth().can('users:delete')) {
-            this.badRequest()
-        }
+			this.badRequest()
+		}
 
 		...
 ```
@@ -241,7 +241,7 @@ And with a custom message:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 ...
 export class UserController < Controller
 
@@ -253,13 +253,13 @@ export class UserController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 ...
 export class UserController extends Controller {
 	destroy(request: Request): any {
 		if (!request.auth().can('users:delete')) {
-            this.badRequest('Permission denied')
-        }
+			this.badRequest('Permission denied')
+		}
 
 		...
 ```
@@ -280,7 +280,7 @@ The `validate` function makes it easier to validate incoming requests:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 ...
 export class UserController < Controller
 
@@ -299,7 +299,7 @@ export class UserController < Controller
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 ...
 export class UserController extends Controller
 	update(request: Request): any {

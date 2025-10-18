@@ -13,7 +13,7 @@ Just like any other modern framework, Formidable ships with a views feature. For
 
 A typical view in Formidable looks like this:
 
-```py title="resources/views/greeting.imba"
+```py title="resources/views/greeting.imba" showLineNumbers
 import { View } from '@formidablejs/framework'
 
 export class Greeting < View
@@ -35,7 +35,7 @@ Since this view is stored at `resources/views/greeting.imba`, we may return it u
     ]}>
 <TabItem value="imba">
 
-```py title="routes/web.imba"
+```py title="routes/web.imba" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
 import { Greeting } from '../resources/views/greeting'
@@ -46,7 +46,7 @@ Route.get '/greeting', do view(Greeting, { name: 'Luna' })
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/web.ts"
+```ts title="routes/web.ts" showLineNumbers
 import { Route } from '@formidablejs/framework'
 import { View } from '@formidablejs/framework'
 import { view } from '@formidablejs/framework'
@@ -73,14 +73,14 @@ Once you have created a view, you may return it from one of your application's r
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Route.get '/greeting', do view(Greeting, { name: 'Luna' })
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/greeting', (): View => view(Greeting, { name: 'Luna' }))
 ```
 
@@ -102,14 +102,14 @@ As you saw in the previous examples, you may pass an object of data to views to 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 view(Greeting, { name: 'Donald' })
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 view(Greeting, { name: 'Donald' })
 ```
 
@@ -120,7 +120,7 @@ view(Greeting, { name: 'Donald' })
 
 You may use Imba components in your views. Here's a typical example of how to use an Imba component in a Formidable view:
 
-```py title="resources/views/components/counter.imba"
+```py title="resources/views/components/counter.imba" showLineNumbers
 export tag CounterComponent
 	prop count = 1
 
@@ -133,7 +133,7 @@ export tag CounterComponent
 
 And our Formidable view:
 
-```py title="resources/views/app.imba"
+```py title="resources/views/app.imba" showLineNumbers
 import { View } from '@formidablejs/framework'
 import { CounterComponent } from './components/counter'
 
@@ -161,7 +161,7 @@ We have included a style tag, this will import the stylesheet of the `Counter` c
 
 Returns the requests locale. E.g. `en`.
 
-```py
+```py showLineNumbers
 def render
 	<p> "Locale: { get('locale') }"
 ```
@@ -170,7 +170,7 @@ def render
 
 Returns the requests csrf token.
 
-```py
+```py showLineNumbers
 def render
 	<form method="post">
 		<input type="hidden" name="_token" value=get('csrf_token')>
@@ -182,7 +182,7 @@ def render
 
 Runs before a view is rendered:
 
-```py
+```py showLineNumbers
 import { View } from '@formidablejs/framework'
 
 export class Home < View
@@ -195,7 +195,7 @@ export class Home < View
 
 Runs after a view is rendered:
 
-```py
+```py showLineNumbers
 import { View } from '@formidablejs/framework'
 
 export class Home < View
@@ -214,7 +214,7 @@ Here a helper functions you can use in your Formidable Views.
 
 Get sanitized view data prop:
 
-```py
+```py showLineNumbers
 def render
 	<p> "Hello, { get('name') }"
 ```
@@ -225,7 +225,7 @@ def render
 
 Get unsanitized view data prop:
 
-```py
+```py showLineNumbers
 def render
 	<p> "Hello, { raw('name') }"
 ```
@@ -234,7 +234,7 @@ def render
 
 Check if data prop is present:
 
-```py
+```py showLineNumbers
 def render
 	if has('name')
 		<p> "Hello, { get('name') }"
@@ -244,7 +244,7 @@ def render
 
 Retrieve old data:
 
-```py
+```py showLineNumbers
 def render
 	<input name='email_address' value=old('email_address')>
 ```
@@ -253,7 +253,7 @@ def render
 
 Get flashed data:
 
-```py
+```py showLineNumbers
 def render
 	<p> session('success')
 ```
@@ -262,7 +262,7 @@ def render
 
 Check if flashed data is present:
 
-```py
+```py showLineNumbers
 def render
 	if hasSession('success')
 		<p> session('success')
@@ -272,7 +272,7 @@ def render
 
 Get validation error:
 
-```py
+```py showLineNumbers
 def render
 	for error in error('email_address')
 		<p> error
@@ -282,7 +282,7 @@ def render
 
 Check if validation error is present:
 
-```py
+```py showLineNumbers
 def render
 	if hasError('email_address')
 		for error in error('email_address')
@@ -293,14 +293,14 @@ def render
 
 Translate text:
 
-```py
+```py showLineNumbers
 def render
 	<h1> translate('messages.welcome')
 ```
 
 You may also use `__`, an alias of `translate`:
 
-```py
+```py showLineNumbers
 def render
 	<h1> __('messages.welcome')
 ```

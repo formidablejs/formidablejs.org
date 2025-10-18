@@ -34,7 +34,7 @@ To protect any route that's not in the `session` group, you may use the `VerifyC
     ]}>
 <TabItem value="imba">
 
-```js title="routes/api.imba" {8}
+```js title="routes/api.imba" {8} showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 import { VerifyCsrfToken } from '@formidablejs/framework'
@@ -47,7 +47,7 @@ Route.post('/tasks/create', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```ts title="routes/api.ts" {8}
+```ts title="routes/api.ts" {8} showLineNumbers
 import { Request } from '@formidablejs/framework'
 import { Route } from '@formidablejs/framework'
 import { VerifyCsrfToken } from '@formidablejs/framework'

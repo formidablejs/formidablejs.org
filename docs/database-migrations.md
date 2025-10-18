@@ -25,7 +25,7 @@ node craftsman make:migration CreatePostsTable --table=posts
 
 The command above will create a new migration file under `/database/migrations` and will generate the following migration:
 
-```ts
+```ts showLineNumbers
 import type { Database } from '@formidablejs/framework';
 
 export async function up(DB: Database): Promise<void> {
@@ -41,7 +41,7 @@ export async function down(DB: Database): Promise<void> {
 
 We can now define our migration's schema in the `up` function:
 
-```ts
+```ts showLineNumbers
 export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('posts', (table) => {
 		table.increments('id').primary();
@@ -73,7 +73,7 @@ Here is an example of a migration that adds a new column to an existing table:
 node craftsman make:migration AddSoftDeletesToPostsTable --table=posts --alter
 ```
 
-```ts
+```ts showLineNumbers
 import type { Database } from '@formidablejs/framework';
 
 /**
@@ -101,7 +101,7 @@ This migration will add a new column to the `posts` table when `migrate up` is r
 
 Here is an example of a migration that removes a column from an existing table:
 
-```ts
+```ts showLineNumbers
 import type { Database } from '@formidablejs/framework';
 
 /**
@@ -127,7 +127,7 @@ export async function down(DB: Database): Promise<void> {
 
 Here is an example of a migration that renames a column in an existing table:
 
-```ts
+```ts showLineNumbers
 import type { Database } from '@formidablejs/framework';
 
 /**
@@ -149,7 +149,7 @@ export async function down(DB: Database): Promise<void> {
 
 Here is an example of a migration that changes a column in an existing table:
 
-```ts
+```ts showLineNumbers
 import type { Database } from '@formidablejs/framework';
 
 /**
@@ -211,7 +211,7 @@ The Formidable Framework uses [Knex.js](https://knexjs.org/) to build database s
 
 Let's take a look at an example migration:
 
-```ts
+```ts showLineNumbers
 import type { Database } from '@formidablejs/framework';
 
 /**
@@ -241,7 +241,7 @@ The `up` method receives a `Database` instance as its first argument. This insta
 
 To create a new database table, use the `createTable` method on the `Database` instance you receive in your migration:
 
-```ts
+```ts showLineNumbers
 export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('users', (table) => {
 		table.increments('id').primary();
@@ -258,7 +258,7 @@ The `createTable` method accepts two arguments: the first is the name of the tab
 
 The `TableBuilder` class contains a variety of column types that you may use when building your tables:
 
-```ts
+```ts showLineNumbers
 export async function up(DB: Database): Promise<void> {
 	return DB.schema.createTable('users', (table) => {
 		table.increments('id').primary();
@@ -275,7 +275,7 @@ export async function up(DB: Database): Promise<void> {
 
 Drops a column, specified by the column's name
 
-```ts
+```ts showLineNumbers
 table.dropColumn('deleted_at');
 ```
 
@@ -283,7 +283,7 @@ table.dropColumn('deleted_at');
 
 Drops multiple columns, specified by an array of column names
 
-```ts
+```ts showLineNumbers
 table.dropColumns(['deleted_at', 'deleted_by']);
 ```
 
@@ -291,7 +291,7 @@ table.dropColumns(['deleted_at', 'deleted_by']);
 
 Renames a column from one name to another
 
-```ts
+```ts showLineNumbers
 table.renameColumn('deleted_at', 'deleted_when');
 ```
 
@@ -299,7 +299,7 @@ table.renameColumn('deleted_at', 'deleted_when');
 
 Adds a `remember_token` column to the table
 
-```ts
+```ts showLineNumbers
 table.rememberToken();
 ```
 
@@ -307,7 +307,7 @@ table.rememberToken();
 
 Adds an auto incrementing column. This is the same as `integer` with `autoIncrement` set to `true`.
 
-```ts
+```ts showLineNumbers
 table.increments('id').primary();
 ```
 
@@ -315,7 +315,7 @@ table.increments('id').primary();
 
 Adds an integer column.
 
-```ts
+```ts showLineNumbers
 table.integer('age');
 ```
 
@@ -323,7 +323,7 @@ table.integer('age');
 
 Adds a big integer column.
 
-```ts
+```ts showLineNumbers
 table.bigInteger('views');
 ```
 
@@ -331,7 +331,7 @@ table.bigInteger('views');
 
 Adds a tiny integer column.
 
-```ts
+```ts showLineNumbers
 table.tinyint('views');
 ```
 
@@ -339,7 +339,7 @@ table.tinyint('views');
 
 Adds a small integer column.
 
-```ts
+```ts showLineNumbers
 table.smallint('views');
 ```
 
@@ -347,7 +347,7 @@ table.smallint('views');
 
 Adds a medium integer column.
 
-```ts
+```ts showLineNumbers
 table.mediumint('views');
 ```
 
@@ -355,7 +355,7 @@ table.mediumint('views');
 
 Adds a big integer column.
 
-```ts
+```ts showLineNumbers
 table.bigint('views');
 ```
 
@@ -363,7 +363,7 @@ table.bigint('views');
 
 Adds a text column.
 
-```ts
+```ts showLineNumbers
 table.text('description');
 ```
 
@@ -371,7 +371,7 @@ table.text('description');
 
 Adds a string column.
 
-```ts
+```ts showLineNumbers
 table.string('email');
 ```
 
@@ -379,7 +379,7 @@ table.string('email');
 
 Adds a float column.
 
-```ts
+```ts showLineNumbers
 table.float('amount');
 ```
 
@@ -387,7 +387,7 @@ table.float('amount');
 
 Adds a double column.
 
-```ts
+```ts showLineNumbers
 table.double('amount');
 ```
 
@@ -395,7 +395,7 @@ table.double('amount');
 
 Adds a decimal column.
 
-```ts
+```ts showLineNumbers
 table.decimal('amount');
 ```
 
@@ -403,7 +403,7 @@ table.decimal('amount');
 
 Adds a boolean column.
 
-```ts
+```ts showLineNumbers
 table.boolean('confirmed');
 ```
 
@@ -411,7 +411,7 @@ table.boolean('confirmed');
 
 Adds a date column.
 
-```ts
+```ts showLineNumbers
 table.date('created_at');
 ```
 
@@ -419,7 +419,7 @@ table.date('created_at');
 
 Adds a datetime column.
 
-```ts
+```ts showLineNumbers
 table.datetime('created_at');
 ```
 
@@ -427,7 +427,7 @@ table.datetime('created_at');
 
 Adds a time column.
 
-```ts
+```ts showLineNumbers
 table.time('sunrise');
 ```
 
@@ -435,7 +435,7 @@ table.time('sunrise');
 
 Adds a timestamp column.
 
-```ts
+```ts showLineNumbers
 table.timestamp('created_at');
 ```
 
@@ -443,7 +443,7 @@ table.timestamp('created_at');
 
 Adds `created_at` and `updated_at` columns.
 
-```ts
+```ts showLineNumbers
 table.timestamps();
 ```
 
@@ -451,7 +451,7 @@ table.timestamps();
 
 Drops `created_at` and `updated_at` columns.
 
-```ts
+```ts showLineNumbers
 table.dropTimestamps();
 ```
 
@@ -459,7 +459,7 @@ table.dropTimestamps();
 
 Adds a `deleted_at` column to the table.
 
-```ts
+```ts showLineNumbers
 table.softDeletes();
 ```
 
@@ -467,7 +467,7 @@ table.softDeletes();
 
 Drops the `deleted_at` column from the table.
 
-```ts
+```ts showLineNumbers
 table.dropSoftDeletes();
 ```
 
@@ -475,7 +475,7 @@ table.dropSoftDeletes();
 
 Adds a binary column.
 
-```ts
+```ts showLineNumbers
 table.binary('photo');
 ```
 
@@ -483,7 +483,7 @@ table.binary('photo');
 
 Adds an enum column.
 
-```ts
+```ts showLineNumbers
 table.enum('role', ['admin', 'user']);
 ```
 
@@ -491,7 +491,7 @@ table.enum('role', ['admin', 'user']);
 
 Adds a json column.
 
-```ts
+```ts showLineNumbers
 table.json('options');
 ```
 
@@ -499,7 +499,7 @@ table.json('options');
 
 Adds a jsonb column.
 
-```ts
+```ts showLineNumbers
 table.jsonb('options');
 ```
 
@@ -507,7 +507,7 @@ table.jsonb('options');
 
 Adds a uuid column.
 
-```ts
+```ts showLineNumbers
 table.uuid('id').defaultTo(DB.fn.uuid());
 ```
 
@@ -515,7 +515,7 @@ table.uuid('id').defaultTo(DB.fn.uuid());
 
 Adds a comment to the column.
 
-```ts
+```ts showLineNumbers
 table.string('email').comment('The user\'s email address');
 ```
 
@@ -523,7 +523,7 @@ table.string('email').comment('The user\'s email address');
 
 Sets the table's storage engine.
 
-```ts
+```ts showLineNumbers
 table.engine('InnoDB');
 ```
 
@@ -531,7 +531,7 @@ table.engine('InnoDB');
 
 Sets the table's character set.
 
-```ts
+```ts showLineNumbers
 table.charset('utf8mb4');
 ```
 
@@ -539,7 +539,7 @@ table.charset('utf8mb4');
 
 Sets the table's collation.
 
-```ts
+```ts showLineNumbers
 table.collate('utf8mb4_unicode_ci');
 ```
 
@@ -547,7 +547,7 @@ table.collate('utf8mb4_unicode_ci');
 
 Sets the table's inheritance.
 
-```ts
+```ts showLineNumbers
 table.inherits('users');
 ```
 
@@ -555,7 +555,7 @@ table.inherits('users');
 
 Sets the table's specific type.
 
-```ts
+```ts showLineNumbers
 table.specificType('email', 'varchar(100)');
 ```
 
@@ -563,7 +563,7 @@ table.specificType('email', 'varchar(100)');
 
 Adds an index.
 
-```ts
+```ts showLineNumbers
 table.index('email');
 ```
 
@@ -571,7 +571,7 @@ table.index('email');
 
 Drops an index.
 
-```ts
+```ts showLineNumbers
 table.dropIndex('email');
 ```
 
@@ -579,7 +579,7 @@ table.dropIndex('email');
 
 Sets the column to be nullable.
 
-```ts
+```ts showLineNumbers
 table.string('email').setNullable();
 ```
 
@@ -587,7 +587,7 @@ table.string('email').setNullable();
 
 Drops the column's nullable property.
 
-```ts
+```ts showLineNumbers
 table.string('email').dropNullable();
 ```
 
@@ -595,7 +595,7 @@ table.string('email').dropNullable();
 
 Sets the column to be the primary key.
 
-```ts
+```ts showLineNumbers
 table.string('email').primary();
 ```
 
@@ -603,7 +603,7 @@ table.string('email').primary();
 
 Sets the column to be unique.
 
-```ts
+```ts showLineNumbers
 table.string('email').unique();
 ```
 
@@ -611,7 +611,7 @@ table.string('email').unique();
 
 Sets the column to be a foreign key.
 
-```ts
+```ts showLineNumbers
 table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 ```
 
@@ -619,7 +619,7 @@ table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
 
 Drops the column's foreign key.
 
-```ts
+```ts showLineNumbers
 table.dropForeign('user_id');
 ```
 
@@ -627,7 +627,7 @@ table.dropForeign('user_id');
 
 Drops the column's unique property.
 
-```ts
+```ts showLineNumbers
 table.string('email').dropUnique();
 ```
 
@@ -635,7 +635,7 @@ table.string('email').dropUnique();
 
 Drops the column's primary property.
 
-```ts
+```ts showLineNumbers
 table.string('email').dropPrimary();
 ```
 

@@ -9,6 +9,7 @@ module.exports = {
 	favicon: 'img/favicon.ico',
 	organizationName: 'formidablejs',
 	projectName: 'formidablejs.org',
+	clientModules: ['./src/search.js'],
 	themeConfig: {
 		announcementBar: {
 			id: 'formidable-announcement',
@@ -32,7 +33,7 @@ module.exports = {
 			},
 			{
 				name: 'twitter:description',
-				content: 'Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications.'
+				content: 'Formidable (or formidablejs) is a modern full-stack framework for building scalable backend applications and APIs with TypeScript or Imba.'
 			},
 			{
 				name: 'twitter:image',
@@ -60,7 +61,7 @@ module.exports = {
 			},
 			{
 				name: 'og:description',
-				content: 'Formidable (or formidablejs) is a Laravel inspired framework for building Full-Stack or Backend applications.'
+				content: 'Formidable (or formidablejs) is a modern full-stack framework for building scalable backend applications and APIs with TypeScript or Imba.'
 			},
 			{
 				name: 'og:image',
@@ -95,21 +96,23 @@ module.exports = {
 					className: 'left-header-link',
 				},
 				{
-					href: 'https://github.com/formidablejs/framework',
-					position: 'right',
-					label: "★ Star us on Github"
-				},
-				{
 					href: 'https://github.com/formidablejs',
 					position: 'right',
 					className: 'header-github-link',
-				},
+				}
 			],
 		},
 		footer: {
 			style: 'light',
 			links: [
-
+				{
+					label: 'Docs',
+					to: '/docs'
+				},
+				{
+					label: 'Blog',
+					to: '/blog'
+				}
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Donald Pakkies | Brought to you by <a href='https://lunaql.com/' target='_blank'>LunaQL</a>. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>.`,
 		},
@@ -123,6 +126,14 @@ module.exports = {
 					editUrl: "https://github.com/formidablejs/formidablejs.org/edit/main/",
 					sidebarCollapsed: false,
 					sidebarCollapsible: false,
+					// lastVersion: 'current',
+					// versions: {
+					// 	current: {
+					// 		label: '1.x-preview',
+					// 		path: '1.x',
+					// 		badge: true,
+					// 	},
+					// },
 				},
 				blog: {
 					blogTitle: 'The Formidable Framework blog!',

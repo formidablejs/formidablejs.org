@@ -11,7 +11,7 @@ Formidable's localization features provide a convenient way to retrieve strings 
 
 Formidable provides an easy and convenient way to manage translation strings. Language strings may be stored in files within the `resources/lang` directory:
 
-```test
+```test showLineNumbers
 .
 └── resources
     └── lang
@@ -36,7 +36,7 @@ You may modify the default language for a single HTTP request at runtime using t
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Route.get '/test/:locale', do(request\Request)
 	if !['en', 'es'].includes(request.param('locale'))
 		throw new HttpException('Bad request', 400)
@@ -49,7 +49,7 @@ Route.get '/test/:locale', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/test/:locale', (request: Request) => {
 	if (!['en', 'es'].includes(request.param('locale'))) {
 		throw new HttpException('Bad request', 400)
@@ -75,7 +75,7 @@ For API development, you may use the `lang` middleware. This middleware looks fo
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Route.get('/', do(request\Request)
 	request.translate 'index.hello', 'Hello World'
 ).name('hello').middleware(['lang'])
@@ -84,7 +84,7 @@ Route.get('/', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/', (request: Request) => {
 	return request.translate('index.hello', 'Hello World')
 }).name('hello').middleware(['lang'])
@@ -103,7 +103,7 @@ You may configure a "fallback language", which will be used when the active lang
     ]}>
 <TabItem value="imba">
 
-```py title="config/app.imba"
+```py title="config/app.imba" showLineNumbers
 # --------------------------------------------------------------------------
 # Application Fallback Locale
 # --------------------------------------------------------------------------
@@ -118,7 +118,7 @@ fallback_locale: 'en'
 </TabItem>
 <TabItem value="ts">
 
-```ts title="config/app.ts"
+```ts title="config/app.ts" showLineNumbers
 /*
  * --------------------------------------------------------------------------
  * Application Fallback Locale
@@ -148,7 +148,7 @@ You may use the `locale` method on the `Request` instance to determine the curre
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Route.get '/', do(request\Request)
 	const locale = request.locale!
 ```
@@ -156,7 +156,7 @@ Route.get '/', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/', (request: Request) => {
 	const locale = request.locale()
 })
@@ -169,7 +169,7 @@ Route.get('/', (request: Request) => {
 
 Typically, translation strings are stored in files within the `resources/lang` directory. Within this directory, there should be a subdirectory for each language supported by your application:
 
-```text
+```text showLineNumbers
 .
 └── resources
     └── lang
@@ -181,7 +181,7 @@ Typically, translation strings are stored in files within the `resources/lang` d
 
 All language files return an object of keyed strings. For example:
 
-```json title="resources/lang/en/messages.json"
+```json title="resources/lang/en/messages.json" showLineNumbers
 {
 	"welcome": "Welcome to our application"
 }
@@ -200,7 +200,7 @@ You may retrieve translation strings from your language files using the `__` or 
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Route.get '/', do(request\Request)
 	request.__('messages.welcome')
 ```
@@ -208,7 +208,7 @@ Route.get '/', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get('/', (request: Request) => {
 	return request.__('messages.welcome')
 })
@@ -228,7 +228,7 @@ If the specified translation string does not exist, the `__` or `translate` meth
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 Route.get '/', do(request\Request)
 	request.__('messages.welcome', 'Welcome to our application')
 ```
@@ -236,7 +236,7 @@ Route.get '/', do(request\Request)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 Route.get '/', (request: Request) => {
 	return request.__('messages.welcome', 'Welcome to our application')
 })
@@ -247,7 +247,7 @@ Route.get '/', (request: Request) => {
 
 For translation within views, you can also use the `__` or `translate` methods:
 
-```py
+```py showLineNumbers
 import { View } from '@formidablejs/framework'
 
 export class Welcome < View

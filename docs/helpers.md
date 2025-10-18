@@ -25,7 +25,7 @@ To use a formidable helper function, you need to import it from `@formidablejs/f
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 import { slug } from '@formidablejs/framework/lib/Support/Helpers'
 
 slug('Donald Pakkies') # donald-pakkies
@@ -34,7 +34,7 @@ slug('Donald Pakkies') # donald-pakkies
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 import { slug } from '@formidablejs/framework/lib/Support/Helpers'
 
 slug('Donald Pakkies') // donald-pakkies
@@ -60,14 +60,14 @@ The `asObject` function, converts a custom object into a JavaScript object:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const object = asObject(customObject)
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const object = asObject(customObject)
 ```
 
@@ -87,7 +87,7 @@ The `dotNotation` function turns an object into a single level value that uses "
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const object = {
     app: {
         name: 'Formidable'
@@ -100,7 +100,7 @@ const appName = dotNotation(object, 'app.name')
 </TabItem>
 <TabItem value="ts">
 
-```js
+```js showLineNumbers
 const object = {
     app: {
         name: 'Formidable'
@@ -124,7 +124,7 @@ You may also use `dot`, an alias of `dotNotation`:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const object = {
     app: {
         name: 'Formidable'
@@ -137,7 +137,7 @@ const appName = dot(object, 'app.name')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const object = {
     app: {
         name: 'Formidable'
@@ -163,7 +163,7 @@ The `without` helper removes specified data from the given `object`:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 without({
     name: 'Donald',
     city: 'East Rand'
@@ -175,7 +175,7 @@ without({
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 without({
     name: 'Donald',
     city: 'East Rand'
@@ -200,7 +200,7 @@ The `isArray` helper checks if the given variable is a valid `Array`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if isArray([])
     # do something
 
@@ -209,7 +209,7 @@ if isArray([])
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (isArray([])) {
     // do something
 }
@@ -232,7 +232,7 @@ The `isBoolean` helper checks if the given variable is a valid `Boolean`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if isBoolean(variable)
     # do something
 
@@ -241,7 +241,7 @@ if isBoolean(variable)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (isBoolean(variable)) {
     // do something
 }
@@ -264,7 +264,7 @@ The `isClass` helper checks if the given variable is a valid `Class`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if isClass(variable)
     # do something
 
@@ -273,7 +273,7 @@ if isClass(variable)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (isClass(variable)) {
     // do something
 }
@@ -295,7 +295,7 @@ The `isFunction` helper checks if the given variable is a valid `Function`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if isFunction(variable)
     # do something
 
@@ -304,7 +304,7 @@ if isFunction(variable)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (isFunction(variable)) {
     // do something
 }
@@ -326,7 +326,7 @@ The `isNumber` helper checks if the given variable is a valid `Number`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if isNumber(variable)
     # do something
 
@@ -335,7 +335,7 @@ if isNumber(variable)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (isNumber(variable)) {
     // do something
 }
@@ -357,7 +357,7 @@ The `isObject` helper checks if the given variable is a valid `Object`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if isObject(variable)
     # do something
 
@@ -366,7 +366,7 @@ if isObject(variable)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (isObject(variable)) {
     // do something
 }
@@ -388,7 +388,7 @@ The `isString` helper checks if the given variable is a valid `String`:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 if isString(variable)
     # do something
 
@@ -397,7 +397,7 @@ if isString(variable)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 if (isString(variable)) {
     // do something
 }
@@ -419,7 +419,7 @@ The `toBoolean` helper converts the given variable into a `Boolean` value:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 toBoolean('true') # true
 
 toBoolean(true)   # true
@@ -430,7 +430,7 @@ toBoolean(1)      # true
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 toBoolean('true') // true
 
 toBoolean(true)   // true
@@ -454,7 +454,7 @@ The `wildcard` helper checks if the given variable matches a wildcard:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 wildcard('/user/*/edit', '/user/1/edit') # true
 
 wildcard('/tasks/*', 'tasks/learn-imba') # true
@@ -463,7 +463,7 @@ wildcard('/tasks/*', 'tasks/learn-imba') # true
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 wildcard('/user/*/edit', '/user/1/edit') // true
 
 wildcard('/tasks/*', 'tasks/learn-imba') // true
@@ -487,14 +487,14 @@ The `slug` helper converts the given string into a slug:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 slug('Hello world', '-') # hello-world
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 slug('Hello world', '-') # hello-world
 ```
 
@@ -514,7 +514,7 @@ The `strRandom` helper generates a random string:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 strRandom() # bfd809fc
 
 # with custom length
@@ -524,7 +524,7 @@ strRandom(40) # 485f8c73737030df7872e2c3e5e2d3b0eb1d769f
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 strRandom() // bfd809fc
 
 # with custom length
@@ -555,14 +555,14 @@ The `encrypt` helper encrypts an object.
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 encrypt('Hello World') # f8867ec8f7960de147f4c2da37fe4b99
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 encrypt('Hello World') // f8867ec8f7960de147f4c2da37fe4b99
 ```
 
@@ -582,14 +582,14 @@ The `decrypt` helper decrypts an encrypted value.
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 decrypt('f8867ec8f7960de147f4c2da37fe4b99') # Hello World
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 decrypt('f8867ec8f7960de147f4c2da37fe4b99') // Hello World
 ```
 
@@ -611,14 +611,14 @@ The `now` helper returns the current timestamp instance for `Database` queries:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 now!
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 now()
 ```
 
@@ -638,7 +638,7 @@ The `expiresIn` helper creates an expiration date for Redis:
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 expiresIn('2 minutes')
 
 expiresIn('1 hour')
@@ -649,7 +649,7 @@ expiresIn('3 days')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 expiresIn('2 minutes')
 
 expiresIn('1 hour')
@@ -673,7 +673,7 @@ The `config` function gets the value of a configuration variable. The configurat
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const appName = config('app.name')
 
 const appName = config('app.name', 'Something else')
@@ -682,7 +682,7 @@ const appName = config('app.name', 'Something else')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const appName = config('app.name')
 
 const appName = config('app.name', 'Something else')
@@ -704,7 +704,7 @@ The `env` function retrieves the value of an environment variable or returns a d
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 const appUrl = env('APP_URL')
 
 const appUrl = env('APP_URL', 'http://127.0.0.1:3000')
@@ -713,7 +713,7 @@ const appUrl = env('APP_URL', 'http://127.0.0.1:3000')
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const appUrl = env('APP_URL')
 
 const appUrl = env('APP_URL', 'http://127.0.0.1:3000')
@@ -735,7 +735,7 @@ The `response` function returns a response object to the client:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 response('Hello', 200)
 
 response().json({
@@ -748,7 +748,7 @@ response().code(200)
 </TabItem>
 <TabItem value="ts">
 
-```js
+```js showLineNumbers
 response('Hello', 200)
 
 response().json({
@@ -774,14 +774,14 @@ The `view` function returns a view response to the client:
     ]}>
 <TabItem value="imba">
 
-```js
+```js showLineNumbers
 view(Profile, { user }, 200)
 ```
 
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 view(Profile, { user }, 200)
 ```
 
@@ -801,7 +801,7 @@ The `tap` function accepts two arguments: an arbitrary `value` and a `callback`.
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const user = tap User.forge!.first!, do(user)
 	user.name = 'Donald'
 	user.save!
@@ -810,7 +810,7 @@ const user = tap User.forge!.first!, do(user)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const user = tap(User.forge().first(), (user: object) => {
 	user.name = 'Donald'
 	user.save()
@@ -831,7 +831,7 @@ If no `callback` is passed to the `tap` function, you may call any method on the
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 user = tap(user).save({
 	name: 'Donald'
 })
@@ -840,7 +840,7 @@ user = tap(user).save({
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const user = tap(user).save({
 	name: 'Donald'
 })
@@ -860,7 +860,7 @@ You may also use the `multitap` function, this function allows you to access any
     ]}>
 <TabItem value="imba">
 
-```py
+```py showLineNumbers
 const user = multitap(user)
 	.setName('Donald')
 	.setLocation('East Rand')
@@ -870,7 +870,7 @@ const user = multitap(user)
 </TabItem>
 <TabItem value="ts">
 
-```ts
+```ts showLineNumbers
 const user = multitap(user)
 	.setName('Donald')
 	.setLocation('East Rand')
