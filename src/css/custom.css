@@ -27,6 +27,10 @@ html[data-theme='dark']:root {
 	--ifm-background-color: #101011;
 }
 
+body {
+	tab-size: 4;
+}
+
 .row {
 	margin: 0;
 }
