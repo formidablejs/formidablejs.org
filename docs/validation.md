@@ -474,29 +474,25 @@ The field under validation must have a size matching the given value. For string
 
 The field under validation must be a string.
 
-#### unique:table,column...
+#### unique:table,column,ignore_value:ignore_column
 
-The field under validation must be unique on a given database table.
-
-```
-email: 'unique:users,email'
-```
-
-The above rule will check if the email is unique in the `users` table under the `email` column.
-
-You can also ignore a given ID:
+The field under validation must be unique in a given database table. If the `ignore_value:ignore_column` option is specified, the given row will be ignored:
 
 ```
-email: 'unique:users,email,1'
+'email' => 'unique:users,email'
 ```
 
-The above rule will check if the email is unique in the `users` table under the `email` column, but will ignore the record with the ID of 1.
-
-If you wish to ignore a custom column name, you may append the column identifier using : as the separator to the given identifier value:
-
+You can also ignore a specific record by specifying the `ignore_value:ignore_column` option:
 ```
-email: 'unique:users,email,1:custom_id'
+'email' => 'unique:users,email,123:id'
 ```
+
+You can also add additional conditions to the unique rule by using the bracket syntax:
+```
+'email' => 'unique:users,email[whereNull(deleted_at,1)]'
+```
+
+**Note**: The unique rule performs case-insensitive comparisons and supports additional query conditions using the bracket syntax. Available condition methods include `where`, `whereNot`, `whereIn`, `whereNotIn`, `whereLike`, `whereILike`, `whereNull`, and `whereNotNull`.
 
 #### url
 
@@ -508,27 +504,6 @@ The field under validation must match the given regular expression.
 
 **Note**: When using the ``regex`` pattern, it may be necessary to specify rules in an array instead of using pipe delimiters, especially if the regular expression contains a pipe character.
 For each backward slash that you used in your regex pattern, you must escape each one with another backward slash.
-
-#### unique:table,column,ignore_value:ignore_column
-
-The field under validation must be unique in a given database table. If the `ignore_value:ignore_column` option is specified, the given row will be ignored.
-
-**Basic Usage:**
-```
-'email' => 'unique:users,email'
-```
-
-**Ignoring a specific record (useful for updates):**
-```
-'email' => 'unique:users,email,123:id'
-```
-
-**With additional conditions:**
-```
-'email' => 'unique:users,email[whereNull(deleted_at,1)]'
-```
-
-**Note**: The unique rule performs case-insensitive comparisons and supports additional query conditions using the bracket syntax. Available condition methods include `where`, `whereNot`, `whereIn`, `whereNotIn`, `whereLike`, `whereILike`, `whereNull`, and `whereNotNull`.
 
 #### video
 
