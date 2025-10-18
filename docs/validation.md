@@ -489,7 +489,7 @@ You can also ignore a specific record by specifying the `ignore_value:ignore_col
 
 You can also add additional conditions to the unique rule by using the bracket syntax:
 ```
-'email' => 'unique:users,email[whereNull(deleted_at,1)]'
+'email' => 'unique:users,email[where(is_active, 1)]'
 ```
 
 **Note**: The unique rule performs case-insensitive comparisons and supports additional query conditions using the bracket syntax. Available condition methods include `where`, `whereNot`, `whereIn`, `whereNotIn`, `whereLike`, `whereILike`, `whereNull`, and `whereNotNull`.

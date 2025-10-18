@@ -34,6 +34,73 @@ export const seed = async (DB: Database): Promise<void> => {
 }
 ```
 
+### Factory States
+
+Factories support states that allow you to create variations of your models with different attributes. This is particularly useful for testing different scenarios or creating specific data sets.
+
+Here's an example of a `UserFactory` with states:
+
+```ts title="database/factories/UserFactory.ts"
+import { Factory, Hash } from "@formidablejs/framework";
+
+export class UserFactory extends Factory {
+	protected password: string;
+
+	async definition(): Promise<any> {
+		return {
+			name: this.faker().person.fullName(),
+			email: this.faker().internet.email(),
+			email_verified_at: now(),
+			password: this.password ?? await Hash.make('password'),
+			remember_token: encrypt(strRandom(80)),
+		};
+	}
+
+	// State for unverified users
+	unverified() {
+		return this.state({
+			email_verified_at: null
+		});
+	}
+
+	// State for admin users
+	admin() {
+		return this.state({
+			role: 'admin',
+			email: 'admin@example.com'
+		});
+	}
+
+	// State for users with specific attributes
+	withRole(role: string) {
+		return this.state({
+			role: role
+		});
+	}
+}
+```
+
+Using factory states in your seeders:
+
+```ts title="database/seeders/DatabaseSeeder.ts"
+import { type Database } from '@formidablejs/framework';
+import { UserFactory } from '../factories/UserFactory';
+
+export const seed = async (DB: Database): Promise<void> => {
+	// Create 5 regular users
+	await UserFactory.factory(5).create();
+
+	// Create 3 unverified users
+	await UserFactory.factory(3).unverified().create();
+
+	// Create 1 admin user
+	await UserFactory.factory(1).admin().create();
+
+	// Create 2 moderators
+	await UserFactory.factory(2).withRole('moderator').create();
+}
+```
+
 ## Using Direct Insert Queries
 
 Here's an example of a `users` seeder that deletes all the users before adding new ones using direct insert queries:

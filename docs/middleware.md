@@ -178,6 +178,149 @@ Route.get('/', () => {
 </TabItem>
 </Tabs>
 
+## Built-in Middleware Classes {#built-in-middleware}
+
+Formidable includes several built-in middleware classes that you can use out of the box. These middleware are designed to handle common tasks and can be customized to fit your application's needs.
+
+### Authentication Middleware
+
+#### `Authenticate`
+Verifies that the user is authenticated. If the user is not authenticated, it will throw an `UnauthenticatedException`.
+
+```ts
+// Usage in routes
+Route.get('/profile', () => {
+    // User is guaranteed to be authenticated here
+}).middleware(['auth'])
+```
+
+#### `ErrorIfAuthenticated`
+Throws an error if the user is already authenticated. Useful for guest-only routes like login and registration.
+
+```ts
+// Usage in routes
+Route.get('/login', () => {
+    // Only accessible to unauthenticated users
+}).middleware(['guest'])
+```
+
+#### `EnsureEmailIsVerified`
+Ensures that the authenticated user's email is verified. If not verified, it will redirect to a specified route.
+
+```ts
+// Custom implementation
+export class EnsureEmailIsVerified extends EnsureEmailIsVerified {
+    get redirectToRoute(): string {
+        return '/email/unverified'
+    }
+}
+
+// Usage in routes
+Route.get('/dashboard', () => {
+    // User must be authenticated and email verified
+}).middleware(['auth', 'verified'])
+```
+
+#### `EnsureStateless`
+Ensures stateless operation for API routes by disabling session access. This is useful for JWT-based authentication.
+
+```ts
+// Custom implementation
+export class EnsureStateless extends EnsureStateless {
+    get strict(): boolean {
+        return true // Strict mode - no session access allowed
+    }
+}
+
+// Usage in middleware groups
+get middlewareGroups(): MiddlewareGroups {
+    return {
+        jwt: [
+            EnsureStateless // Applied to all JWT routes
+        ]
+    }
+}
+```
+
+### Request Processing Middleware
+
+#### `TrimStrings`
+Automatically trims whitespace from string inputs in the request data.
+
+```ts
+// Applied globally in HTTP Kernel
+get middleware(): Array<IMiddleware | string> {
+    return [
+        TrimStrings, // Trims all string inputs
+        // ... other middleware
+    ]
+}
+```
+
+#### `ConvertEmptyStringsToNull`
+Converts empty strings to null values in the request data.
+
+```ts
+// Applied globally in HTTP Kernel
+get middleware(): Array<IMiddleware | string> {
+    return [
+        ConvertEmptyStringsToNull, // Converts empty strings to null
+        // ... other middleware
+    ]
+}
+```
+
+### Security Middleware
+
+#### `VerifyCsrfToken`
+Verifies CSRF tokens for state-changing requests. Essential for web applications using session-based authentication.
+
+```ts
+// Applied to session middleware group
+get middlewareGroups(): MiddlewareGroups {
+    return {
+        session: [
+            VerifyCsrfToken // Protects against CSRF attacks
+        ]
+    }
+}
+```
+
+#### `ValidateSignature`
+Validates signed URLs to ensure they haven't been tampered with.
+
+```ts
+// Usage in routes
+Route.get('/signed-url', () => {
+    // URL must be properly signed
+}).middleware(['signed'])
+```
+
+### Utility Middleware
+
+#### `AcceptLanguage`
+Handles language preferences from the Accept-Language header.
+
+```ts
+// Usage in routes
+Route.get('/localized-content', () => {
+    // Language preference is automatically handled
+}).middleware(['lang'])
+```
+
+#### `HasEncryptionKey`
+Ensures that the application has a valid encryption key configured.
+
+```ts
+// Applied globally in HTTP Kernel
+get middleware(): Array<IMiddleware | string> {
+    return [
+        HasEncryptionKey, // Ensures encryption key is available
+        // ... other middleware
+    ]
+}
+```
+
 ### Middleware Groups {#middleware-groups}
 
 Sometimes you may want to group several middleware under a single key to make them easier to assign to routes. You may do this using the `middlewareGroups` getter of your HTTP kernel.
