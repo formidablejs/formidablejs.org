@@ -197,7 +197,8 @@ export default function Home() {
 					<iframe src='https://codesandbox.io/p/github/formidablejs/codesandbox/main?workspaceId=ws_9pAusshFsPLoKZBZjFSVwq&embed=1&theme=dark' style={{ width: '100%', height: '500px', border: '1px solid #555', borderRadius: '8px', overflow: 'hidden' }} title='formidable' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts' loading="lazy"></iframe>
 				</div> */}
 
-				<div className="live" style={{ marginTop: '-30px', marginBottom: '100px' }}>
+				{/* <div className="live" style={{ marginTop: '-30px', marginBottom: '100px' }}> */}
+				<div className="live" style={{ marginBottom: '100px' }}>
 					<h1>
 						Support us
 					</h1>
