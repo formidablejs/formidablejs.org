@@ -194,7 +194,7 @@ export default function Home() {
 						See how your application may potentially look like without leaving your personal browser.
 					</p>
 
-					<iframe src='https://codesandbox.io/embed/formidable-pn32bs?codemirror=1&fontsize=14&hidenavigation=1&module=%2Fresources%2Fimba%2FApp.imba&moduleview=1&theme=dark' style={{ width: '100%', height: '500px', border: '1px solid #555', borderRadius: '8px', overflow: 'hidden' }} title='formidable' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts' loading="lazy"></iframe>
+					<iframe src='https://codesandbox.io/p/github/formidablejs/codesandbox/main?workspaceId=ws_9pAusshFsPLoKZBZjFSVwq&embed=1&theme=dark' style={{ width: '100%', height: '500px', border: '1px solid #555', borderRadius: '8px', overflow: 'hidden' }} title='formidable' sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts' loading="lazy"></iframe>
 				</div>
 
 				<div className="live" style={{ marginTop: '-30px', marginBottom: '100px' }}>
