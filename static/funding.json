@@ -41,6 +41,19 @@
       "tags": ["framework", "nodejs", "typescript", "full-stack"]
     },
     {
+      "guid": "formidablejs-framework",
+      "name": "Formidable Core Framework",
+      "description": "The core repository for the Formidable framework used to build modern APIs and full‑stack apps with TypeScript or Imba.",
+      "webpageUrl": {
+        "url": "https://formidablejs.org"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/formidablejs/framework"
+      },
+      "licenses": ["spdx:MIT"],
+      "tags": ["framework", "core", "nodejs", "imba", "typescript"]
+    },
+    {
       "guid": "formidablejs-installer",
       "name": "Formidable Installer",
       "description": "Project installer and bootstrap tooling for Formidable apps.",
