@@ -1,0 +1,122 @@
+{
+  "$schema": "https://floss.fund/schema/v1.0.0/funding.schema.json#",
+  "version": "v1.0.0",
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "Donald Pakkies",
+    "email": "donaldpakkies@gmail.com",
+    "phone": "",
+    "description": "Hi, I'm a passionate Open Source developer working on the Formidable Framework — a tool that makes it easy for developers to build robust full stack applications in Node.js.",
+    "webpageUrl": {
+      "url": "https://formidablejs.org",
+      "wellKnown": ""
+    }
+  },
+  "projects": [
+    {
+      "guid": "formidablejs",
+      "name": "Formidable (Imba Skeleton)",
+      "description": "A TypeScript & Imba full‑stack framework for Node.js (Imba skeleton).",
+      "webpageUrl": {
+        "url": "https://formidablejs.org"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/formidablejs/formidablejs"
+      },
+      "licenses": ["spdx:MIT"],
+      "tags": ["framework", "nodejs", "imba", "full-stack"]
+    },
+    {
+      "guid": "formidablejs-typescript",
+      "name": "Formidable (TypeScript Skeleton)",
+      "description": "A TypeScript & Imba full‑stack framework for Node.js (TypeScript skeleton).",
+      "webpageUrl": {
+        "url": "https://formidablejs.org/docs/typescript-support"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/formidablejs/formidablejs-typescript"
+      },
+      "licenses": ["spdx:MIT"],
+      "tags": ["framework", "nodejs", "typescript", "full-stack"]
+    },
+    {
+      "guid": "formidablejs-installer",
+      "name": "Formidable Installer",
+      "description": "Project installer and bootstrap tooling for Formidable apps.",
+      "webpageUrl": {
+        "url": "https://formidablejs.org"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/formidablejs/installer"
+      },
+      "licenses": ["spdx:MIT"],
+      "tags": ["cli", "installer", "tooling"]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "github-sponsors",
+        "type": "payment-provider",
+        "address": "https://github.com/sponsors/donaldp",
+        "description": "Sponsor Donald Pakkies via GitHub Sponsors."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "supporter-5-monthly",
+        "status": "active",
+        "name": "$5 — Supporter",
+        "description": "You'll have our sincere gratitude for helping to support the Formidable project.",
+        "amount": 5,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors"]
+      },
+      {
+        "guid": "community-25-monthly",
+        "status": "active",
+        "name": "$25 — Community",
+        "description": "Access to a private sponsor‑only chat room to discuss Formidable with the team and other sponsors.",
+        "amount": 25,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors"]
+      },
+      {
+        "guid": "advocate-50-monthly",
+        "status": "active",
+        "name": "$50 — Advocate",
+        "description": "All benefits of the $25 tier.",
+        "amount": 50,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors"]
+      },
+      {
+        "guid": "platinum-100-monthly",
+        "status": "active",
+        "name": "$100 — Platinum",
+        "description": "All benefits of the $50 tier, plus name/logo featured on the Formidable README and an optional 20‑minute one‑on‑one call.",
+        "amount": 100,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors"]
+      },
+      {
+        "guid": "goodwill-one-time",
+        "status": "active",
+        "name": "One‑time goodwill",
+        "description": "Pay anything you wish to show your goodwill for the project.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": ["github-sponsors"]
+      }
+    ],
+    "history": []
+  }
+}
+
+
