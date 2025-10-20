@@ -629,7 +629,7 @@ user | `User?` | The authenticated user.
 userAgent | `string?` | The user agent of the client.
 params | `object?` | The channel parameters.
 query | `object?` | The query parameters.
-event | `open|close|error` | The connection event type.
+event | `open`, `close`, or `error` | The connection event type.
 error | `Error?` | The error object if an error occurred.
 
 #### Understanding `ChannelMessage` Object
