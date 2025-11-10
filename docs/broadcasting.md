@@ -348,7 +348,7 @@ export default {
 
 ### Cache Configuration
 
-Finally, you may cache all of your broadcasting configuration into a single file using the `config:cache` Artisan command. This will combine all of your broadcasting configuration options into a single file which will be loaded quickly by the framework. Caching your configuration provides a significant performance boost when configuring the broadcasting service for the first time:
+Finally, you may cache all of your broadcasting configuration into a single file using the `config:cache` Craftsman command. This will combine all of your broadcasting configuration options into a single file which will be loaded quickly by the framework. Caching your configuration provides a significant performance boost when configuring the broadcasting service for the first time:
 
 ```bash
 node craftsman config:cache
